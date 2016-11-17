@@ -19,7 +19,6 @@
           $punten += 100;
           $prijs -= 5;
         }
-        print ("LOL");
 
         /* Einde uitwerking */
         ?>
