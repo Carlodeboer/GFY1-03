@@ -25,6 +25,9 @@ and open the template in the editor.
 
               print "<p>".$weeknummer."</p><br>";
           }
+        }
+
+        toon($pdo);
         ?>
     </body>
 </html>
