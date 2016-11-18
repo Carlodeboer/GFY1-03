@@ -1,6 +1,6 @@
 <?php
-  $db ="mysql:host=localhost;dbname=wmdb;port=3307";
-  $user = "root";
-  $pass = "usbw";
+  $db ="mysql:host=95.85.38.204;dbname=motorcrossdb;port=3306";
+  $user = "carlo";
+  $pass = "CarloMySQL1337";
   $pdo = new PDO($db, $user, $pass);
 ?>
