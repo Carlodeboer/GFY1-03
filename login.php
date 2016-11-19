@@ -28,7 +28,7 @@
                 // haal de kolom ‘naam’ op
                 $week = $row["weeknummer"];
                 $naam = $row["vakantienaam"];
-                print("<h1>Reisinfo voor " . $naam . " in week " . substr($code, 0, 2) . "<h1>");
+                print("<h1>Reisinfo voor " . $naam . " in week " . substr($week, 0, 2) . "<h1>");
             }
 
             // Verbinding opruimen
