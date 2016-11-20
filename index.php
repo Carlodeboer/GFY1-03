@@ -18,7 +18,7 @@
         <h1>Offroad Motorcross Portugal</h1>
 
         <?php
-            toon($pdo);
+            read($pdo);
         ?>
     </body>
 </html>
