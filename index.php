@@ -21,9 +21,9 @@ and open the template in the editor.
             $stmt->execute();
             while ($row = $stmt->fetch())
             {
-              $weeknummer = $row["weeknummer"];
+              $voornaam = $row["voornaam"];
 
-              print "<p>".$weeknummer."</p><br>";
+              print "<p>".$voornaam."</p><br>";
           }
         }
 

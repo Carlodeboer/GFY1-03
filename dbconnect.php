@@ -1,6 +1,6 @@
 <?php
-  $db ="mysql:host=95.85.38.204;dbname=motorcrossdb;port=3307";
-  $user = "carlo";
-  $pass = "CarloMySQL1337";
+  $db ="mysql:host=carlodb.nl;dbname=carlodb_database;port=3306";
+  $user = "carlodb_school";
+  $pass = "GFY1-03";
   $pdo = new PDO($db, $user, $pass);
 ?>
