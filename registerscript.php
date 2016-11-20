@@ -25,48 +25,50 @@
     </form>
 
     <?php
-if(isset($_POST['username'])){
+
+
+
+
+if(isset($_POST['register'])){
 $username = $_POST['username'];
 $password1 = $_POST['password1'];
 $password2 = $_POST['password2'];
 $email = $_POST['email'];
 $passwordhash = password_hash($password1, PASSWORD_DEFAULT)."\n";
-}
 
-if(isset($_POST['password1'])){
-if($password1 != $password2) {
-    print("Passwords must be equal");
-} else {
+
+
+if($username == ""){
+    print("Vul een gebruikersnaam in.");
+}
+else if ($password1 == "") {
+    print("Vul een wachtwoord in.");
+}
+else if($password1 != $password2) {
+    print("Beide wachtwoorden moeten gelijk zijn.");
+} 
+else if($email == "") {
+    print("Vul een emailadres in.");
+}
+    else {
+
 
       $stmt = $pdo->prepare("INSERT INTO users (username,email,password) VALUES (?,?,?)");
   $stmt->execute(array($username,$email,$passwordhash));
 $res = $stmt->rowCount();
-print($res . " record(s) toegevoegd");
+if($res > 0) {
+
+print("De user " . $username ." is toegevoegd.");
 
           // $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 
 
 }
 }
 
-
-// $stmt = $pdo->prepare("SELECT * FROM users");
-//  $stmt->execute();
-// $IDnumber = $stmt->rowCount();
-// print($IDnumber);
-
-
-
-
-
-if(isset($_POST['password1'])) {
-    $newpass = password_hash($_POST['password1'], PASSWORD_DEFAULT);
-}
-
-
-// print($newpass);
-
-//checken of user al in database bestaat
+//!!checken of user al in database bestaat
 //hash gebruiken
 //wachtwoordveld 60 characters!
 
