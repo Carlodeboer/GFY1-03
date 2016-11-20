@@ -32,8 +32,18 @@
 
 
         toon($pdo);
+        
+
+
+
+    session_start();
+    echo 'Welcome '.$_SESSION['username'];
+?>
+
+
+
         ?>
 
     </body>
 </html>
-</html>
+
