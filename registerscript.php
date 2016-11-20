@@ -1,7 +1,7 @@
 
 <?php
 
-   include "dbconnect.php";
+    include "dbconnect.php";
 
 
 ?>
@@ -30,13 +30,32 @@ $username = $_POST['username'];
 $password1 = $_POST['password1'];
 $password2 = $_POST['password2'];
 $email = $_POST['email'];
+$passwordhash = password_hash($password1, PASSWORD_DEFAULT)."\n";
 }
 
 if(isset($_POST['password1'])){
 if($password1 != $password2) {
     print("Passwords must be equal");
+} else {
+
+      $stmt = $pdo->prepare("INSERT INTO users (username,email,password) VALUES (?,?,?)");
+  $stmt->execute(array($username,$email,$passwordhash));
+$res = $stmt->rowCount();
+print($res . " record(s) toegevoegd");
+
+          // $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+
+
 }
 }
+
+
+// $stmt = $pdo->prepare("SELECT * FROM users");
+//  $stmt->execute();
+// $IDnumber = $stmt->rowCount();
+// print($IDnumber);
+
+
 
 
 
@@ -46,6 +65,10 @@ if(isset($_POST['password1'])) {
 
 
 // print($newpass);
+
+//checken of user al in database bestaat
+//hash gebruiken
+//wachtwoordveld 60 characters!
 
     ?>
 
