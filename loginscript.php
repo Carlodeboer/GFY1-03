@@ -52,11 +52,14 @@ if(isset($_SESSION['user_session'])){
 } else {
     print("Log eerst in.");
 }
+if(isset($_SESSION['user_session'])){
+print("<br><br><a href=\"logout.php?logout\">Sign Out</a>");
+}
 
 ?>
 <br>
 <br>
-<a href="logout.php?logout">Sign Out</a>
+
 
 
     </body>
