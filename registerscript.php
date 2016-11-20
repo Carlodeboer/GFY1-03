@@ -51,6 +51,12 @@ else if($email == "") {
     print("Vul een emailadres in.");
 }
     else {
+$stmt = $pdo->prepare("SELECT username FROM users WHERE username=?");
+$stmt->execute(array($username));
+$res = $stmt->rowCount();
+if($res != 0) {
+    print("De gebruikersnaam bestaat al.");
+} else {
 
 
       $stmt = $pdo->prepare("INSERT INTO users (username,email,password) VALUES (?,?,?)");
@@ -61,6 +67,7 @@ if($res > 0) {
 print("De user " . $username ." is toegevoegd.");
 
           // $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+}
 }
 
 
