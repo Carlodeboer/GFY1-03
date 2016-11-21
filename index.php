@@ -12,7 +12,7 @@
         </div>
         <ul>
           <a href="index.php"><li>Home</li></a>
-          <li>Informatie</li>
+          <a href="informatie.php"><li>Informatie</li></a>
           <li>Boeken</li>
           <li>Contact</li>
           <a href="login.php"><li>Login</li></a>

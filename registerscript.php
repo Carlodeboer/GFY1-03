@@ -18,7 +18,7 @@
     <form method="post">
     <h2>Registreren</h2>
     Gebruikersnaam: <input type="text" name="username"><br>
-    Email: <input type="text" name="email"><br>    
+    Email: <input type="text" name="email"><br>
     Wachtwoord: <input type="password" name="password1"><br>
     Bevestig wachtwoord: <input type="password" name="password2"><br>
               <input type="submit" name="register" value="Register">
@@ -47,7 +47,7 @@ else if ($password1 == "") {
 }
 else if($password1 != $password2) {
     print("Beide wachtwoorden moeten gelijk zijn.");
-} 
+}
 else if($email == "") {
     print("Vul een emailadres in.");
 }
@@ -93,4 +93,3 @@ print("De user " . $username ." is toegevoegd.");
 
     </body>
 </html>
-
