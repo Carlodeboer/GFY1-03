@@ -16,7 +16,7 @@
     <body>
 
     <form method="post">
-    <h2>Register</h2>
+    <h2>Registreren</h2>
     Gebruikersnaam: <input type="text" name="username"><br>
     Email: <input type="text" name="email"><br>    
     Wachtwoord: <input type="password" name="password1"><br>

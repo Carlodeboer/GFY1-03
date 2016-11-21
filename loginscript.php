@@ -16,9 +16,9 @@
     <body>
 
     <form method="post">
-    <h2>Login</h2>
-    Username: <input type="text" name="username"><br>
-    Password: <input type="password" name="password"><br><br>
+    <h2>Inloggen</h2>
+    Gebruikersnaam: <input type="text" name="username"><br>
+    Wachtwoord: <input type="password" name="password"><br><br>
               <input type="submit" name="submit" value="Login">
     </form>
 
