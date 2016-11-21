@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Motocross</title>
+  <title>Motorcross</title>
   <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 <body>
