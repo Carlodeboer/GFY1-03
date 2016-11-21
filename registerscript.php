@@ -17,10 +17,10 @@
 
     <form method="post">
     <h2>Register</h2>
-    Username: <input type="text" name="username"><br>
+    Gebruikersnaam: <input type="text" name="username"><br>
     Email: <input type="text" name="email"><br>    
-    Password: <input type="password" name="password1"><br>
-    Verify password: <input type="password" name="password2"><br>
+    Wachtwoord: <input type="password" name="password1"><br>
+    Bevestig wachtwoord: <input type="password" name="password2"><br>
               <input type="submit" name="register" value="Register">
     </form>
 
