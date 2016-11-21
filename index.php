@@ -2,7 +2,7 @@
 <?php
   include "dbconnect.php";
   include "functions.php";
-  
+
 ?>
 <html>
     <head>
@@ -34,7 +34,7 @@
 
         toon($pdo);
 
-
+//thijs
 
 
 
@@ -44,4 +44,3 @@
         ?>
     </body>
 </html>
-
