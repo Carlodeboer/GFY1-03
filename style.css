@@ -8,15 +8,16 @@ body{
 
 p,li,ul,h1,h2,h3,h4,h5,h6{
   font-family: Helvetica, Arial, sans-serif;
-}
-a{
-  font-style: none;
-  text-decoration: none;
-
+  margin:0;
+  padding:0;
 }
 
+footer{
+  height:150px;
+  width:100%;
+  background:gray;
+}
 #container{
-  height:500px;
   width: 1024px;
   margin:0 auto;
   background:#fff
@@ -30,16 +31,40 @@ a{
 ul{
   margin: 0 auto;
   padding:0;
+  overflow: hidden;
+  width:1033px
 }
 li{
+  white-space:nowrap;
   list-style: none;
-  display: inline-block;
-  padding:0 74px;
+  padding:0 77px;
   line-height: 30px;
   color: #000;
   transition: background-color 0.4s;
+  float:left;
+  display: inline;
+}
+ul a{
+    font-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin:0;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline;
 }
 li:hover{
   background-color:#ccc;
   transition: background-color 0.4s;
+}
+#content{
+  background:#ddd;
+  width:100%;
+  overflow-x: hidden;
+
+}
+
+#content p{
+  width:500px;
+  padding: 25px;
 }
