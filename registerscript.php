@@ -50,6 +50,9 @@ else if($password1 != $password2) {
 else if($email == "") {
     print("Vul een emailadres in.");
 }
+else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    print("Vul een valide emailadres in.");
+}
     else {
 $stmt = $pdo->prepare("SELECT username FROM users WHERE username=?");
 $stmt->execute(array($username));

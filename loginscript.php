@@ -35,6 +35,13 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 
 
+if($username == ""){
+    print("Vul een gebruikersnaam in<br><br>");
+}
+elseif($password == ""){
+    print("Vul een wachtwoord in<br><br>");
+} else {
+
 $stmt = $pdo->prepare("SELECT * FROM users WHERE username=:uname");
 $stmt->execute(array(':uname'=>$username));
           $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -42,15 +49,15 @@ $stmt->execute(array(':uname'=>$username));
 if(password_verify($password,$userRow['password'])){
         $_SESSION['user_session'] = $userRow['username'];
 } else {
-    print("Wachtwoord of inlognaam onjuist.");
+    print("Wachtwoord of inlognaam onjuist. <br><br>");
 }
-
+}
 }
 
 if(isset($_SESSION['user_session'])){
     echo 'Welcome '.$_SESSION['user_session'];
 } else {
-    print("Log eerst in.");
+    print("Log eerst in of <a href=\"registerscript.php\">registreer</a>");
 }
 if(isset($_SESSION['user_session'])){
 print("<br><br><a href=\"logout.php?logout\">Sign Out</a>");
