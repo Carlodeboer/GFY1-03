@@ -16,7 +16,6 @@
           <li>Boeken</li>
           <li>Contact</li>
           <a href="login.php"><li>Login</li></a>
-          <?php include 'loginscript.php' ?>
         </ul>
       </nav>
 
