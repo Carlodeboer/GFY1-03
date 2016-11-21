@@ -26,7 +26,7 @@
 <?php
     session_start();
 
-//  Hiermee kun je passwords hashen 
+//  Hiermee kun je passwords hashen
 // echo password_hash("123456", PASSWORD_DEFAULT)."\n";
 
 //voorkomen van foutmelding indien er nog geen username en wachtwoord is ingevoerd bij het laden van de pagina
@@ -71,4 +71,3 @@ print("<br><br><a href=\"logout.php?logout\">Sign Out</a>");
 
     </body>
 </html>
-
