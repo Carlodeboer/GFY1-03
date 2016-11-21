@@ -34,12 +34,15 @@
 
         toon($pdo);
 
+        include 'loginscript.php';
+         ?>
+
+         <a href="loginscript.php">Login</a>
 
 
 
 
-            
 
-        ?>
+
     </body>
 </html>
