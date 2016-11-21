@@ -29,12 +29,12 @@
 //  Hiermee kun je passwords hashen 
 // echo password_hash("123456", PASSWORD_DEFAULT)."\n";
 
-
+//voorkomen van foutmelding indien er nog geen username en wachtwoord is ingevoerd bij het laden van de pagina
 if(isset($_POST['username'])) {
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-
+//feedback geven wanneer er geen gegevens zijn ingevoerd
 if($username == ""){
     print("Vul een gebruikersnaam in<br><br>");
 }
