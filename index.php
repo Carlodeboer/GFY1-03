@@ -34,12 +34,11 @@
 
         toon($pdo);
 
-//thijs
 
 
 
-            read($pdo);
-            ?>
+
+            
 
         ?>
     </body>
