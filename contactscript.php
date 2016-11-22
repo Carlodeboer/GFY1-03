@@ -1,226 +1,174 @@
-<?php
-if (isset($_POST['email'])) {
-    $email_to = "thijs.marschalk@gmail.com";
-    $email_subject = "Mail sent through contactform";
+<html>
+    <head>
+        <title>Motocross</title>
+        <link type="text/css" rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="container">
+            <nav>
+                <div id="banner">
+                </div>
+                <ul>
+                    <a href="index.php"><li>Home</li></a>
+                    <a href="informatie.php"><li>Informatie</li></a>
+                    <a href="boeken.php"><li>Boeken</li></a>
+                    <a href="contact.php"><li>Contact</li></a>
+                    <a href="login.php"><li>Login</li></a>
+                </ul>
+                <?php
 
-<<<<<<< Updated upstream
-    function died($error) {
-        print "We are very sorry, but there were error(s) found with the form you submitted. ";
-        print "These errors appear below.<br /><br />";
-        print $error . "<br /><br />";
-        print "Please go back and fix these errors.<br /><br />";
-        die();
-    }
+                if(isset($_POST['email'])) {
 
-    if (!isset($_POST['first_name']) || !isset($_POST['last_name']) || !isset($_POST['email']) || !isset($_POST['telephone']) || !isset($_POST['comments'])) {
-        died('We are sorry, but there appears to be a problem with the form you submitted.');
-    }
 
-    $first_name = $_POST['first_name']; // required
-    $last_name = $_POST['last_name']; // required
-    $email_from = $_POST['email']; // required
-    $telephone = $_POST['telephone']; // not required
-    $comments = $_POST['comments']; // required
 
-=======
-if(isset($_POST['email'])) {
+                    // EDIT THE 2 LINES BELOW AS REQUIRED
 
+                    $email_to = "thijs.marschalk@gmail.com";
 
+                    $email_subject = "Bericht verstuurd via contactformulier";
 
-    // EDIT THE 2 LINES BELOW AS REQUIRED
 
-    $email_to = "thijs.marschalk@gmail.com";
 
-    $email_subject = "Email verstuurd via contactformulier";
 
 
+                    function died($error) {
 
+                        // your error code can go here
 
+                        echo "<br> We are very sorry, but there were error(s) found with the form you submitted. ";
 
-    function died($error) {
+                        echo "These errors appear below.<br /><br />";
 
-        // your error code can go here
+                        echo $error."<br /><br />";
 
-        echo "We are very sorry, but there were error(s) found with the form you submitted. ";
+                        echo "Please go back and fix these errors.<br /><br />";
 
-        echo "These errors appear below.<br /><br />";
+                        die();
 
-        echo $error."<br /><br />";
+                    }
 
-        echo "Please go back and fix these errors.<br /><br />";
 
-        die();
 
-    }
+                    // validation expected data exists
 
+                    if(!isset($_POST['first_name']) ||
 
+                        !isset($_POST['last_name']) ||
 
-    // validation expected data exists
+                        !isset($_POST['email']) ||
 
-    if(!isset($_POST['first_name']) ||
+                        !isset($_POST['telephone']) ||
 
-        !isset($_POST['last_name']) ||
+                        !isset($_POST['comments'])) {
 
-        !isset($_POST['email']) ||
+                        died('We are sorry, but there appears to be a problem with the form you submitted.');
 
-        !isset($_POST['telephone']) ||
+                    }
 
-        !isset($_POST['comments'])) {
 
-        died('We are sorry, but there appears to be a problem with the form you submitted.');
 
-    }
+                    $first_name = $_POST['first_name']; // required
 
+                    $last_name = $_POST['last_name']; // required
 
+                    $email_from = $_POST['email']; // required
 
-    $first_name = $_POST['first_name']; // required
+                    $telephone = $_POST['telephone']; // not required
 
-    $last_name = $_POST['last_name']; // required
+                    $comments = $_POST['comments']; // required
 
-    $email_from = $_POST['email']; // required
 
-    $telephone = $_POST['telephone']; // not required
 
-    $comments = $_POST['comments']; // required
+                    $error_message = "";
 
+                    $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
 
+                  if(!preg_match($email_exp,$email_from)) {
 
->>>>>>> Stashed changes
-    $error_message = "";
+                    $error_message .= 'The Email Address you entered does not appear to be valid.<br />';
 
-    $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
+                  }
 
-<<<<<<< Updated upstream
-    if (!preg_match($email_exp, $email_from)) {
-        $error_message .= 'The Email Address you entered does not appear to be valid.<br />';
-    }
+                    $string_exp = "/^[A-Za-z .'-]+$/";
 
-    $string_exp = "/^[A-Za-z .'-]+$/";
+                  if(!preg_match($string_exp,$first_name)) {
 
-    if (!preg_match($string_exp, $first_name)) {
-        $error_message .= 'The First Name you entered does not appear to be valid.<br />';
-    }
+                    $error_message .= 'The First Name you entered does not appear to be valid.<br />';
 
-    if (!preg_match($string_exp, $last_name)) {
-        $error_message .= 'The Last Name you entered does not appear to be valid.<br />';
-    }
+                  }
 
-    if (strlen($comments) < 2) {
-        $error_message .= 'The Comments you entered do not appear to be valid.<br />';
-    }
+                  if(!preg_match($string_exp,$last_name)) {
 
-    if (strlen($error_message) > 0) {
-        died($error_message);
-    }
+                    $error_message .= 'The Last Name you entered does not appear to be valid.<br />';
 
-    $email_message = "Form details below.\n\n";
+                  }
 
-    function clean_string($string) {
-        $bad = array("content-type", "bcc:", "to:", "cc:", "href");
-        return str_replace($bad, "", $string);
-    }
+                  if(strlen($comments) < 2) {
 
-    $email_message .= "First Name: " . clean_string($first_name) . "\n";
-    $email_message .= "Last Name: " . clean_string($last_name) . "\n";
-    $email_message .= "Email: " . clean_string($email_from) . "\n";
-    $email_message .= "Telephone: " . clean_string($telephone) . "\n";
-    $email_message .= "Comments: " . clean_string($comments) . "\n";
-=======
-  if(!preg_match($email_exp,$email_from)) {
+                    $error_message .= 'The Comments you entered do not appear to be valid.<br />';
 
-    $error_message .= 'The Email Address you entered does not appear to be valid.<br />';
+                  }
 
-  }
+                  if(strlen($error_message) > 0) {
 
-    $string_exp = "/^[A-Za-z .'-]+$/";
+                    died($error_message);
 
-  if(!preg_match($string_exp,$first_name)) {
+                  }
 
-    $error_message .= 'The First Name you entered does not appear to be valid.<br />';
+                    $email_message = "Form details below.\n\n";
 
-  }
 
-  if(!preg_match($string_exp,$last_name)) {
 
-    $error_message .= 'The Last Name you entered does not appear to be valid.<br />';
+                    function clean_string($string) {
 
-  }
+                      $bad = array("content-type","bcc:","to:","cc:","href");
 
-  if(strlen($comments) < 2) {
+                      return str_replace($bad,"",$string);
 
-    $error_message .= 'The Comments you entered do not appear to be valid.<br />';
+                    }
 
-  }
 
-  if(strlen($error_message) > 0) {
 
-    died($error_message);
+                    $email_message .= "Voornaam: ".clean_string($first_name)."\n";
 
-  }
+                    $email_message .= "Achternaam: ".clean_string($last_name)."\n";
 
-    $email_message = "Form details below.\n\n";
+                    $email_message .= "Email: ".clean_string($email_from)."\n";
 
+                    $email_message .= "Telefoonnummer: ".clean_string($telephone)."\n";
 
+                    $email_message .= "Bericht: ".clean_string($comments)."\n";
 
-    function clean_string($string) {
 
-      $bad = array("content-type","bcc:","to:","cc:","href");
 
-      return str_replace($bad,"",$string);
 
-    }
 
+                // create email headers
 
+                $headers = 'From: '.$email_from."\r\n".
 
-    $email_message .= "First Name: ".clean_string($first_name)."\n";
+                'Reply-To: '.$email_from."\r\n" .
 
-    $email_message .= "Last Name: ".clean_string($last_name)."\n";
+                'X-Mailer: PHP/' . phpversion();
 
-    $email_message .= "Email: ".clean_string($email_from)."\n";
+                @mail($email_to, $email_subject, $email_message, $headers);
 
-    $email_message .= "Telephone: ".clean_string($telephone)."\n";
+                ?>
+                <br>
 
-    $email_message .= "Comments: ".clean_string($comments)."\n";
+                Thank you for contacting us. We will be in touch with you very soon.
 
 
 
 
 
-// create email headers
+                <?php
 
-$headers = 'From: '.$email_from."\r\n".
+                }
 
-'Reply-To: '.$email_from."\r\n" .
+                ?>
 
-'X-Mailer: PHP/' . phpversion();
-
-@mail($email_to, $email_subject, $email_message, $headers);
-
-?>
-
-
-
-<!-- include your own success html here -->
-
-
-
-Thank you for contacting us. We will be in touch with you very soon.
-
-
-
-<?php
-
-}
->>>>>>> Stashed changes
-
-    // create email headers
-    $headers = 'From: ' . $email_from . "\r\n" .
-            'Reply-To: ' . $email_from . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-
-    @mail($email_to, $email_subject, $email_message, $headers);
-    ?>
-    Thank you for contacting us. We will be in touch with you very soon.
-    <?php
-}
-?>
+            </nav>
+        </div>
+    </body>
+</html>
