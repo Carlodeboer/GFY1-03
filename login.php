@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <?php
+    include "dbconnect.php"
+    ?>
     <head>
         <title>Motorcross</title>
         <link type="text/css" rel="stylesheet" href="style.css">
@@ -30,12 +33,6 @@
                 if (isset($_POST["verzenden"])) {
                     $week = $_POST["vakantieweek"];
                     $naam = $_POST["vakantienaam"];
-
-                    // Verbinding maken
-                    $db = "mysql:host=localhost;dbname=motorcrossdb;port=3307";
-                    $user = "root";
-                    $pass = "usbw";
-                    $pdo = new PDO($db, $user, $pass);
 
                     // Voorbereiden
                     $stmt = $pdo->prepare("SELECT weeknummer, vakantienaam FROM klantenbestand WHERE weeknummer = ? AND vakantienaam = ?");
