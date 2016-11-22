@@ -21,7 +21,11 @@
 
             <div id="content">
                 <h2> content </h2>
-                
+                <form method="POST" action="login.php"> 
+                    Vakantieweek: <input type="text" name="vakantieweek">
+                    Vakantienaam: <input type="text" name="vakantienaam">
+                    <input type="submit" name="verzenden" value="Reisinfo">
+                </form>
                 <?php
                 if (isset($_POST["verzenden"])) {
                     $week = $_POST["vakantieweek"];
