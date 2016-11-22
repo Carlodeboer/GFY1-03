@@ -10,17 +10,15 @@ include "functions.php";
     <body>
         <?php
         banner();
-        // print ("Begindatum: " . $begindatum (uit database))
-        // print ("Einddatum: " . $einddatum (uit database))
         ?>
         <table>
             <form method="GET">
                 <tr>
                     <td>Begindatum:</td>
-                    <td></td>
+                    <td><!--$begindatum--></td>
                 </tr><tr>
                     <td>Einddatum:</td>
-                    <td></td>
+                    <td><!--$einddatum--></td>
                 </tr><tr>
                     <td>Vervoer van Luchthaven Portela (Lissabon):</td>
                     <td><input type="radio" name="heen" value="ja" checked> Ja</td>
@@ -42,6 +40,8 @@ include "functions.php";
                 </tr><tr>
                     <td>Aantal personen:</td>
                     <td><select name="aantalPersonen"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
+                </tr><tr>
+                    <td><input type="submit" name="Verzenden"></td>
                 </tr>
             </form>
         </table>
