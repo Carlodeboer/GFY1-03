@@ -28,6 +28,7 @@ function verwijderen($pdo, $naam, $weeknr) {
     $stmt->execute(array($naam, $weeknr));
 }
 
+<<<<<<< HEAD
 funtion banner(){
   return(  <div id="container">
         <nav>
@@ -43,6 +44,5 @@ funtion banner(){
 
         </nav>
     </div>)
-}
 
 ?>
