@@ -36,7 +36,7 @@ function verwijderen($pdo, $naam, $weeknr) {
 }
 
 function banner() {
-    return("<div id='container'>
+    print("<div id='container'>
         <nav>
             <div id='banner'>
             </div>
