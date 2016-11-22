@@ -96,7 +96,7 @@
 
              <td valign="top">
 
-              <textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea>
+              <textarea  name="comments" maxlength="2000" cols="25" rows="6"></textarea>
 
              </td>
 
