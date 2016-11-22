@@ -16,7 +16,7 @@
                     <a href="contact.php"><li>Contact</li></a>
                     <a href="login.php"><li>Login</li></a>
                 </ul>
-
+hoi floris
             </nav>
 
             <form name="contactform" method="post" action="contactscript.php">
