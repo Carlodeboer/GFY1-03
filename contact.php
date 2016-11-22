@@ -49,6 +49,18 @@
              <td valign="top">
 
               <input  type="text" name="last_name" maxlength="50" size="30">
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">
+
+             <label for="subject">Subject *</label>
+
+            </td>
+
+            <td valign="top">
+
+             <input  type="text" name="subject" maxlength="50" size="30">
 
              </td>
 
