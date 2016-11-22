@@ -55,6 +55,8 @@
 
                         !isset($_POST['last_name']) ||
 
+                        !isset($_POST['subject']) ||
+
                         !isset($_POST['email']) ||
 
                         !isset($_POST['telephone']) ||
@@ -70,6 +72,8 @@
                     $first_name = $_POST['first_name']; // required
 
                     $last_name = $_POST['last_name']; // required
+
+                    $subject = $_POST['subject']; // required
 
                     $email_from = $_POST['email']; // required
 
@@ -100,6 +104,12 @@
                   if(!preg_match($string_exp,$last_name)) {
 
                     $error_message .= 'The Last Name you entered does not appear to be valid.<br />';
+
+                  }
+
+                  if(!preg_match($string_exp,$subject)) {
+
+                    $error_message .= 'The Subject you entered does not appear to be valid.<br />';
 
                   }
 
@@ -153,6 +163,19 @@
 
                 @mail($email_to, $email_subject, $email_message, $headers);
 
+                include 'dbconnect.php';
+
+                $datum = date("Y/m/d");
+                //idbericht, voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum
+                $stmt = $pdo->prepare("INSERT INTO contactformulier (voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $stmt->execute(array($first_name, $last_name, $email_from, $telephone, $subject, $comments, $datum));
+/*
+                $stmt = $pdo->prepare("INSERT INTO users (username,email,password) VALUES (?,?,?)");
+                $stmt->execute(array($username, $email, $passwordhash));
+                */
+                $pdo = NULL;
+
+
                 ?>
                 <br>
 
@@ -163,7 +186,6 @@
 
 
                 <?php
-
                 }
 
                 ?>
