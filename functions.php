@@ -1,6 +1,13 @@
 <?php
 
 // gelieve hier alle functies te plaatsen ;)
+function newPDO() {
+    $db = "mysql:host=carlodb.nl;dbname=carlodb_database;port=3306";
+    $user = "carlodb_school";
+    $pass = "GFY1-03";
+    $pdo = new PDO($db, $user, $pass);
+    return ($pdo);
+}
 // werkt nog niet, is alleen een begin
 function toevoegen($pdo, $naam, $weeknr) {
     $stmt = $pdo->prepare("INSERT INTO klantenbestand VALUES (?,?)");
