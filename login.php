@@ -21,6 +21,7 @@
 
             <div id="content">
                 <h2> content </h2>
+                
                 <?php
                 if (isset($_POST["verzenden"])) {
                     $week = $_POST["vakantieweek"];
