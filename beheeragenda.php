@@ -7,6 +7,44 @@
 <body>
  
 
+
+<table style="border:1px solid">
+<th>Januari</th>
+<tr>
+<td></td>
+<td>Ma</td>
+<td>Di</td>
+<td>Wo</td>
+<td>Do</td>
+<td>Vr</td>
+<td>Za</td>
+<td>Zo</td>
+<tr>
+<td>Weeknummer1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<tr>8</tr>
+<td>Weeknummer2</td>
+<tr>
+<td>Weeknummer3</td>
+<tr>
+<td>Weeknummer4</td>
+<tr>
+<td>Weeknummer5</td>
+</table>
+
+
+
+
+
+
+
+
 <select name="jaar">
   <option value="2016">2016</option>
   <option value="2017">2017</option>
