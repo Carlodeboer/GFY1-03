@@ -37,7 +37,10 @@ function verwijderen($pdo, $naam, $weeknr) {
 
 function checkLogin($naam, $wachtwoord){
     $pdo = newPDO();
-    $klopt = false;
+    $controle = ["klopt" => false,
+                "foutmelding" => ""];
+    // $klopt = false;
+    // $foutmelding = "";
 
     $stmt = $pdo->prepare("SELECT gebruikersnaam, wachtwoord, privilegeniveau
                             FROM gebruikers
@@ -48,12 +51,21 @@ function checkLogin($naam, $wachtwoord){
     // if (password_verify($password, $userRow['wachtwoord'])) {
     //     $_SESSION['user_session'] = $userRow['naam'];
     // }
-    if ($wachtwoord == $userRow['wachtwoord']) {
-        $klopt = true;
+    if ($naam != "" && $wachtwoord != "" && $wachtwoord == $userRow['wachtwoord']) {
+        $controle['klopt'] = true;
+    }
+    elseif ($naam == "") {
+        $controle['foutmelding'] = "Vul een gebruikersnaam in";
+    }
+    elseif ($wachtwoord == "") {
+        $controle['foutmelding'] = "Vul een wachtwoord in";
+    }
+    else {
+        $controle['foutmelding'] = "Onjuist wachtwoord of gebruikersnaam";
     }
     $pdo = null;
 
-    return $klopt;
+    return $controle;
 }
 
 function checkPrivileges(){

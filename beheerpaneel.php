@@ -24,21 +24,30 @@
 
                       session_start();
 
+                    //   $test = checkLogin($_POST['naam'], $_POST['wachtwoord']);
+                    //   print_r($test);
+                    //   if ($test['klopt']) {
+                    //       print "ja";
+                    //   }
+                    //   else {
+                    //       print "nee";
+                    //   }
                       if (isset($_POST['naam'])) {
-
-                          if(checkLogin($_POST['naam'], $_POST['wachtwoord'])) {
+                          $check = checkLogin($_POST['naam'], $_POST['wachtwoord']);
+                          if ($check['klopt']){
                               $_SESSION['user_session'] = $_POST['naam'];
                               include 'moetnogeennaamverzinnen.php';
                               // test
                               print $_SESSION['user_session'];
-                         }
+                          }
+                          else {
+                              print "<h1>".$check['foutmelding']."</h1>";
+                          }
                       }
                       else {
                           print "<h1>VERBODEN TOEGANG</h1>";
                       }
-
                   ?>
-
             </div>
             <?php include 'footer.php';?>
         </div>
