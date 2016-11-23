@@ -33,7 +33,7 @@ ul{
   overflow: hidden;
   width:1033px
 }
-li{
+nav li{
   white-space:nowrap;
   list-style: none;
   padding:0 77px;
@@ -42,6 +42,10 @@ li{
   transition: background-color 0.4s;
   float:left;
   display: inline;
+}
+nav li:hover{
+  background-color:#ccc;
+  transition: background-color 0.4s;
 }
 ul a{
     font-style: none;
@@ -52,10 +56,7 @@ ul a{
     overflow: hidden;
     display: inline;
 }
-li:hover{
-  background-color:#ccc;
-  transition: background-color 0.4s;
-}
+
 #content{
   background:#ddd;
   width:100%;

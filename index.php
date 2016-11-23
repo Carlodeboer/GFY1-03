@@ -14,7 +14,6 @@
 </head>
     <body>
         <div id="container">
-            <nav>
                 <div id="banner">
                   <ul class="rslides">
                   <li><img src="images/1.jpg" alt=""></li>
@@ -22,6 +21,7 @@
                   <li><img src="images/3.jpg" alt=""></li>
                   </ul>
                 </div>
+            <nav>
                 <ul>
                     <a href="index.php"><li>Home</li></a>
                     <a href="informatie.php"><li>Informatie</li></a>
