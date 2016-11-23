@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
         <title>Motorcross</title>
-        <link type="text/css" rel="stylesheet" href="style.css">
-    </head>
+        <link type="text/css" rel="stylesheet" href="style/style.css">
+        <link type="text/css" rel="stylesheet" href="style/responsiveslides.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="js/responsiveslides.js"></script>
+        <script>
+          $(function() {
+            $(".rslides").responsiveSlides();
+          });
+        </script>
+</head>
     <body>
         <div id="container">
             <nav>
                 <div id="banner">
-                    <h2> header </h2>
+                  <ul class="rslides">
+                  <li><img src="images/1.jpg" alt=""></li>
+                  <li><img src="images/2.jpg" alt=""></li>
+                  <li><img src="images/3.jpg" alt=""></li>
+                  </ul>
                 </div>
                 <ul>
                     <a href="index.php"><li>Home</li></a>
