@@ -57,6 +57,7 @@ include "functions.php";
                     </form>
                 </table>
             </div>
+        <?php include 'footer.php';?>
         </div>
     </body>
 </html>
