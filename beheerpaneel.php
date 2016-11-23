@@ -24,15 +24,19 @@
 
                       session_start();
 
-                      if (!isset($_POST['username'])) {
-                          include "adminlogin.php";
-                      }
-                      else {
+                      if (isset($_POST['naam'])) {
 
                           if(checkLogin($_POST['naam'], $_POST['wachtwoord'])) {
-                              include 'moetnogeennaamverzinnen.php'
-                          }
+                              $_SESSION['user_session'] = $_POST['naam'];
+                              include 'moetnogeennaamverzinnen.php';
+                              // test
+                              print $_SESSION['user_session'];
+                         }
                       }
+                      else {
+                          print "<h1>VERBODEN TOEGANG</h1>";
+                      }
+
                   ?>
 
             </div>

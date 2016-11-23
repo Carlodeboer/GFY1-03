@@ -41,13 +41,16 @@ function checkLogin($naam, $wachtwoord){
 
     $stmt = $pdo->prepare("SELECT gebruikersnaam, wachtwoord, privilegeniveau
                             FROM gebruikers
-                            WHERE gebruikersnaam = $naam");
-    $stmt->execute();
-    $userRow = $stmt->fetch(PDO::FETCH_ASSOC))
-    if (password_verify($password, $userRow['wachtwoord'])) {
-        $_SESSION['user_session'] = $userRow['naam'];
+                            WHERE gebruikersnaam = ?");
+    $stmt->execute(array($naam));
+    $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+    // hashen komt later wel
+    // if (password_verify($password, $userRow['wachtwoord'])) {
+    //     $_SESSION['user_session'] = $userRow['naam'];
+    // }
+    if ($wachtwoord == $userRow['wachtwoord']) {
+        $klopt = true;
     }
-
     $pdo = null;
 
     return $klopt;
