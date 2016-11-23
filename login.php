@@ -4,10 +4,17 @@
     include "dbconnect.php"
     ?>
     <head>
-        <title>Motorcross</title>
-        <link type="text/css" rel="stylesheet" href="style.css">
-    </head>
-    <body>
+            <title>Motorcross</title>
+            <link type="text/css" rel="stylesheet" href="style/style.css">
+            <link type="text/css" rel="stylesheet" href="style/responsiveslides.css">
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script src="js/responsiveslides.js"></script>
+            <script>
+              $(function() {
+                $(".rslides").responsiveSlides();
+              });
+            </script>
+    </head>    <body>
         <div id="container">
             <nav>
                 <div id="banner">
@@ -24,7 +31,7 @@
 
             <div id="content">
                 <h2> content </h2>
-                <form method="POST" action="login.php"> 
+                <form method="POST" action="login.php">
                     Vakantieweek: <input type="text" name="vakantieweek"><br>
                     Vakantienaam: <input type="text" name="vakantienaam"><br>
                     <input type="submit" name="verzenden" value="Reisinfo">
