@@ -35,5 +35,25 @@ function verwijderen($pdo, $naam, $weeknr) {
     $stmt->execute(array($naam, $weeknr));
 }
 
+function checkLogin($naam, $wachtwoord){
+    $pdo = newPDO();
+    $klopt = false;
 
+    $stmt = $pdo->prepare("SELECT gebruikersnaam, wachtwoord, privilegeniveau
+                            FROM gebruikers
+                            WHERE gebruikersnaam = $naam");
+    $stmt->execute();
+    $userRow = $stmt->fetch(PDO::FETCH_ASSOC))
+    if (password_verify($password, $userRow['wachtwoord'])) {
+        $_SESSION['user_session'] = $userRow['naam'];
+    }
+
+    $pdo = null;
+
+    return $klopt;
+}
+
+function checkPrivileges(){
+
+}
 ?>
