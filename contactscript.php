@@ -159,10 +159,9 @@
 
                 include 'dbconnect.php';
 
-                $datum = date("Y/m/d");
                 //idbericht, voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum
                 $stmt = $pdo->prepare("INSERT INTO contactformulier (voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute(array($first_name, $last_name, $email_from, $telephone, $subject, $comments, $datum));
+                $stmt->execute(array($first_name, $last_name, $email_from, $telephone, $subject, $comments, date("Y/m/d" . "  " . "H:i:sa")));
 /*
                 $stmt = $pdo->prepare("INSERT INTO users (username,email,password) VALUES (?,?,?)");
                 $stmt->execute(array($username, $email, $passwordhash));
