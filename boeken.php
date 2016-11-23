@@ -22,16 +22,16 @@ include "functions.php";
                             <td><!--$einddatum--></td>
                         </tr><tr>
                             <td>Vervoer van Luchthaven Portela (Lissabon):</td>
-                            <td><input type="radio" name="heen" value="true" checked> Ja</td>
+                            <td><input type="radio" name="heen" value="1" checked> Ja</td>
                         </tr><tr>
                             <td></td>
-                            <td><input type="radio" name="heen" value="false"> Nee</td>
+                            <td><input type="radio" name="heen" value="0"> Nee</td>
                         </tr>
                         <tr><td>Vervoer naar Luchthaven Portela (Lissabon):</td>
-                            <td><input type="radio" name="terug" value="true" checked> Ja</td>
+                            <td><input type="radio" name="terug" value="1" checked> Ja</td>
                         </tr><tr>
                             <td></td>
-                            <td><input type="radio" name="terug" value="false"> Nee</td>
+                            <td><input type="radio" name="terug" value="0"> Nee</td>
                         </tr><tr>
                             <td>Locatie van overnachting:</td>
                             <td><input type="radio" name="locatie" value="standaard" checked> Standaard locatie</td>
