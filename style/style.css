@@ -68,3 +68,7 @@ ul a{
   width:500px;
   padding: 25px;
 }
+
+#calendar tr, table, th {
+  border:1px solid black;
+}

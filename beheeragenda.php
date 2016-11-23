@@ -7,8 +7,8 @@
 <body>
  
 
-
-<table style="border:1px solid">
+<div id="content">
+<table>
 <th>Januari</th>
 <tr>
 <td></td>
@@ -37,6 +37,7 @@
 <tr>
 <td>Weeknummer5</td>
 </table>
+</div>
 
 
 
