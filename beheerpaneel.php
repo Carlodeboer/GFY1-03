@@ -33,12 +33,19 @@
                     //       print "nee";
                     //   }
                       if (isset($_POST['naam'])) {
+
                           $check = checkLogin($_POST['naam'], $_POST['wachtwoord']);
                           if ($check['klopt']){
-                              $_SESSION['user_session'] = $_POST['naam'];
-                              include 'moetnogeennaamverzinnen.php';
-                              // test
-                              print $_SESSION['user_session'];
+                              if (checkPrivileges($_POST['naam']) >= 2) {
+                                  $_SESSION['user_session'] = $_POST['naam'];
+                                  include 'moetnogeennaamverzinnen.php';
+                                  // test
+                                  print $_SESSION['user_session'];
+                              }
+                              else {
+                                  print "Deze gebruikers heeft niet voldoende privileges.";
+                              }
+
                           }
                           else {
                               print "<h1>".$check['foutmelding']."</h1>";

@@ -68,7 +68,15 @@ function checkLogin($naam, $wachtwoord){
     return $controle;
 }
 
-function checkPrivileges(){
+function checkPrivileges($naam){
+    $pdo = newPDO();
+    $stmt = $pdo->prepare("SELECT privilegeniveau
+                            FROM gebruikers
+                            WHERE gebruikersnaam = ?");
+    $stmt->execute(array($naam));
+    $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+    $pdo = null;
 
+    return $userRow['privilegeniveau'];
 }
 ?>
