@@ -17,9 +17,7 @@ include "functions.php";
 </head>
     <body>
         <div id="container">
-            <?php
-            banner();
-            ?>
+          <?php include 'header.php';?>
             <div id="content">
                 <table>
                     <form method="GET" action="boekenscript.php">
