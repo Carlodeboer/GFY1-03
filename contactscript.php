@@ -1,20 +1,14 @@
 <html>
     <head>
         <title>Motocross</title>
-        <link type="text/css" rel="stylesheet" href="style.css">
+        <?php include 'head.php';?>
     </head>
     <body>
         <div id="container">
-            <nav>
-                <div id="banner">
-                </div>
-                <ul>
-                    <a href="index.php"><li>Home</li></a>
-                    <a href="informatie.php"><li>Informatie</li></a>
-                    <a href="boeken.php"><li>Boeken</li></a>
-                    <a href="contact.php"><li>Contact</li></a>
-                    <a href="login.php"><li>Login</li></a>
-                </ul>
+          <?php include 'header.php';?>
+
+
+          <div id="content">
                 <?php
 
                 if(isset($_POST['email'])) {
@@ -189,8 +183,8 @@
                 }
 
                 ?>
-
-            </nav>
+              </div>
+            <?php include 'footer.php';?>
         </div>
     </body>
 </html>

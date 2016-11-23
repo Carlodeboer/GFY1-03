@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <?php include 'head.php';?>
         <title>Motorcross</title>
         <link type="text/css" rel="stylesheet" href="style/style.css">
         <link type="text/css" rel="stylesheet" href="style/responsiveslides.css">
