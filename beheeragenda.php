@@ -2,24 +2,24 @@
 <html>
 <head>
   <title>Motorcross</title>
-  <link type="text/css" rel="stylesheet" href="style.css">
+  <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
 <body>
  
 
-<div id="content">
+<div id="calendar">
 <table>
-<th>Januari</th>
+<th colspan="8">Januari</th>
 <tr>
 <td></td>
-<td>Ma</td>
-<td>Di</td>
-<td>Wo</td>
-<td>Do</td>
-<td>Vr</td>
-<td>Za</td>
-<td>Zo</td>
-<tr>
+    <td>Ma</td>
+    <td>Di</td>
+    <td>Wo</td>
+    <td>Do</td>
+    <td>Vr</td>
+    <td>Za</td>
+    <td>Zo</td>
+</tr>
 <td>Weeknummer1</td>
 <td>1</td>
 <td>2</td>
@@ -28,7 +28,7 @@
 <td>5</td>
 <td>6</td>
 <td>7</td>
-<tr>8</tr>
+<tr>
 <td>Weeknummer2</td>
 <tr>
 <td>Weeknummer3</td>
