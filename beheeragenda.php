@@ -3,6 +3,32 @@
 <head>
   <title>Motorcross</title>
   <link type="text/css" rel="stylesheet" href="style/style.css">
+
+      <script type="text/javascript">
+         <!--
+status = 1;
+
+function changeStyle() {
+  //Note the lowercase first letter.
+  x = document.getElementById("text");
+
+  if (status == 1) {
+    x.style.backgroundColor = 'grey';
+    status = 2;
+  } else if (status == 2) {
+    x.style.backgroundColor = 'red';
+    status = 3;
+  } else if (status == 3) {
+    x.style.backgroundColor = 'green';
+    status = 1;
+  }
+
+}
+         //-->
+      </script>
+
+
+
 </head>
 <body>
  
@@ -54,40 +80,43 @@ $blank = date('w', strtotime("{$year}-{$month}-01"));
 ?>
 <table id="calendar">
   <tr>
-    <th colspan="7"> <?php echo $title ?> <?php echo $year ?> </th>
+
+    <th colspan="7">
+     <?php print("{$title} {$year}"); ?> </th>
   </tr>
   <tr>
-    <?php foreach($weekDays as $key => $weekDay) : ?>
-      <td class="text-center"><?php echo $weekDay ?></td>
-    <?php endforeach ?>
+    <?php foreach($weekDays as $key => $weekDay){ ?>
+      <td class="text-center">
+      <?php echo $weekDay ?>
+          </td>
+    <?php } ?>
   </tr>
   <tr>
 
     <?php
      for($i = 0; $i < $blank; $i++) {
-      print("<td></td>");
+      print("<td>leeg</td>");
 
     }
     for($i = 1; $i <= $daysInMonth; $i++){ 
       if($day == $i){
-       print("<td><strong>");
-       print($i);
-       print("</strong></td>");
+       print("<td id='text' onclick='javascript:changeStyle();'><strong>huidig {$i} </strong></td>");
      }
       else {
-        print("<td>");
-      
-      print($i);
-      print("</td>");
+
+        
+
+        
+        print("<td >aaa  {$i}  </td>");
       } 
       if(($i + $blank) % 7 == 0) {
         print("</tr><tr>");
       }
 
-    // endfor;
+
     }
      for($i = 0; ($i + $blank + $daysInMonth) % 7 != 0; $i++) {
-      print("<td></td>");
+      print("<td>leeg</td>");
      }
       ?>
   </tr>
