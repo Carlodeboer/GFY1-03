@@ -14,7 +14,7 @@
 
             <tr>
              <td valign="top">
-              <label for="first_name">First Name *</label>
+              <label for="first_name">Voornaam *</label>
              </td>
              <td valign="top">
               <input  type="text" name="first_name" maxlength="50" size="30">
@@ -23,7 +23,7 @@
 
             <tr>
              <td valign="top">
-              <label for="last_name">Last Name *</label>
+              <label for="last_name">Achternaam *</label>
              </td>
              <td valign="top">
               <input  type="text" name="last_name" maxlength="50" size="30">
@@ -32,7 +32,7 @@
 
           <tr>
             <td valign="top">
-             <label for="subject">Subject *</label>
+             <label for="subject">Onderwerp *</label>
             </td>
             <td valign="top">
              <input  type="text" name="subject" maxlength="50" size="30">
@@ -41,7 +41,7 @@
 
            <tr>
              <td valign="top">
-              <label for="email">Email Address *</label>
+              <label for="email">Email Adres *</label>
              </td>
              <td valign="top">
               <input  type="text" name="email" maxlength="80" size="30">
@@ -50,7 +50,7 @@
 
             <tr>
              <td valign="top">
-              <label for="telephone">Telephone Number</label>
+              <label for="telephone">Telefoonnummer</label>
              </td>
              <td valign="top">
               <input  type="text" name="telephone" maxlength="30" size="30">
@@ -59,7 +59,7 @@
 
             <tr>
              <td valign="top">
-              <label for="comments">Message *</label>
+              <label for="comments">Bericht *</label>
              </td>
              <td valign="top">
               <textarea  name="comments" maxlength="2000" cols="25" rows="6"></textarea>
@@ -73,7 +73,7 @@
             </tr>
             </table>
             </form>
-            
+
           </div>
         <?php include 'footer.php';?>
         </div>
