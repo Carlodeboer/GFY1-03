@@ -14,8 +14,17 @@ function toevoegen($pdo, $naam, $weeknr) {
     $stmt->execute(array($naam, $weeknr));
 }
 
-function opvragen($pdo) {
-    $stmt = $pdo->prepare("SELECT * FROM klantenbestand");
+function opvragen($pdo, $kolom, $tabel, $where, $arg) {
+    $aantalArg = str_repeat("?,", (count($kolom)-1)) . "?";
+
+    if ($where = ""){
+        $stmt = $pdo->prepare("SELECT :kolom FROM :tabel");
+    }
+    else {
+        $stmt = $pdo->prepare("SELECT :kolom FROM :tabel WHERE :whereKolom = :arg");
+    }
+    $sth->bindParam(':kolom', $aantalArg, PDO::PARAM_STR, 12);
+    $sth->bindParam(':tabel', $tabel, PDO::PARAM_STR, 12);
     $stmt->execute();
     while ($row = $stmt->fetch()) {
         $voornaam = $row["voornaam"];
@@ -35,5 +44,49 @@ function verwijderen($pdo, $naam, $weeknr) {
     $stmt->execute(array($naam, $weeknr));
 }
 
+function checkLogin($naam, $wachtwoord){
+    $pdo = newPDO();
+    $controle = ["klopt" => false,
+                "foutmelding" => ""];
+    // $klopt = false;
+    // $foutmelding = "";
 
+    $stmt = $pdo->prepare("SELECT gebruikersnaam, wachtwoord, privilegeniveau
+                            FROM gebruikers
+                            WHERE gebruikersnaam = ?");
+    $stmt->execute(array($naam));
+    $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+    // hashen komt later wel
+    // if (password_verify($password, $userRow['wachtwoord'])) {
+    //     $_SESSION['user_session'] = $userRow['naam'];
+    // }
+    if ($naam != "" && $wachtwoord != "" && $wachtwoord == $userRow['wachtwoord']) {
+        $controle['klopt'] = true;
+    }
+    elseif ($naam == "") {
+        $controle['foutmelding'] = "Vul een gebruikersnaam in";
+    }
+    elseif ($wachtwoord == "") {
+        $controle['foutmelding'] = "Vul een wachtwoord in";
+    }
+    else {
+        $controle['foutmelding'] = "Onjuist wachtwoord of gebruikersnaam";
+    }
+    // laatste login vastleggen
+    $pdo = null;
+
+    return $controle;
+}
+
+function checkPrivileges($naam){
+    $pdo = newPDO();
+    $stmt = $pdo->prepare("SELECT privilegeniveau
+                            FROM gebruikers
+                            WHERE gebruikersnaam = ?");
+    $stmt->execute(array($naam));
+    $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+    $pdo = null;
+
+    return $userRow['privilegeniveau'];
+}
 ?>

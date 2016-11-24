@@ -1,20 +1,14 @@
 <html>
     <head>
         <title>Motocross</title>
-        <link type="text/css" rel="stylesheet" href="style.css">
+        <?php include 'head.php';?>
     </head>
     <body>
         <div id="container">
-            <nav>
-                <div id="banner">
-                </div>
-                <ul>
-                    <a href="index.php"><li>Home</li></a>
-                    <a href="informatie.php"><li>Informatie</li></a>
-                    <a href="boeken.php"><li>Boeken</li></a>
-                    <a href="contact.php"><li>Contact</li></a>
-                    <a href="login.php"><li>Login</li></a>
-                </ul>
+          <?php include 'header.php';?>
+
+
+          <div id="content">
                 <?php
 
                 if(isset($_POST['email'])) {
@@ -165,10 +159,9 @@
 
                 include 'dbconnect.php';
 
-                $datum = date("Y/m/d");
                 //idbericht, voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum
                 $stmt = $pdo->prepare("INSERT INTO contactformulier (voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute(array($first_name, $last_name, $email_from, $telephone, $subject, $comments, $datum));
+                $stmt->execute(array($first_name, $last_name, $email_from, $telephone, $subject, $comments, date("Y/m/d" . "  " . "H:i:sa")));
 /*
                 $stmt = $pdo->prepare("INSERT INTO users (username,email,password) VALUES (?,?,?)");
                 $stmt->execute(array($username, $email, $passwordhash));
@@ -189,8 +182,8 @@
                 }
 
                 ?>
-
-            </nav>
+              </div>
+            <?php include 'footer.php';?>
         </div>
     </body>
 </html>
