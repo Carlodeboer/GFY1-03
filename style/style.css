@@ -70,6 +70,9 @@ ul a{
   width:500px;
   padding: 15px 0;
 }
+#content h2{
+  padding:0 0 20px 0;
+}
 
 #calendar td, #calendar th, #calendar table {
   border:1px solid black;

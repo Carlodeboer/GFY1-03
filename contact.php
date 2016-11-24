@@ -9,6 +9,7 @@
         <div id="container">
           <?php include 'header.php';?>
             <div id="content">
+              <h2> Contact </h2>
             <form name="contactform" method="post" action="contactscript.php">
             <table width="450px">
 
