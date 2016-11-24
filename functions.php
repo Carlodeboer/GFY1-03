@@ -14,8 +14,17 @@ function toevoegen($pdo, $naam, $weeknr) {
     $stmt->execute(array($naam, $weeknr));
 }
 
-function opvragen($pdo) {
-    $stmt = $pdo->prepare("SELECT * FROM klantenbestand");
+function opvragen($pdo, $kolom, $tabel, $where, $arg) {
+    $aantalArg = str_repeat("?,", (count($kolom)-1)) . "?";
+
+    if ($where = ""){
+        $stmt = $pdo->prepare("SELECT :kolom FROM :tabel");
+    }
+    else {
+        $stmt = $pdo->prepare("SELECT :kolom FROM :tabel WHERE :whereKolom = :arg");
+    }
+    $sth->bindParam(':kolom', $aantalArg, PDO::PARAM_STR, 12);
+    $sth->bindParam(':tabel', $tabel, PDO::PARAM_STR, 12);
     $stmt->execute();
     while ($row = $stmt->fetch()) {
         $voornaam = $row["voornaam"];
@@ -63,6 +72,7 @@ function checkLogin($naam, $wachtwoord){
     else {
         $controle['foutmelding'] = "Onjuist wachtwoord of gebruikersnaam";
     }
+    // laatste login vastleggen
     $pdo = null;
 
     return $controle;
