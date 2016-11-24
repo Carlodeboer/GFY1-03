@@ -3,14 +3,13 @@
 include "functions.php";
 ?>
 <html>
-<head>
-        <title>Motorcross</title>
-        <?php include 'head.php';?>
-
-</head>
+    <head>
+        <title>Boeken</title>
+        <?php include 'head.php'; ?>
+    </head>
     <body>
         <div id="container">
-          <?php include 'header.php';?>
+            <?php include 'header.php'; ?>
             <div id="content">
                 <table>
                     <form method="GET" action="boekenscript.php">
@@ -50,7 +49,7 @@ include "functions.php";
                     </form>
                 </table>
             </div>
-        <?php include 'footer.php';?>
+            <?php include 'footer.php'; ?>
         </div>
     </body>
 </html>

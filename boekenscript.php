@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<?php
-include "functions.php";
-?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Boeken</title>
+        <?php include 'head.php'; ?>
         <link type="text/css" rel="stylesheet" href="style.css">
     </head>
     <body>
         <?php
-        banner();
+        include "functions.php";
+        
         if (isset($_GET["verzenden"])) {
             //$begindatum = $_GET["begindatum"];
             //$einddatum = $_GET["einddatum"];
@@ -23,6 +22,13 @@ include "functions.php";
             }
 
             $omschrijving = "";
+            
+            if ($_GET["opmerkingen"] == "") {
+                $opmerkingen = $_GET["opmerkingen"];
+            } else {
+                $opmerking = "NULL";
+            }
+
             $opmerkingen = $_GET["opmerkingen"];
             $aantalPersonen = $_GET["aantalPersonen"];
 
@@ -33,6 +39,7 @@ include "functions.php";
         }
         ?>
         <div id="container">
+            <?php include "header.php"; ?>
             <div id="content">
                 <table>
                     <tr>
@@ -62,11 +69,8 @@ include "functions.php";
                     </tr><tr>
                         <td>Locatie van overnachting:</td>
                         <td><?php
-                            print ($locatie);
+                            print (ucfirst($locatie));
                             ?></td>
-                    </tr><tr>
-                        <td></td>
-                        <td></td>
                     </tr><tr>
                         <td>Aantal personen:</td>
                         <td><?php print ($aantalPersonen) ?></td>
@@ -78,6 +82,7 @@ include "functions.php";
                     ?>
                 </table>
             </div>
+            <?php include 'footer.php'; ?>
         </div>
     </body>
 </html>
