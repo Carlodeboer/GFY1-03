@@ -6,47 +6,7 @@
 </head>
 <body>
  
-
-<div id="calendar">
-<table>
-<th colspan="8">Januari</th>
-<tr>
-<td></td>
-    <td>Ma</td>
-    <td>Di</td>
-    <td>Wo</td>
-    <td>Do</td>
-    <td>Vr</td>
-    <td>Za</td>
-    <td>Zo</td>
-</tr>
-<td>Weeknummer1</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<tr>
-<td>Weeknummer2</td>
-<tr>
-<td>Weeknummer3</td>
-<tr>
-<td>Weeknummer4</td>
-<tr>
-<td>Weeknummer5</td>
-</table>
-</div>
-
-
-
-
-
-
-
-
-<select name="jaar">
+ <select name="jaar">
   <option value="2016">2016</option>
   <option value="2017">2017</option>
   <option value="2018">2018</option>
@@ -68,12 +28,81 @@
   <option value="december">december</option>
 </select>
 
-<!-- <select name="week">
-  <option value="1">Week 1</option>
-  <option value="2">Week 2</option>
-  <option value="3">Week 3</option>
-  <option value="4">Week 4</option>
-</select> -->
+
+<?php
+/* Set the default timezone */
+date_default_timezone_set("America/Montreal");
+
+/* Set the date */
+$date = strtotime(date("Y-m-d"));
+
+$day = date('d', $date);
+$month = date('m', $date);
+$year = date('Y', $date);
+$firstDay = mktime(0,0,0,$month, 1, $year);
+$title = strftime('%B', $firstDay);
+$dayOfWeek = date('D', $firstDay);
+$daysInMonth = cal_days_in_month(0, $month, $year);
+/* Get the name of the week days */
+$timestamp = strtotime('next Sunday');
+$weekDays = array();
+for ($i = 0; $i < 7; $i++) {
+  $weekDays[] = strftime('%a', $timestamp);
+  $timestamp = strtotime('+1 day', $timestamp);
+}
+$blank = date('w', strtotime("{$year}-{$month}-01"));
+?>
+<table id="calendar">
+  <tr>
+    <th colspan="7"> <?php echo $title ?> <?php echo $year ?> </th>
+  </tr>
+  <tr>
+    <?php foreach($weekDays as $key => $weekDay) : ?>
+      <td class="text-center"><?php echo $weekDay ?></td>
+    <?php endforeach ?>
+  </tr>
+  <tr>
+
+    <?php
+     for($i = 0; $i < $blank; $i++) {
+      print("<td></td>");
+
+    }
+    for($i = 1; $i <= $daysInMonth; $i++){ 
+      if($day == $i){
+       print("<td><strong>");
+       print($i);
+       print("</strong></td>");
+     }
+      else {
+        print("<td>");
+      
+      print($i);
+      print("</td>");
+      } 
+      if(($i + $blank) % 7 == 0) {
+        print("</tr><tr>");
+      }
+
+    // endfor;
+    }
+     for($i = 0; ($i + $blank + $daysInMonth) % 7 != 0; $i++) {
+      print("<td></td>");
+     }
+      ?>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
