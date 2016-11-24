@@ -11,6 +11,7 @@ include "functions.php";
         <div id="container">
             <?php include 'header.php'; ?>
             <div id="content">
+              <h2> Boeken </h2>
                 <table>
                     <form method="GET" action="boekenscript.php">
                         <tr>
