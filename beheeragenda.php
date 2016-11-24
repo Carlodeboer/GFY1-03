@@ -56,6 +56,10 @@ function changeStyle() {
 
 
 <?php
+
+include "dbconnect.php";
+
+
 /* Set the default timezone */
 date_default_timezone_set("America/Montreal");
 
@@ -104,10 +108,22 @@ $blank = date('w', strtotime("{$year}-{$month}-01"));
      }
       else {
 
-        
 
-        
-        print("<td >aaa  {$i}  </td>");
+
+
+                            $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
+                    $stmt->execute();
+                    $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+$date2 = strtotime($userRow['begindatum']);
+$date3 = strtotime($userRow['einddatum']);
+$vergelijkdatum = date('j', $date2);
+$vergelijkdatumeind = date('j', $date3);
+        if($i >= $vergelijkdatum && $i <= $vergelijkdatumeind) {
+          print("<td> {$i} {$userRow['omschrijving']} </td> ");
+        } 
+        // var_dump($i);
+       else { print("<td >aaa  {$i}  </td>"); 
+     }
       } 
       if(($i + $blank) % 7 == 0) {
         print("</tr><tr>");
@@ -124,12 +140,51 @@ $blank = date('w', strtotime("{$year}-{$month}-01"));
 
 
 
+<form method="post">
+Omschrijving: <input type="text" name="omschrijving"><br>
+Begindatum: <input type="date" name="begindatum"><br>
+Einddatum: <input type="date" name="einddatum"><br>
+Status: 
+<select name="status">
+  <option value="1">Boeking</option>
+    <option value="2">Privé</option>
+</select>
+<input type="submit" name="verzenden" value="Invoeren">
+</form>
+
+<?php
 
 
+if(isset($_POST['verzenden'])) {
+  $omschrijving = $_POST['omschrijving'];
+  $begindatum = $_POST['begindatum'];
+  $einddatum = $_POST['einddatum'];
+  $status = $_POST['status'];
 
+if($omschrijving == ""){
+  print("Voer een omschrijving in."); 
+} elseif ($begindatum ==""){
+  print("Voer een begindatum in.");
+} elseif ($einddatum =="") {
+  print("Voer een einddatum in.");
+} elseif ($status =="") {
+  print("Selecteer een status.");
+} else {
 
+                    $stmt = $pdo->prepare("INSERT INTO beschikbaarheid (omschrijving,begindatum,einddatum,status) VALUES (?,?,?,?)");
+                    $stmt->execute(array($omschrijving, $begindatum, $einddatum, $status));
+                    $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $res = $stmt->rowCount();
+                    if ($res > 0) {
+                        //feedback aan gebruiker geven
+                        print("De boeking " . $omschrijving . " is toegevoegd.");
+                        // $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+                    }
+                  
 
-
+}
+}
+?>
 
 
 
