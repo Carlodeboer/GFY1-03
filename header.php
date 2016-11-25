@@ -13,6 +13,8 @@
     <a href="contact.php"><li>Contact</li></a>
     <a href="login.php"><li>Login</li></a>
     <a href="galerij.php"><li>Galerij</li></a>
+    <a href="snake.php"><li>Powned</li></a>
+
 
 </ul>
 </nav>
