@@ -22,7 +22,7 @@
                 <?php
                       include 'functions.php';
 
-                      session_start();
+
 
                     //   $test = checkLogin($_POST['naam'], $_POST['wachtwoord']);
                     //   print_r($test);
@@ -37,6 +37,7 @@
                           $check = checkLogin($_POST['naam'], $_POST['wachtwoord']);
                           if ($check['klopt']){
                               if (checkPrivileges($_POST['naam']) >= 2) {
+                                  session_start();
                                   $_SESSION['user_session'] = $_POST['naam'];
                                   include 'moetnogeennaamverzinnen.php';
                                   // test
