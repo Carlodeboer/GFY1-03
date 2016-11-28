@@ -13,7 +13,7 @@ include "functions.php";
             <div id="content">
               <h2> Boeken </h2>
                 <table>
-                    <form method="GET" action="boekengegevens.php">
+                    <form method="POST" action="boekengegevens.php">
                         <tr>
                             <td>Begindatum:</td>
                             <td><!--$begindatum--></td>
