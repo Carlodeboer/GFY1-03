@@ -38,7 +38,7 @@ ul{
 nav li{
   white-space:nowrap;
   list-style: none;
-  padding:0 77px;
+  padding:0 57px;
   line-height: 30px;
   color: #000;
   transition: background-color 0.4s;
@@ -93,7 +93,7 @@ ul a{
 
 #test {
   color:red;
-  
+
 }
 =======
 >>>>>>> origin/master
