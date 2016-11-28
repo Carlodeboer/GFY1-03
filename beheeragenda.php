@@ -121,9 +121,30 @@
                         }
                         // var_dump($i);
                         else {
-                            print("<td >{$i}</td>");
+                            print("<td >{$i} </td>");
+                        }
+
+
+
+                       //  $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
+                       //  $stmt->execute();
+                       // $userRow = $stmt->fetch(PDO::FETCH_ASSOC); 
+                       //  $date2 = strtotime($userRow['begindatum']);
+                       //  $date3 = strtotime($userRow['einddatum']);
+                       //  $vergelijkdatum = date('j', $date2);
+                       //  $vergelijkdatumeind = date('j', $date3);
+                      //   if ($i >= $vergelijkdatum && $i <= $vergelijkdatumeind) {
+                      //       print("<td> {$i} {$userRow['omschrijving']} </td> ");
+                      //   }
+                      //   // var_dump($i);
+                      //   else {
+                      //       print("<td >{$i}</td>");
                         
-                      }
+                      // }
+
+
+
+
                     }
                     if (($i + $blank) % 7 == 0) {
                         print("</tr><tr>");
