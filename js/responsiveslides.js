@@ -14,8 +14,8 @@
     // Default settings
     var settings = $.extend({
       "auto": true,             // Boolean: Animate automatically, true or false
-      "speed": 500,             // Integer: Speed of the transition, in milliseconds
-      "timeout": 3000,          // Integer: Time between slide transitions, in milliseconds
+      "speed": 400,             // Integer: Speed of the transition, in milliseconds
+      "timeout": 1000,          // Integer: Time between slide transitions, in milliseconds
       "pager": false,           // Boolean: Show pager, true or false
       "nav": false,             // Boolean: Show navigation, true or false
       "random": false,          // Boolean: Randomize the order of the slides, true or false

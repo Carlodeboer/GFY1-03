@@ -41,6 +41,7 @@ include "dbconnect.php";
 
         if (isset($_SESSION['user_session'])) {
             echo 'Welcome ' . $_SESSION['user_session'];
+            echo '<br><a href="index.php">Return to homepage</a>';
         } else {
             print("Log eerst in of <a href=\"registerscript.php\">registreer</a>");
         }
