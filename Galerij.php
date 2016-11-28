@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 	PHPimageslideshow - auto version - PHP5
 */
