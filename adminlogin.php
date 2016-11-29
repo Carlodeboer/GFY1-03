@@ -17,16 +17,30 @@
         <div id="container">
           <?php
                 include 'header.php';
-            ?>
-            <div id="content">
-                <form method="post" action="beheerpaneel.php">
-                    <h2>Inloggen</h2>
-                    Gebruikersnaam: <input type="text" name="naam"><br>
-                    Wachtwoord: <input type="password" name="wachtwoord"><br><br>
-                    <input type="submit" name="submit" value="Login">
-                </form>
-            </div>
-            <?php include 'footer.php';?>
+                include 'functions.php';
+
+                if (isset($_POST['naam'])) {
+
+                    $check = checkLogin($_POST['naam'], $_POST['wachtwoord']);
+                    if ($check['klopt']){
+                        if (checkPrivileges($_POST['naam']) >= 2) {
+                            session_start();
+                            $_SESSION['user_session'] = $_POST['naam'];
+                            header("Location: beheerpaneel.php");
+                            exit;
+                        }
+                        else {
+                            print "Deze gebruikers heeft niet voldoende privileges.";
+                        }
+                    }
+                    else {
+                        print "<h1>".$check['foutmelding']."</h1>";
+                    }
+                }
+                else {
+                    include 'loginformulier.php';
+                }
+            include 'footer.php';?>
         </div>
     </body>
 </html>

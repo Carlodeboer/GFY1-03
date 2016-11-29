@@ -21,6 +21,7 @@
             <div id="content">
                 <?php
                       include 'functions.php';
+                      session_start();
 
 
 
@@ -32,29 +33,13 @@
                     //   else {
                     //       print "nee";
                     //   }
-                      if (isset($_POST['naam'])) {
+                    if (isset($_SESSION['user_session'])) {
+                        include 'moetnogeennaamverzinnen.php';
+                    }
+                    else {
+                        print 'DAS IST VERBOTEN';
+                    }
 
-                          $check = checkLogin($_POST['naam'], $_POST['wachtwoord']);
-                          if ($check['klopt']){
-                              if (checkPrivileges($_POST['naam']) >= 2) {
-                                  session_start();
-                                  $_SESSION['user_session'] = $_POST['naam'];
-                                  include 'moetnogeennaamverzinnen.php';
-                                  // test
-                                  print $_SESSION['user_session'];
-                              }
-                              else {
-                                  print "Deze gebruikers heeft niet voldoende privileges.";
-                              }
-
-                          }
-                          else {
-                              print "<h1>".$check['foutmelding']."</h1>";
-                          }
-                      }
-                      else {
-                          print "<h1>VERBODEN TOEGANG</h1>";
-                      }
                   ?>
             </div>
             <?php include 'footer.php';?>
