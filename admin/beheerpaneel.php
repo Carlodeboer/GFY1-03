@@ -33,7 +33,7 @@
                     //   else {
                     //       print "nee";
                     //   }
-                    if (isset($_SESSION['user_session'])) {
+                    if (isset($_SESSION['admin_session'])) {
                         include 'moetnogeennaamverzinnen.php';
                     }
                     else {

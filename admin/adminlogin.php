@@ -18,14 +18,16 @@
           <?php
                 include '../header.php';
                 include '../functions.php';
+                session_start();
 
-                if (isset($_POST['naam'])) {
+                if (isset($_SESSION['admin_session'])){
+                    header("Location: beheerpaneel.php");
+                } elseif (isset($_POST['naam'])) {
 
                     $check = checkLogin($_POST['naam'], $_POST['wachtwoord']);
                     if ($check['klopt']){
                         if (checkPrivileges($_POST['naam']) >= 2) {
-                            session_start();
-                            $_SESSION['user_session'] = $_POST['naam'];
+                            $_SESSION['admin_session'] = $_POST['naam'];
                             header("Location: beheerpaneel.php");
                             exit;
                         }
@@ -36,8 +38,7 @@
                     else {
                         print "<h1>".$check['foutmelding']."</h1>";
                     }
-                }
-                else {
+                } else {
                     include 'loginformulier.php';
                 }
             include '../footer.php';?>
