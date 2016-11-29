@@ -20,26 +20,23 @@
             ?>
             <div id="content">
                 <?php
-                      include '../functions.php';
-                      session_start();
-
-
-
-                    //   $test = checkLogin($_POST['naam'], $_POST['wachtwoord']);
-                    //   print_r($test);
-                    //   if ($test['klopt']) {
-                    //       print "ja";
-                    //   }
-                    //   else {
-                    //       print "nee";
-                    //   }
+                    include '../functions.php';
+                    include 'adminindex.php';
+                    session_start();
                     if (isset($_SESSION['admin_session'])) {
-                        include 'moetnogeennaamverzinnen.php';
+                        if (isset($_GET['beheer'])){
+                            if ($_GET['beheer'] == "content"){
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/moetnogeennaamverzinnen.php';
+                            } elseif ($_GET['beheer'] == "agenda"){
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
+                            } elseif ($_GET['beheer'] == "afbeelding"){
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/imageupload.php';
+                            }
+                        }
                     }
                     else {
                         print 'DAS IST VERBOTEN';
                     }
-
                   ?>
             </div>
             <?php include '../footer.php';?>

@@ -36,6 +36,7 @@
                         }
                     }
                     else {
+                        include 'loginformulier.php';
                         print "<h1>".$check['foutmelding']."</h1>";
                     }
                 } else {
