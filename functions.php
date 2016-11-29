@@ -14,6 +14,24 @@ function toevoegen($pdo, $naam, $weeknr) {
     $stmt->execute(array($naam, $weeknr));
 }
 
+function toevoegenContent($titel, $pagina, $taal, $inhoud, $eigenaar) {
+    $pdo = newPDO();
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $succes = true;
+
+    $stmt = $pdo->prepare("INSERT INTO content (title, bodytext, owner, lang, pagina)
+                            VALUES (?,?,?,?,?)");
+    // moet nog uitbebreid worden
+    try {
+        $stmt->execute(array($titel, $inhoud, $eigenaar, $taal, $pagina));
+    }
+    catch (PDOException $e){
+    }
+
+    $pdo = null;
+    return $succes;
+}
+
 function opvragen($pdo, $kolom, $tabel, $where, $arg) {
     $aantalArg = str_repeat("?,", (count($kolom)-1)) . "?";
 

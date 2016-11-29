@@ -21,9 +21,13 @@
             <div id="content">
                 <?php
                     include '../functions.php';
-                    include 'adminindex.php';
                     session_start();
+                    $succes = false;
+                    if(isset($_POST['verzenden'])){
+                        $succes = toevoegenContent($_POST['titel'],$_POST['pagina'],$_POST['taal'],$_POST['inhoud'],$_SESSION['admin_session']);
+                    }
                     if (isset($_SESSION['admin_session'])) {
+                        include 'adminindex.php';
                         if (isset($_GET['beheer'])){
                             if ($_GET['beheer'] == "content"){
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/moetnogeennaamverzinnen.php';
