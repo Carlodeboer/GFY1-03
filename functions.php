@@ -8,6 +8,17 @@ function newPDO() {
     $pdo = new PDO($db, $user, $pass);
     return ($pdo);
 }
+function laadContent($taal,$pagina){
+    $pdo = newPDO();
+    $stmt = $pdo->prepare("SELECT title,bodytext
+                            FROM content
+                            WHERE lang=? AND pagina=?");
+    $stmt->execute(array($taal, $pagina));
+    $content = $stmt->fetch();
+    $pdo = null;
+    return $content;
+}
+
 // werkt nog niet, is alleen een begin
 function toevoegen($pdo, $naam, $weeknr) {
     $stmt = $pdo->prepare("INSERT INTO klantenbestand VALUES (?,?)");
