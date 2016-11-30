@@ -77,17 +77,17 @@ ul a{
 #calendar td, #calendar th, #calendar table {
   border:1px solid black;
 }
-<<<<<<< HEAD
+
 #calendar th {
   height:50px;
-  color:gold;
+  color:cyan;
   background-color: black;
   font-size:40px;
 }
 
 #calendar td {
-  width:100px;
-  height:50px;
+  width:150px;
+  height:75px;
   background-color:white;
 }
 
@@ -95,5 +95,4 @@ ul a{
   color:red;
 
 }
-=======
->>>>>>> origin/master
+
