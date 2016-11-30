@@ -22,17 +22,49 @@
                                 print("<tr><td><h3>Persoon " . $i . ":</h3></td></tr>");
                             }
                             ?>
-                            <tr><td>Voornaam:</td><td><input type='text' name='voornaam<?php print ($i); ?>'></td></tr>
-                            <tr><td>Achternaam:</td><td><input type='text' name='achternaam<?php print ($i); ?>'></td></tr>
-                            <tr><td>Geboortedatum:</td><td><input type='text' name='geboortedatum<?php print ($i); ?>'></td></tr>
-                            <tr><td>Straatnaam:</td><td><input type='text' name='straat<?php print ($i); ?>'></td></tr>
-                            <tr><td>Huisnummer:</td><td><input type='number' name='huisnummer<?php print ($i); ?>'></td></tr>
-                            <tr><td>Postcode:</td><td><input type='text' name='postcode<?php print ($i); ?>'></td></tr>
-                            <tr><td>Woonplaats:</td><td><input type='text' name='woonplaats<?php print ($i); ?>'></td></tr>
-                            <tr><td>Land:</td><td><input type='text' name='land<?php print ($i); ?>'></td></tr>
-                            <?php
-                        }
-                        ?>
+                            <tr><td>Voornaam:</td><td><input type='text' name='voornaam<?php print ($i); ?>'<?php
+                                    if (isset($_POST["voornaam" . $i])) {
+                                        print (" value=" . $_POST["voornaam" . $i]);
+                                    }
+                                    ?>></td></tr>
+                            <tr><td>Achternaam:</td><td><input type='text' name='achternaam<?php print ($i); ?>'<?php
+                                    if (isset($_POST["achternaam" . $i])) {
+                                        print (" value=" . $_POST["achternaam" . $i]);
+                                    }
+                                    ?>></td></tr>
+                            <tr><td>Geboortedatum:</td><td><input type='text' name='geboortedatum<?php print ($i); ?>'<?php
+                                    if (isset($_POST["geboortedatum" . $i])) {
+                                        print (" value=" . $_POST["geboortedatum" . $i]);
+                                    }
+                                    ?>></td></tr>
+                            <tr><td>Straatnaam:</td><td><input type='text' name='straat<?php print ($i); ?>'<?php
+                                    if (isset($_POST["straat" . $i])) {
+                                        print (" value=" . $_POST["straat" . $i]);
+                                    }
+                                    ?>></td></tr>
+                            <tr><td>Huisnummer:</td><td><input type='number' name='huisnummer<?php print ($i); ?>'<?php
+                                    if (isset($_POST["huisnummer" . $i])) {
+                                        print (" value=" . $_POST["huisnummer" . $i]);
+                                    }
+                                    ?>></td></tr>
+                            <tr><td>Postcode:</td><td><input type='text' name='postcode<?php print ($i); ?>'<?php
+                                    if (isset($_POST["postcode" . $i])) {
+                                        print (" value=" . $_POST["postcode" . $i]);
+                                    }
+                                    ?>></td></tr>
+                            <tr><td>Woonplaats:</td><td><input type='text' name='woonplaats<?php print ($i); ?>'<?php
+                                    if (isset($_POST["woonplaats" . $i])) {
+                                        print (" value=" . $_POST["woonplaats" . $i]);
+                                    }
+                                    ?>></td></tr>
+                            <tr><td>Land:</td><td><input type='text' name='land<?php print ($i); ?>'<?php
+                                    if (isset($_POST["land" . $i])) {
+                                        print (" value=" . $_POST["land" . $i]);
+                                    }
+                                    ?>></td></tr>
+                                <?php
+                            }
+                            ?>
                         <tr><td><input type='submit' name='afronden' value='Afronden'></td></tr>
                     </form>
                 </table>
@@ -43,7 +75,7 @@
 
                 if (isset($_POST["afronden"])) {
                     for ($i = 1; $i <= $aantalPersonen; $i++) {
-                        if ($_POST["voornaam" . $i] != "" || $_POST["achternaam" . $i] != "" || $_POST["straat" . $i] != "" || $_POST["huisnummer" . $i] != "" || $_POST["postcode" . $i] != "" || $_POST["woonplaats" . $i] != "" || $_POST["land" . $i] != "") {
+                        if ($_POST["voornaam" . $i] != "" && $_POST["achternaam" . $i] != "" && $_POST["straat" . $i] != "" && $_POST["huisnummer" . $i] != "" && $_POST["postcode" . $i] != "" && $_POST["woonplaats" . $i] != "" && $_POST["land" . $i] != "") {
                             ${"voornaam" . $i} = $_POST["voornaam" . $i];
                             $_SESSION["klantGegevens"]["voornaam" . $i] = ${"voornaam" . $i};
                             ${"achternaam" . $i} = $_POST["achternaam" . $i];
@@ -60,9 +92,13 @@
                             $_SESSION["klantGegevens"]["woonplaats" . $i] = ${"woonplaats" . $i};
                             ${"land" . $i} = $_POST["land" . $i];
                             $_SESSION["klantGegevens"]["land" . $i] = ${"land" . $i};
-                            header("location:boekengegevenscheck.php");
+                            if ($i == $aantalPersonen) {
+                                header("location:boekengegevenscheck.php");
+                            }
                         } else {
-                            print ("U dient uw gegevens correct in te vullen.");
+                            if ($i == $aantalPersonen) {
+                                print ("U dient uw gegevens correct in te vullen.");
+                            }
                         }
                     }
                 }
