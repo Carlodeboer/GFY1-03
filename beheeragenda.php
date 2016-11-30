@@ -134,7 +134,7 @@
 
 
 
-// var_dump($userRow['omschrijving']);
+
 
 
                       //
