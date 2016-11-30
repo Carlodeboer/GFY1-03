@@ -48,8 +48,6 @@ include "functions.php";
                         </tr>
                     </form>
                 </table>
-<<<<<<< HEAD
-=======
                 <?php
                 if (isset($_POST["volgende"])) {
                     if ($_POST["vakantienaam"] != "") {
@@ -77,7 +75,6 @@ include "functions.php";
                     }
                 }
                 ?>
->>>>>>> origin/master
             </div>
             <?php include 'footer.php';
             ?>

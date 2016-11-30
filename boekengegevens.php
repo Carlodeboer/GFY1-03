@@ -36,8 +36,6 @@
                         </tr><tr>
                             <td><input type="submit" name="afronden" value="Afronden"></td>
                         </tr>
-<<<<<<< HEAD
-=======
                         <?php
                         session_start();
                         extract($_SESSION["klantGegevens"]);
@@ -98,7 +96,6 @@
                             }
                             ?>
                         <tr><td><input type='submit' name='afronden' value='Afronden'></td></tr>
->>>>>>> origin/master
                     </form>
                 </table>
             </div>
@@ -117,42 +114,40 @@
                     $locatie = $_POST["nieuweLocatie"];
                 }
 
-<<<<<<< HEAD
                 if ($_POST["opmerkingen"] != "") {
                     $opmerkingen = $_POST["opmerkingen"];
                 } else {
                     $opmerkingen = NULL;
-=======
-                if (isset($_POST["afronden"])) {
-                    for ($i = 1; $i <= $aantalPersonen; $i++) {
-                        if ($_POST["voornaam" . $i] != "" || $_POST["achternaam" . $i] != "" || $_POST["straat" . $i] != "" || $_POST["huisnummer" . $i] != "" || $_POST["postcode" . $i] != "" || $_POST["woonplaats" . $i] != "" || $_POST["land" . $i] != "") {
-                            ${"voornaam" . $i} = $_POST["voornaam" . $i];
-                            $_SESSION["klantGegevens"]["voornaam" . $i] = ${"voornaam" . $i};
-                            ${"achternaam" . $i} = $_POST["achternaam" . $i];
-                            $_SESSION["klantGegevens"]["achternaam" . $i] = ${"achternaam" . $i};
-                            ${"geboortedatum" . $i} = $_POST["geboortedatum" . $i];
-                            $_SESSION["klantGegevens"]["geboortedatum" . $i] = ${"geboortedatum" . $i};
-                            ${"straat" . $i} = $_POST["straat" . $i];
-                            $_SESSION["klantGegevens"]["straat" . $i] = ${"straat" . $i};
-                            ${"huisnummer" . $i} = $_POST["huisnummer" . $i];
-                            $_SESSION["klantGegevens"]["huisnummer" . $i] = ${"huisnummer" . $i};
-                            ${"postcode" . $i} = $_POST["postcode" . $i];
-                            $_SESSION["klantGegevens"]["postcode" . $i] = ${"postcode" . $i};
-                            ${"woonplaats" . $i} = $_POST["woonplaats" . $i];
-                            $_SESSION["klantGegevens"]["woonplaats" . $i] = ${"woonplaats" . $i};
-                            ${"land" . $i} = $_POST["land" . $i];
-                            $_SESSION["klantGegevens"]["land" . $i] = ${"land" . $i};
-                            header("http://localhost:8080/GFY1-03/boekengegevenscheck.php");
-                        } else {
-                            print ("U dient uw gegevens correct in te vullen.");
+                    if (isset($_POST["afronden"])) {
+                        for ($i = 1; $i <= $aantalPersonen; $i++) {
+                            if ($_POST["voornaam" . $i] != "" || $_POST["achternaam" . $i] != "" || $_POST["straat" . $i] != "" || $_POST["huisnummer" . $i] != "" || $_POST["postcode" . $i] != "" || $_POST["woonplaats" . $i] != "" || $_POST["land" . $i] != "") {
+                                ${"voornaam" . $i} = $_POST["voornaam" . $i];
+                                $_SESSION["klantGegevens"]["voornaam" . $i] = ${"voornaam" . $i};
+                                ${"achternaam" . $i} = $_POST["achternaam" . $i];
+                                $_SESSION["klantGegevens"]["achternaam" . $i] = ${"achternaam" . $i};
+                                ${"geboortedatum" . $i} = $_POST["geboortedatum" . $i];
+                                $_SESSION["klantGegevens"]["geboortedatum" . $i] = ${"geboortedatum" . $i};
+                                ${"straat" . $i} = $_POST["straat" . $i];
+                                $_SESSION["klantGegevens"]["straat" . $i] = ${"straat" . $i};
+                                ${"huisnummer" . $i} = $_POST["huisnummer" . $i];
+                                $_SESSION["klantGegevens"]["huisnummer" . $i] = ${"huisnummer" . $i};
+                                ${"postcode" . $i} = $_POST["postcode" . $i];
+                                $_SESSION["klantGegevens"]["postcode" . $i] = ${"postcode" . $i};
+                                ${"woonplaats" . $i} = $_POST["woonplaats" . $i];
+                                $_SESSION["klantGegevens"]["woonplaats" . $i] = ${"woonplaats" . $i};
+                                ${"land" . $i} = $_POST["land" . $i];
+                                $_SESSION["klantGegevens"]["land" . $i] = ${"land" . $i};
+                                header("http://localhost:8080/GFY1-03/boekengegevenscheck.php");
+                            } else {
+                                print ("U dient uw gegevens correct in te vullen.");
+                            }
                         }
                     }
->>>>>>> origin/master
-                }
 
-                $klantGegevensArray = array("aantalPersonen" => $aantalPersonen, "vervoerHeen" => $vervoerHeen, "vervoerTerug" => $vervoerTerug, "locatie" => $locatie, "opmerkingen" => $opmerkingen);
-                session_start();
-                $_SESSION["klantGegevens"] = $klantGegevensArray;
+                    $klantGegevensArray = array("aantalPersonen" => $aantalPersonen, "vervoerHeen" => $vervoerHeen, "vervoerTerug" => $vervoerTerug, "locatie" => $locatie, "opmerkingen" => $opmerkingen);
+                    session_start();
+                    $_SESSION["klantGegevens"] = $klantGegevensArray;
+                }
             }
             include 'footer.php';
             ?>
