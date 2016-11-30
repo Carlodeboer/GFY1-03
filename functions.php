@@ -8,39 +8,10 @@ function newPDO() {
     $pdo = new PDO($db, $user, $pass);
     return ($pdo);
 }
-function laadContent($taal,$pagina){
-    $pdo = newPDO();
-    $stmt = $pdo->prepare("SELECT title,bodytext
-                            FROM content
-                            WHERE lang=? AND pagina=?");
-    $stmt->execute(array($taal, $pagina));
-    $content = $stmt->fetch();
-    $pdo = null;
-    return $content;
-}
-
 // werkt nog niet, is alleen een begin
 function toevoegen($pdo, $naam, $weeknr) {
     $stmt = $pdo->prepare("INSERT INTO klantenbestand VALUES (?,?)");
     $stmt->execute(array($naam, $weeknr));
-}
-
-function toevoegenContent($titel, $pagina, $taal, $inhoud, $eigenaar) {
-    $pdo = newPDO();
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $succes = true;
-
-    $stmt = $pdo->prepare("INSERT INTO content (title, bodytext, owner, lang, pagina)
-                            VALUES (?,?,?,?,?)");
-    // moet nog uitbebreid worden
-    try {
-        $stmt->execute(array($titel, $inhoud, $eigenaar, $taal, $pagina));
-    }
-    catch (PDOException $e){
-    }
-
-    $pdo = null;
-    return $succes;
 }
 
 function opvragen($pdo, $kolom, $tabel, $where, $arg) {
