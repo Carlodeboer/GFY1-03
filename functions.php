@@ -25,7 +25,7 @@ function toevoegen($pdo, $naam, $weeknr) {
     $stmt->execute(array($naam, $weeknr));
 }
 
-function toevoegenContent($titel, $pagina, $taal, $inhoud, $eigenaar) {
+/*function toevoegenContent($titel, $pagina, $taal, $inhoud, $eigenaar) {
     $pdo = newPDO();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $succes = true;
@@ -42,7 +42,7 @@ function toevoegenContent($titel, $pagina, $taal, $inhoud, $eigenaar) {
     $pdo = null;
     return $succes;
 }
-
+*/
 function opvragen($pdo, $kolom, $tabel, $where, $arg) {
     $aantalArg = str_repeat("?,", (count($kolom)-1)) . "?";
 
