@@ -15,7 +15,7 @@ p,li,ul,h1,h2,h3,h4,h5,h6,table,form{
 footer{
   height:150px;
   width:100%;
-  background:gray;
+  background:#a9a9a9;
   padding:15px 15px;
   box-sizing: border-box;
 }
@@ -50,7 +50,7 @@ nav li{
   white-space:nowrap;
   list-style: none;
   padding:0 57px;
-  line-height: 30px;
+  line-height: 40px;
   color: #000;
   transition: background-color 0.4s;
   float:left;
@@ -70,7 +70,7 @@ ul a{
 }
 
 #content{
-  background:#ddd;
+  background:#f5f5f5;
   width:100%;
   overflow-x: hidden;
   padding:15px 20px;
