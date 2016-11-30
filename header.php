@@ -1,4 +1,5 @@
 <div id="banner">
+  <h2> Offroad Compass Portugal </h2>
   <ul class="rslides">
   <li><img src=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/images/1.jpg\"";?> alt=""></li>
   <li><img src=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/images/2.jpg\"";?> alt=""></li>

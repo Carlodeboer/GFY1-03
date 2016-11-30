@@ -29,6 +29,13 @@ footer{
   height: 200px;
   overflow:hidden;
 }
+#banner h2{
+  position: absolute;
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
+  z-index:999;
+  padding:80px 0 0 80px;
+}
 ul{
   margin: 0 auto;
   padding:0;
@@ -106,7 +113,7 @@ ul a{
  height:240px;
 
 
- box-shadow:0px 0px 10px #cecece;
+ box-shadow:0px 0px 20px #000;
  -moz-transform: scale(0.9);
  -moz-transition-duration: 0.4s;
  -webkit-transition-duration: 0.6s;
@@ -117,13 +124,13 @@ ul a{
 }
 .galerij:hover
 {
-  box-shadow: 20px 20px 20px #dcdcdc;
- -moz-transform: scale(0.9);
+  box-shadow: 20px 20px 20px #000;
+ -moz-transform: scale(0.95);
  -moz-transition-duration: 0.6s;
  -webkit-transition-duration: 0.6s;
- -webkit-transform: scale(0.9);
+ -webkit-transform: scale(0.95);
 
- -ms-transform: scale(0.9);
+ -ms-transform: scale(0.95);
  -ms-transition-duration: 0.6s;
 
 }
