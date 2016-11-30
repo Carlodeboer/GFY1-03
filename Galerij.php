@@ -7,6 +7,8 @@ include "functions.php";
         <meta charset="UTF-8">
         <title>Galerij</title>
         <?php include 'head.php';?>
+        <link href="style/lightbox.css" rel="stylesheet">
+
     </head>
     <body>
         <div id="container">
@@ -39,6 +41,6 @@ include "functions.php";
             </div>
             <?php include 'footer.php';?>
         </div>
-        
+      <script src="js/lightbox.js"></script>  
     </body>
 </html>
