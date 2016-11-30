@@ -126,9 +126,11 @@
 
                         $date2 = strtotime($resultaat[$y][1]);
                         $date3 = strtotime($resultaat[$y][2]);
+                        $date4 = strtotime($resultaat[$y+1][1]);
 
                         $vergelijkdatum = date('j', $date2);
                         $vergelijkdatumeind = date('j', $date3);
+                        $vergelijkVolgende = date('j', $date4);
 
 
 
@@ -137,6 +139,9 @@
 
                       //
                          if ($i >= $vergelijkdatum && $i <= $vergelijkdatumeind) {
+                             if ($vergelijkVolgende == ($i + 1)){
+                                 $ding = false;
+                             }
                             $ding = true;
                       // while ($userRow = $stmt->fetch(PDO::FETCH_ASSOC)) {
 //                          	foreach ($userRow as $row) {
