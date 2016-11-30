@@ -19,7 +19,7 @@
                 ?>
                 <table>
                     <tr>
-                        <td><h2>Reisgegevens:</h2></td>
+                        <td><h2>Reisgegevens van <?php print($vakantienaam); ?>:</h2></td>
                     </tr><tr>
                         <td>Begindatum:</td>
                         <td>$begindatum</td>

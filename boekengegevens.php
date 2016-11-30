@@ -22,42 +22,42 @@
                                 print("<tr><td><h3>Persoon " . $i . ":</h3></td></tr>");
                             }
                             ?>
-                            <tr><td>Voornaam:</td><td><input type='text' name='voornaam<?php print ($i); ?>'<?php
+                            <tr><td>Voornaam* :</td><td><input type='text' name='voornaam<?php print ($i); ?>'<?php
                                     if (isset($_POST["voornaam" . $i])) {
                                         print (" value=" . $_POST["voornaam" . $i]);
                                     }
                                     ?>></td></tr>
-                            <tr><td>Achternaam:</td><td><input type='text' name='achternaam<?php print ($i); ?>'<?php
+                            <tr><td>Achternaam* :</td><td><input type='text' name='achternaam<?php print ($i); ?>'<?php
                                     if (isset($_POST["achternaam" . $i])) {
                                         print (" value=" . $_POST["achternaam" . $i]);
                                     }
                                     ?>></td></tr>
-                            <tr><td>Geboortedatum:</td><td><input type='text' name='geboortedatum<?php print ($i); ?>'<?php
+                            <tr><td>Geboortedatum* :</td><td><input type='text' name='geboortedatum<?php print ($i); ?>'<?php
                                     if (isset($_POST["geboortedatum" . $i])) {
                                         print (" value=" . $_POST["geboortedatum" . $i]);
                                     }
                                     ?>></td></tr>
-                            <tr><td>Straatnaam:</td><td><input type='text' name='straat<?php print ($i); ?>'<?php
+                            <tr><td>Straatnaam* :</td><td><input type='text' name='straat<?php print ($i); ?>'<?php
                                     if (isset($_POST["straat" . $i])) {
                                         print (" value=" . $_POST["straat" . $i]);
                                     }
                                     ?>></td></tr>
-                            <tr><td>Huisnummer:</td><td><input type='number' name='huisnummer<?php print ($i); ?>'<?php
+                            <tr><td>Huisnummer* :</td><td><input type='number' name='huisnummer<?php print ($i); ?>'<?php
                                     if (isset($_POST["huisnummer" . $i])) {
                                         print (" value=" . $_POST["huisnummer" . $i]);
                                     }
                                     ?>></td></tr>
-                            <tr><td>Postcode:</td><td><input type='text' name='postcode<?php print ($i); ?>'<?php
+                            <tr><td>Postcode* :</td><td><input type='text' name='postcode<?php print ($i); ?>'<?php
                                     if (isset($_POST["postcode" . $i])) {
                                         print (" value=" . $_POST["postcode" . $i]);
                                     }
                                     ?>></td></tr>
-                            <tr><td>Woonplaats:</td><td><input type='text' name='woonplaats<?php print ($i); ?>'<?php
+                            <tr><td>Woonplaats* :</td><td><input type='text' name='woonplaats<?php print ($i); ?>'<?php
                                     if (isset($_POST["woonplaats" . $i])) {
                                         print (" value=" . $_POST["woonplaats" . $i]);
                                     }
                                     ?>></td></tr>
-                            <tr><td>Land:</td><td><input type='text' name='land<?php print ($i); ?>'<?php
+                            <tr><td>Land* :</td><td><input type='text' name='land<?php print ($i); ?>'<?php
                                     if (isset($_POST["land" . $i])) {
                                         print (" value=" . $_POST["land" . $i]);
                                     }

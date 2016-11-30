@@ -18,16 +18,16 @@ include "functions.php";
                 <table>
                     <form method="POST" action="boeken.php">
                         <tr>
-                            <td>Begindatum:</td>
+                            <td>Begindatum* :</td>
                             <td><!--$begindatum--></td>
                         </tr><tr>
-                            <td>Einddatum:</td>
+                            <td>Einddatum* :</td>
                             <td><!--$einddatum--></td>
                         </tr><tr>
-                            <td>Aantal personen:</td>
+                            <td>Aantal personen* :</td>
                             <td><select name="aantalPersonen"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
                         </tr><tr>
-                            <td>Vervoer van Luchthaven Portela (Lissabon):</td>
+                            <td>Vervoer van Luchthaven Portela (Lissabon)* :</td>
                             <td><input type="radio" name="heen" value="1" checked> Ja</td>
                         </tr><tr>
                             <td></td>
@@ -36,7 +36,7 @@ include "functions.php";
                                     print ("checked");
                                 }
                                 ?>> Nee</td>
-                        <tr><td>Vervoer naar Luchthaven Portela (Lissabon):</td>
+                        <tr><td>Vervoer naar Luchthaven Portela (Lissabon)* :</td>
                             <td><input type="radio" name="terug" value="1" checked> Ja</td>
                         </tr><tr>
                             <td></td>
@@ -46,7 +46,7 @@ include "functions.php";
                                 }
                                 ?>> Nee</td>
                         </tr><tr>
-                            <td>Locatie van overnachting:</td>
+                            <td>Locatie van overnachting* :</td>
                             <td><input type="radio" name="locatie" value="standaard" checked> Standaard locatie</td>
                         </tr><tr>
                             <td></td>
@@ -55,7 +55,7 @@ include "functions.php";
                             <td>Opmerkingen:</td>
                             <td><textarea name="opmerkingen" rows="4" cols="60"></textarea>
                         </tr><tr>
-                            <td>Vakantienaam:<br>Deze naam gebruikt u later uw reisgegevens in te zien. Deze gegevens zou u ook eventueel kunnen delen met reisgenoten.</td>
+                            <td>Vakantienaam* :<br>Deze naam gebruikt u later uw reisgegevens in te zien. Deze gegevens zou u ook eventueel kunnen delen met reisgenoten.</td>
                             <td><input type="text" name="vakantienaam" <?php
                                 if (isset($_POST["vakantienaam"])) {
                                     print ("value=" . $_POST["vakantienaam"]);
