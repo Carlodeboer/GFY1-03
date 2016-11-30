@@ -36,8 +36,12 @@
                             } elseif ($_GET['beheer'] == "afbeelding"){
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/imageupload.php';
                             }
+                           elseif ($_GET['beheer'] == "berichtopvraag"){
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
+                          }
                         }
-                    }
+                        }
+
                     else {
                         print 'DAS IST VERBOTEN';
                     }
