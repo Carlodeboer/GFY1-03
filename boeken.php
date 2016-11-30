@@ -86,13 +86,7 @@ include "functions.php";
                         $vakantienaam = $_POST["vakantienaam"];
                         $klantGegevensArray = array("aantalPersonen" => $aantalPersonen, "vervoerHeen" => $vervoerHeen, "vervoerTerug" => $vervoerTerug, "locatie" => $locatie, "opmerkingen" => $opmerkingen, "vakantienaam" => $vakantienaam);
                         session_start();
-                        session_destroy($_SESSION["klantGegevens"]);
                         $_SESSION["klantGegevens"] = $klantGegevensArray;
-                        if (isset($_SESSION["klantGegevens"])) {
-                            
-                        } else {
-                            
-                        }
                         header("location: boekengegevens.php");
                     } else {
                         print("Voer een vakantienaam in.");
