@@ -1,8 +1,8 @@
 <?php
-    
+
 ?>
 <table>
-    <form method="POST" action="beheerpaneel.php?beheer=content">
+    <form method="POST" action="/GFY1-03/content.php">
         <tr>
             <td>Titel:</td>
             <td><input type="text" name="titel"></td>
