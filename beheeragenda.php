@@ -124,16 +124,6 @@
 
 
 
-
-
-                        $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
-                        $stmt->execute();
-                      $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-                        $date2 = strtotime($userRow['begindatum']);
-                        $date3 = strtotime($userRow['einddatum']);
-
                         $date2 = strtotime($resultaat[$y][1]);
                         $date3 = strtotime($resultaat[$y][2]);
 
@@ -152,12 +142,12 @@
 //                          	foreach ($userRow as $row) {
 //     print $row["omschrijving"];
 // }
-print("<td >{$i} {$userRow['omschrijving']} </td>");
+ print("<td >".$i.$resultaat[$y][0]."</td>");
 
 }
 
 
-                             print("<td >".$i.$resultaat[$y][0]."</td>");
+
 
 //                          	foreach ($userRow as $row) {
 //     print $row["omschrijving"];
@@ -169,7 +159,7 @@ print("<td >{$i} {$userRow['omschrijving']} </td>");
  else {
 	print("<td> {$i} </td>");
 
-    if ($y < count($resutaat)){
+    if ($y < (count($resultaat)-1)){
         $y++;
     }
 
