@@ -100,36 +100,27 @@
                 for ($i = 0; $i < $blank; $i++) {
                     print("<td></td>");
                 }
-                                        $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
-                        $stmt->execute();
-                                              // $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
-                        						$resultaat = array
-                        						(
-                        							array($userRow['Omschrijving'],$userRow['begindatum'],$userRow['einddatum'])
-                        						);
-                        						$x = 0;
+                $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
+                $stmt->execute();
+                // $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+                $resultaat = array();
+                $x = 0;
 
-                                              while($userRow = $stmt-> fetch()) {
-                                              	$resultaat[$x=]
-                                              	$x++;
-                                              }
+                while($userRow = $stmt-> fetch()) {
+                    $resultaat[$x] = array($userRow['omschrijving'],$userRow['begindatum'],$userRow['einddatum']);
+                    $x++;
+                }
+                print_r($resultaat);
+                // array_multisort($resultaat[0], SORT_ASC, SORT_STRING,
+                //                 $resultaat[1], SORT_NUMERIC, SORT_DESC);
 
-
-
+                $y = 0;
                 for ($i = 1; $i <= $daysInMonth; $i++) {
                     if ($day == $i) {
                         print("<td id='text' onclick='javascript:changeStyle();'><strong>huidig {$i} </strong></td>");
                     } else {
-
-
-
-
-
-
-
-                      
-                        $date2 = strtotime($userRow['begindatum']);
-                        $date3 = strtotime($userRow['einddatum']);
+                        $date2 = strtotime($resultaat[$y][1]);
+                        $date3 = strtotime($resultaat[$y][2]);
                         $vergelijkdatum = date('j', $date2);
                         $vergelijkdatumeind = date('j', $date3);
 
@@ -140,27 +131,34 @@
 
 
                          if ($i >= $vergelijkdatum && $i <= $vergelijkdatumeind) {
+
+                             print("<td >".$i.$resultaat[$y][0]."</td>");
+
 //                          	foreach ($userRow as $row) {
 //     print $row["omschrijving"];
 // }
-print("<td >{$i} {$userRow['omschrijving']} </td>");
-                        	
+
+
 
 
 } else {
 	print("<td> {$i} </td>");
+    if ($y < count($resutaat)){
+        $y++;
+    }
+
 }
 
 
                             // print("<td >{$i} {$userRow['omschrijving']} </td>");
-                        // 
+                        //
 // }
-                
+
 
 
                        //  $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
                        //  $stmt->execute();
-                       // $userRow = $stmt->fetch(PDO::FETCH_ASSOC); 
+                       // $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
                        //  $date2 = strtotime($userRow['begindatum']);
                        //  $date3 = strtotime($userRow['einddatum']);
                        //  $vergelijkdatum = date('j', $date2);
@@ -171,7 +169,7 @@ print("<td >{$i} {$userRow['omschrijving']} </td>");
                       //   // var_dump($i);
                       //   else {
                       //       print("<td >{$i}</td>");
-                        
+
                       // }
 
 
@@ -195,7 +193,7 @@ print("<td >{$i} {$userRow['omschrijving']} </td>");
             Omschrijving: <input type="text" name="omschrijving"><br>
             Begindatum: <input type="date" name="begindatum"><br>
             Einddatum: <input type="date" name="einddatum"><br>
-            Status: 
+            Status:
             <select name="status">
                 <option value="1">Boeking</option>
                 <option value="2">Privé</option>
