@@ -100,8 +100,7 @@
                 for ($i = 0; $i < $blank; $i++) {
                     print("<td></td>");
                 }
-<<<<<<< HEAD
-=======
+
                 $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
                 $stmt->execute();
                 // $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -117,12 +116,12 @@
                 //                 $resultaat[1], SORT_NUMERIC, SORT_DESC);
 
                 $y = 0;
->>>>>>> origin/master
+
                 for ($i = 1; $i <= $daysInMonth; $i++) {
                     if ($day == $i) {
                         print("<td id='text' onclick='javascript:changeStyle();'><strong>huidig {$i} </strong></td>");
                     } else {
-<<<<<<< HEAD
+
 
 
 
@@ -131,13 +130,13 @@
                         $stmt->execute();
                       $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                      
+
                         $date2 = strtotime($userRow['begindatum']);
                         $date3 = strtotime($userRow['einddatum']);
-=======
+
                         $date2 = strtotime($resultaat[$y][1]);
                         $date3 = strtotime($resultaat[$y][2]);
->>>>>>> origin/master
+
                         $vergelijkdatum = date('j', $date2);
                         $vergelijkdatumeind = date('j', $date3);
 
@@ -146,17 +145,17 @@
 // var_dump($userRow['omschrijving']);
 
 
-                      // 
+                      //
                          if ($i >= $vergelijkdatum && $i <= $vergelijkdatumeind) {
-<<<<<<< HEAD
+
                       // while ($userRow = $stmt->fetch(PDO::FETCH_ASSOC)) {
 //                          	foreach ($userRow as $row) {
 //     print $row["omschrijving"];
 // }
 print("<td >{$i} {$userRow['omschrijving']} </td>");
-                        	
+
 }
-=======
+
 
                              print("<td >".$i.$resultaat[$y][0]."</td>");
 
@@ -165,16 +164,15 @@ print("<td >{$i} {$userRow['omschrijving']} </td>");
 // }
 
 
->>>>>>> origin/master
+
 
  else {
 	print("<td> {$i} </td>");
-<<<<<<< HEAD
-=======
+
     if ($y < count($resutaat)){
         $y++;
     }
->>>>>>> origin/master
+
 
 }
 
