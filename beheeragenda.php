@@ -101,7 +101,7 @@
                     print("<td></td>");
                 }
 
-                $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
+                $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid ORDER BY einddatum");
                 $stmt->execute();
                 // $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
                 $resultaat = array();
@@ -137,7 +137,7 @@
 
                       //
                          if ($i >= $vergelijkdatum && $i <= $vergelijkdatumeind) {
-
+                            $ding = true;
                       // while ($userRow = $stmt->fetch(PDO::FETCH_ASSOC)) {
 //                          	foreach ($userRow as $row) {
 //     print $row["omschrijving"];
@@ -159,9 +159,11 @@
  else {
 	print("<td> {$i} </td>");
 
-    if ($y < (count($resultaat)-1)){
+    if ($y < (count($resultaat)-1) && $ding){
         $y++;
+        $ding = false;
     }
+
 
 
 }
