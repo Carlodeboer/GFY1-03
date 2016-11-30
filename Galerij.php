@@ -14,7 +14,7 @@ include "functions.php";
             <div id="content">
                 <h2> Galerij </h2>
                 <?php
-                $folder_path = 'oefenimages/'; //map van de afbeelding(en)
+                $folder_path = 'portugalpicture/'; //map van de afbeelding(en)
 
                 $num_files = glob($folder_path . "*.{JPG,jpg,gif,png,bmp}", GLOB_BRACE); //telt de bestanden
 
@@ -25,7 +25,7 @@ include "functions.php";
                         //volgende bestand die te vinden is
                         $file_path = $folder_path . $file; //dit is de map waar het bestand in staat
                         $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION)); //haalt info uit de map
-                        if ($extension == 'jpg' || $extension == 'png' || $extension == 'gif' || $extension == 'bmp') {
+                        if ($extension == 'jpg' || $extension == 'png' || $extension == 'gif' || $extension == 'bmp' || $extension == 'jpeg') {
                             ?>
                             <a href="<?php echo $file_path; ?>"><img src="<?php echo $file_path; ?>" class="galerij"  /></a>
                             <?php
