@@ -37,10 +37,8 @@ include "functions.php";
                 closedir($folder);
                 ?>
             </div>
+            <?php include 'footer.php';?>
         </div>
         
-        <?php
-        // put your code here
-        ?>
     </body>
 </html>
