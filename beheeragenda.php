@@ -100,6 +100,22 @@
                 for ($i = 0; $i < $blank; $i++) {
                     print("<td></td>");
                 }
+                                        $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
+                        $stmt->execute();
+                                              // $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+                        						$resultaat = array
+                        						(
+                        							array($userRow['Omschrijving'],$userRow['begindatum'],$userRow['einddatum'])
+                        						);
+                        						$x = 0;
+
+                                              while($userRow = $stmt-> fetch()) {
+                                              	$resultaat[$x=]
+                                              	$x++;
+                                              }
+
+
+
                 for ($i = 1; $i <= $daysInMonth; $i++) {
                     if ($day == $i) {
                         print("<td id='text' onclick='javascript:changeStyle();'><strong>huidig {$i} </strong></td>");
@@ -108,9 +124,8 @@
 
 
 
-                        $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
-                        $stmt->execute();
-                      $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
 
                       
                         $date2 = strtotime($userRow['begindatum']);
@@ -135,6 +150,7 @@ print("<td >{$i} {$userRow['omschrijving']} </td>");
 } else {
 	print("<td> {$i} </td>");
 }
+
 
                             // print("<td >{$i} {$userRow['omschrijving']} </td>");
                         // 
