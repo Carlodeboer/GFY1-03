@@ -29,7 +29,7 @@ include "functions.php";
                         $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION)); //haalt info uit de map
                         if ($extension == 'jpg' || $extension == 'png' || $extension == 'gif' || $extension == 'bmp' || $extension == 'jpeg') {
                             ?>
-                            <a href="<?php echo $file_path; ?>"><img src="<?php echo $file_path; ?>" class="galerij"  /></a>
+                            <a href="<?php echo $file_path; ?>" data-lightbox="portugal"><img src="<?php echo $file_path; ?>" class="galerij"  /></a>
                             <?php
                         }
                     }
