@@ -73,6 +73,7 @@
              </td>
             </tr>
             </table>
+            <div class="g-recaptcha" data-sitekey="6LdvmA0UAAAAANG5pBHPYoqw1-MTYUJRngrA88zK"></div>
             </form>
 
           </div>
