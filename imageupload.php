@@ -28,10 +28,8 @@ $content = fread($fp, filesize($tmpName));
 $content = addslashes($content);
 fclose($fp);
 
-if(!get_magic_quotes_gpc())
-{
     $fileName = addslashes($fileName);
-}
+
 include 'dbconnect.php';
 
 $query = $pdo->prepare("INSERT INTO upload (name, size, type, content )
