@@ -40,13 +40,18 @@
                $bericht = $row["bericht"];
                $datum = $row["datum"];
 
+               if $telefoonnummer != ""{
 
               echo("<strong>Berichten:</strong> <br> $voornaam  $achternaam <br> $email <br> $telefoonnummer <br> $datum <br> <strong>$onderwerp</strong> <br> $bericht<br> <br>");
+
+            }
+            else {
+              echo("<strong>Berichten:</strong> <br> $voornaam  $achternaam <br> $email <br> $datum <br> <strong>$onderwerp</strong> <br> $bericht<br> <br>");
+
+            }
             }
           }
-          else{
-            header ('Location: test.php');
-          }
+
             ?>
 
 
