@@ -25,7 +25,7 @@ function toevoegen($pdo, $naam, $weeknr) {
     $stmt->execute(array($naam, $weeknr));
 }
 
-/*function toevoegenContent($titel, $pagina, $taal, $inhoud, $eigenaar) {
+function toevoegenContent($titel, $pagina, $taal, $inhoud, $eigenaar) {
     $pdo = newPDO();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $succes = true;
@@ -42,7 +42,28 @@ function toevoegen($pdo, $naam, $weeknr) {
     $pdo = null;
     return $succes;
 }
-*/
+
+function editContent($titel, $inhoud, $taal, $pagina){
+include '../dbconnect.php';
+
+
+$titel = $_POST['titel'];
+$inhoud = $_POST['inhoud'];
+$taal = $_POST['taal'];
+
+$pagina = $_POST['pagina'];
+
+
+      $stmt = $pdo->prepare("UPDATE content
+      SET title=?, bodytext=?
+      WHERE lang = ?
+      AND pagina =?");
+      $stmt->execute(array($titel, $inhoud, $taal, $pagina));
+
+      $pdo=NULL;
+
+    }
+    
 function opvragen($pdo, $kolom, $tabel, $where, $arg) {
     $aantalArg = str_repeat("?,", (count($kolom)-1)) . "?";
 

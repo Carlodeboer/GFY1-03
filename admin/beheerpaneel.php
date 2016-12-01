@@ -24,7 +24,8 @@
                     session_start();
                     $succes = false;
                     if(isset($_POST['verzenden'])){
-                        $succes = toevoegenContent($_POST['titel'],$_POST['pagina'],$_POST['taal'],$_POST['inhoud'],$_SESSION['admin_session']);
+                        $succes = editContent($_POST['titel'],$_POST['inhoud'],$_POST['taal'],$_POST['pagina'],$_SESSION['admin_session']);
+                        print "<p>toegevoegd!</p>";
                     }
                     if (isset($_SESSION['admin_session'])) {
                         include 'adminindex.php';
