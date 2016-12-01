@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 include "functions.php";
-//naam is veranderd
 ?>
 <html>
     <head>
