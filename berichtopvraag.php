@@ -40,7 +40,7 @@
                $bericht = $row["bericht"];
                $datum = $row["datum"];
 
-               if $telefoonnummer != ""{
+               if($telefoonnummer != ""){
 
               echo("<strong>Berichten:</strong> <br> $voornaam  $achternaam <br> $email <br> $telefoonnummer <br> $datum <br> <strong>$onderwerp</strong> <br> $bericht<br> <br>");
 
