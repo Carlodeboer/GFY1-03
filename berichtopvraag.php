@@ -41,7 +41,7 @@
                $datum = $row["datum"];
 
 
-              echo("<strong>Berichten:</strong> <br> $voornaam  $achternaam, <br> $email <br> $telefoonnummer <br> $datum <br> <strong>$onderwerp</strong> <br> $bericht<br> <br>");
+              echo("<strong>Berichten:</strong> <br> $voornaam  $achternaam <br> $email <br> $telefoonnummer <br> $datum <br> <strong>$onderwerp</strong> <br> $bericht<br> <br>");
             }
           }
           else{
