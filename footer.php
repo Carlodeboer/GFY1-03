@@ -9,6 +9,5 @@
         print "<a href=\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/adminlogin.php\">admin</a><br>";
     }
     ?>
-    <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/imageupload.php\"";?>>image uploader</a>
 
 </footer>
