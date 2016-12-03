@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,24 +19,14 @@
     <body>
         <div id="container">
           <?php include 'header.php';?>
-
             <div id="content">
                 <?php
                     include "functions.php";
-                    $pagina = "index";
-                    $taal = "NLD";
-                    $content = laadContent($pagina, $taal);
-
-                    print_r($content);
-
+                    $content = laadContent();
                     print "<h2>".$content['title']."</h2>";
                     print "</p>".$content['bodytext']."</p>";
-
-
-?>
-
+                ?>
             </div>
-
             <?php include 'footer.php';?>
         </div>
     </body>

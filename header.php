@@ -16,7 +16,13 @@
     <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/contact.php\"";?>><li>Contact</li></a>
     <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/login.php\"";?>><li>Login</li></a>
     <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/galerij.php\"";?>><li>Galerij</li></a>
-
-
 </ul>
 </nav>
+
+<span>
+<form method="GET" action=<?php print "\"".$_SERVER['PHP_SELF']."\""?>>
+    <input type="submit" name="lang" value="NLD">
+    <input type="submit" name="lang" value="ENG">
+    <input type="submit" name="lang" value="DEU">
+</form>
+</span>

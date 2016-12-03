@@ -8,7 +8,24 @@ function newPDO() {
     $pdo = new PDO($db, $user, $pass);
     return ($pdo);
 }
-function laadContent($pagina, $taal){
+
+function selecteerTaal(){
+    if (isset($_GET['lang'])){
+        $_SESSION['lang'] = $_GET['lang'];
+        $taal = $_SESSION['lang'];
+    } elseif (isset($_SESSION['lang'])){
+        $taal = $_SESSION['lang'];
+    } else {
+        $taal = "NLD";
+    }
+    return $taal;
+}
+
+function laadContent(){
+    $bestandsnaam = $_SERVER['PHP_SELF'];
+    $verwijder = ["GFY1-03", "/", ".php"];
+    $pagina = str_replace($verwijder, "", $bestandsnaam);
+    $taal = selecteerTaal();
     $pdo = newPDO();
     $stmt = $pdo->prepare("SELECT title,bodytext
                             FROM content
