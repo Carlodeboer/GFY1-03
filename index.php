@@ -22,14 +22,14 @@
                     include "functions.php";
                     $pagina = "index";
                     $taal = "NLD";
-                    $content = laadContent($taal,$pagina);
+                    $content = laadContent($pagina, $taal);
 
                     print "<h2>".$content['title']."</h2>";
                     print "</p>".$content['bodytext']."</p>";
 
 
 ?>
-                
+
             </div>
 
             <?php include 'footer.php';?>

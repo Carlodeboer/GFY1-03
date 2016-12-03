@@ -8,11 +8,11 @@ function newPDO() {
     $pdo = new PDO($db, $user, $pass);
     return ($pdo);
 }
-function laadContent($taal,$pagina){
+function laadContent($pagina, $taal){
     $pdo = newPDO();
     $stmt = $pdo->prepare("SELECT title,bodytext
                             FROM content
-                            WHERE lang=? AND pagina=?");
+                            WHERE pagina=? AND taal=?");
     $stmt->execute(array($taal, $pagina));
     $content = $stmt->fetch();
     $pdo = null;
@@ -43,27 +43,27 @@ function toevoegenContent($titel, $pagina, $taal, $inhoud, $eigenaar) {
     return $succes;
 }
 
-function editContent($titel, $inhoud, $taal, $pagina){
-include '../dbconnect.php';
+function editContent($pagina, $taal, $titel, $inhoud, $eigenaar){
+    $pdo = newPDO();
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $succes = true;
 
-
-$titel = $_POST['titel'];
-$inhoud = $_POST['inhoud'];
-$taal = $_POST['taal'];
-
-$pagina = $_POST['pagina'];
-
-
-      $stmt = $pdo->prepare("UPDATE content
-      SET title=?, bodytext=?
-      WHERE lang = ?
-      AND pagina =?");
-      $stmt->execute(array($titel, $inhoud, $taal, $pagina));
-
-      $pdo=NULL;
-
+    $stmt = $pdo->prepare("UPDATE content
+                            SET title=?, bodytext=?, updated_by=?
+                            WHERE pagina=?
+                            AND lang=?");
+    try {
+        $stmt->execute(array($titel, $inhoud, $eigenaar, $pagina, $taal));
     }
-    
+    catch (PDOException $e){
+        print "Er is iets vreselijk fout gegaan.";
+    }
+
+
+    $pdo=NULL;
+    return $succes;
+}
+
 function opvragen($pdo, $kolom, $tabel, $where, $arg) {
     $aantalArg = str_repeat("?,", (count($kolom)-1)) . "?";
 

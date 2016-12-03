@@ -24,14 +24,20 @@
                     session_start();
                     $succes = false;
                     if(isset($_POST['verzenden'])){
-                        $succes = editContent($_POST['titel'],$_POST['inhoud'],$_POST['taal'],$_POST['pagina'],$_SESSION['admin_session']);
+                        $succes = editContent($_POST['pagina'],$_POST['taal'],$_POST['titel'],$_POST['inhoud'],$_SESSION['admin_session']);
                         print "<p>toegevoegd!</p>";
                     }
                     if (isset($_SESSION['admin_session'])) {
                         include 'adminindex.php';
                         if (isset($_GET['beheer'])){
                             if ($_GET['beheer'] == "content"){
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/moetnogeennaamverzinnen.php';
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
+                                if(isset($_GET['selecteer'])){
+                                    $pagina = $_GET['pagina'];
+                                    $taal = $_GET['taal'];
+                                    $content = laadContent($pagina, $taal);
+                                    include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/moetnogeennaamverzinnen.php';
+                                }
                             } elseif ($_GET['beheer'] == "agenda"){
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
                             } elseif ($_GET['beheer'] == "afbeelding"){
