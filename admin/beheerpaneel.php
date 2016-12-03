@@ -24,8 +24,10 @@
                     include '../functions.php';
                     $succes = false;
                     if(isset($_POST['verzenden'])){
-                        $succes = editContent($_POST['pagina'],$_POST['taal'],$_POST['titel'],$_POST['inhoud'],$_SESSION['admin_session']);
+                        $succes = editContent($_SESSION['paginaEdit'],$_SESSION['taalEdit'],$_POST['titel'],$_POST['inhoud'],$_SESSION['admin_session']);
                         print "<p>toegevoegd!</p>";
+                        unset($_SESSION['paginaEdit']);
+                        unset($_SESSION['taalEdit']);
                     }
                     if (isset($_SESSION['admin_session'])) {
                         include 'adminindex.php';
@@ -41,9 +43,9 @@
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
                             }
                         } elseif (isset($_SESSION['beheer']) && isset($_GET['selecteer'])) {
-                            $pagina = $_GET['pagina'];
-                            $taal = $_GET['taal'];
-                            $content = laadContent($pagina, $taal);
+                            $_SESSION['paginaEdit'] = $_GET['pagina'];
+                            $_SESSION['taalEdit'] = $_GET['taal'];
+                            $content = laadContent($_SESSION['paginaEdit'], $_SESSION['taalEdit']);
                             include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/moetnogeennaamverzinnen.php';
                         }
                     }
