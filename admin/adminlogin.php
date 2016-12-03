@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,24 +19,19 @@
           <?php
                 include '../header.php';
                 include '../functions.php';
-                session_start();
-
                 if (isset($_SESSION['admin_session'])){
                     header("Location: beheerpaneel.php");
                 } elseif (isset($_POST['naam'])) {
-
                     $check = checkLogin($_POST['naam'], $_POST['wachtwoord']);
                     if ($check['klopt']){
                         if (checkPrivileges($_POST['naam']) >= 2) {
                             $_SESSION['admin_session'] = $_POST['naam'];
                             header("Location: beheerpaneel.php");
                             exit;
-                        }
-                        else {
+                        } else {
                             print "Deze gebruikers heeft niet voldoende privileges.";
                         }
-                    }
-                    else {
+                    } else {
                         include 'loginformulier.php';
                         print "<h1>".$check['foutmelding']."</h1>";
                     }

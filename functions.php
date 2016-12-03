@@ -12,8 +12,8 @@ function laadContent($pagina, $taal){
     $pdo = newPDO();
     $stmt = $pdo->prepare("SELECT title,bodytext
                             FROM content
-                            WHERE pagina=? AND taal=?");
-    $stmt->execute(array($taal, $pagina));
+                            WHERE pagina=? AND lang=?");
+    $stmt->execute(array($pagina, $taal));
     $content = $stmt->fetch();
     $pdo = null;
     return $content;

@@ -24,6 +24,8 @@
                     $taal = "NLD";
                     $content = laadContent($pagina, $taal);
 
+                    print_r($content);
+
                     print "<h2>".$content['title']."</h2>";
                     print "</p>".$content['bodytext']."</p>";
 
