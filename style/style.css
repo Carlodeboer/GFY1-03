@@ -134,6 +134,15 @@ ul a{
 
 }
 
+#nieuws {
+color:red;
+}
+
+.nieuwstext {
+  width:300px;
+  height:200px;
+}
+
 
 /*galerij*/
 

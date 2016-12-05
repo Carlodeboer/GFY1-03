@@ -3,4 +3,6 @@
     <input type="submit" name="beheer" value="agenda">
     <input type="submit" name="beheer" value="afbeelding">
     <input type="submit" name="beheer" value="berichtopvraag">
+    <input type="submit" name="beheer" value="nieuws">
+
 </form>
