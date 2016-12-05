@@ -43,17 +43,9 @@ function laadContent($bestandsnaam, $taal){
 }
 
 function laadNieuws($id, $lang){
-    // if ($bestandsnaam == ""){
-    //     $bestandsnaam = $_SERVER['PHP_SELF'];
-    //     // $verwijder = ["GFY1-03", "/", ".php"];
-    //     // $pagina = str_replace($verwijder, "", $bestandsnaam);
-    // } else {
-    //     $pagina = $bestandsnaam;
-    // }
 
-    // if ($lang == ""){
-    //     $taal = selecteerTaal();
-    // }
+    if($_GET['lang'] == $lang){
+
     $pdo = newPDO();
     $stmt = $pdo->prepare("SELECT title,bodytext,posted
                             FROM nieuwsbericht
@@ -63,10 +55,10 @@ function laadNieuws($id, $lang){
     $pdo = null;
 
     // return $content;
-                print("{$nieuws['title']}     {$nieuws['posted']} <br><br> {$nieuws['bodytext']} <br><br><br>");
+                print("<p>{$nieuws['title']} geplaatst op {$nieuws['posted']} <br><br> {$nieuws['bodytext']}</p> <br><br>");
 
                         // print("{$nieuws['title']}     {$nieuws['posted']} <br><br> {$nieuws['bodytext']} <br><br><br>");
-
+}
 }
 
 // werkt nog niet, is alleen een begin
