@@ -1,5 +1,14 @@
 <div id="banner">
   <h2> Offroad Compass Portugal </h2>
+
+  <span id="talenknoppen">
+  <form method="GET" action=<?php print "\"".$_SERVER['PHP_SELF']."\""?>>
+      <input class="taalbutton" id="NLD" type="submit" name="lang" value="">
+      <input class="taalbutton" id="ENG" type="submit" name="lang" value="">
+      <input class="taalbutton" id="DEU" type="submit" name="lang" value="">
+  </form>
+  </span>
+
   <ul class="rslides">
   <li><img src=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/images/1.jpg\"";?> alt=""></li>
   <li><img src=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/images/2.jpg\"";?> alt=""></li>
@@ -18,11 +27,3 @@
     <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/galerij.php\"";?>><li>Galerij</li></a>
 </ul>
 </nav>
-
-<span>
-<form method="GET" action=<?php print "\"".$_SERVER['PHP_SELF']."\""?>>
-    <input type="submit" name="lang" value="NLD">
-    <input type="submit" name="lang" value="ENG">
-    <input type="submit" name="lang" value="DEU">
-</form>
-</span>
