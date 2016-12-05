@@ -7,7 +7,7 @@
 
 
 <br><br>
-    <form method="get" action="beheerpaneel.php?beheer=nieuws">
+    <form method="post" action="beheerpaneel.php?beheer=nieuws">
 Titel: <input type="text" name="titel"> <br>
 
  Taal:       <select name="lang">
@@ -26,6 +26,10 @@ Bericht: <input type="text" name="bodytext" size="30"><br>
         include "../dbconnect.php";
         // include "../functions.php";
 
+        date_default_timezone_set('Europe/Amsterdam');
+$date = date('m/d/Y h:i:s a', time());
+
+
 if (isset($_POST['plaatsnieuws'])) {
     $titel = $_POST['titel'];
     $lang = $_POST['lang'];
@@ -37,8 +41,8 @@ if (isset($_POST['plaatsnieuws'])) {
         print("Voer een bericht in.");
     } else {
 
-        $stmt = $pdo->prepare("INSERT INTO nieuwsbericht (lang,title,bodytext) VALUES (?,?,?)");
-        $stmt->execute(array($lang, $titel, $bodytext));
+        $stmt = $pdo->prepare("INSERT INTO nieuwsbericht (lang,title,bodytext,posted) VALUES (?,?,?,?)");
+        $stmt->execute(array($lang, $titel, $bodytext,$date));
         $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
         $res = $stmt->rowCount();
         if ($res > 0) {
