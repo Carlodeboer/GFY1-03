@@ -42,6 +42,33 @@ function laadContent($bestandsnaam, $taal){
     return $content;
 }
 
+function laadNieuws($id, $lang){
+    // if ($bestandsnaam == ""){
+    //     $bestandsnaam = $_SERVER['PHP_SELF'];
+    //     // $verwijder = ["GFY1-03", "/", ".php"];
+    //     // $pagina = str_replace($verwijder, "", $bestandsnaam);
+    // } else {
+    //     $pagina = $bestandsnaam;
+    // }
+
+    // if ($lang == ""){
+    //     $taal = selecteerTaal();
+    // }
+    $pdo = newPDO();
+    $stmt = $pdo->prepare("SELECT title,bodytext,posted
+                            FROM nieuwsbericht
+                            WHERE id=? AND lang=?");
+    $stmt->execute(array($id, $lang));
+    $nieuws = $stmt->fetch();
+    $pdo = null;
+
+    // return $content;
+                print("{$nieuws['title']}     {$nieuws['posted']} <br><br> {$nieuws['bodytext']} <br><br><br>");
+
+                        // print("{$nieuws['title']}     {$nieuws['posted']} <br><br> {$nieuws['bodytext']} <br><br><br>");
+
+}
+
 // werkt nog niet, is alleen een begin
 function toevoegen($pdo, $naam, $weeknr) {
     $stmt = $pdo->prepare("INSERT INTO klantenbestand VALUES (?,?)");

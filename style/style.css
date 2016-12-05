@@ -145,6 +145,10 @@ ul a{
 }
 
 #nieuws {
+  width:50%;
+  padding:10px;
+
+  background-color:lightgrey;
 color:red;
 }
 

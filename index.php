@@ -27,7 +27,27 @@
                     print "<h2>".$content['title']."</h2>";
                     print "<p>".$content['bodytext']."</p>";
                 ?>
-              </div>
+              
+           
+
+            <div id="nieuws">
+            <?php
+
+
+if(isset($_GET['lang'])){
+  $lang = $_GET['lang'];
+
+
+            $nieuws = laadNieuws(1,$lang);
+            $nieuws = laadNieuws(2,$lang);
+            $nieuws = laadNieuws(3,$lang);
+            $nieuws = laadNieuws(4,$lang);
+
+}
+
+            ?>
+            </div>
+             </div>
             </div>
             <?php include 'footer.php';?>
         </div>
