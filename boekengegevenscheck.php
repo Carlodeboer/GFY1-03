@@ -14,9 +14,18 @@
             <div id="content">
                 <?php
                 session_start();
-
+                for ($i = 1; $i <= $_SESSION["klantGegevens"]["aantalPersonen"]; $i++) {
+                    toevoegenaanarray("voornaam", "klantGegevens", $i);
+                    toevoegenaanarray("achternaam", "klantGegevens", $i);
+                    toevoegenaanarray("geboortedatum", "klantGegevens", $i);
+                    toevoegenaanarray("straat", "klantGegevens", $i);
+                    toevoegenaanarray("huisnummer", "klantGegevens", $i);
+                    toevoegenaanarray("postcode", "klantGegevens", $i);
+                    toevoegenaanarray("woonplaats", "klantGegevens", $i);
+                    toevoegenaanarray("land", "klantGegevens", $i);
+                    toevoegenaanarray("telefoonnummer", "klantGegevens", $i);
+                }
                 extract($_SESSION["klantGegevens"]);
-                print_r($_SESSION["klantGegevens"]);
                 ?>
                 <table>
                     <tr>
@@ -98,7 +107,7 @@
                     ?>
                     <tr>
                         <td>
-                            <form method="POST" action="boekengegevenscheckafronden.php">
+                            <form method="GET" action="boekengegevenscheckafronden.php">
                                 <input type="submit" name="afronden" value="Afronden">
                             </form>
                         </td>

@@ -11,31 +11,32 @@ include "functions.php";
             <?php include 'header.php'; ?>
             <div id="content">
                 <?php
-                if (isset($_POST["boeken"])) {
+                if (isset($_GET["afronden"])) {
                     session_start();
                     extract($_SESSION["klantGegevens"]);
+                    print_r($_SESSION["klantGegevens"]);
+
                     $pdo = newPDO();
-                    $pdo->beginTransaction();
+
                     $stmt1 = $pdo->prepare("INSERT INTO boeking (aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking) VALUES (?, ?, ?, ?, ?)");
-                    $stmt2->execute(array($aantalPersonen, $vervoerHeen, $vervoerTerug, $locatie, $opmerkingen));
-                    $stmt2 = $pdo->prepare("SELECT max(idKlant) FROM boeking;");
+                    $stmt1->execute(array($aantalPersonen, $vervoerHeen, $vervoerTerug, $locatie, $opmerkingen));
+
+                    $stmt2 = $pdo->prepare("SELECT max(idKlant) FROM boeking");
                     $stmt2->execute(array());
                     $row = $stmt2->fetch();
-                    $idKlant = row["idKlant"];
-                    $stmt3 = $pdo->prepare("INSERT INTO klantgegevens ");
-                    //$stmt = $pdo->prepare("SELECT SCOPE_IDENTITY()");
-                    //$stmt->execute(array());
-                    //$stmt = $pdo->prepare("SELECT idKlant FROM boeking WHERE aantalPersonen = ? AND vervoerHeen = ? AND vervoerTerug = ? AND locatie = ? AND opmerking = ?");
-                    //$stmt->execute(array($aantalPersonen, $vervoerHeen, $vervoerTerug, $locatie, $opmerkingen));
+                    $idKlant = $row["max(idKlant)"];
 
-                    $res = $stmt->rowCount();
+                    $stmt3 = $pdo->prepare("INSERT INTO klantgegevens (idKlant, persoon, voornaam, achternaam, adres, postcode, woonplaats, telefoonnummer, email) VALUES ?,?,?,?,?,?,?,?,?");
+                    $stmt3->execute(array($idKlant, "1", $voornaam1, $achternaam1, ($straat1 . $huisnummer1), $postcode1, $woonplaats1, $telefoonnummer1, "Sjaak"));
+
+                    //$res = $stmt->rowCount();
                     $pdo = NULL;
-                    
-                    if ($res == 2) {
-                        print("Uw boeking is succesvol verwerkt.");
-                    } else {
-                        print("Uw boeking is niet succesvol verwerkt. Neem contact op met de beheerder.");
-                    }
+
+//                    if ($res == 2) {
+//                        print("Uw boeking is succesvol verwerkt.");
+//                    } else {
+//                        print("Uw boeking is niet succesvol verwerkt. Neem contact op met de beheerder.");
+//                    }
                 }
                 ?>
             </div>

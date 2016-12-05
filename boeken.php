@@ -18,7 +18,7 @@ include "functions.php";
             <div id="content">
                 <h2> Boeken </h2>
                 <table>
-                    <form method="POST" action="boekengegevens.php">
+                    <form method="GET" action="boekengegevens.php">
                         <tr>
                             <td>Begindatum* :</td>
                             <td><!--$begindatum--></td>
@@ -27,14 +27,14 @@ include "functions.php";
                             <td><!--$einddatum--></td>
                         </tr><tr>
                             <td>Aantal personen* :</td>
-                            <td><select name="aantalPersonen"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
+                            <td><select name="aantalPersonen" required><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td>
                         </tr><tr>
                             <td>Vervoer van Luchthaven Portela (Lissabon)* :</td>
                             <td><input type="radio" name="heen" value="1" checked> Ja</td>
                         </tr><tr>
                             <td></td>
                             <td><input type="radio" name="heen" value="0" <?php
-                                if (isset($_POST["heen"]) && $_POST["heen"] == 0) {
+                                if (isset($_GET["heen"]) && $_GET["heen"] == 0) {
                                     print ("checked");
                                 }
                                 ?>> Nee</td>
@@ -43,7 +43,7 @@ include "functions.php";
                         </tr><tr>
                             <td></td>
                             <td><input type="radio" name="terug" value="0" <?php
-                                if (isset($_POST["terug"]) && $_POST["terug"] == 0) {
+                                if (isset($_GET["terug"]) && $_GET["terug"] == 0) {
                                     print ("checked");
                                 }
                                 ?>> Nee</td>
@@ -58,30 +58,30 @@ include "functions.php";
                             <td><textarea name="opmerkingen" rows="4" cols="60"></textarea>
                         </tr><tr>
                             <td>Vakantienaam* :<br>Deze naam gebruikt u later uw reisgegevens in te zien. Deze gegevens zou u ook eventueel kunnen delen met reisgenoten.</td>
-                            <td><input type="text" name="vakantienaam" <?php
-                                if (isset($_POST["vakantienaam"])) {
-                                    print ("value=" . $_POST["vakantienaam"]);
+                            <td><input type="text" name="vakantienaam" required<?php
+                                if (isset($_GET["vakantienaam"])) {
+                                    print ("value=" . $_GET["vakantienaam"]);
                                 }
                                 ?>></td>
                         </tr>
                         <?php
-                        if (isset($_POST["volgende"])) {
-                            if ($_POST["vakantienaam"] != "") {
-                                $aantalPersonen = $_POST["aantalPersonen"];
-                                $vervoerHeen = $_POST["heen"];
-                                $vervoerTerug = $_POST["terug"];
-                                $locatie = $_POST["locatie"];
-                                if ($_POST["nieuweLocatie"] != "") {
-                                    $locatie = $_POST["nieuweLocatie"];
+                        if (isset($_GET["volgende"])) {
+                            if ($_GET["vakantienaam"] != "") {
+                                $aantalPersonen = $_GET["aantalPersonen"];
+                                $vervoerHeen = $_GET["heen"];
+                                $vervoerTerug = $_GET["terug"];
+                                $locatie = $_GET["locatie"];
+                                if ($_GET["nieuweLocatie"] != "") {
+                                    $locatie = $_GET["nieuweLocatie"];
                                 }
 
-                                if ($_POST["opmerkingen"] != "") {
-                                    $opmerkingen = $_POST["opmerkingen"];
+                                if ($_GET["opmerkingen"] != "") {
+                                    $opmerkingen = $_GET["opmerkingen"];
                                 } else {
                                     $opmerkingen = NULL;
                                 }
 
-                                $vakantienaam = $_POST["vakantienaam"];
+                                $vakantienaam = $_GET["vakantienaam"];
                                 $klantGegevensArray = array("aantalPersonen" => $aantalPersonen, "vervoerHeen" => $vervoerHeen, "vervoerTerug" => $vervoerTerug, "locatie" => $locatie, "opmerkingen" => $opmerkingen, "vakantienaam" => $vakantienaam);
 
 
@@ -90,6 +90,8 @@ include "functions.php";
                                     session_unset($_SESSION["klantGegevens"]);
                                 }
                                 $_SESSION["klantGegevens"] = $klantGegevensArray;
+                                print("<form action='boekengegevens.php' method=GET><form>");
+                                //header("location: boekengegevens.php");
                             } else {
                                 print("Voer een vakantienaam in.");
                             }
