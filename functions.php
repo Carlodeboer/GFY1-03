@@ -181,4 +181,9 @@ function checkPrivileges($naam){
 
     return $userRow['privilegeniveau'];
 }
+
+function toevoegenaanarray($naam, $array, $persoon) {
+	${$naam . $persoon} = $_GET[$naam . $persoon];
+        return ($_SESSION[$array][$naam . $persoon] = ${$naam . $persoon});
+}
 ?>
