@@ -16,6 +16,7 @@
                 session_start();
 
                 extract($_SESSION["klantGegevens"]);
+                print_r($_SESSION["klantGegevens"]);
                 ?>
                 <table>
                     <tr>

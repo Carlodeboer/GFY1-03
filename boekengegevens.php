@@ -10,7 +10,7 @@
             <?php include 'header.php'; ?>
             <div id="content">
                 <table>
-                    <form method="POST" action="boekengegevens.php">
+                    <form method="POST" action="boekengegevenscheck.php">
                         <tr>
                             <td><h2>Gegevens</h2></td>
                         </tr>
@@ -62,47 +62,52 @@
                                         print (" value=" . $_POST["land" . $i]);
                                     }
                                     ?>></td></tr>
+                            <tr><td>Telefoonnummer* :</td><td><input type='text' name='woonplaats<?php print ($i); ?>'<?php
+                                    if (isset($_POST["telefoonnummer" . $i])) {
+                                        print (" value=" . $_POST["telefoonnummer" . $i]);
+                                    }
+                                    ?>></td></tr>
                                 <?php
                             }
                             ?>
+
+
+
+                        <?php
+                        include "functions.php";
+
+
+                        for ($i = 1; $i <= $aantalPersonen; $i++) {
+                            if ($_POST["voornaam" . $i] != "" && $_POST["achternaam" . $i] != "" && $_POST["straat" . $i] != "" && $_POST["huisnummer" . $i] != "" && $_POST["postcode" . $i] != "" && $_POST["woonplaats" . $i] != "" && $_POST["land" . $i] != "") {
+                                toevoegenaanarray("voornaam", "klantGegevens", $i);
+                                ${"achternaam" . $i} = $_POST["achternaam" . $i];
+                                $_SESSION["klantGegevens"]["achternaam" . $i] = ${"achternaam" . $i};
+                                ${"geboortedatum" . $i} = $_POST["geboortedatum" . $i];
+                                $_SESSION["klantGegevens"]["geboortedatum" . $i] = ${"geboortedatum" . $i};
+                                ${"straat" . $i} = $_POST["straat" . $i];
+                                $_SESSION["klantGegevens"]["straat" . $i] = ${"straat" . $i};
+                                ${"huisnummer" . $i} = $_POST["huisnummer" . $i];
+                                $_SESSION["klantGegevens"]["huisnummer" . $i] = ${"huisnummer" . $i};
+                                ${"postcode" . $i} = $_POST["postcode" . $i];
+                                $_SESSION["klantGegevens"]["postcode" . $i] = ${"postcode" . $i};
+                                ${"woonplaats" . $i} = $_POST["woonplaats" . $i];
+                                $_SESSION["klantGegevens"]["woonplaats" . $i] = ${"woonplaats" . $i};
+                                ${"land" . $i} = $_POST["land" . $i];
+                                $_SESSION["klantGegevens"]["land" . $i] = ${"land" . $i};
+                                toevoegenaanarray("telefoonnummer", "klantGegevens", $i);
+                                if ($i == $aantalPersonen) {
+                                    header("location:boekengegevenscheck.php");
+                                }
+                            } else {
+                                if ($i == $aantalPersonen) {
+                                    print ("U dient uw gegevens correct in te vullen.");
+                                }
+                            }
+                        }
+                        ?>
                         <tr><td><input type='submit' name='afronden' value='Afronden'></td></tr>
                     </form>
                 </table>
-
-
-                <?php
-                include "functions.php";
-
-                if (isset($_POST["afronden"])) {
-                    for ($i = 1; $i <= $aantalPersonen; $i++) {
-                        if ($_POST["voornaam" . $i] != "" && $_POST["achternaam" . $i] != "" && $_POST["straat" . $i] != "" && $_POST["huisnummer" . $i] != "" && $_POST["postcode" . $i] != "" && $_POST["woonplaats" . $i] != "" && $_POST["land" . $i] != "") {
-                            ${"voornaam" . $i} = $_POST["voornaam" . $i];
-                            $_SESSION["klantGegevens"]["voornaam" . $i] = ${"voornaam" . $i};
-                            ${"achternaam" . $i} = $_POST["achternaam" . $i];
-                            $_SESSION["klantGegevens"]["achternaam" . $i] = ${"achternaam" . $i};
-                            ${"geboortedatum" . $i} = $_POST["geboortedatum" . $i];
-                            $_SESSION["klantGegevens"]["geboortedatum" . $i] = ${"geboortedatum" . $i};
-                            ${"straat" . $i} = $_POST["straat" . $i];
-                            $_SESSION["klantGegevens"]["straat" . $i] = ${"straat" . $i};
-                            ${"huisnummer" . $i} = $_POST["huisnummer" . $i];
-                            $_SESSION["klantGegevens"]["huisnummer" . $i] = ${"huisnummer" . $i};
-                            ${"postcode" . $i} = $_POST["postcode" . $i];
-                            $_SESSION["klantGegevens"]["postcode" . $i] = ${"postcode" . $i};
-                            ${"woonplaats" . $i} = $_POST["woonplaats" . $i];
-                            $_SESSION["klantGegevens"]["woonplaats" . $i] = ${"woonplaats" . $i};
-                            ${"land" . $i} = $_POST["land" . $i];
-                            $_SESSION["klantGegevens"]["land" . $i] = ${"land" . $i};
-                            if ($i == $aantalPersonen) {
-                                header("location:boekengegevenscheck.php");
-                            }
-                        } else {
-                            if ($i == $aantalPersonen) {
-                                print ("U dient uw gegevens correct in te vullen.");
-                            }
-                        }
-                    }
-                }
-                ?>
             </div>
             <?php include 'footer.php'; ?>
         </div>

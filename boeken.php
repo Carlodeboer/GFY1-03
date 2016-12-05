@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <?php
+session_start();
 include "functions.php";
 ?>
 <html>
@@ -16,7 +18,7 @@ include "functions.php";
             <div id="content">
                 <h2> Boeken </h2>
                 <table>
-                    <form method="POST" action="boeken.php">
+                    <form method="POST" action="boekengegevens.php">
                         <tr>
                             <td>Begindatum* :</td>
                             <td><!--$begindatum--></td>
@@ -61,46 +63,45 @@ include "functions.php";
                                     print ("value=" . $_POST["vakantienaam"]);
                                 }
                                 ?>></td>
-                        </tr><tr>
+                        </tr>
+                        <?php
+                        if (isset($_POST["volgende"])) {
+                            if ($_POST["vakantienaam"] != "") {
+                                $aantalPersonen = $_POST["aantalPersonen"];
+                                $vervoerHeen = $_POST["heen"];
+                                $vervoerTerug = $_POST["terug"];
+                                $locatie = $_POST["locatie"];
+                                if ($_POST["nieuweLocatie"] != "") {
+                                    $locatie = $_POST["nieuweLocatie"];
+                                }
+
+                                if ($_POST["opmerkingen"] != "") {
+                                    $opmerkingen = $_POST["opmerkingen"];
+                                } else {
+                                    $opmerkingen = NULL;
+                                }
+
+                                $vakantienaam = $_POST["vakantienaam"];
+                                $klantGegevensArray = array("aantalPersonen" => $aantalPersonen, "vervoerHeen" => $vervoerHeen, "vervoerTerug" => $vervoerTerug, "locatie" => $locatie, "opmerkingen" => $opmerkingen, "vakantienaam" => $vakantienaam);
+
+
+
+                                if (isset($_SESSION["klantGegevens"])) {
+                                    session_unset($_SESSION["klantGegevens"]);
+                                }
+                                $_SESSION["klantGegevens"] = $klantGegevensArray;
+                            } else {
+                                print("Voer een vakantienaam in.");
+                            }
+                        }
+                        ?>
+                        <tr>
                             <td><input type="submit" name="volgende" value="Volgende"></td>
                         </tr>
                     </form>
                 </table>
-                <?php
-                if (isset($_POST["volgende"])) {
-                    if ($_POST["vakantienaam"] != "") {
-                        $aantalPersonen = $_POST["aantalPersonen"];
-                        $vervoerHeen = $_POST["heen"];
-                        $vervoerTerug = $_POST["terug"];
-                        $locatie = $_POST["locatie"];
-                        if ($_POST["nieuweLocatie"] != "") {
-                            $locatie = $_POST["nieuweLocatie"];
-                        }
-
-                        if ($_POST["opmerkingen"] != "") {
-                            $opmerkingen = $_POST["opmerkingen"];
-                        } else {
-                            $opmerkingen = NULL;
-                        }
-
-                        $vakantienaam = $_POST["vakantienaam"];
-                        $klantGegevensArray = array("aantalPersonen" => $aantalPersonen, "vervoerHeen" => $vervoerHeen, "vervoerTerug" => $vervoerTerug, "locatie" => $locatie, "opmerkingen" => $opmerkingen, "vakantienaam" => $vakantienaam);
-                        session_start();
-                        
-                        
-                        if (isset($_SESSION["klantGegevens"])) {
-                            session_unset($_SESSION["klantGegevens"]);
-                        }
-                        $_SESSION["klantGegevens"] = $klantGegevensArray;
-                        header("location: boekengegevens.php");
-                    } else {
-                        print("Voer een vakantienaam in.");
-                    }
-                }
-                ?>
             </div>
-            <?php include 'footer.php';
-            ?>
+            <?php include 'footer.php'; ?>
         </div>
     </body>
 </html>
