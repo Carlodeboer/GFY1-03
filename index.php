@@ -24,7 +24,7 @@
                     include "functions.php";
                     $content = laadContent("","");
                     print "<h2>".$content['title']."</h2>";
-                    print "</p>".$content['bodytext']."</p>";
+                    print "<p>".$content['bodytext']."</p>";
                 ?>
             </div>
             <?php include 'footer.php';?>
