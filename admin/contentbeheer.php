@@ -4,7 +4,8 @@
             <td>Pagina:</td>
             <td><select name="pagina">
                     <option value="index">Thuispagina</option>
-                    <option value="info">Informatie</option></td>
+                    <option value="info">Informatie</option>
+                    <option value="prijzen">Prijze </option></td>
         </tr><tr>
             <td>Taal:</td>
             <td><select name="taal">
