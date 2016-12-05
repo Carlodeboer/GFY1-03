@@ -21,11 +21,17 @@ function selecteerTaal(){
     return $taal;
 }
 
-function laadContent(){
-    $bestandsnaam = $_SERVER['PHP_SELF'];
-    $verwijder = ["GFY1-03", "/", ".php"];
-    $pagina = str_replace($verwijder, "", $bestandsnaam);
-    $taal = selecteerTaal();
+function laadContent($bestandsnaam, $taal){
+    if ($bestandsnaam == ""){
+        $bestandsnaam = $_SERVER['PHP_SELF'];
+        $verwijder = ["GFY1-03", "/", ".php"];
+        $pagina = str_replace($verwijder, "", $bestandsnaam);
+    } else {
+        $pagina = $bestandsnaam;
+    }
+    if ($taal == ""){
+        $taal = selecteerTaal();
+    }
     $pdo = newPDO();
     $stmt = $pdo->prepare("SELECT title,bodytext
                             FROM content
