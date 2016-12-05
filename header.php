@@ -1,11 +1,11 @@
 <div id="banner">
-  <h2> Offroad Compass Portugal </h2>
+  <a href="index.php"><h2> Offroad Compass Portugal </h2></a>
 
   <span id="talenknoppen">
   <form method="GET" action=<?php print "\"".$_SERVER['PHP_SELF']."\""?>>
-      <input class="taalbutton" id="NLD" type="submit" name="lang" value="">
-      <input class="taalbutton" id="ENG" type="submit" name="lang" value="">
-      <input class="taalbutton" id="DEU" type="submit" name="lang" value="">
+      <input class="taalbutton" id="NLD" type="submit" name="lang" value="NLD">
+      <input class="taalbutton" id="ENG" type="submit" name="lang" value="ENG">
+      <input class="taalbutton" id="DEU" type="submit" name="lang" value="DEU">
   </form>
   </span>
 
