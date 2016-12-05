@@ -1,28 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Motorcross</title>
-        <?php include 'head.php';?>
-
+    <title>Motorcross</title>
+    <?php include 'head.php';?>
 </head>
     <body>
         <div id="container">
           <?php include 'header.php';?>
-
           <div id="content">
             <?php
                 include "functions.php";
-                $pagina = "info";
-                $taal = "NLD";
-                $content = laadContent($taal,$pagina);
-
+                $content = laadContent("","");
                 print "<h2>".$content['title']."</h2>";
-                print "</p>".$content['bodytext']."</p>";
+                print "<p>".$content['bodytext']."</p>";
                 ?>
           </div>
-
           <?php include 'footer.php';?>
-
         </div>
     </body>
 </html>
