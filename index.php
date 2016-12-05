@@ -34,6 +34,10 @@
             <?php
 
 
+if(!isset($_GET['lang'])){
+$_GET['lang'] = 'NLD';
+}
+
 if(isset($_GET['lang'])){
   $lang = $_GET['lang'];
 
