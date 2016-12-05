@@ -14,6 +14,7 @@ include "functions.php";
         <div id="container">
             <?php include 'header.php'; ?>
             <div id="content">
+              <div id="contentwrapper">
                 <h2> Galerij </h2>
                 <?php
                 $folder_path = 'portugalpicture/'; //map van de afbeelding(en)
@@ -38,9 +39,10 @@ include "functions.php";
                 }
                 closedir($folder);
                 ?>
+              </div>
             </div>
             <?php include 'footer.php';?>
         </div>
-      <script src="js/lightbox.js"></script>  
+      <script src="js/lightbox.js"></script>
     </body>
 </html>

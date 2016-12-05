@@ -11,6 +11,7 @@
             include 'header.php';
             ?>
             <div id="content">
+              <div id="contentwrapper">
                 <?php
                 if (isset($_POST["verzenden"])) {
                     $week = $_POST["vakantiejaar"];
@@ -39,7 +40,7 @@
                     $opmerking = $row["opmerking"];
                     $status = $row["status"];
                     $betaling = $row["betaling"];
-                    ?> 
+                    ?>
 
                     <table>
                         <tr>
@@ -132,6 +133,7 @@
                     $pdo = NULL;
                 }
                 ?>
+              </div>
             </div>
         </div>
     </body>

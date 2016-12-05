@@ -12,13 +12,14 @@
           <?php include 'header.php';?>
 
             <div id="content">
+              <div id="contentwrapper">
                 <h2> Login </h2>
                 <form method="POST" action="reisinformatie.php">
                     Vakantieweek: <input type="text" name="vakantiejaar"><br><br>
                     Vakantienaam: <input type="text" name="vakantienaam"><br>
                     <input type="submit" name="verzenden" value="Reisinfo">
                 </form>
-                
+              </div>
             </div>
             <?php include 'footer.php';?>
         </div>

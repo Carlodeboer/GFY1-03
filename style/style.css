@@ -15,9 +15,14 @@ footer{
   height:175px;
   width:100%;
   background:#545454;
-  padding:25px 230px;
+  padding:25px 25px;
   box-sizing: border-box;
   color:#fff;
+}
+#footerwrapper{
+  position: relative;
+  margin:0 auto;
+  width: 1100px;
 }
 #container{
   width: 100%;
@@ -97,13 +102,18 @@ ul a{
 }
 
 #content{
+  position: relative;
   background:#fff;
   width:100%;
   overflow-x: hidden;
-  padding:25px 230px;
+  padding:25px 25px;
   box-sizing: border-box;
 }
-
+#contentwrapper{
+  position: relative;
+  margin: 0 auto;
+  width: 1100px;
+}
 #content p{
   width:500px;
   padding: 15px 0;

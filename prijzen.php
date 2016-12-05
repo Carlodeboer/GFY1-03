@@ -13,6 +13,7 @@
             <?php include 'header.php'; ?>
 
             <div id="content">
+              <div id="contentwrapper">
                 <?php
                     include "functions.php";
                     $content = laadContent("","");
@@ -22,6 +23,7 @@
                 <form method="POST" action="boeken.php">
                     <input type="submit" value="Boeken">
                 </form>
+              </div>
             </div>
             <?php include 'footer.php'; ?>
         </div>

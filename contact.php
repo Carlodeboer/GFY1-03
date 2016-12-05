@@ -9,6 +9,7 @@
         <div id="container">
           <?php include 'header.php';?>
             <div id="content">
+              <div id="contentwrapper">
               <h2> Contact </h2>
             <form name="contactform" method="post" action="contactscript.php">
             <table width="450px">
@@ -75,7 +76,7 @@
             </table>
             <div class="g-recaptcha" data-sitekey="6LdvmA0UAAAAANG5pBHPYoqw1-MTYUJRngrA88zK"></div>
             </form>
-
+          </div>
           </div>
         <?php include 'footer.php';?>
         </div>
