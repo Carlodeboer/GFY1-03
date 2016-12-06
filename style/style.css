@@ -145,8 +145,9 @@ ul a{
 }
 
 #nieuws {
-  width:50%;
+  width:100%;
   padding:10px;
+  border:1px solid black;
 
   background-color:lightgrey;
 
@@ -172,6 +173,7 @@ ul a{
 }
 
 .btn-main {
+  /*background-color: #333;*/
   background-color: #333;
   color: #fff;
   font-family: 'Raleway', sans-serif;

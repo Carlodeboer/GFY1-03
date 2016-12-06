@@ -92,7 +92,7 @@
                                 <?php
                             }
                             ?>
-                        <tr><td><input type='submit' name='afronden' value='Afronden'></td></tr>
+                        <tr><td><input type='submit' name='afronden' value='Afronden' class="btn-main"></td></tr>
                     </form>
                 </table>
             </div>

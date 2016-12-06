@@ -98,7 +98,7 @@ include "functions.php";
                         }
                         ?>
                         <tr>
-                            <td><input type="submit" name="volgende" value="Volgende"></td>
+                            <td><input type="submit" name="volgende" value="Volgende" class="btn-main"></td>
                         </tr>
                     </form>
                 </table>

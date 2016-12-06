@@ -16,8 +16,8 @@
                 <h2> Login </h2>
                 <form method="POST" action="reisinformatie.php">
                     Vakantieweek: <input type="text" name="vakantiejaar"><br><br>
-                    Vakantienaam: <input type="text" name="vakantienaam"><br>
-                    <input type="submit" name="verzenden" value="Reisinfo">
+                    Vakantienaam: <input type="text" name="vakantienaam"><br><br>
+                    <input type="submit" name="verzenden" value="Reisinfo" class="btn-main">
                 </form>
               </div>
             </div>

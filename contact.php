@@ -70,7 +70,7 @@
 
             <tr>
              <td colspan="2" style="text-align:center">
-              <input type="submit" value="Submit">
+              <input type="submit" value="Verzenden" class="btn-main">
              </td>
             </tr>
             </table>

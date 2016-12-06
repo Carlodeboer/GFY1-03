@@ -108,7 +108,7 @@
                     <tr>
                         <td>
                             <form method="GET" action="boekengegevenscheckafronden.php">
-                                <input type="submit" name="afronden" value="Afronden">
+                                <input type="submit" name="afronden" value="Afronden" class="btn-main">
                             </form>
                         </td>
                     </tr>

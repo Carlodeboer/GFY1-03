@@ -55,7 +55,23 @@ if (isset($_POST['plaatsnieuws'])) {
 }
 
 
+    $stmt = $pdo->prepare("SELECT id,lang,title,bodytext,posted
+                            FROM nieuwsbericht");
+    $stmt->execute();
 ?>
+<br><br><br>
+<div>
+<table>
+<th>ID</th><th>Taal</th><th>Titel</th><th>Bericht</th><th>Datum</th>
+
+<?php
+    while($content = $stmt->fetch()) {
+echo "<tr><td>" . $content['id'] . "</td><td>" . $content['lang'] . "</td><td>" . $content['title'] . "</td><td>" . $content['bodytext']. "</td><td>" . $content['posted'] . "</td></tr> ";
+}
+?>
+
+</table>
+</div>
 
 
 
