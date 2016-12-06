@@ -1,3 +1,4 @@
+<br><br>
 <form name="contactform" method="post" action="/GFY1-03/berichtopvraag.php">
 <table width="450px">
 
@@ -12,7 +13,7 @@
 
 <tr>
  <td colspan="2" style="text-align:center">
-  <input type="submit" value="Submit">
+  <br><input type="submit" value="Submit" class="btn-main">
  </td>
 </tr>
 </table>

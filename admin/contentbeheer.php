@@ -1,3 +1,4 @@
+<br><br>
 <table>
     <form method="get" action="beheerpaneel.php?beheer=content">
         <tr>
@@ -13,7 +14,7 @@
                     <option value="ENG">Engels</option>
                     <option value="DEU">Duits</option></td>
         </tr><tr>
-            <td><input type="submit" name="selecteer" value="Verzenden"></td>
+            <td><br><input type="submit" name="selecteer" value="Verzenden" class="btn-main"></td>
         </tr>
     </form>
 </table>

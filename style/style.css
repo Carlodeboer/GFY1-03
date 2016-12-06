@@ -157,6 +157,37 @@ ul a{
   height:200px;
 }
 
+.btn-default {
+  border: 1px solid #333333;
+  color: #333;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 1.3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 15px 50px;
+}
+
+.btn-main {
+  background-color: #333;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 1.3px;
+  padding: 10px 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.btn-main:hover {
+  background: #CF4647;
+      transition: all 0.3s ease 0s;
+}
+
 
 /*galerij*/
 

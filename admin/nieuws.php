@@ -8,16 +8,17 @@
 
 <br><br>
     <form method="post" action="beheerpaneel.php?beheer=nieuws">
-Titel: <input type="text" name="titel"> <br>
+Titel: <input type="text" name="titel"> <br><br>
 
  Taal:       <select name="lang">
             <option value="NLD">Nederlands</option>
             <option value="ENG">Engels</option>
             <option value="DEU">Duits</option>
-        </select> <br>
-Bericht: <input type="text" name="bodytext" size="30"><br>
-<input type="submit" name="plaatsnieuws" value="Plaatsen">
-<input type="reset" value="Annuleren">
+        </select> <br><br>
+<!-- Bericht: <input type="text" name="bodytext" placeholder="Artikel"><br> -->
+​Bericht:<br> <textarea name="bodytext" rows="10" cols="70"></textarea><br><br>
+<input type="submit" name="plaatsnieuws" value="Plaatsen" class="btn-main">
+<input type="reset" value="Annuleren" class="btn-main">
 </form>
 
 
