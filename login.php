@@ -14,11 +14,13 @@
             <div id="content">
               <div id="contentwrapper">
                 <h2> Login </h2>
+                <div class="loginmenu">
                 <form method="POST" action="reisinformatie.php">
                     Vakantieweek: <input type="text" name="vakantiejaar"><br><br>
                     Vakantienaam: <input type="text" name="vakantienaam"><br><br>
-                    <input type="submit" name="verzenden" value="Reisinfo" class="btn-main">
+                    <input type="submit" name="verzenden" value="Reisinformatie ophalen" class="btn-main">
                 </form>
+              </div>
               </div>
             </div>
             <?php include 'footer.php';?>

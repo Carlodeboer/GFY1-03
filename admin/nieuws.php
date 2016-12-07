@@ -7,6 +7,7 @@
 
 
 <br><br>
+<h3>Nieuw nieuwsbericht toevoegen</h3><br>
     <form method="post" action="beheerpaneel.php?beheer=nieuws">
 Titel: <input type="text" name="titel"> <br><br>
 
@@ -19,6 +20,12 @@ Titel: <input type="text" name="titel"> <br><br>
 ​Bericht:<br> <textarea name="bodytext" rows="10" cols="70"></textarea><br><br>
 <input type="submit" name="plaatsnieuws" value="Plaatsen" class="btn-main">
 <input type="reset" value="Annuleren" class="btn-main">
+</form>
+
+<br><br>
+
+<form method="post" action="beheerpaneel.php?beheer=nieuwsbewerken">
+<input type="submit" name="nieuwsbewerken" value="Artikelen bewerken" class="btn-main">
 </form>
 
 
@@ -53,30 +60,6 @@ if (isset($_POST['plaatsnieuws'])) {
         }
     }
 }
-
-
-    $stmt = $pdo->prepare("SELECT id,lang,title,bodytext,posted
-                            FROM nieuwsbericht");
-    $stmt->execute();
 ?>
-<br><br><br>
-<div>
-<table>
-<th>ID</th><th>Taal</th><th>Titel</th><th>Bericht</th><th>Datum</th>
-
-<?php
-    while($content = $stmt->fetch()) {
-echo "<tr><td>" . $content['id'] . "</td><td>" . $content['lang'] . "</td><td>" . $content['title'] . "</td><td>" . $content['bodytext']. "</td><td>" . $content['posted'] . "</td></tr> ";
-}
-?>
-
-</table>
-</div>
-
-
-
-
-
-
     </body>
 </html>

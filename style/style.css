@@ -153,9 +153,37 @@ ul a{
 
 }
 
+.loginmenu {
+    width:250px;
+    padding:30px;
+        margin: auto;
+
+/*    border-style:solid;
+    border-color:green;*/
+    /*background-color:lightgrey;*/
+}
+
+#nieuwsbewerken td, #nieuwsbewerken th {
+  padding:10px;
+}
+
+#nieuwsbewerken tr:hover {
+  background-color:lightgrey;
+}
+
 .nieuwstext {
   width:300px;
   height:200px;
+}
+
+#nieuwslinks {
+  float:left;
+  width:800px;
+
+}
+
+#nieuwsrechts {
+  
 }
 
 .btn-default {

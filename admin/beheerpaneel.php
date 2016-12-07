@@ -43,6 +43,8 @@
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
                             } elseif ($_GET['beheer'] == "nieuws"){
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
+                            } elseif ($_GET['beheer'] == "nieuwsbewerken"){
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
                             }
                         } elseif (isset($_SESSION['beheer']) && isset($_GET['selecteer'])) {
                             $_SESSION['paginaEdit'] = $_GET['pagina'];
