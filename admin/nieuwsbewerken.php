@@ -87,6 +87,7 @@ Datum: <input type="text" name="datum" value="<?php print($content['posted']);?>
 <!-- Bericht: <input type="text" name="bodytext" placeholder="Artikel"><br> -->
 ​Bericht:<br> <textarea name="bodytext" rows="10" cols="70" ><?php print($content['bodytext']);?></textarea><br><br>
 <input type="submit" name="updaten" value="Updaten" class="btn-main">
+<input type="submit" name="verwijderen" value="###VERWIJDEREN NOG MAKEN###" class="btn-main">
 </form>
 
 <br><br>
