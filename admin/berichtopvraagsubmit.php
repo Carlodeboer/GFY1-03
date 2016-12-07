@@ -1,3 +1,9 @@
+<?php
+    if(!defined('adminToegang')) {
+       header("Location: ../index.php");
+       exit();
+    }
+?>
 <br><br>
 <form name="contactform" method="post" action="beheerpaneel.php?beheer=berichtopvraag">
 <table width="450px">

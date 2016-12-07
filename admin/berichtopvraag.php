@@ -1,4 +1,8 @@
 <?php
+    if(!defined('adminToegang')) {
+       header("Location: ../index.php");
+       exit();
+    }
     include '../dbconnect.php';
     //idbericht, voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum
      //$berichten = $pdo->prepare("SELECT * FROM contactformulier WHERE email = $_POST['email']");
