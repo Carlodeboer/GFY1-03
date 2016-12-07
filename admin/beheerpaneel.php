@@ -28,19 +28,39 @@
                         // zo ja, dan wordt de bijbehorende pagina geladen
                         if (isset($_GET['beheer'])){
                             $_SESSION['beheer'] = $_GET['beheer'];
-                            if ($_GET['beheer'] == "content"){
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
-                            } elseif ($_GET['beheer'] == "agenda"){
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
-                            } elseif ($_GET['beheer'] == "afbeelding"){
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/imageupload.php';
-                            } elseif ($_GET['beheer'] == "berichtopvraag"){
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
-                            } elseif ($_GET['beheer'] == "nieuws"){
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
-                            } elseif ($_GET['beheer'] == "nieuwsbewerken"){
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
+                            switch ($_GET['beheer']){
+                                case "content":
+                                    include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
+                                    break;
+                                case "agenda":
+                                    include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
+                                    break;
+                                case "afbeelding":
+                                    include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/imageupload.php';
+                                    break;
+                                case "berichtopvraag":
+                                    include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
+                                    break;
+                                case "nieuws":
+                                    include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
+                                    break;
+                                case "nieuwsbewerken":
+                                    include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
+                                    break;
                             }
+                            // if ($_GET['beheer'] == "content"){
+                            //     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
+                            // } elseif ($_GET['beheer'] == "agenda"){
+                            //     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
+                            // } elseif ($_GET['beheer'] == "afbeelding"){
+                            //     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/imageupload.php';
+                            // } elseif ($_GET['beheer'] == "berichtopvraag"){
+                            //     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
+                            // } elseif ($_GET['beheer'] == "nieuws"){
+                            //     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
+                            // } elseif ($_GET['beheer'] == "nieuwsbewerken"){
+                            //     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
+                            // }
                         }
                         // Controleert of de gebruiker in 'contentbeheer' een pagina heeft geselecteerd
                         // die hij wil bewerken. Zo ja, dan wordt de bijbehorende pagina geladen en kan
