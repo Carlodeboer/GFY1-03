@@ -42,6 +42,18 @@ function laadContent($bestandsnaam, $taal){
     return $content;
 }
 
+function knopjes(){
+    $taal = selecteerTaal();
+    if ($taal == "NLD"){
+        $knopjes = ["Home", "Accommodaties", "Prijzen", "Contact", "Login", "Galerij"];
+    } elseif ($taal == "ENG"){
+        $knopjes = ["Home", "Accommodations", "Pricing", "Contact", "Login", "Gallery"];
+    } elseif ($taal = "DEU"){
+        $knopjes = ["Home", "Unterkunft", "Preis", "Kontakt", "Login", "Galerie"];
+    }
+    return $knopjes;
+}
+
 function laadNieuws($id, $lang){
 
     if($_GET['lang'] == $lang){

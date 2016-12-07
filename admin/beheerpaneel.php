@@ -14,7 +14,7 @@
                     // Controleert of de gebruiker als admin is aangemeld
                     if (isset($_SESSION['admin_session'])) {
                         define("adminToegang", true);
-                        include '../functions.php';
+                        //include '../functions.php';
                         $succes = false;
                         // Controleert of een pagina geupdate moet worden
                         if(isset($_POST['verzenden'])){

@@ -15,7 +15,7 @@
             <div id="content">
               <div id="contentwrapper">
                 <?php
-                    include "functions.php";
+                    //include "functions.php";
                     $content = laadContent("","");
                     print "<h2>".$content['title']."</h2>";
                     print "<p>".$content['bodytext']."</p>";

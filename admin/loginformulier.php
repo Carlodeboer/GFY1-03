@@ -1,9 +1,3 @@
-<?php
-    if(!defined('adminToegang')) {
-       header("Location: ../index.php");
-       exit();
-    }
-?>
 <div id="content">
     <div id="contentwrapper">
         <div class="loginmenu">

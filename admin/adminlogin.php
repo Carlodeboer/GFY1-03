@@ -8,7 +8,7 @@
         <div id="container">
           <?php
                 include '../header.php';
-                include '../functions.php';
+                //include '../functions.php';
                 if (isset($_SESSION['admin_session'])){
                     header("Location: beheerpaneel.php");
                 } elseif (isset($_POST['naam'])) {
