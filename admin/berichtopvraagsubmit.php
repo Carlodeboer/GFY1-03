@@ -1,5 +1,11 @@
+<?php
+    if(!defined('adminToegang')) {
+       header("Location: ../index.php");
+       exit();
+    }
+?>
 <br><br>
-<form name="contactform" method="post" action="/GFY1-03/berichtopvraag.php">
+<form name="contactform" method="post" action="beheerpaneel.php?beheer=berichtopvraag">
 <table width="450px">
 
 <tr>
@@ -13,7 +19,7 @@
 
 <tr>
  <td colspan="2" style="text-align:center">
-  <br><input type="submit" value="Submit" class="btn-main">
+  <br><input type="submit" name="zoekBerichten" value="Submit" class="btn-main">
  </td>
 </tr>
 </table>

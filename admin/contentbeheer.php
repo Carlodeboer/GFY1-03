@@ -1,3 +1,9 @@
+<?php
+    if(!defined('adminToegang')) {
+       header("Location: ../index.php");
+       exit();
+    }
+?>
 <br><br>
 <table>
     <form method="get" action="beheerpaneel.php?beheer=content">
@@ -14,7 +20,7 @@
                     <option value="ENG">Engels</option>
                     <option value="DEU">Duits</option></td>
         </tr><tr>
-            <td><br><input type="submit" name="selecteer" value="Verzenden" class="btn-main"></td>
+            <td><br><input type="submit" name="selecteerContent" value="Verzenden" class="btn-main"></td>
         </tr>
     </form>
 </table>

@@ -1,3 +1,9 @@
+<?php
+    if(!defined('adminToegang')) {
+       header("Location: ../index.php");
+       exit();
+    }
+?>
 <br><br>
 <table>
     <form method="POST" action="beheerpaneel.php?beheer=content">

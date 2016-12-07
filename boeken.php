@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-include "functions.php";
+//include "functions.php";
 ?>
 <html>
     <head>

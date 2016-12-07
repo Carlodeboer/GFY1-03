@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-include "functions.php";
+//include "functions.php";
 ?>
 <html>
     <head>
