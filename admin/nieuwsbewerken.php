@@ -11,7 +11,7 @@
 <?php
 
     include"../dbconnect.php";
-    $stmt = $pdo->prepare("SELECT id,lang,title,bodytext,posted
+    $stmt = $pdo->prepare("SELECT id,lang,title,description,bodytext,posted
                             FROM nieuwsbericht");
     $stmt->execute();
 ?>
@@ -19,11 +19,11 @@
 <div id="nieuwslinks">
 <div id="nieuwsbewerken">
 <table>
-<th>ID</th><th>Taal</th><th>Titel</th><th>Bericht</th><th>Datum</th>
+<th>ID</th><th>Taal</th><th>Titel</th><th>Omschrijving</th><th>Bericht</th><th>Datum</th>
 
 <?php
     while($content = $stmt->fetch()) {
-echo "<tr onclick=\"location='beheerpaneel.php?beheer=nieuwsbewerken&berichtId={$content['id']}'\"><td>" . $content['id'] . "</td><td>" . $content['lang'] . "</td><td>" . $content['title'] . "</td><td>" . $content['bodytext']. "</td><td>" . $content['posted'] . "</td></tr> ";
+echo "<tr onclick=\"location='beheerpaneel.php?beheer=nieuwsbewerken&berichtId={$content['id']}'\"><td>" . $content['id'] . "</td><td>" . $content['lang'] . "</td><td>" . $content['title'] . "</td><td>" . $content['description'] ."</td><td>" . $content['bodytext']. "</td><td>" . $content['posted'] . "</td></tr> ";
 }
 ?>
 
@@ -43,7 +43,7 @@ echo "<tr onclick=\"location='beheerpaneel.php?beheer=nieuwsbewerken&berichtId={
 if(isset($_GET['berichtId'])) {
     $berichtId = $_GET['berichtId'];
 
-        $stmt = $pdo->prepare("SELECT id,lang,title,bodytext,posted
+        $stmt = $pdo->prepare("SELECT id,lang,title,description,bodytext,posted
                             FROM nieuwsbericht
                             WHERE id=?");
             $stmt->execute(array($berichtId));
@@ -67,12 +67,15 @@ switch($content['lang']) {
 } 
 
 
+
 ?>
 
 
 
     <form method="post">
 Titel: <input type="text" name="titel" value="<?php print($content['title']);?>"> <br><br>
+Omschrijving: <input type="text" name="omschrijving" value="<?php print($content['description']);?>"> <br><br>
+
 Datum: <input type="text" name="datum" value="<?php print($content['posted']);?>"> <br><br>
 
  Taal:       <select name="lang">
@@ -98,6 +101,7 @@ Datum: <input type="text" name="datum" value="<?php print($content['posted']);?>
 if (isset($_POST['updaten'])) {
     $titel = $_POST['titel'];
     $lang = $_POST['lang'];
+    $omschrijving = $_POST['omschrijving'];
     $posted = $_POST['datum'];
     $bodytext = $_POST['bodytext'];
         $berichtId = $_GET['berichtId'];
@@ -111,10 +115,10 @@ if (isset($_POST['updaten'])) {
 
     $pdo = newPDO();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $pdo->prepare("UPDATE nieuwsbericht SET lang=?, title=?, bodytext=?, posted=? WHERE id=?");
+        $stmt = $pdo->prepare("UPDATE nieuwsbericht SET lang=?, title=?, description=?, bodytext=?, posted=? WHERE id=?");
                     try
     { 
-        $stmt->execute(array($lang, $titel, $bodytext, $posted, $berichtId));
+        $stmt->execute(array($lang, $titel, $omschrijving, $bodytext, $posted, $berichtId));
     }
         catch (PDOException $e)
     {
