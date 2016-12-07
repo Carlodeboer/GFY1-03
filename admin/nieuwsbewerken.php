@@ -19,11 +19,11 @@
 <div id="nieuwslinks">
 <div id="nieuwsbewerken">
 <table>
-<th>ID</th><th>Taal</th><th>Titel</th><th>Omschrijving</th><th>Bericht</th><th>Datum</th>
+<th>ID</th><th>Taal</th><th>Titel</th><th>Omschrijving</th><th>Datum</th>
 
 <?php
     while($content = $stmt->fetch()) {
-echo "<tr onclick=\"location='beheerpaneel.php?beheer=nieuwsbewerken&berichtId={$content['id']}'\"><td>" . $content['id'] . "</td><td>" . $content['lang'] . "</td><td>" . $content['title'] . "</td><td>" . $content['description'] ."</td><td>" . $content['bodytext']. "</td><td>" . $content['posted'] . "</td></tr> ";
+echo "<tr onclick=\"location='beheerpaneel.php?beheer=nieuwsbewerken&berichtId={$content['id']}'\"><td>" . $content['id'] . "</td><td>" . $content['lang'] . "</td><td>" . $content['title'] . "</td><td>" . $content['description'] ."</td><td>"  . $content['posted'] . "</td></tr> ";
 }
 ?>
 
