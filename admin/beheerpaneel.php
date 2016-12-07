@@ -46,11 +46,16 @@
                             } elseif ($_GET['beheer'] == "nieuwsbewerken"){
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
                             }
-                        } elseif (isset($_SESSION['beheer']) && isset($_GET['selecteer'])) {
+                        }
+                        if (isset($_SESSION['beheer']) && isset($_GET['selecteerContent'])) {
                             $_SESSION['paginaEdit'] = $_GET['pagina'];
                             $_SESSION['taalEdit'] = $_GET['taal'];
                             $content = laadContent($_SESSION['paginaEdit'], $_SESSION['taalEdit']);
                             include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/moetnogeennaamverzinnen.php';
+                        } elseif (isset($_SESSION['beheer']) && isset($_POST['zoekBerichten'])) {
+                            print "test";
+                            $_SESSION['email'] = $_POST['email'];
+                            include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraag.php';
                         }
                     }
                     else {
