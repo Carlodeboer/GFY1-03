@@ -76,7 +76,7 @@ Titel: <input type="text" name="titel" value="<?php print($content['title']);?>"
 Datum: <input type="text" name="datum" value="<?php print($content['posted']);?>"> <br><br>
 
  Taal:       <select name="lang">
-            <!-- <option selected="<?php print($content['lang'])?>" disabled hidden><?php print($taal);?></option> -->
+            <option selected="<?php print($content['lang'])?>"><?php print($taal);?></option>
             <option value="NLD">Nederlands</option>
             <option value="ENG">Engels</option>
             <option value="DEU">Duits</option>

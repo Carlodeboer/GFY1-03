@@ -55,10 +55,10 @@ function laadNieuws($id, $lang){
     $pdo = null;
 
     // return $content;
-                print("<p>{$nieuws['title']} geplaatst op {$nieuws['posted']} <br><br> {$nieuws['bodytext']}</p> <br><br>");
+                print("<p>{$nieuws['title']} geplaatst op {$nieuws['posted']} <br><br> {$nieuws['bodytext']}</p> <br><hr><br>");
 
                         // print("{$nieuws['title']}     {$nieuws['posted']} <br><br> {$nieuws['bodytext']} <br><br><br>");
-}
+} 
 }
 
 // werkt nog niet, is alleen een begin
