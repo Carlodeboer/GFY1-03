@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 body{
+  height:100%;
   margin:0 0 10px 0;
   padding:0;
 }
@@ -184,6 +185,13 @@ ul a{
 
 #nieuwsrechts {
   
+}
+
+hr {
+height: 1px;
+color: grey;
+background-color: grey;
+border: none;
 }
 
 .btn-default {
