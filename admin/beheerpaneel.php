@@ -28,22 +28,22 @@
                         if (isset($_GET['beheer'])){
                             $_SESSION['beheer'] = $_GET['beheer'];
                             switch ($_GET['beheer']){
-                                case "content":
+                                case "Content":
                                     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
                                     break;
-                                case "agenda":
+                                case "Agenda":
                                     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
                                     break;
-                                case "afbeelding":
+                                case "Afbeelding":
                                     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/imageupload.php';
                                     break;
-                                case "berichtopvraag":
+                                case "Berichtopvraag":
                                     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
                                     break;
-                                case "nieuws":
+                                case "Nieuws":
                                     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
                                     break;
-                                case "nieuwsbewerken":
+                                case "Nieuwsbewerken":
                                     include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
                                     break;
                             }
