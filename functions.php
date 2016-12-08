@@ -67,7 +67,7 @@ function laadNieuws($id){
     $pdo = null;
 
     // return $content;
-                print("<p>{$nieuws['title']} geplaatst op {$nieuws['posted']} <br><br> {$nieuws['bodytext']}</p> <br><hr><br>");
+                print("<div class='nieuwsitem'><div class='nieuwstijd'><p>geplaatst op {$nieuws['posted']}</p></div><h3 class='nieuwstitel'>{$nieuws['title']}</h3><p>{$nieuws['bodytext']}</p> </div>");
 
                         // print("{$nieuws['title']}     {$nieuws['posted']} <br><br> {$nieuws['bodytext']} <br><br><br>");
 

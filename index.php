@@ -18,8 +18,6 @@
                     print "<p>".$content['bodytext']."</p>";
                 ?>
 
-
-
             <div id="nieuws">
             <?php
 
@@ -32,8 +30,6 @@
 //   $lang = $_GET['lang'];
 
 // }
-
-
 
 $lang = selecteerTaal();
 
