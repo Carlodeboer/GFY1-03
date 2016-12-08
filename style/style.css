@@ -77,16 +77,16 @@ footer{
 .taalbutton:hover{
   opacity: 0.8;
 }
-ul{
+nav ul{
   margin: 0 auto;
   padding:0;
   overflow: hidden;
-  width:1033px
+  width:1105px;
 }
 nav li{
   white-space:nowrap;
   list-style: none;
-  padding:0 55px;
+  padding:0 63px;
   line-height: 40px;
   color: #000;
   transition: background-color 0.4s;
@@ -201,7 +201,7 @@ border: none;
 .btn-default {
   /*border: 1px solid #333333;*/
   color: #333;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 600;
   font-size: 10px;
   letter-spacing: 1.3px;
