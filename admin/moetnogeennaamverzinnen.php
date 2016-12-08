@@ -5,6 +5,7 @@
     }
 ?>
 <br><br>
+<div id="contentwrapper">
 <table>
     <form method="POST" action="beheerpaneel.php?beheer=content">
         <tr>
@@ -18,5 +19,7 @@
         </tr>
     </form>
 </table>
+
 <br>
 <?php print "<p><a href=\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/beheerpaneel.php?beheer=content\">Terug</a></p><br>"; ?>
+</div>
