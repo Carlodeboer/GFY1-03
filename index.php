@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,8 +26,8 @@
                     print "<h2>".$content['title']."</h2>";
                     print "<p>".$content['bodytext']."</p>";
                 ?>
-              
-           
+
+
 
             <div id="nieuws">
             <?php
@@ -79,7 +76,7 @@ $x=0;
     for ($i=0; $i < $nummer; $i++) {
 $x++;
         laadNieuws($nieuwearray[$x-1],$lang);
-    
+
     }
 
             ?>
