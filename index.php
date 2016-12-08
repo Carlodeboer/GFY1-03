@@ -32,19 +32,19 @@
             <div id="nieuws">
             <?php
 
+//
+// if(!isset($_GET['lang'])){
+// $_GET['lang'] = 'NLD';
+// }
+//
+// if(isset($_GET['lang'])){
+//   $lang = $_GET['lang'];
 
-if(!isset($_GET['lang'])){
-$_GET['lang'] = 'NLD';
-}
-
-if(isset($_GET['lang'])){
-  $lang = $_GET['lang'];
-
-}
-
-
+// }
 
 
+
+$lang = selecteerTaal();
 
         $stmt = $pdo->prepare("SELECT id FROM nieuwsbericht WHERE lang=?");
         $stmt->execute(array($lang));
@@ -76,7 +76,7 @@ $nieuwearray = array_reverse($nieuwearray);
 
     for ($i=0; $i < $nummer; $i++) {
 $x++;
-        laadNieuws($nieuwearray[$x-1],$lang);
+        laadNieuws($nieuwearray[$x-1]);
 
     }
 

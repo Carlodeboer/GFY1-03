@@ -54,15 +54,15 @@ function knopjes(){
     return $knopjes;
 }
 
-function laadNieuws($id, $lang){
+function laadNieuws($id){
 
-    if($_GET['lang'] == $lang){
+
 
     $pdo = newPDO();
     $stmt = $pdo->prepare("SELECT title,bodytext,posted
                             FROM nieuwsbericht
                             WHERE id=? AND lang=?");
-    $stmt->execute(array($id, $lang));
+    $stmt->execute(array($id, selecteerTaal()));
     $nieuws = $stmt->fetch();
     $pdo = null;
 
@@ -70,7 +70,7 @@ function laadNieuws($id, $lang){
                 print("<p>{$nieuws['title']} geplaatst op {$nieuws['posted']} <br><br> {$nieuws['bodytext']}</p> <br><hr><br>");
 
                         // print("{$nieuws['title']}     {$nieuws['posted']} <br><br> {$nieuws['bodytext']} <br><br><br>");
-} 
+
 }
 
 // werkt nog niet, is alleen een begin
