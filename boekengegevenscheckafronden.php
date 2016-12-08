@@ -10,7 +10,7 @@
                 <?php
                 if (isset($_GET["afronden"])) {
                     extract($_SESSION["klantGegevens"]);
-                    print_r($_SESSION["klantGegevens"]);
+
                     $pdo = newPDO();
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -29,19 +29,14 @@
 //                    try {
 //                        $stmt3->execute(array($idKlant, "1", $voornaam1, $achternaam1, $adres, $postcode1, $woonplaats1, $telefoonnummer1, $email1));
 //                    } catch (PDOException $e) {
-//                        
+//
 //                    }
 
-
-
-
-
-                    $stmt3 = $pdo->prepare("INSERT INTO klantgegevens (idklant, persoon, voornaam, achternaam, adres, postcode, woonplaats, telefoonnummer, email) VALUES ?,?,?,?,?,?,?,?,?");
+                    $stmt3 = $pdo->prepare("INSERT INTO klantgegevens (idklant, persoon, voornaam, achternaam, adres, postcode, woonplaats, telefoonnummer, email) VALUES (?,?,?,?,?,?,?,?,?)");
                     $stmt3->execute(array($idKlant, "1", $voornaam1, $achternaam1, $adres, $postcode1, $woonplaats1, $telefoonnummer1, $email1));
 
                     //$res = $stmt->rowCount();
                     $pdo = NULL;
-
 //                    if ($res == 2) {
 //                        print("Uw boeking is succesvol verwerkt.");
 //                    } else {
