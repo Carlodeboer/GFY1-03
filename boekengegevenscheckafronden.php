@@ -1,6 +1,3 @@
-<?php
-include "functions.php";
-?>
 <html>
     <head>
         <title>Boeken</title>
@@ -26,8 +23,10 @@ include "functions.php";
                     $row = $stmt2->fetch();
                     $idKlant = $row["max(idKlant)"];
 
-                    $stmt3 = $pdo->prepare("INSERT INTO klantgegevens (idKlant, persoon, voornaam, achternaam, adres, postcode, woonplaats, telefoonnummer, email) VALUES ?,?,?,?,?,?,?,?,?");
-                    $stmt3->execute(array($idKlant, "1", $voornaam1, $achternaam1, ($straat1 . $huisnummer1), $postcode1, $woonplaats1, $telefoonnummer1, "Sjaak"));
+                    $adres = ($straat1 . " " . $huisnummer1);
+
+                    $stmt3 = $pdo->prepare("INSERT INTO klantgegevens (idklant, persoon, voornaam, achternaam, adres, postcode, woonplaats, telefoonnummer, email) VALUES ?,?,?,?,?,?,?,?,?");
+                    $stmt3->execute(array($idKlant, $idKlant, $voornaam1, $achternaam1, $adres, $postcode1, $woonplaats1, $telefoonnummer1, $email1));
 
                     //$res = $stmt->rowCount();
                     $pdo = NULL;

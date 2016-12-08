@@ -9,7 +9,6 @@
         <div id="container">
             <?php
             include 'header.php';
-            include "functions.php";
             ?>
             <div id="content">
                 <?php
@@ -24,6 +23,7 @@
                     toevoegenaanarray("woonplaats", "klantGegevens", $i);
                     toevoegenaanarray("land", "klantGegevens", $i);
                     toevoegenaanarray("telefoonnummer", "klantGegevens", $i);
+                    toevoegenaanarray("email", "klantGegevens", $i);
                 }
                 extract($_SESSION["klantGegevens"]);
                 ?>
@@ -101,6 +101,9 @@
                         </tr><tr>
                             <td>Land:</td>
                             <td><?php print(${"land" . $i}); ?></td>
+                        </tr><tr>
+                            <td>Emailadres:</td>
+                            <td><?php print(${"email" . $i}); ?></td>
                         </tr>
                         <?php
                     }

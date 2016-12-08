@@ -89,6 +89,11 @@
                                         print (" value=" . $_GET["telefoonnummer" . $i]);
                                     }
                                     ?> required></td></tr>
+                            <tr><td>Emailadres* :</td><td><input type='text' name='email<?php print ($i); ?>'<?php
+                                    if (isset($_GET["email" . $i])) {
+                                        print (" value=" . $_GET["email" . $i]);
+                                    }
+                                    ?> required></td></tr>
                                 <?php
                             }
                             ?>
