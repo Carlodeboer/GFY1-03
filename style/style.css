@@ -77,16 +77,18 @@ footer{
 .taalbutton:hover{
   opacity: 0.8;
 }
+nav{
+  overflow: hidden;
+}
 nav ul{
   margin: 0 auto;
   padding:0;
-  overflow: hidden;
-  width:1105px;
+  width:1120px;
 }
 nav li{
   white-space:nowrap;
   list-style: none;
-  padding:0 63px;
+  padding:0 62px;
   line-height: 40px;
   color: #000;
   transition: background-color 0.4s;
