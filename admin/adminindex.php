@@ -4,10 +4,10 @@
        exit();
     }
 ?>
-<form method="GET" action="beheerpaneel.php">
-    <input type="submit" name="beheer" value="content" class="btn-main">
-    <input type="submit" name="beheer" value="agenda" class="btn-main">
-    <input type="submit" name="beheer" value="afbeelding" class="btn-main">
-    <input type="submit" name="beheer" value="berichtopvraag" class="btn-main">
-    <input type="submit" name="beheer" value="nieuws" class="btn-main">
+<form class="stip" method="GET" action="beheerpaneel.php">
+    <input type="submit" name="beheer" value="Content" class="btn-main">
+    <input type="submit" name="beheer" value="Agenda" class="btn-main">
+    <input type="submit" name="beheer" value="Afbeelding" class="btn-main">
+    <input type="submit" name="beheer" value="Berichtopvraag" class="btn-main">
+    <input type="submit" name="beheer" value="Nieuws" class="btn-main">
 </form>
