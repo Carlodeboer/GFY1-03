@@ -9,11 +9,10 @@
             <div id="content">
                 <?php
                 if (isset($_GET["afronden"])) {
-                    session_start();
                     extract($_SESSION["klantGegevens"]);
                     print_r($_SESSION["klantGegevens"]);
-
                     $pdo = newPDO();
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                     $stmt1 = $pdo->prepare("INSERT INTO boeking (aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking) VALUES (?, ?, ?, ?, ?)");
                     $stmt1->execute(array($aantalPersonen, $vervoerHeen, $vervoerTerug, $locatie, $opmerkingen));
@@ -26,7 +25,19 @@
                     $adres = ($straat1 . " " . $huisnummer1);
 
                     $stmt3 = $pdo->prepare("INSERT INTO klantgegevens (idklant, persoon, voornaam, achternaam, adres, postcode, woonplaats, telefoonnummer, email) VALUES ?,?,?,?,?,?,?,?,?");
-                    $stmt3->execute(array($idKlant, $idKlant, $voornaam1, $achternaam1, $adres, $postcode1, $woonplaats1, $telefoonnummer1, $email1));
+
+//                    try {
+//                        $stmt3->execute(array($idKlant, "1", $voornaam1, $achternaam1, $adres, $postcode1, $woonplaats1, $telefoonnummer1, $email1));
+//                    } catch (PDOException $e) {
+//                        
+//                    }
+
+
+
+
+
+                    $stmt3 = $pdo->prepare("INSERT INTO klantgegevens (idklant, persoon, voornaam, achternaam, adres, postcode, woonplaats, telefoonnummer, email) VALUES ?,?,?,?,?,?,?,?,?");
+                    $stmt3->execute(array($idKlant, "1", $voornaam1, $achternaam1, $adres, $postcode1, $woonplaats1, $telefoonnummer1, $email1));
 
                     //$res = $stmt->rowCount();
                     $pdo = NULL;

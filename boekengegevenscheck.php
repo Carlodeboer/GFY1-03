@@ -12,7 +12,6 @@
             ?>
             <div id="content">
                 <?php
-                session_start();
                 for ($i = 1; $i <= $_SESSION["klantGegevens"]["aantalPersonen"]; $i++) {
                     toevoegenaanarray("voornaam", "klantGegevens", $i);
                     toevoegenaanarray("achternaam", "klantGegevens", $i);

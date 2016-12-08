@@ -10,7 +10,6 @@
             <?php include 'header.php'; ?>
             <div id="content">
                 <?php
-                session_start();
                 $aantalPersonen = $_GET["aantalPersonen"];
                 $vervoerHeen = $_GET["heen"];
                 $vervoerTerug = $_GET["terug"];
