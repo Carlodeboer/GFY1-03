@@ -192,8 +192,13 @@ function checkPrivileges($naam){
     return $userRow['privilegeniveau'];
 }
 
-function toevoegenaanarray($naam, $array, $persoon) {
-	${$naam . $persoon} = $_GET[$naam . $persoon];
+function toevoegenAanArray($naam, $array, $persoon) {
+     if ($persoon != "") {
+	${$naam . $persoon} = $_POST[$naam . $persoon];
         return ($_SESSION[$array][$naam . $persoon] = ${$naam . $persoon});
+   } else {
+        $var = $_POST[$naam];
+        return ($_SESSION[$array][$naam] = $var);
+   }
 }
 ?>
