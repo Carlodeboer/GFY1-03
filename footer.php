@@ -5,7 +5,7 @@
     include je de header in een bestand in een andere map-->
     <?php
     if(isset($_SESSION['admin_session']) && strpos($_SERVER['PHP_SELF'], "admin") != false){
-        print "Welkom {$_SESSION['admin_session']} <a href=\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/adminlogout.php\">logout</a><br>";
+        print "<p>Welkom {$_SESSION['admin_session']} <a href=\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/adminlogout.php\">logout</a></p><br>";
     } else {
         print "<a href=\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/adminlogin.php\">admin</a><br>";
     }
