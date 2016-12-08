@@ -56,8 +56,6 @@ function knopjes(){
 
 function laadNieuws($id){
 
-
-
     $pdo = newPDO();
     $stmt = $pdo->prepare("SELECT title,bodytext,posted
                             FROM nieuwsbericht

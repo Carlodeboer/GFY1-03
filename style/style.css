@@ -74,7 +74,7 @@ footer{
     display: inline-block;
 }
 .taalbutton:hover{
-    opacity: 0.8;
+    opacity: 0.7;
 }
 nav{
     overflow: hidden;
@@ -152,7 +152,7 @@ ul a{
 
 #nieuws {
   width:100%;
-  padding:20px;
+  padding:20px 0;
 }
 
 #nieuwsbewerken td, #nieuwsbewerken th {
@@ -170,6 +170,7 @@ ul a{
 .nieuwstijd{
   float: right;
   clear: both;
+  font-size: 12px;
 }
 .nieuwstitel{
 
