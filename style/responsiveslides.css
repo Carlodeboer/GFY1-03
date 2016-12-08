@@ -1,12 +1,14 @@
 /*! http://responsiveslides.com v1.55 by @viljamis */
 
 .rslides {
-  position: relative;
+  position: absolute;
   list-style: none;
   overflow: hidden;
-  width: 100%;
+  width: 2000px;
   padding: 0;
-  margin: 0;
+  margin:0;
+  left:50%;
+  margin-left:-1000px;
   }
 
 .rslides li {
