@@ -8,7 +8,7 @@
 
 <br><br>
 <h3>Nieuw nieuwsbericht toevoegen</h3><br>
-    <form method="post" action="beheerpaneel.php?beheer=nieuws">
+    <form method="post" action="beheerpaneel.php?beheer=Nieuws">
 Titel: <input type="text" name="titel"> <br><br>
 
  Taal:       <select name="lang">
@@ -24,7 +24,7 @@ Titel: <input type="text" name="titel"> <br><br>
 
 <br><br>
 
-<form method="post" action="beheerpaneel.php?beheer=nieuwsbewerken">
+<form method="post" action="beheerpaneel.php?beheer=Nieuwsbewerken">
 <input type="submit" name="nieuwsbewerken" value="Artikelen bewerken" class="btn-main">
 </form>
 
