@@ -72,6 +72,7 @@ $nieuwearray = array();
 
 
 $x=0;
+$nieuwearray = array_reverse($nieuwearray);
 
     for ($i=0; $i < $nummer; $i++) {
 $x++;
