@@ -23,14 +23,14 @@
 
 <?php
     while($content = $stmt->fetch()) {
-echo "<tr onclick=\"location='beheerpaneel.php?beheer=nieuwsbewerken&berichtId={$content['id']}'\"><td>" . $content['id'] . "</td><td>" . $content['lang'] . "</td><td>" . $content['title'] . "</td><td>" . $content['description'] ."</td><td>"  . $content['posted'] . "</td></tr> ";
+echo "<tr onclick=\"location='beheerpaneel.php?beheer=Nieuwsbewerken&berichtId={$content['id']}'\"><td>" . $content['id'] . "</td><td>" . $content['lang'] . "</td><td>" . $content['title'] . "</td><td>" . $content['description'] ."</td><td>"  . $content['posted'] . "</td></tr> ";
 }
 ?>
 
 </table>
 </div>
 <br>
-<form method="post" action="beheerpaneel.php?beheer=nieuws">
+<form method="post" action="beheerpaneel.php?beheer=Nieuws">
 <input type="submit" value="Terug" name="terug" class="btn-main">
 </form>
 </div>
