@@ -7,6 +7,7 @@
 
 
 <br><br>
+<div id="contentwrapper">
 <h3>Nieuw nieuwsbericht toevoegen</h3><br>
     <form method="post" action="beheerpaneel.php?beheer=Nieuws">
 Titel: <input type="text" name="titel"> <br><br>
@@ -28,7 +29,7 @@ Titel: <input type="text" name="titel"> <br><br>
 <input type="submit" name="nieuwsbewerken" value="Artikelen bewerken" class="btn-main">
 </form>
 
-
+</div> 
 
 <?php
         include "../dbconnect.php";
