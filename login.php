@@ -16,11 +16,11 @@ include "dbconnect.php"
                     <form method="POST" action="reisinformatie.php">
                          <table>
                               <tr>
-                                   <td>Vakantienaam:</td>
-                                   <td><input type="text" name="vakantienaam"></td>
+                                   <td>Vakantienaam* :</td>
+                                   <td><input type="text" name="vakantienaam" required></td>
                               </tr><tr>
-                                   <td>Vakantieweek:</td>
-                                   <td><input type="text" name="vakantieweek"></td>
+                                   <td>Vakantieweek* :</td>
+                                   <td><input type="text" name="vakantieweek" required></td>
                               </tr><tr>
                                    <td><input type="submit" name="verzenden" value="Reisinformatie ophalen" class="btn-main"></td>
                               </tr>
