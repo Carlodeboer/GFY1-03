@@ -20,7 +20,6 @@
                                 header("Location: beheerpaneel.php");
                                 exit;
                             } else {
-
                                 print "Deze gebruikers heeft niet voldoende privileges.";
                             }
                         } else {
