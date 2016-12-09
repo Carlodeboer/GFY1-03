@@ -11,7 +11,11 @@
                     <?php
                     if (isset($_POST["afronden"])) {
                          extract($_SESSION["klantGegevens"]);
+
                          $adres = ($straat1 . " " . $huisnummer1);
+
+                         date_default_timezone_set("Europe/Amsterdam");
+                         $weekjaar = date('Wy');
 
                          try {
                               $pdo = newPDO();
@@ -21,7 +25,6 @@
 
                               $stmt1 = $pdo->prepare("INSERT INTO boeking (aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking) VALUES (?, ?, ?, ?, ?)");
                               $stmt1->execute(array($aantalPersonen, $vervoerHeen, $vervoerTerug, $locatie, $opmerkingen));
-                              $res = $stmt1->rowCount();
 
                               $stmt2 = $pdo->prepare("SELECT max(idKlant) FROM boeking");
                               $stmt2->execute(array());
@@ -34,12 +37,16 @@
                                    $stmt3->execute(array($idKlant, $i, ${"voornaam" . $i}, ${"achternaam" . $i}, $adres, ${"postcode" . $i}, ${"woonplaats" . $i}, ${"land" . $i}, ${"geboortedatum" . $i}, ${"telefoonnummer" . $i}, ${"email" . $i}));
 
                               }
-                              $res = $res + $stmt3->rowCount();
+
+                              $stmt4 = $pdo->prepare("INSERT INTO reis (idklant, vakantienaam, weekjaar) VALUES (?, ?, ?)");
+                              $stmt4->execute(array($idKlant, $vakantienaam, $weekjaar));
+
+                              $res = $stmt1->rowCount() + $stmt3->rowCount() + $stmt4->rowCount();
 
                               $pdo->commit();
                               $pdo = NULL;
 
-                              if ($res == 2) {
+                              if ($res == (2 + $aantalPersonen)) {
                                    print("<p>Uw boeking is succesvol verwerkt.</p>");
                               }
                          } catch (Exception $e) {
