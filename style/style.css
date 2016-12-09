@@ -5,9 +5,6 @@ body{
     margin:0 0 10px 0;
     padding:0;
     overflow-x:hidden;
-    background: url(../images/tiretrack.png);
-    background-position: left;
-    background-repeat: repeat-y;
 }
 
 p,li,ul,h1,h2,h3,h4,h5,h6,table,form{
@@ -113,11 +110,14 @@ ul a{
 
 #content{
     position: relative;
-    background:#fff;
+    background-color:#fff;
     width:100%;
     overflow-x: hidden;
     padding:25px 25px;
     box-sizing: border-box;
+    background: url(../images/tiretrack.png);
+    background-position: left;
+    background-repeat: repeat-y;
 }
 #contentwrapper{
     position: relative;
