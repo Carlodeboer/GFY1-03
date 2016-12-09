@@ -9,7 +9,6 @@
                 <div id="contentwrapper">
                     <?php
                     include '../header.php';
-                    //include '../functions.php';
                     if (isset($_SESSION['admin_session'])) {
                         header("Location: beheerpaneel.php");
                     } elseif (isset($_POST['naam'])) {
@@ -20,8 +19,8 @@
                                 header("Location: beheerpaneel.php");
                                 exit;
                             } else {
-
-                                print "Deze gebruikers heeft niet voldoende privileges.";
+                                include 'loginformulier.php';
+                                print "<h1>Deze gebruikers heeft niet voldoende privileges.</h1>";
                             }
                         } else {
                             include 'loginformulier.php';
@@ -30,8 +29,10 @@
                     } else {
                         include 'loginformulier.php';
                     }
-                    ?></div> </div> <?php include '../footer.php'; ?>
-
+                    ?>
+                </div>
+            </div>
+            <?php include '../footer.php'; ?>
         </div>
     </body>
 </html>

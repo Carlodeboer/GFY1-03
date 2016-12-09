@@ -5,7 +5,6 @@ if (!defined('adminToegang')) {
 }
 ?>
 <br><br>
-
 <div id="contentwrapper">
     <table>
         <form method="get" action="beheerpaneel.php?beheer=content">
@@ -26,5 +25,4 @@ if (!defined('adminToegang')) {
             </tr>
         </form>
     </table>
-
 </div>
