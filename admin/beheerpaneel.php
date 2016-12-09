@@ -18,7 +18,7 @@
                         // Controleert of een pagina geupdate moet worden
                         if(isset($_POST['verzenden'])){
                             $succes = editContent($_SESSION['paginaEdit'],$_SESSION['taalEdit'],$_POST['titel'],$_POST['inhoud'],$_SESSION['admin_session']);
-                            print "<p>toegevoegd!</p>";
+                            print "<p>Bewerkt!</p>";
                             unset($_SESSION['paginaEdit']);
                             unset($_SESSION['taalEdit']);
                         }
