@@ -13,7 +13,7 @@ include "dbconnect.php"
           <div id="content">
                <div id="contentwrapper">
                     <h2>Login</h2>
-                    <form method="POST" action="reisinformatie.php">
+                    <form method="POST" action="loginreisinformatie.php">
                          <table>
                               <tr>
                                    <td>Vakantienaam* :</td>

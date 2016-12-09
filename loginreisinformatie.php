@@ -18,7 +18,7 @@
                          $naam = $_POST["vakantienaam"];
 
                          $pdo = newPDO();
-                         $stmt1 = $pdo->prepare("SELECT idklant FROM reis WHERE weekjaar = ? AND vakantienaam = ?");
+                         $stmt1 = $pdo->prepare("SELECT max(idklant) AS idklant FROM reis WHERE weekjaar = ? AND vakantienaam = ?");
                          $stmt1->execute(array($weekJaar, $naam));
                          $row = $stmt1->fetch();
 
