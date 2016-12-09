@@ -17,7 +17,6 @@
                         $week = $_POST["vakantieweek"];
                         $naam = $_POST["vakantienaam"];
 
-                        //include "functions.php";
 
                         $pdo = newPDO();
                         $stmt = $pdo->prepare("SELECT idklant FROM reis WHERE weekjaar = ? AND vakantienaam = ?");

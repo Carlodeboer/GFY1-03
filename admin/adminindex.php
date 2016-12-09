@@ -1,8 +1,8 @@
 <?php
-    if(!defined('adminToegang')) {
-       header("Location: ../index.php");
-       exit();
-    }
+if(!defined('adminToegang')) {
+      header("Location: ../index.php");
+      exit();
+}
 ?>
 <form class="stip" method="GET" action="beheerpaneel.php">
     <input type="submit" name="beheer" value="Content" class="btn-main">

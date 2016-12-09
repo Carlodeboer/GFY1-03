@@ -3,7 +3,6 @@
 <head>
   <?php include 'head.php';?>
         <title>Motorcross</title>
-
 </head>
     <body>
         <div id="container">
@@ -11,65 +10,44 @@
             <div id="content">
               <div id="contentwrapper">
                 <?php
-                include "dbconnect.php";
-                    // include "functions.php";
+                    include "dbconnect.php";
                     $content = laadContent("","");
                     print "<h2>".$content['title']."</h2>";
                     print "<p>".$content['bodytext']."</p>";
                 ?>
+                <div id="nieuws">
+                    <?php
+                        $lang = selecteerTaal();
+                        $stmt = $pdo->prepare("SELECT id FROM nieuwsbericht WHERE lang=?");
+                        $stmt->execute(array($lang));
 
-            <div id="nieuws">
-            <?php
+                        $results = array();
+                        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-//
-// if(!isset($_GET['lang'])){
-// $_GET['lang'] = 'NLD';
-// }
-//
-// if(isset($_GET['lang'])){
-//   $lang = $_GET['lang'];
+                        $nieuwearray = array();
+                        foreach($results as $item) {
+                            $nieuwearray[] = $item['id'];
+                        }
 
-// }
+                        $stmt = $pdo->prepare("SELECT id, COUNT(lang) AS getal FROM nieuwsbericht WHERE lang=? ORDER BY lang");
+                        $stmt->execute(array($lang));
 
-$lang = selecteerTaal();
+                        $nummer = $stmt->fetch();
+                        $id = $nummer['id'];
 
-        $stmt = $pdo->prepare("SELECT id FROM nieuwsbericht WHERE lang=?");
-        $stmt->execute(array($lang));
+                        print($nummer['getal'] . " artikelen.");
 
+                        $nummer = $nummer['getal'];
 
-$results = array();
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$nieuwearray = array();
-    foreach($results as $item) {
-
-        $nieuwearray[] = $item['id'];
-
-    }
-
-        $stmt = $pdo->prepare("SELECT id, COUNT(lang) AS getal FROM nieuwsbericht WHERE lang=? ORDER BY lang");
-        $stmt->execute(array($lang));
-
-    $nummer = $stmt->fetch();
-        $id = $nummer['id'];
-
-    print($nummer['getal'] . " artikelen.");
-
-    $nummer = $nummer['getal'];
-
-
-$x=0;
-$nieuwearray = array_reverse($nieuwearray);
-
-    for ($i=0; $i < $nummer; $i++) {
-$x++;
-        laadNieuws($nieuwearray[$x-1]);
-
-    }
-
-            ?>
-            </div>
-             </div>
+                        $x=0;
+                        $nieuwearray = array_reverse($nieuwearray);
+                        for ($i=0; $i < $nummer; $i++) {
+                            $x++;
+                            laadNieuws($nieuwearray[$x-1]);
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
             <?php include 'footer.php';?>
         </div>
