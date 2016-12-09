@@ -47,7 +47,8 @@
                               $pdo = NULL;
 
                               if ($res == (2 + $aantalPersonen)) {
-                                   print("<p>Uw boeking is succesvol verwerkt.</p>");
+                                   ?><p>Uw boeking is succesvol verwerkt.<br>U kunt <a href="login.php">hier</a> uw reisinformatie inzien met uw zelf ingevoerde vakantienaam en weeknummer: <?php
+                                   print($weekjaar . ".</p>");
                               }
                          } catch (Exception $e) {
                               print("<p>Uw boeking is niet succesvol verwerkt. Neem contact op met de beheerder.</p>");
@@ -56,6 +57,7 @@
                     ?>
                </div>
           </div>
+          <?php include "footer.php";?>
      </div>
 </body>
 </html>
