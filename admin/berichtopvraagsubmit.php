@@ -5,6 +5,7 @@
     }
 ?>
 <br><br>
+<div id="contentwrapper">
 <form name="contactform" method="post" action="beheerpaneel.php?beheer=berichtopvraag">
 <table width="450px">
 
@@ -24,3 +25,4 @@
 </tr>
 </table>
 </form>
+</div>

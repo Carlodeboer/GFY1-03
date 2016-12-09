@@ -1,3 +1,4 @@
+<div id="contentwrapper">
 <?php
     if(!defined('adminToegang')) {
        header("Location: ../index.php");
@@ -30,3 +31,4 @@
         }
     }
 ?>
+</div>
