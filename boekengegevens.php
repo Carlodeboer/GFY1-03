@@ -81,7 +81,7 @@
                                             print (" value=" . $_POST["land" . $i]);
                                         }
                                         ?> required></td></tr>
-                                <tr><td>Geboortedatum* :</td><td><input type='text' name='geboortedatum<?php print ($i); ?>'<?php
+                                <tr><td>Geboortedatum* :</td><td><input type='date' name='geboortedatum<?php print ($i); ?>'<?php
                                         if (isset($_POST["geboortedatum" . $i])) {
                                             print (" value=" . $_POST["geboortedatum" . $i]);
                                         }
