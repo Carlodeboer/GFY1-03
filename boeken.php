@@ -58,7 +58,7 @@
                                     }
                                     ?>></td>
                             </tr><tr>
-                                <td><input type="submit" name="volgende" value="Volgende" class="btn-main"></td>
+                                <td><input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary"></td>
                             </tr>
                         </form>
                     </table>

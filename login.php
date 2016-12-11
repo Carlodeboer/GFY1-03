@@ -12,7 +12,7 @@ include "dbconnect.php"
           <?php include 'header.php';?>
           <div id="content">
                <div id="contentwrapper">
-                    <h2>Login</h2>
+                    <h2>Reisinformatie opvragen</h2>
                              <form method="POST" action="loginreisinformatie.php">
                <div class="form-group label-floating is-empty">
                 <label for="i5i" class="control-label">Vakantienaam*</label>
@@ -25,7 +25,7 @@ include "dbconnect.php"
                 <input type="text" name="vakantieweek" class="form-control" id="i5i" required>
                 <span class="help-block">Voer een vakantieweek in</span>
                 <br><br>
-            <input type="submit" name="verzenden" value="Reisinformatie ophalen" class="btn btn-raised btn-primary">
+            <input type="submit" name="verzenden" value="Verzenden" class="btn btn-raised btn-primary">
 
               </div>
               </form>
