@@ -5,9 +5,7 @@
         <link type="text/css" rel="stylesheet" href="style/style.css">
 
         <script type="text/javascript">
-            <!--
-  status = 1;
-
+            status = 1;
             function changeStyle() {
                 //Note the lowercase first letter.
                 x = document.getElementById("text");
@@ -22,23 +20,16 @@
                     x.style.backgroundColor = 'green';
                     status = 1;
                 }
-
             }
-            //-->
         </script>
-
-
-
     </head>
     <body>
-
         <select name="jaar">
             <option value="2016">2016</option>
             <option value="2017">2017</option>
             <option value="2018">2018</option>
             <option value="2019">2019</option>
         </select>
-
         <select name="maand">
             <option value="januari">januari</option>
             <option value="februari">februari</option>
@@ -53,11 +44,8 @@
             <option value="november">november</option>
             <option value="december">december</option>
         </select>
-
-
         <?php
         include "dbconnect.php";
-
 
         /* Set the default timezone */
         date_default_timezone_set("America/Montreal");
@@ -83,123 +71,60 @@
         ?>
         <table id="calendar">
             <tr>
-
-                <th colspan="7">
-                    <?php print("{$title} {$year}"); ?> </th>
-            </tr>
-            <tr>
+                <th colspan="7"><?php print("{$title} {$year}"); ?></th>
+            </tr><tr>
                 <?php foreach ($weekDays as $key => $weekDay) { ?>
                     <td class="text-center">
                         <?php echo $weekDay ?>
                     </td>
                 <?php } ?>
-            </tr>
-            <tr>
-
+            </tr><tr>
                 <?php
                 for ($i = 0; $i < $blank; $i++) {
                     print("<td></td>");
                 }
 
-                $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid ORDER BY einddatum");
+                $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid
+                                        WHERE Year(begindatum) = Year(CURRENT_TIMESTAMP)
+                                        AND Month(begindatum) = Month(CURRENT_TIMESTAMP)
+                                        ORDER BY einddatum");
                 $stmt->execute();
                 // $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
                 $resultaat = array();
-                $x = 0;
 
+                $x = 0;
                 while($userRow = $stmt-> fetch()) {
                     $resultaat[$x] = array($userRow['omschrijving'],$userRow['begindatum'],$userRow['einddatum']);
                     $x++;
                 }
                 print_r($resultaat);
-                // array_multisort($resultaat[0], SORT_ASC, SORT_STRING,
-                //                 $resultaat[1], SORT_NUMERIC, SORT_DESC);
-
+                print count($resultaat);
                 $y = 0;
-
                 for ($i = 1; $i <= $daysInMonth; $i++) {
-                    if ($day == $i) {
-                        print("<td id='text' onclick='javascript:changeStyle();'><strong>huidig {$i} </strong></td>");
-                    } else {
-
-
-
                         $date2 = strtotime($resultaat[$y][1]);
                         $date3 = strtotime($resultaat[$y][2]);
-                        $date4 = strtotime($resultaat[$y+1][1]);
 
                         $vergelijkdatum = date('j', $date2);
                         $vergelijkdatumeind = date('j', $date3);
-                        $vergelijkVolgende = date('j', $date4);
 
+                        if ($y+1 < count($resultaat)){
+                            $date4 = strtotime($resultaat[$y+1][1]);
+                            $vergelijkVolgende = date('j', $date4);
+                        }
 
+                        if ($i >= $vergelijkdatum && $i <= $vergelijkdatumeind) {
+                            print("<td >".$i.$resultaat[$y][0]."</td>");
+                            if ($vergelijkdatumeind == $i ||
+                                isset($vergelijkVolgende) && $vergelijkVolgende == ($i + 1)) {
+                                if ($y < (count($resultaat)-1)){
+                                    $y++;
+                                    print $y." ";
+                                }
+                            }
+                        } else {
+	                        print("<td> {$i} </td>");
 
-
-
-
-                      //
-                         if ($i >= $vergelijkdatum && $i <= $vergelijkdatumeind) {
-                             if ($vergelijkVolgende == ($i + 1)){
-                                 $ding = false;
-                             }
-                            $ding = true;
-                      // while ($userRow = $stmt->fetch(PDO::FETCH_ASSOC)) {
-//                          	foreach ($userRow as $row) {
-//     print $row["omschrijving"];
-// }
- print("<td >".$i.$resultaat[$y][0]."</td>");
-
-}
-
-
-
-
-//                          	foreach ($userRow as $row) {
-//     print $row["omschrijving"];
-// }
-
-
-
-
- else {
-	print("<td> {$i} </td>");
-
-    if ($y < (count($resultaat)-1) && $ding){
-        $y++;
-        $ding = false;
-    }
-
-
-
-}
-
-
-                            // print("<td >{$i} {$userRow['omschrijving']} </td>");
-                        //
-// }
-
-
-
-                       //  $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid");
-                       //  $stmt->execute();
-                       // $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
-                       //  $date2 = strtotime($userRow['begindatum']);
-                       //  $date3 = strtotime($userRow['einddatum']);
-                       //  $vergelijkdatum = date('j', $date2);
-                       //  $vergelijkdatumeind = date('j', $date3);
-                      //   if ($i >= $vergelijkdatum && $i <= $vergelijkdatumeind) {
-                      //       print("<td> {$i} {$userRow['omschrijving']} </td> ");
-                      //   }
-                      //   // var_dump($i);
-                      //   else {
-                      //       print("<td >{$i}</td>");
-
-                      // }
-
-
-
-
-                    }
+                        }
                     if (($i + $blank) % 7 == 0) {
                         print("</tr><tr>");
                     }
@@ -210,9 +135,6 @@
                 ?>
             </tr>
         </table>
-
-
-
         <form method="post">
             Omschrijving: <input type="text" name="omschrijving"><br>
             Begindatum: <input type="date" name="begindatum"><br>
@@ -225,42 +147,33 @@
             <input type="submit" name="verzenden" value="Invoeren">
         </form>
 
-<?php
-if (isset($_POST['verzenden'])) {
-    $omschrijving = $_POST['omschrijving'];
-    $begindatum = $_POST['begindatum'];
-    $einddatum = $_POST['einddatum'];
-    $status = $_POST['status'];
+        <?php
+        if (isset($_POST['verzenden'])) {
+            $omschrijving = $_POST['omschrijving'];
+            $begindatum = $_POST['begindatum'];
+            $einddatum = $_POST['einddatum'];
+            $status = $_POST['status'];
 
-    if ($omschrijving == "") {
-        print("Voer een omschrijving in.");
-    } elseif ($begindatum == "") {
-        print("Voer een begindatum in.");
-    } elseif ($einddatum == "") {
-        print("Voer een einddatum in.");
-    } elseif ($status == "") {
-        print("Selecteer een status.");
-    } else {
-
-        $stmt = $pdo->prepare("INSERT INTO beschikbaarheid (omschrijving,begindatum,einddatum,status) VALUES (?,?,?,?)");
-        $stmt->execute(array($omschrijving, $begindatum, $einddatum, $status));
-        $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
-        $res = $stmt->rowCount();
-        if ($res > 0) {
-            //feedback aan gebruiker geven
-            print("De boeking " . $omschrijving . " is toegevoegd.");
-            // $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+            if ($omschrijving == "") {
+                print("Voer een omschrijving in.");
+            } elseif ($begindatum == "") {
+                print("Voer een begindatum in.");
+            } elseif ($einddatum == "") {
+                print("Voer een einddatum in.");
+            } elseif ($status == "") {
+                print("Selecteer een status.");
+            } else {
+                $stmt = $pdo->prepare("INSERT INTO beschikbaarheid (omschrijving,begindatum,einddatum,status) VALUES (?,?,?,?)");
+                $stmt->execute(array($omschrijving, $begindatum, $einddatum, $status));
+                $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+                $res = $stmt->rowCount();
+                if ($res > 0) {
+                    //feedback aan gebruiker geven
+                    print("De boeking " . $omschrijving . " is toegevoegd.");
+                    // $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+                }
+            }
         }
-    }
-}
-?>
-
-
-
-
-
-
-
-
+        ?>
     </body>
 </html>
