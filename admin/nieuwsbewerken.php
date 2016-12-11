@@ -16,27 +16,41 @@
     $stmt->execute();
 ?>
 <br><br><br>
-<div id="nieuwslinks">
-<div id="nieuwsbewerken">
-<table>
+
+
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+
+<table class="table table-striped table-hover">
 <th>ID</th><th>Taal</th><th>Titel</th><th>Omschrijving</th><th>Datum</th>
 
 <?php
     while($content = $stmt->fetch()) {
-echo "<tr onclick=\"location='beheerpaneel.php?beheer=Nieuwsbewerken&berichtId={$content['id']}'\"><td>" . $content['id'] . "</td><td>" . $content['lang'] . "</td><td>" . $content['title'] . "</td><td>" . $content['description'] ."</td><td>"  . $content['posted'] . "</td></tr> ";
+echo "<tr onclick=\"location='beheerpaneel.php?beheer=Nieuwsbewerken&berichtId={$content['id']}'\">
+
+<td>" . $content['id'] . "</td>
+<td>" . $content['lang'] . "</td>
+<td>" . $content['title'] . "</td>
+<td>" . $content['description'] ."</td>
+<td>"  . $content['posted'] . "</td>
+
+</tr>";
 }
 ?>
 
 </table>
-</div>
+
 <br>
 <form method="post" action="beheerpaneel.php?beheer=Nieuws">
-<input type="submit" value="Terug" name="terug" class="btn-main">
+<input type="submit" value="Terug" name="terug" class="btn btn-raised btn-primary">
 </form>
 </div>
 
 
-<div id="nieuwsrechts">
+
+<div class="col-md-4">
+
 
 <?php
 
@@ -50,7 +64,6 @@ if(isset($_GET['berichtId'])) {
             $content=$stmt->fetch();
 
 }
-
 
 $taal = 0;
 
@@ -66,11 +79,30 @@ switch($content['lang']) {
     break;
 } 
 
-
-
 ?>
 
+<!--     <div class="form-group">
+      <label for="inputtitel" class="col-md-2 control-label">Titel</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="inputtitel" value="<?php print($content['title']);?>">
+      </div>   
 
+      <div class="form-group">
+      <label for="inputomschrijving" class="col-md-2 control-label">Omschrijving</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="inputomschrijving" value="<?php print($content['description']);?>">
+      </div>
+
+          <div class="form-group">
+      <label for="inputdatum" class="col-md-2 control-label">Datum</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="inputdatum" value="<?php print($content['posted']);?>">
+      </div>
+
+
+
+              </div> -->
+              <!-- </form> -->
 
     <form method="post">
 Titel: <input type="text" name="titel" value="<?php print($content['title']);?>"> <br><br>
@@ -86,12 +118,17 @@ Datum: <input type="text" name="datum" value="<?php print($content['posted']);?>
         </select> <br><br>
 <!-- Bericht: <input type="text" name="bodytext" placeholder="Artikel"><br> -->
 ​Bericht:<br> <textarea name="bodytext" rows="10" cols="70" ><?php print($content['bodytext']);?></textarea><br><br>
-<input type="submit" name="updaten" value="Updaten" class="btn-main">
+<input type="submit" name="updaten" value="Updaten" class="btn btn-raised btn-primary">
 <input type="submit" name="verwijderen" value="###VERWIJDEREN NOG MAKEN###" class="btn-main">
 </form>
 
 <br><br>
 
+
+
+
+</div>
+</div>
 </div>
 
 <?php

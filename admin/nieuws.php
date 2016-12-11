@@ -8,28 +8,58 @@
 
 <br><br>
 <div id="contentwrapper">
+<div class="container">
+<div class="row">
+<div class="col-md-8">
 <h3>Nieuw nieuwsbericht toevoegen</h3><br>
     <form method="post" action="beheerpaneel.php?beheer=Nieuws">
-Titel: <input type="text" name="titel"> <br><br>
+    <div class="form-group">
+      <label for="inputtitel" class="col-md-2 control-label">Titel</label>
 
- Taal:       <select name="lang">
+      <div class="col-md-10">
+        <input type="text" name="titel" class="form-control" id="inputtitel" placeholder="Titel">
+      </div> <br><br>
+
+  <div class="form-group">
+      <label for="select111" class="col-md-2 control-label">Taal</label>
+
+      <div class="col-md-10">
+        <select name="lang" id="select111" class="form-control">
             <option value="NLD">Nederlands</option>
             <option value="ENG">Engels</option>
             <option value="DEU">Duits</option>
-        </select> <br><br>
-<!-- Bericht: <input type="text" name="bodytext" placeholder="Artikel"><br> -->
-​Bericht:<br> <textarea name="bodytext" rows="10" cols="70"></textarea><br><br>
-<input type="submit" name="plaatsnieuws" value="Plaatsen" class="btn-main">
-<input type="reset" value="Annuleren" class="btn-main">
+        </select>
+      </div>
+    </div> <br><br>
+
+​    <div class="form-group is-empty">
+      <label for="textArea" class="col-md-2 control-label">Bericht</label>
+
+      <div class="col-md-10">
+        <textarea class="form-control" rows="5" name="bodytext" id="textArea"></textarea>
+        <span class="help-block">Vul hier een bericht in</span>
+      </div>
+    </div><br><br><br><br>
+    <br><br><br><br>
+
+
+<input type="submit" name="plaatsnieuws" value="Plaatsen" class="btn btn-raised btn-primary">
+<input type="reset" value="Annuleren" class="btn btn-raised btn-primary">
 </form>
 
 <br><br>
 
 <form method="post" action="beheerpaneel.php?beheer=Nieuwsbewerken">
-<input type="submit" name="nieuwsbewerken" value="Artikelen bewerken" class="btn-main">
+<input type="submit" name="nieuwsbewerken" value="Artikelen bewerken" class="btn btn-raised btn-primary">
 </form>
 
-</div> 
+
+
+
+
+
+
+
 
 <?php
         include "../dbconnect.php";
@@ -62,5 +92,10 @@ if (isset($_POST['plaatsnieuws'])) {
     }
 }
 ?>
+</div>
+</div>
+</div>
+</div>
+</div>
     </body>
 </html>

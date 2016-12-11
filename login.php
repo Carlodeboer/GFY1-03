@@ -13,22 +13,29 @@ include "dbconnect.php"
           <div id="content">
                <div id="contentwrapper">
                     <h2>Login</h2>
-                    <form method="POST" action="loginreisinformatie.php">
-                         <table>
-                              <tr>
-                                   <td>Vakantienaam* :</td>
-                                   <td><input type="text" name="vakantienaam" required></td>
-                              </tr><tr>
-                                   <td>Vakantieweek* :</td>
-                                   <td><input type="text" name="vakantieweek" required></td>
-                              </tr><tr>
-                                   <td><input type="submit" name="verzenden" value="Reisinformatie ophalen" class="btn-main"></td>
-                              </tr>
-                         </table>
-                    </form>
+                             <form method="POST" action="loginreisinformatie.php">
+               <div class="form-group label-floating is-empty">
+                <label for="i5i" class="control-label">Vakantienaam*</label>
+                <input type="text" name="vakantienaam" class="form-control" id="i5i" required>
+                <span class="help-block">Voer een vakantienaam in</span>
+              </div>
+
+              <div class="form-group label-floating is-empty">
+                <label for="i5i" class="control-label">Vakantieweek*</label>
+                <input type="text" name="vakantieweek" class="form-control" id="i5i" required>
+                <span class="help-block">Voer een vakantieweek in</span>
+                <br><br>
+            <input type="submit" name="verzenden" value="Reisinformatie ophalen" class="btn btn-raised btn-primary">
+
+              </div>
+              </form>
+
+
+
                </div>
           </div>
      </div>
      <?php include 'footer.php';?>
 </body>
 </html>
+

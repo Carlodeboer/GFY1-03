@@ -1,3 +1,6 @@
+<!-- Bootstrap material design -->
+<link type="text/css" rel="stylesheet" href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/style/bootstrap.css\"";?>>
+<link type="text/css" rel="stylesheet" href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/style/bootstrap-material-design.css\"";?>>
 <link type="text/css" rel="stylesheet" href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/style/style.css\"";?>>
 <link type="text/css" rel="stylesheet" href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/style/responsiveslides.css\"";?>>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -8,3 +11,10 @@
     $(".rslides").responsiveSlides();
   });
 </script>
+
+<script src="dist/js/material.js"></script>
+<script src="dist/js/ripples.min.js"></script>
+<script>
+  $.material.init();
+</script>
+
