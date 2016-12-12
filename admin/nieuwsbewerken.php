@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <!-- <link type="text/css" rel="stylesheet" href="../style/style.css"> -->
+
 </head>
     <body>
 
@@ -18,9 +18,9 @@
 <br><br><br>
 
 
-<div class="container">
+<!-- <div class="container"> -->
 <div class="row">
-<div class="col-md-8">
+<div class="col-md-6">
 
 <table class="table table-striped table-hover">
 <th>ID</th><th>Taal</th><th>Titel</th><th>Omschrijving</th><th>Datum</th>
@@ -49,7 +49,7 @@ echo "<tr onclick=\"location='beheerpaneel.php?beheer=Nieuwsbewerken&berichtId={
 
 
 
-<div class="col-md-4">
+<div class="col-md-6">
 
 
 <?php
@@ -81,43 +81,64 @@ switch($content['lang']) {
 
 ?>
 
-<!--     <div class="form-group">
-      <label for="inputtitel" class="col-md-2 control-label">Titel</label>
-      <div class="col-md-10">
-        <input type="text" class="form-control" id="inputtitel" value="<?php print($content['title']);?>">
-      </div>   
-
-      <div class="form-group">
-      <label for="inputomschrijving" class="col-md-2 control-label">Omschrijving</label>
-      <div class="col-md-10">
-        <input type="text" class="form-control" id="inputomschrijving" value="<?php print($content['description']);?>">
-      </div>
-
-          <div class="form-group">
-      <label for="inputdatum" class="col-md-2 control-label">Datum</label>
-      <div class="col-md-10">
-        <input type="text" class="form-control" id="inputdatum" value="<?php print($content['posted']);?>">
-      </div>
-
-
-
-              </div> -->
-              <!-- </form> -->
-
     <form method="post">
-Titel: <input type="text" name="titel" value="<?php print($content['title']);?>"> <br><br>
-Omschrijving: <input type="text" name="omschrijving" value="<?php print($content['description']);?>"> <br><br>
 
-Datum: <input type="text" name="datum" value="<?php print($content['posted']);?>"> <br><br>
 
- Taal:       <select name="lang">
+    <div class="form-group">
+      <label for="inputtitel" class="col-md-6 control-label">Titel</label>
+
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="inputtitel" name="titel" placeholder="Titel" value="<?php print($content['title']);?>">
+</div>
+</div>
+            <div class="form-group">
+      <label for="inputomschrijving" class="col-md-6 control-label">Omschrijving</label>
+
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="inputomschrijving" name="omschrijving" placeholder="Omschrijving" value="<?php print($content['description']);?>">
+</div>
+</div>
+
+            <div class="form-group">
+      <label for="inputdatum" class="col-md-6 control-label">Datum</label>
+
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="inputdatum" name="datum" placeholder="Datum" value="<?php print($content['posted']);?>">
+</div>
+</div>
+
+
+  <div class="form-group">
+      <label for="select111" class="col-md-6 control-label">Taal</label>
+
+      <div class="col-md-10">
+        <select name="lang" id="select111" class="form-control">
             <option selected="<?php print($content['lang'])?>" value="<?php print($content['lang'])?>"><?php print($taal);?></option>
             <option value="NLD">Nederlands</option>
             <option value="ENG">Engels</option>
             <option value="DEU">Duits</option>
-        </select> <br><br>
-<!-- Bericht: <input type="text" name="bodytext" placeholder="Artikel"><br> -->
-​Bericht:<br> <textarea name="bodytext" rows="10" cols="70" ><?php print($content['bodytext']);?></textarea><br><br>
+        </select>
+      </div>
+    </div>
+
+        <div class="form-group is-empty">
+      <label for="textArea" class="col-md-6 control-label">Bericht</label>
+
+      <div class="col-md-10">
+        <textarea class="form-control" rows="5" name="bodytext" id="textArea"><?php print($content['bodytext']);?></textarea>
+        <span class="help-block">Vul hier een bericht in</span>
+      </div>
+    </div>
+ <br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br>
+
 <input type="submit" name="updaten" value="Updaten" class="btn btn-raised btn-primary">
 <input type="submit" name="verwijderen" value="###VERWIJDEREN NOG MAKEN###" class="btn-main">
 </form>

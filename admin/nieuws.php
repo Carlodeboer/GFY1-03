@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <!-- <link type="text/css" rel="stylesheet" href="../style/style.css"> -->
+           <!-- core CSS of SnackbarJS, find it in /dist -->
+    <!-- <link href=dist/snackbar.min.css rel=stylesheet> -->
+    <!-- the default theme of SnackbarJS, find it in /themes-css -->
+<!--     <link href=dist/material.css rel=stylesheet> -->
 </head>
     <body>
-
+    <!-- <script src=dist/snackbar.min.js></script> -->
 
 <br><br>
 <div id="contentwrapper">
@@ -18,7 +21,8 @@
 
       <div class="col-md-10">
         <input type="text" name="titel" class="form-control" id="inputtitel" placeholder="Titel">
-      </div> <br><br>
+      </div> 
+      </div><br><br>
 
   <div class="form-group">
       <label for="select111" class="col-md-2 control-label">Taal</label>
@@ -56,6 +60,16 @@
 
 
 
+
+
+
+<button type="button" class="btn btn-default" data-content="This is a snackbar! Lorem lipsum dolor sit amet..." data-toggle="snackbar" data-timeout="5">Show snackbar</button>
+
+
+
+
+
+<span data-toggle=snackbar data-content="This is my awesome snackbar!">click me</span>
 
 
 
