@@ -7,7 +7,7 @@ include 'dbconnect.php';
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         /*** The sql statement ***/
-        $sql = "SELECT image, image_type FROM testblob WHERE image_id=3";
+        $sql = "SELECT image, image_type FROM fotos WHERE image_id=3";
 
         /*** prepare the sql ***/
         $stmt = $pdo->prepare($sql);

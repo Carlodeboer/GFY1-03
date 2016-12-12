@@ -15,8 +15,8 @@
   });
 </script>
 
-<script src="dist/js/material.js"></script>
-<script src="dist/js/ripples.min.js"></script>
+<script src="js/material.js"></script>
+<script src="js/ripples.min.js"></script>
 <script>
   $.material.init();
 </script>

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC >
 
   <html>
@@ -65,7 +67,7 @@ include 'dbconnect.php';
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             /*** our sql query ***/
-        $stmt = $pdo->prepare("INSERT INTO testblob (image_type ,image, image_size, image_name) VALUES (? ,?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO fotos (image_type ,image, image_size, image_name) VALUES (? ,?, ?, ?)");
 
         /*** bind the params ***/
         $stmt->bindParam(1, $type);
