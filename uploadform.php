@@ -6,7 +6,7 @@
   <head><title>File Upload To Database</title></head>
   <body>
   <h2>Afbeelding Uploaden </h2>
-  <form enctype="multipart/form-data" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post">
+  <form enctype="multipart/form-data" method="post">
   <input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
   <div><input name="userfile" type="file" /></div>
   <div><input type="submit" value="Submit" /></div>

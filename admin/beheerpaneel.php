@@ -32,7 +32,7 @@
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
                                 break;
                             case "Afbeelding":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/imageupload.php';
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/uploadform.php';
                                 break;
                             case "Berichtopvraag":
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';

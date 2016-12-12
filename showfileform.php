@@ -1,7 +1,7 @@
-<form name="contactform" method="get" action="DBshowfoto.php">
+<form name="imageopvraagform" method="get" action="DBshowfoto.php">
   <tr>
    <td valign="top">
-    <label for="telephone">Image ID</label>
+    <label for="imageid">Image ID</label>
    </td>
    <td valign="top">
     <input  type="int" name="imageid" maxlength="30" size="30">
