@@ -15,11 +15,13 @@
   });
 </script>
 
-<script src="js/material.js"></script>
-<script src="js/ripples.min.js"></script>
+    <script src=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/js/material.js\"";?>></script>
+    <script src=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/js/ripples.min.js\"";?>></script>
+
 <script>
   $.material.init();
 </script>
 
     <script src=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/js/snackbar.min.js\"";?>></script>
+
 
