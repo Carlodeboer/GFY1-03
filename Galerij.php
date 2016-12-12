@@ -17,7 +17,7 @@
               <div id="contentwrapper">
                 <h2> Galerij </h2>
                 <?php
-                $folder_path = 'portugalpicture/'; //map van de afbeelding(en)
+                $folder_path = 'images/portugalpicture/'; //map van de afbeelding(en)
 
                 $num_files = glob($folder_path . "*.{JPG,jpg,gif,png,bmp}", GLOB_BRACE); //telt de bestanden
 
