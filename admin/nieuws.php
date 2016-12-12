@@ -58,20 +58,12 @@
 </form>
 
 
+<script>
+function popup() { 
+ $("#123").snackbar("show");
+ }
 
-
-
-
-
-<button type="button" class="btn btn-default" data-content="This is a snackbar! Lorem lipsum dolor sit amet..." data-toggle="snackbar" data-timeout="5">Show snackbar</button>
-
-
-
-
-
-<span data-toggle=snackbar data-content="This is my awesome snackbar!">click me</span>
-
-
+</script>
 
 
 
@@ -87,6 +79,10 @@ if (isset($_POST['plaatsnieuws'])) {
     $titel = $_POST['titel'];
     $lang = $_POST['lang'];
     $bodytext = $_POST['bodytext'];
+
+?>
+<span data-toggle=snackbar id="123" data-content="Het artikel <?php print($titel); ?> is toegevoegd."></span>
+<?php
  
     if ($titel == "") {
         print("Voer een titel in.");
@@ -101,11 +97,14 @@ if (isset($_POST['plaatsnieuws'])) {
         if ($res > 0) {
             //feedback aan gebruiker geven
             print("Het bericht " . $titel . " is toegevoegd.");
+            print("<script>window.onload = popup;</script>");
             // $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
         }
     }
 }
 ?>
+
+
 </div>
 </div>
 </div>
