@@ -17,8 +17,8 @@ footer{
     width:100%;
     padding:25px 25px;
     box-sizing: border-box;
-    color:#fff;
-    background: #545454 url(../images/tiretrack.png) left repeat-y;
+    color:#e8e8e8;
+    background: #404040 url(../images/tiretrack.png) left repeat-y;
 }
 footer h4{
   color: #e8e8e8;
@@ -55,11 +55,17 @@ footer h4{
 }
 #logo{
   position: absolute;
-  z-index: 999;
+  z-index: 9999;
   margin:40px 0 0 20px;
   background: url(../images/logo.png);
   width: 195px;
   height:161px;
+}
+#banner a{
+  cursor: pointer;
+}
+#logo:hover{
+
 }
 #banner{
     width: 100%;
@@ -108,11 +114,13 @@ nav li{
     line-height: 40px;
     color: #000;
     transition: background-color 0.4s;
+    transition: color 0.3s;
     float:left;
     display: inline;
 }
 nav li:hover{
-    background-color:#ccc;
+    color:#fff;
+    background-color:#404040;
     transition: background-color 0.4s;
 }
 ul a{
@@ -127,6 +135,7 @@ ul a{
 #content{
     position: relative;
     background-color:#fff;
+    min-height:300px;
     width:100%;
     overflow-x: hidden;
     padding:25px 25px;
