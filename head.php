@@ -1,3 +1,8 @@
+<?php
+session_start();
+include 'functions.php';
+$knopjes = knopjes();
+?>
 <!-- Bootstrap material design -->
 <link type="text/css" rel="stylesheet" href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/style/bootstrap.css\"";?>>
 <link type="text/css" rel="stylesheet" href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/style/bootstrap-material-design.css\"";?>>
@@ -22,10 +27,3 @@
   $.material.init();
 </script>
 <script src=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/js/snackbar.min.js\"";?>></script>
-
-<?php
-session_start();
-include 'functions.php';
-define("toegang", true);
-$knopjes = knopjes();
-?>

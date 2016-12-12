@@ -1,6 +1,10 @@
 <?php
     if(!defined('toegang')) {
-       header("Location: ../404.php");
+        function abspath()
+        {
+            return $_SERVER['HTTP_HOST'];
+        }
+       header("Location:" .abspath()."/GFY1-03/404.php");
        exit();
     }
 ?>

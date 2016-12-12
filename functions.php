@@ -1,6 +1,6 @@
 <?php
 if(!defined('toegang')) {
-   header("Location: ../404.php");
+   header("Location: 404.php");
    exit();
 }
 // gelieve hier alle functies te plaatsen ;)

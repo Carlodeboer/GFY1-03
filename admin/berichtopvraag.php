@@ -1,9 +1,13 @@
 <div id="contentwrapper">
 <?php
-    if(!defined('toegang')) {
-       header("Location: ../404.php");
-       exit();
+if(!defined('toegang')) {
+    function abspath()
+    {
+        return $_SERVER['HTTP_HOST'];
     }
+   header("Location:" .abspath()."/GFY1-03/404.php");
+   exit();
+}
     include '../dbconnect.php';
     //idbericht, voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum
      //$berichten = $pdo->prepare("SELECT * FROM contactformulier WHERE email = $_POST['email']");

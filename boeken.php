@@ -1,3 +1,4 @@
+<?php define("toegang", true); ?>
 <!DOCTYPE html>
 <html>
     <head>

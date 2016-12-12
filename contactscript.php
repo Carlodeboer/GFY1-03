@@ -1,3 +1,4 @@
+<?php define("toegang", true); ?>
 <html>
     <head>
         <title>Motocross</title>
