@@ -2,6 +2,20 @@
 <html>
 <head>
 
+<script>
+function popupverwijder() { 
+ $("#verwijder").snackbar("show");
+ }
+</script>
+
+<script>
+function popupupdate() { 
+ $("#update").snackbar("show");
+ }
+</script>
+
+
+
 </head>
     <body>
 
@@ -140,22 +154,20 @@ switch($content['lang']) {
 <br>
 
 <input type="submit" name="updaten" value="Updaten" class="btn btn-raised btn-primary">
-<input type="submit" name="verwijderen" value="###VERWIJDEREN NOG MAKEN###" class="btn-main">
+<input class="btn btn-raised btn-warning" type="submit" name="delete" value="Verwijderen" onclick="return confirm('Weet je het zeker?')" />
+
 </form>
 
 <br><br>
 
-
-
-
 </div>
 </div>
 </div>
+
+<span data-toggle=snackbar id="verwijder" data-content="Het bericht is verwijderd."></span>
+<span data-toggle=snackbar id="update" data-content="Het bericht is bijgewerkt."></span>
 
 <?php
-
-
-
 
 if (isset($_POST['updaten'])) {
     $titel = $_POST['titel'];
@@ -189,6 +201,7 @@ $res = $stmt->rowCount();
         if ($res > 0) {
             //feedback aan gebruiker geven
             print("Het bericht " . $titel . " is bijgewerkt.");
+            print("<script>window.onload = popupupdate;</script>");
         }
         }
     
@@ -196,7 +209,37 @@ $res = $stmt->rowCount();
 
 
 
+if(isset($_POST['delete'])) {
+	if(!isset($_GET['berichtId'])) {
+		print("Er is geen bericht geselecteerd.");
+	} else {
+
+
+
+
+
+      $stmt = $pdo->prepare("DELETE FROM nieuwsbericht WHERE id=?");
+                    try
+    { 
+        $stmt->execute(array($berichtId));
+    }
+        catch (PDOException $e)
+    {
+        echo "Er is iets fout gegaan";
+        throw $e;
+    }
+
+$res = $stmt->rowCount();
+        if ($res > 0) {
+            //feedback aan gebruiker geven
+            print("Het bericht is verwijderd.");
+            print("<script>window.onload = popupverwijder;</script>");
+        }
+}
+}
 
 ?>
+
+
     </body>
 </html>
