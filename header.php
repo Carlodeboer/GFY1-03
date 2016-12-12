@@ -5,7 +5,7 @@ $knopjes = knopjes();
 ?>
 <div id="headerwrapper">
   <div id="banner">
-    <a href="index.php"><h2> Offroad Compass Portugal </h2></a>
+    <a href="index.php"><div id="logo"></div></a>
 
     <span id="talenknoppen">
       <form method="GET" action=<?php print "\"".$_SERVER['PHP_SELF']."\""?>>
