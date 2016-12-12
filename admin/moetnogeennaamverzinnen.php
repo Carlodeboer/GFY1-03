@@ -1,6 +1,6 @@
 <?php
-    if(!defined('adminToegang')) {
-       header("Location: ../index.php");
+    if(!defined('toegang')) {
+       header("Location: ../404.php");
        exit();
     }
 ?>

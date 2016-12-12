@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'functions.php';
+define("toegang", true);
 $knopjes = knopjes();
 ?>
 <div id="headerwrapper">
