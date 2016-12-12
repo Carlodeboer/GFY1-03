@@ -1,8 +1,8 @@
 <?php
-session_start();
-include 'functions.php';
-define("toegang", true);
-$knopjes = knopjes();
+    if(!defined('toegang')) {
+       header("Location: ../404.php");
+       exit();
+    }
 ?>
 <div id="headerwrapper">
   <div id="banner">

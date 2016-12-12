@@ -1,3 +1,9 @@
+<?php
+    if(!defined('toegang')) {
+       header("Location: ../404.php");
+       exit();
+    }
+?>
 <footer>
   <div id="footerwrapper">
     <div id="googlemaps">

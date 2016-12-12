@@ -1,5 +1,8 @@
 <?php
-
+if(!defined('toegang')) {
+   header("Location: ../404.php");
+   exit();
+}
 // gelieve hier alle functies te plaatsen ;)
 function newPDO() {
     $db = "mysql:host=carlodb.nl;dbname=carlodb_database;port=3306";
