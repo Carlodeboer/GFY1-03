@@ -190,14 +190,6 @@ $res = $stmt->rowCount();
             //feedback aan gebruiker geven
             print("Het bericht " . $titel . " is bijgewerkt.");
         }
-        // echo "<meta http-equiv='refresh' content='0'>";
-
-        // $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
-        // $res = $stmt->rowCount();
-        // if ($res > 0) {
-        //     //feedback aan gebruiker geven
-        //     print("Het bericht " . $titel . " is bijgewerkt.");
-            // $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
         }
     
 }
