@@ -11,7 +11,7 @@
           <div id="content">
                <div id="contentwrapper">
                     <h2>Boeken</h2>
-                    <form method="POST" action="boekengegevens.php">
+                    <form method="POST" action="boekengegevens.php" class="form-horizontal">
                          <div class="form-group label-static is-empty">
                               <label for="i5i" class="control-label">Begindatum*</label>
                               <input type="date" name="begindatum" class="form-control" id="i5i" required>
