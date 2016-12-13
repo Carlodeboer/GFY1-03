@@ -172,7 +172,9 @@
                 ?>
                 <br>
 
-                Thank you for contacting us. We will be in touch with you very soon.
+                Fijn dat u contact met ons opneemt. <br>
+                Thank you for contacting us.<br>
+                Danke für Ihre Kontaktaufnahme!
 
 
 
