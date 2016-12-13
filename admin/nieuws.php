@@ -21,7 +21,7 @@
 
       <div class="col-md-10">
         <input type="text" name="titel" class="form-control" id="inputtitel" placeholder="Titel">
-      </div> 
+      </div>
       </div><br><br>
 
   <div class="form-group">
@@ -59,7 +59,7 @@
 
 
 <script>
-function popup() { 
+function popup() {
  $("#123").snackbar("show");
  }
 
@@ -72,7 +72,7 @@ function popup() {
         // include "../functions.php";
 
         date_default_timezone_set('Europe/Amsterdam');
-$date = date('m/d/Y h:i:s a', time());
+$date = date('m D Y H:i', time());
 
 
 if (isset($_POST['plaatsnieuws'])) {
@@ -83,7 +83,7 @@ if (isset($_POST['plaatsnieuws'])) {
 ?>
 <span data-toggle=snackbar id="123" data-content="Het artikel <?php print($titel); ?> is toegevoegd."></span>
 <?php
- 
+
     if ($titel == "") {
         print("Voer een titel in.");
     } elseif ($bodytext == "") {
