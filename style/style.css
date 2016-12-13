@@ -199,6 +199,7 @@ ul a{
   float: right;
   font-size: 12px;
   color: #999;
+  text-transform: lowercase;
 }
 .nieuwstitel{
   float: left;
