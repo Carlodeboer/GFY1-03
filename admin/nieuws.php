@@ -72,7 +72,7 @@ function popup() {
         // include "../functions.php";
 
         date_default_timezone_set('Europe/Amsterdam');
-$date = date('d M Y H:i', time());
+$date = date('d F Y H:i', time());
 
 
 if (isset($_POST['plaatsnieuws'])) {
