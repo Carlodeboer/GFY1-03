@@ -162,7 +162,7 @@ function checkLogin($naam, $wachtwoord){
     // if (password_verify($password, $userRow['wachtwoord'])) {
     //     $_SESSION['user_session'] = $userRow['naam'];
     // }
-    if ($naam != "" && $wachtwoord != "" && $wachtwoord == $userRow['wachtwoord']) {
+    if ($naam != "" && $wachtwoord != "" && password_verify($wachtwoord, $userRow['wachtwoord'])) {
         $controle['klopt'] = true;
     }
     elseif ($naam == "") {
