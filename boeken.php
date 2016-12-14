@@ -88,5 +88,9 @@
           </div>
           <?php include 'footer.php'; ?>
      </div>
+
+     <script>
+  $.material.init();
+</script>
 </body>
 </html>
