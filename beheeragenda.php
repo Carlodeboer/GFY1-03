@@ -71,7 +71,7 @@
         ?>
         <table id="calendar">
             <tr>
-                <th colspan="7"><?php print("{$title} {$year}"); ?></th>
+                <th colspan="7"><div class="row"> <div class="col-md-2"><input type="submit" name="vorige" value="Vorige" class="btn btn-raised btn-primary"></div><div class="col-md-8"><?php print("{$title} {$year}"); ?></div><div class="col-md-2"> <input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary"></div></th>
             </tr><tr>
                 <?php foreach ($weekDays as $key => $weekDay) { ?>
                     <td class="text-center">
