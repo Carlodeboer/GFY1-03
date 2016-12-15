@@ -22,25 +22,25 @@
                          $stmt1 = $pdo->prepare("SELECT idklant FROM reis WHERE weekjaar = ? AND vakantienaam = ?");
                          $stmt1->execute(array($weekJaar, $naam));
 
-                         if ($stmt1->rowCount() > 1) {
+                         if ($stmt1->rowCount() >= 1) {
                               $stmt2 = $pdo->prepare("SELECT max(idklant) AS idklant FROM reis WHERE weekjaar = ? AND vakantienaam = ?");
                               $stmt2->execute(array($weekJaar, $naam));
-                              $row = $stmt1->fetch();
-                              $idklant = $row["idklant"];
+                              $row2 = $stmt1->fetch();
+                              $idklant = $row2["idklant"];
 
                               $stmt3 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling FROM boeking WHERE idklant = ?");
                               $stmt3->execute(array($idklant));
-                              $row = $stmt2->fetch();
+                              $row3 = $stmt3->fetch();
 
-                              $begindatum = $row["begindatum"];
-                              $einddatum = $row["einddatum"];
-                              $aantalPersonen = $row["aantalPersonen"];
-                              $vervoerHeen = $row["vervoerHeen"];
-                              $vervoerTerug = $row["vervoerTerug"];
-                              $locatie = $row["locatie"];
-                              $opmerking = $row["opmerking"];
-                              $status = $row["status"];
-                              $betaling = $row["betaling"];
+                              $begindatum = $row3["begindatum"];
+                              $einddatum = $row3["einddatum"];
+                              $aantalPersonen = $row3["aantalPersonen"];
+                              $vervoerHeen = $row3["vervoerHeen"];
+                              $vervoerTerug = $row3["vervoerTerug"];
+                              $locatie = $row3["locatie"];
+                              $opmerking = $row3["opmerking"];
+                              $status = $row3["status"];
+                              $betaling = $row3["betaling"];
 
                               $week = substr($weekJaar, 0, 2);
                               ?>
@@ -110,19 +110,19 @@
                               <table>
                                    <?php
                                    for ($i = 1; $i <= $aantalPersonen; $i++) {
-                                        $stmt3 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email FROM klantgegevens WHERE idklant = ? AND persoon = ?");
-                                        $stmt3->execute(array($idklant, $i));
+                                        $stmt4 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email FROM klantgegevens WHERE idklant = ? AND persoon = ?");
+                                        $stmt4->execute(array($idklant, $i));
 
-                                        $row = $stmt3->fetch();
-                                        $voornaam = $row["voornaam"];
-                                        $achternaam = $row["achternaam"];
-                                        $geboortedatum = $row["gebdatum"];
-                                        $adres = $row["adres"];
-                                        $postcode = $row["postcode"];
-                                        $woonplaats = $row["woonplaats"];
-                                        $land = $row["land"];
-                                        $telefoonnummer = $row["telefoonnummer"];
-                                        $email = $row["email"];
+                                        $row4= $stmt4->fetch();
+                                        $voornaam = $row4["voornaam"];
+                                        $achternaam = $row4["achternaam"];
+                                        $geboortedatum = $row4["gebdatum"];
+                                        $adres = $row4["adres"];
+                                        $postcode = $row4["postcode"];
+                                        $woonplaats = $row4["woonplaats"];
+                                        $land = $row4["land"];
+                                        $telefoonnummer = $row4["telefoonnummer"];
+                                        $email = $row4["email"];
                                         if ($aantalPersonen != 1) {
                                              ?>
                                              <tr>
@@ -152,7 +152,7 @@
                                              <td>Geboortedatum:</td>
                                              <td><?php print($geboortedatum); ?></td>
                                         </tr><tr>
-                                             <td>Telefoonnummer</td>
+                                             <td>Telefoonnummer:</td>
                                              <td><?php print($telefoonnummer); ?></td>
                                         </tr><tr>
                                              <td>Emailadres:</td>
