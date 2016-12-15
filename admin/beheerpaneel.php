@@ -44,7 +44,7 @@
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
                                 break;
                             case "Reizen":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekingopvraag.php';
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraag.php';
                                 break;
                         }
                     }
