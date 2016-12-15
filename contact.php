@@ -13,25 +13,74 @@
 <div class="row">
 <div class="col-md-6">
             <?php
-            if (isset($_GET['lang'])){
-                $_SESSION['lang'] = $_GET['lang'];
-                $taal = $_SESSION['lang'];
-            } elseif (isset($_SESSION['lang'])){
-                $taal = $_SESSION['lang'];
-            } else {
-                $taal = "NLD";
-          }
+            $labels = contactformulierTaal();
+            ?>
+            <h2><?php print $labels[0]; ?></h2>
+          <form name="contactform" method="post" action="contactscript.php">
+          <table width="450px">
 
-            if ($taal == "NLD"){
-              include 'ContactNL.php';
-            }
-            if ($taal == "DEU"){
-              include 'ContactDU.php';
-            }
-            elseif($taal == "ENG"){
-              include 'ContactEN.php';
-            }
-                ?>
+          <tr>
+           <td valign="top">
+            <label for="first_name"><?php print $labels[1]; ?></label>
+           </td>
+           <td valign="top">
+            <input  type="text" name="first_name" maxlength="50" size="30">
+           </td>
+          </tr>
+
+          <tr>
+           <td valign="top">
+            <label for="last_name"><?php print $labels[2]; ?></label>
+           </td>
+           <td valign="top">
+            <input  type="text" name="last_name" maxlength="50" size="30">
+          </td>
+        </tr>
+
+        <tr>
+          <td valign="top">
+           <label for="subject"><?php print $labels[3]; ?></label>
+          </td>
+          <td valign="top">
+           <input  type="text" name="subject" maxlength="50" size="30">
+           </td>
+          </tr>
+
+         <tr>
+           <td valign="top">
+            <label for="email"><?php print $labels[4]; ?></label>
+           </td>
+           <td valign="top">
+            <input  type="text" name="email" maxlength="80" size="30">
+           </td>
+          </tr>
+
+          <tr>
+           <td valign="top">
+            <label for="telephone"><?php print $labels[5]; ?></label>
+           </td>
+           <td valign="top">
+            <input  type="text" name="telephone" maxlength="30" size="30">
+           </td>
+          </tr>
+
+          <tr>
+           <td valign="top">
+            <label for="comments"><?php print $labels[6]; ?></label>
+           </td>
+           <td valign="top">
+            <textarea  name="comments" maxlength="2000" cols="25" rows="6"></textarea>
+           </td>
+          </tr>
+
+          <tr>
+           <td colspan="2" style="text-align:center">
+            <input type="submit" value="Verzenden" class="btn-main">
+           </td>
+          </tr>
+          </table>
+          <div class="g-recaptcha" data-sitekey="6LdvmA0UAAAAANG5pBHPYoqw1-MTYUJRngrA88zK"></div>
+
                 </div>
 
                 <div class="col-md-2">

@@ -53,6 +53,17 @@ function knopjes(){
     }
     return $knopjes;
 }
+function contactformulierTaal(){
+    $taal = selecteerTaal();
+    if ($taal == "NLD"){
+        $labels = ["Contact", "Voornaam *", "Achternaam *", "Onderwerp *", "Email-adres *", "Telefoonnummer", "Bericht *"];
+    } elseif ($taal == "ENG"){
+        $labels = ["Contact", "First name *", "Last name *", "Subject *", "Email address *", "Phone number", "Message *"];
+    } elseif ($taal = "DEU"){
+        $labels = ["Kontakt", "Vorname *", "Nachname *", "Thema *", "Email Adresse *", "Telefonnummer", "Nachricht *"];
+    }
+    return $labels;
+}
 
 function laadNieuws($id){
 
