@@ -21,16 +21,18 @@
     </ul>
   </div>
 
-  <nav>
-    <ul>
-      <!-- ik heb de linkjes vervangen met absolute linkjes, zodat ze blijven werken ookal
-      include je de header in een bestand in een andere map-->
-      <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/index.php\"";?>><li><?php print $knopjes[0]; ?></li></a>
-      <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/informatie.php\"";?>><li><?php print $knopjes[1]; ?></li></a>
-      <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/prijzen.php\"";?>><li><?php print $knopjes[2]; ?></li></a>
-      <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/galerij.php\"";?>><li><?php print $knopjes[5]; ?></li></a>
-      <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/contact.php\"";?>><li><?php print $knopjes[3]; ?></li></a>
-      <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/login.php\"";?>><li><?php print $knopjes[4]; ?></li></a>
-    </ul>
-  </nav>
+    <nav>
+      <ul>
+        <!-- ik heb de linkjes vervangen met absolute linkjes, zodat ze blijven werken ookal
+        include je de header in een bestand in een andere map-->
+        <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/index.php\"";?>><li><?php print $knopjes[0]; ?></li></a>
+        <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/informatie.php\"";?>><li><?php print $knopjes[1]; ?></li></a>
+        <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/prijzen.php\"";?>><li><?php print $knopjes[2]; ?></li></a>
+        <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/galerij.php\"";?>><li><?php print $knopjes[5]; ?></li></a>
+        <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/contact.php\"";?>><li><?php print $knopjes[3]; ?></li></a>
+        <a href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/login.php\"";?>><li><?php print $knopjes[4]; ?></li></a>
+      </ul>
+    </nav>
+    <div id="navbg">
+    </div>
 </div>
