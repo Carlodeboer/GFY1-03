@@ -88,22 +88,10 @@
                                    ?>
                                    <tr>
                                         <td>Status:</td>
-                                        <td><?php
-                                        if ($status != NULL) {
-                                             print("Bevestigd");
-                                        } else {
-                                             print ("Niet bevestigd");
-                                        }
-                                        ?></td>
+                                        <td><?php print($status);?></td>
                                    </tr><tr>
                                         <td>Betaald:</td>
-                                        <td><?php
-                                        if ($betaling == 1) {
-                                             print("Ja");
-                                        } else {
-                                             print ("Nee");
-                                        }
-                                        ?></td>
+
                                    </tr>
                               </table>
                               <h2>Persoonlijke gegevens:</h2>
