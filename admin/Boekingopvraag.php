@@ -17,18 +17,22 @@
               $stmt = $pdo->prepare("SELECT begindatum, einddatum FROM boeking");
               $stmt->execute();
               $teller = 0;
-              $teller2 = 1;
               $i = 0;
               $resultaat = array();
               while($userRow = $stmt-> fetch()){
                 $resultaat[$i] = array($userRow['begindatum'], $userRow['einddatum']);
                 $i++;
               }
-              print($resultaat[0][0] . "<br>");
+              foreach($resultaat as $oefen){
 
-              print($resultaat[0][1]);
 
+              print(" <a href=\"http://localhost/GFY1-03/admin/boekingopvraagsript.php\">" . $resultaat[$teller][0] . ",  " . $resultaat[$teller][1] . "</a>");
+              print("</br>");
+              $teller++;
+
+}
                 ?>
+
               </div>
           </div>
           <?php include '../footer.php';?>
