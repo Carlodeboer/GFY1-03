@@ -17,15 +17,8 @@
                             ?>
                     <h2><?php print $labels[0]; ?></h2>
 
-                      <?php
-                      $labels = contactformulierTaal();
-                      ?>
-                      <h2><?php print $labels[0]; ?></h2>
                         <div class="col-md-6">
-
-
-                        <div class="col-md-6">
-                            
+                           
 
                             <form name="contactform" method="post" action="contactscript.php">
 
