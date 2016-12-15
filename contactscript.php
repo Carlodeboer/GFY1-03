@@ -157,8 +157,7 @@
 
                 @mail($email_to, $email_subject, $email_message, $headers);
 
-                include 'dbconnect.php';
-
+$pdo=newPDO();
                 //idbericht, voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum
                 $stmt = $pdo->prepare("INSERT INTO contactformulier (voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 $stmt->execute(array($first_name, $last_name, $email_from, $telephone, $subject, $comments, date("Y/m/d" . "  " . "H:i:sa")));
