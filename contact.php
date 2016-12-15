@@ -11,14 +11,16 @@
             <div id="content">
                 <div id="contentwrapper">
                     <div class="row">
-                        <div class="col-md-6">
-                            <?php
+                    <?php
                             $labels = contactformulierTaal();
                             ?>
+                    <h2><?php print $labels[0]; ?></h2>
+
+                        <div class="col-md-6">
+                            
 
 
-                            <h2><?php print $labels[0]; ?></h2>
-
+                            
                             <form name="contactform" method="post" action="contactscript.php">
 
 
