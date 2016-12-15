@@ -11,13 +11,12 @@
             <div id="content">
                 <div id="contentwrapper">
                     <div class="row">
+                      <?php
+                      $labels = contactformulierTaal();
+                      ?>
+                      <h2><?php print $labels[0]; ?></h2>
                         <div class="col-md-6">
-                            <?php
-                            $labels = contactformulierTaal();
-                            ?>
 
-
-                            <h2><?php print $labels[0]; ?></h2>
 
                             <form name="contactform" method="post" action="contactscript.php">
 
@@ -32,39 +31,39 @@
 
                                 <div class="form-group label-static is-empty">
                                     <label for="inputachternaam" class="control-label"><?php print $labels[2]; ?></label>
-                                   
+
                                         <input type="text" name="last_name" class="form-control" id="inputachternaam">
-                                 
+
                                 </div>
 
                                 <div class="form-group label-static is-empty">
                                     <label for="inputonderwerp" class="control-label"><?php print $labels[3]; ?></label>
-                              
+
                                         <input type="text" name="subject" class="form-control" id="inputachternaam">
-                                   
+
                                 </div>
 
                                 <div class="form-group label-static is-empty">
                                     <label for="inputemail" class="control-label"><?php print $labels[4]; ?></label>
                                         <input type="email" name="email" class="form-control" id="inputemail">
-                                    
+
                                 </div>
 
                                 <div class="form-group label-static is-empty">
                                     <label for="inputtelefoon" class="control-label"><?php print $labels[5]; ?></label>
-                                 
+
                                         <input type="text" name="telephone" class="form-control" id="inputtelefoon">
-                                    
+
                                 </div>
 
 
                                 <div class="form-group label-static is-empty">
                                     <label for="textArea" class="control-label"><?php print $labels[6]; ?></label>
 
-                              
+
                                         <textarea class="form-control" name="comments" rows="3" id="textArea"></textarea>
                                         <!-- <span class="help-block">Max 2000 characters.</span> -->
-                                    
+
                                 </div>
 
                                 <div class="g-recaptcha" data-sitekey="6LdvmA0UAAAAANG5pBHPYoqw1-MTYUJRngrA88zK"></div><br><br><br><br><br><br><br>
