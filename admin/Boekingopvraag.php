@@ -1,4 +1,5 @@
 <?php define("toegang", true); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,3 +40,4 @@
         </div>
     </body>
 </html>
+
