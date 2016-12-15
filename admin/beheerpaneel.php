@@ -43,6 +43,9 @@
                             case "Nieuwsbewerken":
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
                                 break;
+                            case "Reizen":
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekingopvraag.php';
+                                break;
                         }
                     }
                     // Controleert of de gebruiker in 'contentbeheer' een pagina heeft geselecteerd
