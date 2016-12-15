@@ -21,8 +21,8 @@
           <li>Wegstraat 12A</li>
           <li>7391 AB   Apeldoorn</li>
           <li><a href="mailto:info@offroadcompassportugal.nl">info@offroadcompassportugal.nl</a></li>
-          <li>06-12345678</li>
-          <li>055-123456</li>
+          <li>M: 06-12345678</li>
+          <li>T: 055-123456</li>
         </ul>
     </div>
 
