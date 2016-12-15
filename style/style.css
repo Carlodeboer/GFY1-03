@@ -20,6 +20,10 @@ footer{
     color:#e8e8e8;
     background: #404040 url(../images/tiretrack.png) left repeat-y;
 }
+#footerwrapper .col-md-4{
+padding-left:0;
+padding-right:0;
+}
 footer h4{
   color: #e8e8e8;
   float: left;
