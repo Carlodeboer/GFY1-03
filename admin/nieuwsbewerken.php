@@ -14,7 +14,6 @@
         </script>
     </head>
     <body>
-
         <br><br>
         <h3>Nieuwsberichten bewerken</h3><br>
         <?php
@@ -30,20 +29,20 @@
         <div class="row">
             <div class="col-md-6">
 
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover nieuwsberichtenbewerken">
                     <th>ID</th><th>Taal</th><th>Titel</th><th>Omschrijving</th><th>Datum</th>
 
                     <?php
                     while ($content = $stmt->fetch()) {
                         echo "<tr onclick=\"location='beheerpaneel.php?beheer=Nieuwsbewerken&berichtId={$content['id']}'\">
 
-<td>" . $content['id'] . "</td>
-<td>" . $content['lang'] . "</td>
-<td>" . $content['title'] . "</td>
-<td>" . $content['description'] . "</td>
-<td>" . $content['posted'] . "</td>
+                    <td>" . $content['id'] . "</td>
+                    <td>" . $content['lang'] . "</td>
+                    <td>" . $content['title'] . "</td>
+                    <td>" . $content['description'] . "</td>
+                    <td>" . $content['posted'] . "</td>
 
-</tr>";
+                    </tr>";
                     }
                     ?>
 

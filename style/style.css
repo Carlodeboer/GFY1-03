@@ -227,7 +227,9 @@ ul a{
     width:800px;
 
 }
-
+.nieuwsberichtenbewerken tr td{
+  cursor: pointer;
+}
 #nieuwsrechts {
 
 }

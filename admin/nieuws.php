@@ -15,6 +15,10 @@
         <div id="contentwrapper">
             <div class="container">
                 <div class="row">
+                  <form style="float:right;" method="post" action="beheerpaneel.php?beheer=Nieuwsbewerken">
+                      <input type="submit" name="nieuwsbewerken" value="Artikelen bewerken" class="btn btn-raised btn-primary">
+                  </form>
+
                     <div class="col-md-8">
                         <h3>Nieuw nieuwsbericht toevoegen</h3><br>
                         <form method="post" action="beheerpaneel.php?beheer=Nieuws">
@@ -55,14 +59,12 @@
 
                         <br><br>
 
-                        <form method="post" action="beheerpaneel.php?beheer=Nieuwsbewerken">
-                            <input type="submit" name="nieuwsbewerken" value="Artikelen bewerken" class="btn btn-raised btn-primary">
-                        </form>
+
 
 
                         <?php
                         include "../dbconnect.php";
-                        
+
                         date_default_timezone_set('Europe/Amsterdam');
                         $date = date('d F Y H:i', time());
 
