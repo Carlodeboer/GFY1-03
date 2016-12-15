@@ -6,34 +6,34 @@
 <head><title>File Upload To Database</title></head>
 <body>
   <div id="contentwrapper">
-  <h2>Afbeelding Uploaden </h2>
-  <form enctype="multipart/form-data" method="post">
-    <input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
-    <div><input name="userfile" type="file" /></div>
-    <div><input type="submit" value="Submit" class="btn btn-raised btn-primary"></div>
-  </form>
+    <h2>Afbeelding Uploaden </h2>
+    <form enctype="multipart/form-data" method="post">
+      <input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
+      <div><input name="userfile" type="file" /></div>
+      <div><input type="submit" value="Submit" class="btn btn-raised btn-primary"></div>
+    </form>
 
 
-<?php
-/*** check if a file was submitted ***/
-if(!isset($_FILES['userfile']))
-{
-  echo '<p>Kies een bestand</p>';
-}
-else
-{
-  try    {
-    upload();
-    /*** give praise and thanks to the php gods ***/
-    echo '<p>Toegevoegd</p>';
-  }
-  catch(Exception $e)
-  {
-    echo '<h4>'.$e->getMessage().'</h4>';
-  }
-}
-?>
-</div>
+    <?php
+    /*** check if a file was submitted ***/
+    if(!isset($_FILES['userfile']))
+    {
+      echo '<p>Kies een bestand</p>';
+    }
+    else
+    {
+      try    {
+        upload();
+        /*** give praise and thanks to the php gods ***/
+        echo '<p>Toegevoegd</p>';
+      }
+      catch(Exception $e)
+      {
+        echo '<h4>'.$e->getMessage().'</h4>';
+      }
+    }
+    ?>
+  </div>
 </body></html>
 <?php
 /**
