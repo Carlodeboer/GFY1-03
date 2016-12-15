@@ -171,12 +171,10 @@
 
                 ?>
                 <br>
-
-                Fijn dat u contact met ons opneemt. <br>
-                Thank you for contacting us.<br>
-                Danke für Ihre Kontaktaufnahme!
-
-
+<?php
+                $labels = contactformulierTaal();
+                print($labels[8]);
+ ?>
 
 
                 <?php
