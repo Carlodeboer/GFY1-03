@@ -106,7 +106,7 @@ footer h4{
 #navbg{
   position: absolute;
   width: 200%;
-  margin-left:-25%;
+  margin-left:-50%;
   background:#404040;
   height: 40px;
   z-index: 1;
