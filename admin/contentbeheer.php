@@ -3,6 +3,7 @@
 ?>
 <br><br>
 <div id="contentwrapper">
+  <h2>Content </h2>
     <table>
         <form method="get" action="beheerpaneel.php?beheer=content">
             <tr>
@@ -18,7 +19,7 @@
                         <option value="ENG">Engels</option>
                         <option value="DEU">Duits</option></td>
             </tr><tr>
-                <td><br><input type="submit" name="selecteerContent" value="Verzenden" class="btn-main"></td>
+                <td><br><input type="submit" name="selecteerContent" value="Verzenden" class="btn btn-raised btn-primary"></td>
             </tr>
         </form>
     </table>

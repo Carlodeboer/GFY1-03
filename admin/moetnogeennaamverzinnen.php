@@ -12,7 +12,7 @@
             <td>Inhoud:</td>
             <td><textarea name="inhoud" rows="4" cols="60"><?php print $content[1]; ?></textarea></td>
         </tr><tr>
-            <td><input type="submit" name="verzenden" value="Verzenden" </td>
+            <td><input type="submit" name="verzenden" value="Verzenden" class="btn btn-raised btn-primary"></td>
         </tr>
     </form>
 </table>
