@@ -19,20 +19,16 @@
               $teller = 0;
               $teller2 = 1;
               $i = 0;
-              while($row = $stmt->fetch()){
-
-                $datum[$i]=$row;
+              $resultaat = array();
+              while($userRow = $stmt-> fetch()){
+                $resultaat[$i] = array($userRow['begindatum'], $userRow['einddatum']);
                 $i++;
               }
-              print_r($datum);
+              print($resultaat[0][0] . "<br>");
 
-              // foreach($datum as $data){
-              // echo " $datum[$teller]   -  $datum[$teller2]";
-              // $teller = $teller + 2;
-              // $teller2 = $teller2 + 2;
-              // }
+              print($resultaat[0][1]);
 
-              ?>
+                ?>
               </div>
           </div>
           <?php include 'footer.php';?>
