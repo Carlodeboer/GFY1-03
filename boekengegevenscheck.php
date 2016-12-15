@@ -33,10 +33,13 @@
                               <td><h2>Reisgegevens van <?php print($vakantienaam); ?>:</h2></td>
                          </tr><tr>
                               <td>Begindatum:</td>
-                              <td>$begindatum</td>
+                              <td><?php print($begindatum)?></td>
                          </tr><tr>
                               <td>Einddatum:</td>
-                              <td>$einddatum</td>
+                              <td><?php print($einddatum)?></td>
+                         </tr><tr>
+                              <td>Aantal personen:</td>
+                              <td><?php print ($aantalPersonen) ?></td>
                          </tr><tr>
                               <td>Vervoer van Luchthaven Portela (Lissabon):</td>
                               <td><?php
@@ -60,15 +63,16 @@
                               <td><?php
                               print (ucfirst($locatie));
                               ?></td>
-                         </tr><tr>
-                              <td>Aantal personen:</td>
-                              <td><?php print ($aantalPersonen) ?></td>
+
                          </tr>
                          <?php
                          if ($opmerkingen != NULL) {
                               print ("<tr><td>Opmerkingen</td><td>" . $opmerkingen . "</td></tr>");
                          }
                          ?>
+                         <tr>
+                              <td>Vakantienaam:</td>
+                              <td><?php print($vakantienaam); ?></td>
                          <tr>
                               <td><h2>Persoonlijke gegevens:</h2></td>
                          </tr>
@@ -116,7 +120,9 @@
                          <tr>
                               <td>
                                    <form method="POST" action="boekengegevenscheckafronden.php">
-                                        <input type="submit" name="afronden" value="Afronden" class="btn-main">
+                                        <div class="form-group label-static is-empty">
+                                             <input type="submit" name="afronden" value="Afronden" class="btn btn-raised btn-primary">
+                                        </div>
                                    </form>
                               </td>
                          </tr>

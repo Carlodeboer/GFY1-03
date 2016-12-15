@@ -16,8 +16,8 @@
                          session_unset($_SESSION["klantGegevens"]);
                     }
 
-                    // $begindatum = ;
-                    // $einddatum = ;
+                    toevoegenAanArray("begindatum", "klantGegevens", "");
+                    toevoegenAanArray("einddatum", "klantGegevens", "");
                     toevoegenAanArray("aantalPersonen", "klantGegevens", "");
                     toevoegenAanArray("vervoerHeen", "klantGegevens", "");
                     toevoegenAanArray("vervoerTerug", "klantGegevens", "");
@@ -61,7 +61,7 @@
                               </div>
                               <div class="form-group label-static is-empty">
                                    <label for="i5i" class="control-label">Huisnummer*</label>
-                                   <input type="number" name="huisnummer<?php print ($i); ?>" class="form-control" id="i5i" required>
+                                   <input type="text" name="huisnummer<?php print ($i); ?>" class="form-control" id="i5i" required>
                                    <span class="help-block">Voer uw huisnummer in</span>
                               </div>
                               <div class="form-group label-static is-empty">

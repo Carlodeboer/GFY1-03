@@ -25,8 +25,8 @@
 
                                    $pdo->beginTransaction();
 
-                                   $stmt1 = $pdo->prepare("INSERT INTO boeking (aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking) VALUES (?, ?, ?, ?, ?)");
-                                   $stmt1->execute(array($aantalPersonen, $vervoerHeen, $vervoerTerug, $locatie, $opmerkingen));
+                                   $stmt1 = $pdo->prepare("INSERT INTO boeking (begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                                   $stmt1->execute(array($begindatum, $einddatum, $aantalPersonen, $vervoerHeen, $vervoerTerug, $locatie, $opmerkingen));
 
                                    $stmt2 = $pdo->prepare("SELECT max(idKlant) FROM boeking");
                                    $stmt2->execute(array());
