@@ -3,11 +3,11 @@
 <html>
 <head>
     <title>Motorcross</title>
-    <?php include 'head.php';?>
+    <?php include '../head.php';?>
 </head>
     <body>
         <div id="container">
-          <?php include 'header.php';?>
+          <?php include '../header.php';?>
           <div id="content">
             <div id="contentwrapper">
               Laat boekingen zien: <br>
@@ -31,7 +31,7 @@
                 ?>
               </div>
           </div>
-          <?php include 'footer.php';?>
+          <?php include '../footer.php';?>
         </div>
     </body>
 </html>
