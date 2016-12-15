@@ -56,11 +56,11 @@ function knopjes(){
 function contactformulierTaal(){
     $taal = selecteerTaal();
     if ($taal == "NLD"){
-        $labels = ["Contact", "Voornaam *", "Achternaam *", "Onderwerp *", "Email-adres *", "Telefoonnummer", "Bericht *"];
+        $labels = ["Contact", "Voornaam *", "Achternaam *", "Onderwerp *", "Email-adres *", "Telefoonnummer", "Bericht *", "Verzenden"];
     } elseif ($taal == "ENG"){
-        $labels = ["Contact", "First name *", "Last name *", "Subject *", "Email address *", "Phone number", "Message *"];
+        $labels = ["Contact", "First name *", "Last name *", "Subject *", "Email address *", "Phone number", "Message *", "Send"];
     } elseif ($taal = "DEU"){
-        $labels = ["Kontakt", "Vorname *", "Nachname *", "Thema *", "Email Adresse *", "Telefonnummer", "Nachricht *"];
+        $labels = ["Kontakt", "Vorname *", "Nachname *", "Thema *", "Email Adresse *", "Telefonnummer", "Nachricht *", "Schiff"];
     }
     return $labels;
 }

@@ -75,7 +75,7 @@
 
           <tr>
            <td colspan="2" style="text-align:center">
-            <input type="submit" value="Verzenden" class="btn-main">
+            <input type="submit" value=<?php print "\"".$labels[7]."\""; ?> class="btn-main">
            </td>
           </tr>
           </table>
