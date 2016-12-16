@@ -9,6 +9,10 @@ function newPDO() {
     return ($pdo);
 }
 
+// Controleert of de gebruiker een taal heeft geselecteerd. Zo ja, dan wordt de
+// geselecteerde taal in een session gezet en returnt hij dit. Zo nee, dan wordt
+// gekeken of er al een taal in de session staat. Zo ja, dan returnt hij dit.
+// Als dit ook niet het geval is,dan wordt de taal standaard op Nederlands gezet.
 function selecteerTaal(){
     if (isset($_GET['lang'])){
         $_SESSION['lang'] = $_GET['lang'];
@@ -21,6 +25,10 @@ function selecteerTaal(){
     return $taal;
 }
 
+// Haalt de bijbehorende gegevens op uit de database die aan deze functie worden
+// meegegeven. Dit is echter niet nodig. De programmeur kan zelf kiezen wat hij/zij
+// wil ophalen uit de database, maar dit kan ook automatisch geselecteerd als hij/zij
+// lege strings meegeeft.
 function laadContent($bestandsnaam, $taal){
     if ($bestandsnaam == ""){
         $bestandsnaam = $_SERVER['PHP_SELF'];
@@ -42,6 +50,8 @@ function laadContent($bestandsnaam, $taal){
     return $content;
 }
 
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor de navigatiebalk.
 function knopjes(){
     $taal = selecteerTaal();
     if ($taal == "NLD"){
@@ -53,6 +63,9 @@ function knopjes(){
     }
     return $knopjes;
 }
+
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor het contactformulier.
 function contactformulierTaal(){
     $taal = selecteerTaal();
     if ($taal == "NLD"){
@@ -65,6 +78,7 @@ function contactformulierTaal(){
     return $labels;
 }
 
+// Laadt alle nieuwsbericht die bij de geselecteerde taal horen.
 function laadNieuws($id){
 
     $pdo = newPDO();
@@ -88,6 +102,7 @@ function toevoegen($pdo, $naam, $weeknr) {
     $stmt->execute(array($naam, $weeknr));
 }
 
+// Wordt niet meer gebruikt?
 function toevoegenContent($titel, $pagina, $taal, $inhoud, $eigenaar) {
     $pdo = newPDO();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -157,6 +172,8 @@ function verwijderen($pdo, $naam, $weeknr) {
     $stmt->execute(array($naam, $weeknr));
 }
 
+// Vraagt de bijbehorende gegevens op van de gebruikersnaam die de gebruiker heeft
+// ingevuld. Controleert vervolgens of 
 function checkLogin($naam, $wachtwoord){
     $pdo = newPDO();
     $controle = ["klopt" => false,
