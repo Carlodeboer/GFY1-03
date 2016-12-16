@@ -1,6 +1,7 @@
 <?php
 include "toegang.php";
-// gelieve hier alle functies te plaatsen ;)
+
+// Maakt een nieuwe verbinding met de database.
 function newPDO() {
     $db = "mysql:host=carlodb.nl;dbname=carlodb_database;port=3306";
     $user = "carlodb_school";
@@ -173,14 +174,16 @@ function verwijderen($pdo, $naam, $weeknr) {
 }
 
 // Vraagt de bijbehorende gegevens op van de gebruikersnaam die de gebruiker heeft
-// ingevuld. Controleert vervolgens of 
+// ingevuld. Controleert vervolgens of beide velden niet leeg zijn gelaten en of
+// het wachtwoord correct is. Als dit het geval is, dan wordt $controle gereturnt
+// met de waardes klopt = true en een lege foutmelding. Als dit niet het geval is,
+// dan welk veld leeg is en returnt vervolgens klopt = false en een bijbehorende
+// foutmelding. Als beide velden wel zijn ingevuld maar het wachtwoord incorrect
+// is, dan wordt klopt = false en een bijbehorende foutmelding gereturnt.
 function checkLogin($naam, $wachtwoord){
     $pdo = newPDO();
     $controle = ["klopt" => false,
                 "foutmelding" => ""];
-    // $klopt = false;
-    // $foutmelding = "";
-
     $stmt = $pdo->prepare("SELECT gebruikersnaam, wachtwoord, privilegeniveau
                             FROM gebruikers
                             WHERE gebruikersnaam = ?");
@@ -208,6 +211,7 @@ function checkLogin($naam, $wachtwoord){
     return $controle;
 }
 
+// Vraagt het privilegeniveau van de meegegeven gebruikersnaam op en returnt dit.
 function checkPrivileges($naam){
     $pdo = newPDO();
     $stmt = $pdo->prepare("SELECT privilegeniveau
