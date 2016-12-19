@@ -3,13 +3,13 @@
               <?php
 
               $pdo = newPDO();
-              $stmt = $pdo->prepare("SELECT begindatum, einddatum FROM boeking");
+              $stmt = $pdo->prepare("SELECT idKlant, begindatum FROM boeking");
               $stmt->execute();
               $teller = 0;
               $i = 0;
               $resultaat = array();
               while($userRow = $stmt-> fetch()){
-                $resultaat[$i] = array($userRow['begindatum'], $userRow['einddatum']);
+                $resultaat[$i] = array($userRow['idKlant'], $userRow['begindatum']);
                 $i++;
               }
               foreach($resultaat as $oefen){
