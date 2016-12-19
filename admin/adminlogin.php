@@ -5,11 +5,13 @@
         <?php include '../head.php'; ?>
     </head>
     <body>
+      <?php include '../header.php'; ?>
         <div id="container">
             <div id="content">
                 <div id="contentwrapper">
+                  <h2>Beheerder Login</h2>
+
                     <?php
-                    include '../header.php';
                     // Controleert of de gebruiker al is ingelogd als admin. Zo ja,
                     // dan wordt de gebruiker meteen doorverwezen naar het beheerpaneel.
                     if (isset($_SESSION['admin_session'])) {
