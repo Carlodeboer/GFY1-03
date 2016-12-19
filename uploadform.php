@@ -63,7 +63,7 @@ function upload(){
     if($_FILES['userfile']['size'] < $maxsize )
     {
       /*** connect to db ***/
-      include 'dbconnect.php';
+      $pdo = newPDO();
       /*** set the error mode ***/
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

@@ -12,7 +12,7 @@
             </tr>
         </table>
     </form>
-</div> 
+</div>
 
 
 
@@ -32,7 +32,7 @@ if (isset($_POST['upload']) && $_FILES['userfile']['size'] > 0) {
 
     $fileName = addslashes($fileName);
 
-    include 'dbconnect.php';
+    $pdo = newPDO();
 
     $query = $pdo->prepare("INSERT INTO upload (name, size, type, content )
 VALUES (?, ?, ?, ?)");

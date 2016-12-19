@@ -1,5 +1,5 @@
 <?php
-include "dbconnect.php";
+$pdo = newPDO();
 ?>
 
 <html>

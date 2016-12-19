@@ -1,7 +1,7 @@
 <div id="contentwrapper">
 <?php
     include "../toegang.php";
-    include '../dbconnect.php';
+    $pdo = newPDO();
     //idbericht, voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum
      //$berichten = $pdo->prepare("SELECT * FROM contactformulier WHERE email = $_POST['email']");
      //$result = mysql_query($berichten);

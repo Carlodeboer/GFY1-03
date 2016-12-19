@@ -7,7 +7,7 @@ if(filter_has_var(INPUT_GET, "imageid") !== false && filter_input(INPUT_GET, 'im
     $image_id = filter_input(INPUT_GET, "imageid", FILTER_SANITIZE_NUMBER_INT);
     try     {
         /*** connect to the database ***/
-        include 'dbconnect.php';
+        $pdo = newPDO();
 
         /*** set the PDO error mode to exception ***/
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

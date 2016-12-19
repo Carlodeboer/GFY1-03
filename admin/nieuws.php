@@ -63,7 +63,7 @@ function popup() {
 
 
           <?php
-          include "../dbconnect.php";
+          $pdo = newPDO();
 
           date_default_timezone_set('Europe/Amsterdam');
           $date = date('d F Y H:i', time());

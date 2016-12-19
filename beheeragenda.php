@@ -45,7 +45,7 @@
             <option value="december">december</option>
         </select>
         <?php
-        include "dbconnect.php";
+        $pdo = newPDO();
 
         /* Set the default timezone */
         date_default_timezone_set("America/Montreal");

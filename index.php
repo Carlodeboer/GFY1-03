@@ -11,7 +11,7 @@
             <div id="content">
               <div id="contentwrapper">
                 <?php
-                    include "dbconnect.php";
+                $pdo = newPDO();
                     $content = laadContent("","");
                     print "<h2>".$content['title']."</h2>";
                     print "<p>".$content['bodytext']."</p>";

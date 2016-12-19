@@ -17,7 +17,7 @@
         <br><br>
         <h3>Nieuwsberichten bewerken</h3><br>
         <?php
-        include"../dbconnect.php";
+        $pdo = newPDO();
         $stmt = $pdo->prepare("SELECT id,lang,title,description,bodytext,posted
                             FROM nieuwsbericht");
         $stmt->execute();
