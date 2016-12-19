@@ -113,7 +113,7 @@ footer h4{
 }
 nav{
     position: relative;
-    z-index: 99999;
+    z-index: 200;
     max-width: 1100px;
 }
 nav ul{
