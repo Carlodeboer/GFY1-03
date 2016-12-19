@@ -4,26 +4,9 @@
         <title>Motorcross</title>
         <link type="text/css" rel="stylesheet" href="style/style.css">
 
-        <script type="text/javascript">
-            status = 1;
-            function changeStyle() {
-                //Note the lowercase first letter.
-                x = document.getElementById("text");
-
-                if (status == 1) {
-                    x.style.backgroundColor = 'grey';
-                    status = 2;
-                } else if (status == 2) {
-                    x.style.backgroundColor = 'red';
-                    status = 3;
-                } else if (status == 3) {
-                    x.style.backgroundColor = 'green';
-                    status = 1;
-                }
-            }
-        </script>
     </head>
     <body>
+    <form method="post">
         <select name="jaar">
             <option value="2016">2016</option>
             <option value="2017">2017</option>
@@ -31,31 +14,46 @@
             <option value="2019">2019</option>
         </select>
         <select name="maand">
-            <option value="januari">januari</option>
-            <option value="februari">februari</option>
-            <option value="maart">maart</option>
-            <option value="april">april</option>
-            <option value="mei">mei</option>
-            <option value="juni">juni</option>
-            <option value="juli">juli</option>
-            <option value="augustus">augustus</option>
-            <option value="september">september</option>
-            <option value="oktober">oktober</option>
-            <option value="november">november</option>
-            <option value="december">december</option>
+            <option value="1">januari</option>
+            <option value="2">februari</option>
+            <option value="3">maart</option>
+            <option value="4">april</option>
+            <option value="5">mei</option>
+            <option value="6">juni</option>
+            <option value="7">juli</option>
+            <option value="8">augustus</option>
+            <option value="9">september</option>
+            <option value="10">oktober</option>
+            <option value="11">november</option>
+            <option value="12">december</option>
         </select>
+       <input type="submit" name="test" value="Ga">
+        </form>
         <?php
         $pdo = newPDO();
 
         /* Set the default timezone */
-        date_default_timezone_set("America/Montreal");
+        date_default_timezone_set("Europe/Amsterdam");
 
         /* Set the date */
         $date = strtotime(date("Y-m-d"));
-
         $day = date('d', $date);
-        $month = date('m', $date);
-        $year = date('Y', $date);
+
+
+        if(isset($_POST['jaar'])) {
+        	$year = $_POST['jaar'];
+        }
+
+                if(isset($_POST['maand'])) {
+        	$month = $_POST['maand'];
+        }
+        if(!isset($year)) {
+        	$year = date('Y', $date);
+        }
+                if(!isset($month)) {
+        	$month = date('m', $date);
+        }
+
         $firstDay = mktime(0, 0, 0, $month, 1, $year);
         $title = strftime('%B', $firstDay);
         $dayOfWeek = date('D', $firstDay);
@@ -71,8 +69,19 @@
         ?>
         <table id="calendar">
             <tr>
-                <th colspan="7"><div class="row"> <div class="col-md-2"><input type="submit" name="vorige" value="Vorige" class="btn btn-raised btn-primary"></div><div class="col-md-8"><?php print("{$title} {$year}"); ?></div><div class="col-md-2"> <input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary"></div></th>
+                <th colspan="7">
+
+                <?php print("{$title} {$year}"); ?></th>
             </tr><tr>
+
+<!-- Dit deel evt later nog toevoegen -->
+<!--                         <tr>
+                <th colspan="7"><div class="row"> <div class="col-md-2">
+
+                <input type="submit" name="vorige" value="Vorige" class="btn btn-raised btn-primary"></div><div class="col-md-8"><?php print("{$title} {$year}"); ?></div><div class="col-md-2"> <input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary"></div></th>
+            </tr><tr> -->
+
+
                 <?php foreach ($weekDays as $key => $weekDay) { ?>
                     <td class="text-center">
                         <?php echo $weekDay ?>
@@ -85,53 +94,47 @@
                 }
 
                 $stmt = $pdo->prepare("SELECT * FROM beschikbaarheid
-                                        WHERE Year(begindatum) = Year(CURRENT_TIMESTAMP)
-                                        AND Month(begindatum) = Month(CURRENT_TIMESTAMP)
+                                        WHERE Year(begindatum) = ?
+                                        AND Month(begindatum) = ?
                                         ORDER BY einddatum");
-                $stmt->execute();
-                // $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+                $stmt->execute(array($year,$month));
                 $resultaat = array();
 
-                $x = 0;
-                while($userRow = $stmt-> fetch()) {
-                    $resultaat[$x] = array($userRow['omschrijving'],$userRow['begindatum'],$userRow['einddatum']);
-                    $x++;
+                $objArray = array();
+                while( $userRow = $stmt->fetch() ) {
+                    $sDayStart 	= date('j', strtotime($userRow['begindatum']));
+                    $sDayEnd 	= date('j', strtotime($userRow['einddatum']));
+
+                    for($dd = $sDayStart; $dd <= $sDayEnd; $dd++) {
+                    	$objArray[$dd] = $userRow['omschrijving'];
+                    }
                 }
-                print_r($resultaat);
-                print count($resultaat);
+
                 $y = 0;
                 for ($i = 1; $i <= $daysInMonth; $i++) {
-                        $date2 = strtotime($resultaat[$y][1]);
-                        $date3 = strtotime($resultaat[$y][2]);
 
-                        $vergelijkdatum = date('j', $date2);
-                        $vergelijkdatumeind = date('j', $date3);
+                	
+                	echo "<td>";
+                		if( isset($objArray[$i] ) ) {
+                			echo $i . ": " . $objArray[$i];
+                		}
+                		else {
+                			echo $i;
+                		}
+                		
 
-                        if ($y+1 < count($resultaat)){
-                            $date4 = strtotime($resultaat[$y+1][1]);
-                            $vergelijkVolgende = date('j', $date4);
-                        }
+                	echo "</td>";
 
-                        if ($i >= $vergelijkdatum && $i <= $vergelijkdatumeind) {
-                            print("<td >".$i.$resultaat[$y][0]."</td>");
-                            if ($vergelijkdatumeind == $i ||
-                                isset($vergelijkVolgende) && $vergelijkVolgende == ($i + 1)) {
-                                if ($y < (count($resultaat)-1)){
-                                    $y++;
-                                    print $y." ";
-                                }
-                            }
-                        } else {
-	                        print("<td> {$i} </td>");
+                	if (($i + $blank) % 7 == 0) {
+                		echo "</tr><tr>";
+                	}
 
-                        }
-                    if (($i + $blank) % 7 == 0) {
-                        print("</tr><tr>");
-                    }
+                	$y++;
                 }
                 for ($i = 0; ($i + $blank + $daysInMonth) % 7 != 0; $i++) {
                     print("<td></td>");
                 }
+
                 ?>
             </tr>
         </table>
@@ -170,7 +173,6 @@
                 if ($res > 0) {
                     //feedback aan gebruiker geven
                     print("De boeking " . $omschrijving . " is toegevoegd.");
-                    // $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 }
             }
         }
