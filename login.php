@@ -1,9 +1,7 @@
 <?php define("toegang", true); ?>
 <!DOCTYPE html>
 <html>
-<?php
-include "dbconnect.php"
-?>
+
 <head>
      <title>Motorcross</title>
      <?php include 'head.php';?>
