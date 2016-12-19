@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-$pdo = newPDO();
+include "dbconnect.php"
 ?>
 <head>
      <title>Motorcross</title>
