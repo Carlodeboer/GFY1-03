@@ -1,6 +1,7 @@
 <?php
     include "toegang.php";
 ?>
+<div id="push"></div>
 <footer>
   <div class="col-md-1">
     <?php

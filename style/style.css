@@ -15,7 +15,7 @@ p,li,ul,h1,h2,h3,h4,h5,h6,table,form{
 footer{
     height:250px;
     width:100%;
-    padding:25px 25px;
+    padding:25px;
     box-sizing: border-box;
     color:#e8e8e8;
     background: #404040 url(../images/tiretrack.png) left repeat-y;
@@ -149,12 +149,16 @@ ul a{
 #content{
     position: relative;
     background-color:#fff;
-    min-height:470px;
     width:100%;
     overflow-x: hidden;
     padding:25px 25px;
     box-sizing: border-box;
-
+    margin-bottom: -250px;
+}
+#push{
+  height:255px;
+  padding:25px;
+  box-sizing: border-box;
 }
 #contentwrapper{
     position: relative;
