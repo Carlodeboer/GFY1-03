@@ -102,7 +102,6 @@
                                         AND Month(begindatum) = ?
                                         ORDER BY einddatum");
                                         $stmt->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer']));
-                                        $resultaat = array();
 
                                         $objArray = array();
                                         while ($userRow = $stmt->fetch()) {
@@ -206,6 +205,18 @@ if (isset($_POST['invoeren'])) {
     } elseif ($status == "") {
         print("Selecteer een status.");
     } else {
+        // $stmt2 = $pdo->prepare("SELECT * FROM beschikbaarheid WHERE (begindatum BETWEEN ? AND ?)
+        // 															(AND einddatum BETWEEN ? AND ?)");
+        $stmt2 = $pdo->prepare("SELECT * FROM beschikbaarheid WHERE begindatum >= ? AND einddatum <= ?");
+        // $stmt2 = $pdo->prepare("SELECT * FROM beschikbaarheid WHERE begindatum BETWEEN ? AND ?");
+        $stmt2->execute(array($begindatum,$einddatum));
+		$userRow = $stmt2->fetch(PDO::FETCH_ASSOC);
+        $res2 = $stmt2->rowCount();
+        if ($res2 > 0) {
+        	print("Deze bestaat al");
+        	exit;
+        } else {
+
         $stmt = $pdo->prepare("INSERT INTO beschikbaarheid (omschrijving,begindatum,einddatum,status) VALUES (?,?,?,?)");
         $stmt->execute(array($omschrijving, $begindatum, $einddatum, $status));
         $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -214,6 +225,7 @@ if (isset($_POST['invoeren'])) {
             //feedback aan gebruiker geven
             print("De boeking " . $omschrijving . " is toegevoegd.");
         }
+    }
     }
 }
 ?>

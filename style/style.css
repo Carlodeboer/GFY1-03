@@ -194,6 +194,22 @@ ul a{
 
 }
 
+.status0 {
+  color:yellow;
+}
+
+.status1 {
+  color:red;
+}
+
+.status2 {
+  color:green;
+}
+
+.status3 {
+  color:orange;
+}
+
 #nieuws {
   width:100%;
   padding:20px 0;
