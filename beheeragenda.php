@@ -61,7 +61,7 @@
         $blank = date('w', strtotime("{$year}-{$month}-01"));
         ?>
 
-
+<br><br>
         <div class="row">
             <div class="col-md-8">
                 <table id="calendar">
@@ -185,6 +185,7 @@
 
                                 </div>
                             </div>
+                            <br><br>
 
 
 

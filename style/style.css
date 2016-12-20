@@ -173,17 +173,20 @@ ul a{
 }
 
 #calendar td, #calendar th, #calendar table {
-    border:1px solid black;
+    border:2px solid #404040;
 }
 
 #calendar th {
-    height:50px;
-    color:cyan;
-    background-color: black;
+    text-align: center;  
+    height:75px;
+    background-color:#404040;
     font-size:40px;
+    color:#009688;
 }
 
 #calendar td {
+  text-align:center;
+  /*padding-left:10px;*/
     width:150px;
     height:75px;
     background-color:white;
