@@ -1,11 +1,16 @@
-
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="windows-1252">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<head>
+  <title>TODO supply a title</title>
+  <meta charset="windows-1252">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div id="container">
+    <div id="contentwrapper">
+      <?php
+      print("this is nice");
+      ?>
+    </div>
+  </div>
+</body>
 </html>

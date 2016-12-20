@@ -29,7 +29,7 @@
 
             <?php
             foreach($resultaat as $oefen){
-              print ("<a href='http://localhost/GFY1-03/admin/boekopvraagsript.php'><tr>");
+              print ("<a href='http://localhost/GFY1-03/admin/boekopvraagscript.php'><tr>");
               print(" <td> " .
               $resultaat[$teller][0] . "</td><td>"
               . $resultaat[$teller][1] . "</td><td>" .
