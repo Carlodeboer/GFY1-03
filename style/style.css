@@ -13,7 +13,7 @@ p,li,ul,h1,h2,h3,h4,h5,h6,table,form{
 }
 
 footer{
-    height:250px;
+    height:300px;
     width:100%;
     padding:25px 25px;
     box-sizing: border-box;
@@ -149,7 +149,7 @@ ul a{
 #content{
     position: relative;
     background-color:#fff;
-    min-height:470px;
+    min-height:420px;
     width:100%;
     overflow-x: hidden;
     padding:25px 25px;
@@ -177,7 +177,7 @@ ul a{
 }
 
 #calendar th {
-    text-align: center;  
+    text-align: center;
     height:75px;
     background-color:#404040;
     font-size:40px;
