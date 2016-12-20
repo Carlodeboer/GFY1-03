@@ -2,6 +2,15 @@
 session_start();
 include 'functions.php';
 $knopjes = knopjes();
+$tijd = time();
+if (isset($_SESSION['geldigeSession'])){
+    if ($_SESSION['geldigeSession'] && isset($_SESSION['expire']) && $tijd > $_SESSION['expire']){
+        $_SESSION['geldigeSession'] = false;
+        header('Location: http://localhost/GFY1-03/admin/adminlogout.php');
+        exit();
+    }
+}
+$_SESSION['geldigeSession'] = true;
 ?>
 <!-- Bootstrap material design -->
 <link type="text/css" rel="stylesheet" href=<?php print "\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/style/bootstrap.css\"";?>>
