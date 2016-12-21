@@ -68,7 +68,7 @@
                 }
                 // Als de gebruiker niet als admin is aangemeld, krijgt hij dit bericht te zien
                 else {
-                    print 'DAS IST VERBOTEN';
+                    header('Location: ../403.php');
                 }
                 ?>
             </div>
