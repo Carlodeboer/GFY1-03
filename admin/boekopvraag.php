@@ -29,7 +29,7 @@
 
             <?php
             foreach($resultaat as $oefen){
-              print ("<a href='http://localhost/GFY1-03/admin/boekopvraagscript.php'><tr>");
+              print ("<a href='http://localhost/GFY1-03/admin/boekopvraagscript.php'><tr>"); //hier moet een ID van de boekin in de link komen... maar hoe?
               print(" <td> " .
               $resultaat[$teller][0] . "</td><td>"
               . $resultaat[$teller][1] . "</td><td>" .
