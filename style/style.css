@@ -17,7 +17,7 @@ footer{
     width:100%;
     padding:25px 25px;
     box-sizing: border-box;
-    color:#e8e8e8;
+    color:#fafafa;
     background: #404040 url(../images/tiretrack.png) left repeat-y;
 }
 #footerwrapper .col-md-4{
@@ -25,7 +25,7 @@ padding-left:0;
 padding-right:0;
 }
 footer h4{
-  color: #e8e8e8;
+  color: #fafafa;
   float: left;
   font-size:20px;
 }
@@ -301,7 +301,12 @@ hr {
     text-align: center;
 }
 
-
+.g-recaptcha{
+  float:left;
+}
+.contactformulierverzendenknop{
+  float:right;
+}
 /*galerij*/
 
 .galerij
