@@ -29,7 +29,7 @@
 
             <?php
             foreach($resultaat as $oefen){
-              print ("<tr onclick=\"location='beheerpaneel.php?beheer=Reizen&boekingID={$userRow['idKlant']}'\">"); //hier moet een ID van de boeking in de link komen... maar hoe?
+              print ("<tr onclick=\"location='beheerpaneel.php?beheer=Reizenopvragen&boekingID={$userRow['idKlant']}'\">"); //hier moet een ID van de boeking in de link komen... maar hoe?
               print("<td>" .
               $resultaat[$teller][0] . "</td><td>" .
               $resultaat[$teller][1] . "</td><td>" .
