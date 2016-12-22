@@ -94,10 +94,10 @@
                                    <input type="text" name="email<?php print ($i); ?>" class="form-control" id="i5i" required>
                                    <span class="help-block">Voer uw emailadres in</span>
                               </div>
+                              <?php } ?>
                               <div class="form-group label-static is-empty">
                                    <input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary">
                               </div>
-                              <?php } ?>
                          </form>
                     </div>
                </div>
