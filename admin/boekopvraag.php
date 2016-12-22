@@ -11,34 +11,48 @@
       <?php
 
       $pdo = newPDO();
-      $stmt = $pdo->prepare("SELECT gebruikersnaam, begindatum, einddatum FROM boeking b JOIN gebruikers g ON idKlant=idGebruiker ORDER BY begindatum");
+      $stmt = $pdo->prepare("SELECT idKlant, gebruikersnaam, begindatum, einddatum FROM boeking JOIN gebruikers ON idKlant=idGebruiker ORDER BY begindatum");
       $stmt->execute();
       $teller = 0;
       $i = 0;
       $resultaat = array();
       while($userRow = $stmt-> fetch()){
-        $resultaat[$i] = array($userRow['gebruikersnaam'], $userRow['begindatum'], $userRow['einddatum']);
+        $resultaat[$i] = array($userRow['idKlant'], $userRow['gebruikersnaam'], $userRow['begindatum'], $userRow['einddatum']);
         $i++;
       }
       ?>
       <div class="row">
         <div class="col-md-6">
 
-          <table class="table table-striped table-hover ">
-            <tr><th>Vakantienaam</th><th>Begindatum</th><th>Einddatum</th></tr>
+          <table class="table table-striped table-hover nieuwsberichtenbewerken">
+            <tr><th>BoekingID</th><th>Vakantienaam</th><th>Begindatum</th><th>Einddatum</th></tr>
 
             <?php
             foreach($resultaat as $oefen){
-              print ("<tr onclick=\"location='beheerpaneel.php?beheer=Reizen&berichtId={$userRow['gebruikersnaam']}'\">"); //hier moet een ID van de boeking in de link komen... maar hoe?
-              print("<a href=\"http://localhost/GFY1-03/admin/boekopvraagscript.php\"> <td>" .
+              print ("<tr onclick=\"location='beheerpaneel.php?beheer=Reizen&boekingID={$userRow['idKlant']}'\">"); //hier moet een ID van de boeking in de link komen... maar hoe?
+              print("<td>" .
               $resultaat[$teller][0] . "</td><td>" .
               $resultaat[$teller][1] . "</td><td>" .
-              $resultaat[$teller][2] . "</a></td>");
+              $resultaat[$teller][2] . "</td><td>" .
+              $resultaat[$teller][3] . "</td>");
               print ("</tr>");
-              print ("<br>");
+
 
               $teller++;
             }
+
+            if (isset($_GET['boekingID'])) {
+                $boekingID = $_GET['boekingID'];
+
+                $stmt = $pdo->prepare("SELECT idKlant, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling
+                        FROM boeking
+                        WHERE idKlant=?");
+                $stmt->execute(array($boekingGegevens));
+                $boekingGegevens = $stmt->fetch();
+            }
+
+            print($boekingGegevens["idKlant"]);
+
             ?>
 
           </table>
