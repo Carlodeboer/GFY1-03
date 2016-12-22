@@ -6,17 +6,10 @@
         <div id="container">
             <div id="contentwrapper">
                 <?php
-                print("this is nice <br><br>");
-
-
                 if (isset($_GET['boekingID'])) {
                     $boekingID = $_GET['boekingID'];
 
                     $pdo = newPDO();
-
-
-
-
 
                         $stmt1 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling FROM boeking WHERE idklant = ?");
                         $stmt1->execute(array($boekingID));
