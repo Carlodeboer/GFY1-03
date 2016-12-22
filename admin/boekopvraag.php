@@ -16,10 +16,10 @@
       $teller = 0;
       $i = 0;
       $resultaat = array();
-      while($userRow = $stmt-> fetch()){
-        $resultaat[$i] = array($userRow['gebruikersnaam'], $userRow['begindatum'], $userRow['einddatum']);
-        $i++;
-      }
+      // while($userRow = $stmt-> fetch()){
+      //   $resultaat[$i] = array($userRow['gebruikersnaam'], $userRow['begindatum'], $userRow['einddatum']);
+      //   $i++;
+      // }
       ?>
       <div class="row">
         <div class="col-md-6">
