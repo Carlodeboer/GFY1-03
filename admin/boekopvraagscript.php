@@ -27,7 +27,7 @@
 
                         ?>
 
-
+                        <div id="reisgegevens">
                         <h2>Reisgegevens:</h2>
                         <table>
                             <tr>
@@ -76,6 +76,8 @@
                                  <td><?php print($betaling); ?></td>
                             </tr>
                         </table>
+                      </div>
+                      <div id="reispersonen">
                         <h2>Persoonlijke gegevens:</h2>
                         <table>
                             <?php
@@ -132,6 +134,7 @@
                             }
                             ?>
                         </table>
+                      </div>
                         <?php
                         $pdo = NULL;
                     }

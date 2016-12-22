@@ -253,6 +253,12 @@ ul a{
 #nieuwsrechts {
 
 }
+#reisgegevens{
+  float:left;
+}
+#reispersonen{
+  float:right;
+}
 
 hr {
     height: 1px;
