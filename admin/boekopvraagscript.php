@@ -13,11 +13,11 @@
                     $boekingID = $_GET['boekingID'];
 
                     $pdo = newPDO();
-                    
 
-                    
-                        
-                        
+
+
+
+
                         $stmt1 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling FROM boeking WHERE idklant = ?");
                         $stmt1->execute(array($boekingID));
                         $row1 = $stmt1->fetch();
@@ -34,7 +34,7 @@
 
                         ?>
 
-                        
+
                         <h2>Reisgegevens:</h2>
                         <table>
                             <tr>
@@ -80,7 +80,7 @@
                                 <td><?php print($status); ?></td>
                             </tr><tr>
                                 <td>Betaald:</td>
-
+                                 <td><?php print($betaling); ?></td>
                             </tr>
                         </table>
                         <h2>Persoonlijke gegevens:</h2>
@@ -142,7 +142,7 @@
                         <?php
                         $pdo = NULL;
                     }
-                
+
                     ?>
             </div>
         </div>
