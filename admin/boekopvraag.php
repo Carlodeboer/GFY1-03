@@ -11,13 +11,13 @@
       <?php
 
       $pdo = newPDO();
-      $stmt = $pdo->prepare("SELECT vakantienaam, begindatum, einddatum FROM boeking b JOIN reis r ON b.idKlant=r.idklant ORDER BY begindatum ");
+      $stmt = $pdo->prepare("SELECT gebruikersnaam, begindatum, einddatum FROM boeking b JOIN gebruikers g ON idKlant=idGebruiker ORDER BY begindatum");
       $stmt->execute();
       $teller = 0;
       $i = 0;
       $resultaat = array();
       while($userRow = $stmt-> fetch()){
-        $resultaat[$i] = array($userRow['vakantienaam'], $userRow['begindatum'], $userRow['einddatum']);
+        $resultaat[$i] = array($userRow['gebruikersnaam'], $userRow['begindatum'], $userRow['einddatum']);
         $i++;
       }
       ?>
@@ -29,7 +29,7 @@
 
             <?php
             foreach($resultaat as $oefen){
-              print ("<a href='http://localhost/GFY1-03/admin/boekopvraagscript.php'><tr>"); //hier moet een ID van de boekin in de link komen... maar hoe?
+              print ("<a href='http://localhost/GFY1-03/admin/boekopvraagscript.php'><tr>"); //hier moet een ID van de boeking in de link komen... maar hoe?
               print(" <td> " .
               $resultaat[$teller][0] . "</td><td>"
               . $resultaat[$teller][1] . "</td><td>" .
