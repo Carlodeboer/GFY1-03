@@ -36,17 +36,17 @@
                                    $boekingID = $_GET['boekingID'];
 
                                    $stmt = $pdo->prepare("SELECT idKlant, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling
-                                   FROM boeking
-                                   WHERE idKlant=?");
-                                   $stmt->execute(array($boekingID));
-                                   $boekingGegevens = $stmt->fetch();
-                              }
-                              ?>
+                                        FROM boeking
+                                        WHERE idKlant=?");
+                                        $stmt->execute(array($boekingID));
+                                        $boekingGegevens = $stmt->fetch();
+                                   }
+                                   ?>
 
-                         </table>
+                              </table>
+                         </div>
                     </div>
                </div>
           </div>
-     </div>
-</body>
-</html>
+     </body>
+     </html>
