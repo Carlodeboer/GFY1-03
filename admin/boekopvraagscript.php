@@ -11,10 +11,16 @@
 
                     $pdo = newPDO();
 
-                    $stmt1 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling FROM boeking WHERE idklant = ?");
+                    $stmt1 = $pdo->prepare("SELECT idKlant, gebruikersnaam, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling
+                         FROM boeking
+                         JOIN gebruikers
+                         ON idKlant=idGebruiker
+                         WHERE idklant = ?");
                     $stmt1->execute(array($boekingID));
                     $row1 = $stmt1->fetch();
 
+                    $klantID= $row1["idKlant"];
+                    $gebruikersnaam= $row1["gebruikersnaam"];
                     $begindatum = $row1["begindatum"];
                     $einddatum = $row1["einddatum"];
                     $aantalPersonen = $row1["aantalPersonen"];
@@ -26,16 +32,27 @@
                     $betaling = $row1["betaling"];
 
                     if (isset($_GET["bevestigen"])) {
-                         $stmt5 = $pdo->prepare("UPDATE boeking SET status='Bevestigd'");
-                         $stmt5->execute(array());
+                         $stmt5 = $pdo->prepare("UPDATE boeking SET status='Bevestigd' WHERE idKlant=?");
+                         $stmt5->execute(array($klantID));
+                    }
+
+                    if (isset($_GET["betaald"])) {
+                         $stmt6 = $pdo->prepare("UPDATE boeking SET betaling='Betaald' WHERE idKlant=?");
+                         $stmt6->execute(array($klantID));
                     }
 
                     ?>
 
                     <div id="reisgegevens">
-                         <h2>Reisgegevens:</h2>
+                         <h2>Reisgegevens van <?php print($gebruikersnaam); ?>:</h2>
                          <table>
                               <tr>
+                                   <td>Gebruikersnaam:</td>
+                                   <td><?php print($gebruikersnaam); ?></td>
+                              </tr><tr>
+                                   <td>KlantID:</td>
+                                   <td><?php print($klantID); ?></td>
+                              </tr><tr>
                                    <td>Begindatum:</td>
                                    <td><?php print($begindatum); ?></td>
                               </tr><tr>
