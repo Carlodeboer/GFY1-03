@@ -25,16 +25,16 @@
         <div class="col-md-6">
 
           <table class="table table-striped table-hover nieuwsberichtenbewerken">
-            <th>Vakantienaam</th><th>Begindatum</th><th>Einddatum</th>
+            <tr><th>Vakantienaam</th><th>Begindatum</th><th>Einddatum</th></tr>
 
             <?php
             foreach($resultaat as $oefen){
-              print ("<a href='http://localhost/GFY1-03/admin/boekopvraagscript.php'><tr>"); //hier moet een ID van de boeking in de link komen... maar hoe?
-              print(" <td> " .
-              $resultaat[$teller][0] . "</td><td>"
-              . $resultaat[$teller][1] . "</td><td>" .
+              print ("<tr>"); //hier moet een ID van de boeking in de link komen... maar hoe?
+              print("<a href=\"http://localhost/GFY1-03/admin/boekopvraagscript.php\"> <td>" .
+              $resultaat[$teller][0] . "</td><td>" .
+              $resultaat[$teller][1] . "</td><td>" .
               $resultaat[$teller][2] . "</a></td>");
-              print ("</tr></a>");
+              print ("</tr>");
 
               $teller++;
             }
