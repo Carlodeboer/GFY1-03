@@ -47,7 +47,7 @@
                 $stmt = $pdo->prepare("SELECT idKlant, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling
                         FROM boeking
                         WHERE idKlant=?");
-                $stmt->execute(array($boekingGegevens));
+                $stmt->execute(array($boekingID));
                 $boekingGegevens = $stmt->fetch();
             }
 
