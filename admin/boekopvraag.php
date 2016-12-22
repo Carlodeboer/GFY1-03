@@ -35,6 +35,7 @@
               $resultaat[$teller][1] . "</td><td>" .
               $resultaat[$teller][2] . "</a></td>");
               print ("</tr>");
+              print ("<br>");
 
               $teller++;
             }
