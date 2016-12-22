@@ -23,7 +23,7 @@
                          $stmt1->execute(array($weekJaar, $naam));
 
                          if ($stmt1->rowCount() >= 1) {
-                              $stmt2 = $pdo->prepare("SELECT max(idklant) AS idklant FROM reis WHERE weekjaar = ? AND vakantienaam = ?");
+                              $stmt2 = $pdo->prepare("SELECT max(idGebruiker) AS idGebruiker FROM gebruikers WHERE wachtwoord = ? AND gebruikersnaam = ?");
                               $stmt2->execute(array($weekJaar, $naam));
                               $row2 = $stmt1->fetch();
                               $idklant = $row2["idGebruiker"];
