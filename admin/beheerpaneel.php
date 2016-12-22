@@ -64,7 +64,7 @@
                     // geselecteerd die hij wil bewerken. Zo ja, dan worden de bijbehorende
                     // berichten geladen.
                     elseif (isset($_SESSION['beheer']) && isset($_POST['zoekBerichten'])) {
-                         print "test";
+                         
                          $_SESSION['email'] = $_POST['email'];
                          include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraag.php';
                     }
