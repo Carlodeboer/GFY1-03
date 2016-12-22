@@ -89,6 +89,12 @@
                             </tr>
                         </table>
                       </div>
+
+
+
+
+
+                      
                       <div id="reispersonen">
                         <h2>Persoonlijke gegevens:</h2>
                         <table>
