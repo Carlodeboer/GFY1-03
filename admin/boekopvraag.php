@@ -7,7 +7,7 @@
   <div id="container">
 
     <div id="contentwrapper">
-      Laat boekingen zien: <br>
+      <br><h2>Laat boekingen zien: </h2> <br>
       <?php
 
       $pdo = newPDO();
