@@ -43,10 +43,10 @@
                               case "Nieuwsbewerken":
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
                               break;
-                              case "Reizen":
+                              case "Boekingen":
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraag.php';
                               break;
-                              case "Reizenopvragen":
+                              case "Boekingenopvragen":
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraagscript.php';
                               break;
                          }
