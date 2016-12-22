@@ -24,12 +24,12 @@
       <div class="row">
         <div class="col-md-6">
 
-          <table class="table table-striped table-hover nieuwsberichtenbewerken">
+          <table class="table table-striped table-hover ">
             <tr><th>Vakantienaam</th><th>Begindatum</th><th>Einddatum</th></tr>
 
             <?php
             foreach($resultaat as $oefen){
-              print ("<tr>"); //hier moet een ID van de boeking in de link komen... maar hoe?
+              print ("<tr onclick=\"location='beheerpaneel.php?beheer=Reizen&berichtId={$userRow['gebruikersnaam']}'\">"); //hier moet een ID van de boeking in de link komen... maar hoe?
               print("<a href=\"http://localhost/GFY1-03/admin/boekopvraagscript.php\"> <td>" .
               $resultaat[$teller][0] . "</td><td>" .
               $resultaat[$teller][1] . "</td><td>" .
