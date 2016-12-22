@@ -69,11 +69,23 @@
                             }
                             ?>
                             <tr>
-                                <td>Status:</td>
-                                <td><?php print($status); ?></td>
-                            </tr><tr>
-                                <td>Betaald:</td>
-                                 <td><?php print($betaling); ?></td>
+                                 <td>Status:</td>
+                                 <td><?php
+                                 if ($status=="Niet bevestigd") {
+                                       print("<b>" . $status . "<b>");
+                                 } else {
+                                      print($status);
+                                 }
+                                 ?></td>
+                             </tr><tr>
+                                 <td>Betaald:</td>
+                                  <td><?php
+                                  if ($betaling=="Niet betaald") {
+                                        print("<b>" . $betaling . "<b>");
+                                  } else {
+                                       print($betaling);
+                                  }
+                                  ?></td>
                             </tr>
                         </table>
                       </div>
