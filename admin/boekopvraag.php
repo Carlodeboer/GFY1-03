@@ -29,13 +29,12 @@
 
             <?php
             foreach($resultaat as $oefen){
-              print ("<tr onclick=\"location='beheerpaneel.php?beheer=Reizen&berichtId={$userRow['gebruikersnaam']}'\">"); //hier moet een ID van de boeking in de link komen... maar hoe?
-              print("<a href=\"http://localhost/GFY1-03/admin/boekopvraagscript.php\"> <td>" .
+              print ("<tr onclick=\"location='beheerpaneel.php?beheer=Reizen&gebruikersnaam={$userRow['gebruikersnaam']}'\">"); //hier moet een ID van de boeking in de link komen... maar hoe?
+              print("<td>" .
               $resultaat[$teller][0] . "</td><td>" .
               $resultaat[$teller][1] . "</td><td>" .
-              $resultaat[$teller][2] . "</a></td>");
+              $resultaat[$teller][2] . "</td>");
               print ("</tr>");
-              print ("<br>");
 
               $teller++;
             }
