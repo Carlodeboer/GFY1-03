@@ -59,7 +59,7 @@ function knopjes(){
         $knopjes = ["Home", "Accommodaties", "Prijzen", "Contact", "Login", "Galerij"];
     } elseif ($taal == "ENG"){
         $knopjes = ["Home", "Accommodations", "Pricing", "Contact", "Login", "Gallery"];
-    } elseif ($taal = "DEU"){
+   } elseif ($taal == "DEU"){
         $knopjes = ["Home", "Unterkunft", "Preis", "Kontakt", "Login", "Galerie"];
     }
     return $knopjes;
@@ -73,7 +73,7 @@ function contactformulierTaal(){
         $labels = ["Contact", "Voornaam *", "Achternaam *", "Onderwerp *", "Email-adres *", "Telefoonnummer", "Bericht *", "Verzenden", "Fijn dat u contact met ons opneemt."];
     } elseif ($taal == "ENG"){
         $labels = ["Contact", "First name *", "Last name *", "Subject *", "Email address *", "Phone number", "Message *", "Send", "Thank you for contacting us."];
-    } elseif ($taal = "DEU"){
+   } elseif ($taal == "DEU"){
         $labels = ["Kontakt", "Vorname *", "Nachname *", "Thema *", "Email Adresse *", "Telefonnummer", "Nachricht *", "Schiff", "Danke für Ihre Kontaktaufnahme."];
     }
     return $labels;
