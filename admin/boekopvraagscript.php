@@ -93,8 +93,9 @@
                                    ?></td>
                               </tr>
                          </table>
-                         <form method="get" action="beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}">
+                         <form method="GET" action="beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}">
                               <input type="submit" name="bevestigen" value="Bevestigen" class="btn btn-raised btn-primary">
+
                               <input type="submit" name="betaald" value="Betaald" class="btn btn-raised btn-primary">
                          </form>
                     </div>
