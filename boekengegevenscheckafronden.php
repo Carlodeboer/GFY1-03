@@ -40,7 +40,7 @@
 
                                    }
 
-                                   $stmt4 = $pdo->prepare("INSERT INTO reis (idklant, vakantienaam, weekjaar) VALUES (?, ?, ?)");
+                                   $stmt4 = $pdo->prepare("INSERT INTO gebruikers (idGebruiker, gebruikersnaam, wachtwoord, privilegeniveau) VALUES (?, ?, ?, 1)");
                                    $stmt4->execute(array($idKlant, $vakantienaam, $weekjaar));
 
                                    $pdo->commit();

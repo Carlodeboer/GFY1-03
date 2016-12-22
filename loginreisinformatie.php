@@ -19,14 +19,14 @@
                          $naam = $_POST["vakantienaam"];
 
                          $pdo = newPDO();
-                         $stmt1 = $pdo->prepare("SELECT idklant FROM reis WHERE weekjaar = ? AND vakantienaam = ?");
+                         $stmt1 = $pdo->prepare("SELECT idGebruiker FROM gebruikers WHERE wachtwoord = ? AND gebruikersnaam = ?");
                          $stmt1->execute(array($weekJaar, $naam));
 
                          if ($stmt1->rowCount() >= 1) {
                               $stmt2 = $pdo->prepare("SELECT max(idklant) AS idklant FROM reis WHERE weekjaar = ? AND vakantienaam = ?");
                               $stmt2->execute(array($weekJaar, $naam));
                               $row2 = $stmt1->fetch();
-                              $idklant = $row2["idklant"];
+                              $idklant = $row2["idGebruiker"];
 
                               $stmt3 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling FROM boeking WHERE idklant = ?");
                               $stmt3->execute(array($idklant));
