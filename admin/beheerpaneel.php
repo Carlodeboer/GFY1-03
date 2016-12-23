@@ -28,20 +28,11 @@
                               case "Content":
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
                               break;
-                              case "Agenda":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
-                              break;
-                              case "Afbeelding":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/uploadform.php';
-                              break;
-                              case "Berichtopvraag":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
-                              break;
                               case "Nieuws":
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
                               break;
-                              case "Nieuwsbewerken":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
+                              case "Agenda":
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
                               break;
                               case "Boekingen":
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraag.php';
@@ -49,6 +40,16 @@
                               case "Boekingenopvragen":
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraagscript.php';
                               break;
+                              case "Afbeelding":
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/uploadform.php';
+                              break;
+                              case "Berichtopvraag":
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
+                              break;
+                              case "Nieuwsbewerken":
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
+                              break;
+
                          }
                     }
                     // Controleert of de gebruiker in 'contentbeheer' een pagina heeft geselecteerd
@@ -64,7 +65,7 @@
                     // geselecteerd die hij wil bewerken. Zo ja, dan worden de bijbehorende
                     // berichten geladen.
                     elseif (isset($_SESSION['beheer']) && isset($_POST['zoekBerichten'])) {
-                         
+
                          $_SESSION['email'] = $_POST['email'];
                          include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraag.php';
                     }
