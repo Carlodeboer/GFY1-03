@@ -2,15 +2,7 @@
     include "toegang.php";
 ?>
 <footer>
-  <div class="col-md-1">
-    <?php
-      if(isset($_SESSION['admin_session']) && strpos($_SERVER['PHP_SELF'], "admin") != false){
-          print "<p>Welkom {$_SESSION['admin_session']} <br><a href=\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/adminlogout.php\">logout</a></p><br>";
-      } else {
-          print "<a href=\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/adminlogin.php\">admin</a><br>";
-      }
-      ?>
-  </div>
+
 <div class="row">
   <div id="footerwrapper">
 

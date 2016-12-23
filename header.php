@@ -2,7 +2,17 @@
     include "toegang.php";
 ?>
 <div id="headerwrapper">
+  <div style="position: absolute; float:left; display:inline; z-index:9999999;">
+    <?php
+      if(isset($_SESSION['admin_session']) && strpos($_SERVER['PHP_SELF'], "admin") != false){
+          print "<p>Welkom {$_SESSION['admin_session']} <br><a href=\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/adminlogout.php\">logout</a></p><br>";
+      } else {
+          print "<a href=\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/adminlogin.php\">admin</a><br>";
+      }
+      ?>
+  </div>
   <div id="banner">
+
     <a href="index.php"><div id="logo"></div></a>
 
     <span id="talenknoppen">
