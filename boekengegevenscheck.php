@@ -111,7 +111,7 @@
                                    <td>Telefoonnummer</td>
                                    <td><?php print(${"telefoonnummer" . $i}); ?></td>
                               </tr><tr>
-                                   <td>Emailadres:</td>
+                                   <td>E-mailadres:</td>
                                    <td><?php print(${"email" . $i}); ?></td>
                               </tr>
                               <?php

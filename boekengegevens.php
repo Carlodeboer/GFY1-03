@@ -90,9 +90,9 @@
                                    <span class="help-block">Voer uw telefoonnummer in</span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Emailadres*</label>
+                                   <label for="i5i" class="control-label">E-mailadres*</label>
                                    <input type="text" name="email<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer uw emailadres in</span>
+                                   <span class="help-block">Voer uw e-mailadres in</span>
                               </div>
                               <?php } ?>
                               <div class="form-group label-static is-empty">

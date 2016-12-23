@@ -70,11 +70,11 @@ function knopjes(){
 function contactformulierTaal(){
     $taal = selecteerTaal();
     if ($taal == "NLD"){
-        $labels = ["Contact", "Voornaam *", "Achternaam *", "Onderwerp *", "Email-adres *", "Telefoonnummer", "Bericht *", "Verzenden", "Fijn dat u contact met ons opneemt."];
+        $labels = ["Contact", "Voornaam *", "Achternaam *", "Onderwerp *", "E-mailadres *", "Telefoonnummer", "Bericht *", "Verzenden", "Fijn dat u contact met ons opneemt."];
     } elseif ($taal == "ENG"){
         $labels = ["Contact", "First name *", "Last name *", "Subject *", "Email address *", "Phone number", "Message *", "Send", "Thank you for contacting us."];
    } elseif ($taal == "DEU"){
-        $labels = ["Kontakt", "Vorname *", "Nachname *", "Thema *", "Email Adresse *", "Telefonnummer", "Nachricht *", "Schiff", "Danke für Ihre Kontaktaufnahme."];
+        $labels = ["Kontakt", "Vorname *", "Nachname *", "Thema *", "E-Mail-Adresse *", "Telefonnummer", "Nachricht *", "Schiff", "Danke für Ihre Kontaktaufnahme."];
     }
     return $labels;
 }
