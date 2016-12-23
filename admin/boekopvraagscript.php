@@ -42,7 +42,7 @@
                     }
 
                     ?>
-
+                  <div id="centercontent">
                     <div id="reisgegevens">
                          <h2>Reisgegevens van <?php print($gebruikersnaam); ?>:</h2>
                          <table>
@@ -180,6 +180,7 @@
                               ?>
                          </table>
                     </div>
+                  </div>
                     <?php
                     $pdo = NULL;
                }
