@@ -11,28 +11,50 @@
                <?php
 
                $pdo = newPDO();
-               $stmt = $pdo->prepare("SELECT idKlant, gebruikersnaam, begindatum, einddatum FROM boeking JOIN gebruikers ON idKlant=idGebruiker ORDER BY begindatum");
+               $stmt = $pdo->prepare("SELECT idKlant, gebruikersnaam, begindatum, einddatum, status, betaling FROM boeking JOIN gebruikers ON idKlant=idGebruiker ORDER BY begindatum");
                $stmt->execute();
                ?>
 
                <div class="row">
                     <div class="col-md-6">
                          <table class="table table-striped table-hover nieuwsberichtenbewerken">
-                              <tr><th>BoekingID</th><th>Vakantienaam</th><th>Begindatum</th><th>Einddatum</th></tr>
+                              <tr><th>Vakantienaam</th><th>Begindatum</th><th>Einddatum</th><th>Status</th><th>Betaling</th></tr>
 
                               <?php
+
+
                               while ($boeking = $stmt->fetch()) {
+                                   $klantID=$boeking['idKlant'];
+                                   $gebruikersnaam=$boeking['gebruikersnaam'];
+                                   $begindatum=$boeking['begindatum'];
+                                   $einddatum=$boeking['einddatum'];
+                                   $status=$boeking['status'];
+                                   $betaling=$boeking['betaling'];
+
+                                   if ($status=="Niet bevestigd") {
+                                        $status="<b>" . $status . "<b>";
+                                   } else {
+                                        $status=$status;
+                                   }
+
+                                   if ($betaling=="Niet betaald") {
+                                        $betaling="<b>" . $betaling . "<b>";
+                                   } else {
+                                        $betaling=$betaling;
+                                   }
+
                                    echo "<tr onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">
 
-                                   <td>" . $boeking['idKlant'] . "</td>
-                                   <td>" . $boeking['gebruikersnaam'] . "</td>
-                                   <td>" . $boeking['begindatum'] . "</td>
-                                   <td>" . $boeking['einddatum'] . "</td>
+                                   <td>" . $gebruikersnaam . "</td>
+                                   <td>" . $begindatum . "</td>
+                                   <td>" . $einddatum . "</td>
+                                   <td>" . $status . "</td>
+                                   <td>" . $betaling . "</td>
 
                                    </tr>";
                               }
 
-                              
+
                                    ?>
 
                               </table>
