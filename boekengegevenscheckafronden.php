@@ -54,8 +54,10 @@
                                    $pdo->commit();
                                    $pdo = NULL;
 
-                                   ?>Uw boeking is succesvol verwerkt.<br>U kunt <a href="login.php">hier</a> uw reisinformatie inzien met uw zelf ingevoerde vakantienaam en weeknummer: <?php
-                                   print($weekjaar . ".");
+                                   ?>Uw boeking is succesvol verwerkt.<br>U kunt <a href="login.php">hier</a>
+                                   uw reisinformatie inzien met uw zelf ingevoerde vakantienaam <?php
+                                   print("<b>" . $vakantienaam . "</b>");?> en weeknummer: <?php
+                                   print("<b>" . $weekjaar . "</b>.");
 
                                    $email_to = "sophie@famroos.nu";
                                    $email_from = "s1@famroos.nu";
