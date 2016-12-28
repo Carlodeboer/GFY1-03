@@ -164,7 +164,7 @@
                                    if ($uitval == $aantalMotoren) {
                                         $objArray[$i . "uitval"] = "Geen motoren beschikbaar";
                                    } elseif ($uitval > 0) {
-                                        $objArray[$i . "uitval"] = $uitval . " motor(s) niet beschikbaar";
+                                        $objArray[$i . "uitval"] = $uitval . " motor(en) niet beschikbaar";
                                    }
 
                               }
@@ -270,7 +270,7 @@
                               <select name="uitval" id="select111" class="form-control">
                                    <?php
                                    for ($i = 1; $i < $aantalMotoren; $i++) {
-                                        print ("<option value='{$i}'>{$i} motor(s) niet beschikbaar</option>");
+                                        print ("<option value='{$i}'>{$i} motor(en) niet beschikbaar</option>");
                                    }
                                    ?>
                                    <option value='4'>Gesloten</option>
