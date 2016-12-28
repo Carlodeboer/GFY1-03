@@ -11,7 +11,11 @@
                <?php
 
                $pdo = newPDO();
-               $stmt = $pdo->prepare("SELECT idKlant, gebruikersnaam, begindatum, einddatum, status, betaling FROM boeking JOIN gebruikers ON idKlant=idGebruiker ORDER BY begindatum");
+               $stmt = $pdo->prepare("SELECT idKlant, gebruikersnaam, begindatum, einddatum, status, betaling
+               FROM boeking
+               JOIN gebruikers
+               ON idKlant=idGebruiker
+               ORDER BY begindatum"); //haalt gegevens uit de tabel
                $stmt->execute();
                ?>
 
@@ -29,19 +33,19 @@
                                    $begindatum=$boeking['begindatum'];
                                    $einddatum=$boeking['einddatum'];
                                    $status=$boeking['status'];
-                                   $betaling=$boeking['betaling'];
+                                   $betaling=$boeking['betaling']; //maakt variabele van de gegevens
 
                                    if ($status=="Niet bevestigd") {
                                         $status="<b>" . $status . "<b>";
                                    } else {
                                         $status=$status;
-                                   }
+                                   } //status is dikgedrukt als hij niet bevestigd is
 
                                    if ($betaling=="Niet betaald") {
                                         $betaling="<b>" . $betaling . "<b>";
                                    } else {
                                         $betaling=$betaling;
-                                   }
+                                   } //betaling is dikgedrukt als hij niet bevestigd is
 
                                    echo "<tr onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">
 
@@ -51,7 +55,7 @@
                                    <td>" . $status . "</td>
                                    <td>" . $betaling . "</td>
 
-                                   </tr>";
+                                   </tr>"; //zet de variabelen (gegevens) in een tabel
                               }
 
 

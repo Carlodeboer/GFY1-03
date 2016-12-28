@@ -83,7 +83,7 @@
                                    </tr>
                                    <?php
                                    if ($opmerking != NULL) {
-                                        print ("<tr><td>Opmerkingen</td><td>" . $opmerking . "</td></tr>");
+                                        print ("<tr><td>Opmerkingen:</td><td>" . $opmerking . "</td></tr>");
                                    }
                                    ?>
                                    <tr>
