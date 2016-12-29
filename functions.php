@@ -30,7 +30,7 @@ function selecteerTaal(){
 // meegegeven. Dit is echter niet nodig. De programmeur kan zelf kiezen wat hij/zij
 // wil ophalen uit de database, maar dit kan ook automatisch geselecteerd als hij/zij
 // lege strings meegeeft.
-function laadContent($bestandsnaam, $taal){
+function laadContent($bestandsnaam, $taal, $admin = false){
     if ($bestandsnaam == ""){
         $bestandsnaam = $_SERVER['PHP_SELF'];
         $verwijder = ["GFY1-03", "/", ".php"];
@@ -48,6 +48,11 @@ function laadContent($bestandsnaam, $taal){
     $stmt->execute(array($pagina, $taal));
     $content = $stmt->fetch();
     $pdo = null;
+    if (!$admin) {
+        $content['title'] = htmlspecialchars($content['title'], ENT_QUOTES);
+        $content['bodytext'] = htmlentities($content['bodytext'], ENT_QUOTES);
+        $content['bodytext'] = str_replace(array("\r\n", "\n\r", "\r", "\n"), "<br>", $content['bodytext']);
+    }
     return $content;
 }
 
@@ -137,8 +142,6 @@ function editContent($pagina, $taal, $titel, $inhoud, $eigenaar){
     catch (PDOException $e){
         print "Er is iets vreselijk fout gegaan.";
     }
-
-
     $pdo=NULL;
     return $succes;
 }
