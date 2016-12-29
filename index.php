@@ -19,6 +19,7 @@
                 <div id="nieuws">
                     <?php
                         $lang = selecteerTaal();
+                        $labels = nieuwsTaal();
                         $stmt = $pdo->prepare("SELECT id FROM nieuwsbericht WHERE lang=?");
                         $stmt->execute(array($lang));
 
@@ -36,7 +37,7 @@
                         $nummer = $stmt->fetch();
                         $id = $nummer['id'];
 
-                        print($nummer['getal'] . " artikelen.");
+                        print($nummer['getal'] . $labels[0]);
 
                         $nummer = $nummer['getal'];
 

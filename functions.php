@@ -84,9 +84,21 @@ function contactformulierTaal(){
     return $labels;
 }
 
+function nieuwsTaal(){
+    $taal = selecteerTaal();
+    if ($taal == "NLD"){
+        $labels = [" nieuwsberichten", "geplaatst op"];
+    } elseif ($taal == "ENG"){
+        $labels = [" messages", "posted on"];
+   } elseif ($taal == "DEU"){
+        $labels = [" Nachrichten", "platziert auf"];
+    }
+    return $labels;
+}
+
 // Laadt alle nieuwsbericht die bij de geselecteerde taal horen.
 function laadNieuws($id){
-
+    $labels = nieuwsTaal();
     $pdo = newPDO();
     $stmt = $pdo->prepare("SELECT title,bodytext,posted
                             FROM nieuwsbericht
@@ -96,7 +108,7 @@ function laadNieuws($id){
     $pdo = null;
 
     // return $content;
-                print("<div class='nieuwsitem'><div class='nieuwstijd'>geplaatst op {$nieuws['posted']}</div><h3 class='nieuwstitel'>{$nieuws['title']}</h3><p class='nieuwsbody'>{$nieuws['bodytext']}</p> </div>");
+                print("<div class='nieuwsitem'><div class='nieuwstijd'>{$labels[1]} {$nieuws['posted']}</div><h3 class='nieuwstitel'>{$nieuws['title']}</h3><p class='nieuwsbody'>{$nieuws['bodytext']}</p> </div>");
 
                         // print("{$nieuws['title']}     {$nieuws['posted']} <br><br> {$nieuws['bodytext']} <br><br><br>");
 
