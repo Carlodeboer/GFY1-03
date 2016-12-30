@@ -138,16 +138,16 @@
                                              <td><?php print($achternaam); ?></td>
                                         </tr><tr>
                                              <td>Adres:</td>
-                                             <td><?php print($adres); ?></td>
+                                             <td><?php print(ucwords($adres)); ?></td>
                                         </tr><tr>
                                              <td>Postcode:</td>
                                              <td><?php print($postcode); ?></td>
                                         </tr><tr>
                                              <td>Woonplaats:</td>
-                                             <td><?php print($woonplaats); ?></td>
+                                             <td><?php print(ucwords($woonplaats)); ?></td>
                                         </tr><tr>
                                              <td>Land:</td>
-                                             <td><?php print($land); ?></td>
+                                             <td><?php print(ucwords($land)); ?></td>
                                         </tr><tr>
                                              <td>Geboortedatum:</td>
                                              <td><?php print($geboortedatum); ?></td>
@@ -156,7 +156,7 @@
                                              <td><?php print($telefoonnummer); ?></td>
                                         </tr><tr>
                                              <td>Emailadres:</td>
-                                             <td><?php print($email); ?></td>
+                                             <td><?php print(strtolower($email)); ?></td>
                                         </tr>
                                         <?php
                                    }
