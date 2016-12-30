@@ -33,7 +33,7 @@
           ++$_SESSION['maandnummer'];
           if ($_SESSION['maandnummer'] > 12) {
                $_SESSION['maandnummer'] = 1;
-               $_SESSION['jaarnummer'] ++;
+               $_SESSION['jaarnummer']++;
           }
      }
 
@@ -41,7 +41,7 @@
           unset($_GET["dag"]);
           --$_SESSION['maandnummer'];
           if ($_SESSION['maandnummer'] < 1) {
-               $_SESSION['jaarnummer'] --;
+               $_SESSION['jaarnummer']--;
                $_SESSION['maandnummer'] = 12;
           }
      }
@@ -84,11 +84,10 @@
                $stmt2->execute(array($begindatum));
                $row2 = $stmt2->fetch();
                $res2 = $stmt2->rowCount();
-               if ($res2 > 0 && ($aantalMotoren - ($row2["uitval"] + $uitval) <= 0)) {
+               if ($res2 > 0 && ($aantalMotoren - ($row2["uitval"] + $uitval) < 0)) {
                     print("In deze periode kunnen er geen reserveringen meer worden toegevoegd.");
                } else {
                     $pdo->beginTransaction();
-                    print($begindatum . "<br>" . $uitval . "<br>");
                     $stmt3 = $pdo->prepare("INSERT INTO reserveringen (begindatum, type, aantal) VALUES (?, 'reservering', ?)");
                     $stmt3->execute(array($begindatum, $uitval));
 
@@ -96,11 +95,10 @@
                     $stmt4->execute(array());
                     $row4 = $stmt4->fetch();
                     $idReservering = $row4["max(idReservering)"];
-                    print($idReservering);
                     $pdo->commit();
                     $stmt5 = $pdo->prepare("INSERT INTO blokkade (idReservering, begindatum, uitval, omschrijving) VALUES (?, ?, ?, ?)");
                     $stmt5->execute(array($idReservering, $begindatum, $uitval, $omschrijving));
-                    $row5 = $stmt5->fetch(PDO::FETCH_ASSOC);
+                    //$row5 = $stmt5->fetch(PDO::FETCH_ASSOC);
                     $res5 = $stmt5->rowCount();
 
                     if ($res5 > 0) {
@@ -162,39 +160,46 @@
                          for ($i = 0; $i < $blank; $i++) {
                               print("<td></td>");
                          }
-
-                         $stmt5 = $pdo->prepare("SELECT * FROM blokkade WHERE Year(begindatum) = ? AND Month(begindatum) = ? ORDER BY begindatum");
-                         $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer']));
-
+                         if ($_SESSION["maandnummer"] != 1) {
+                              $stmt5 = $pdo->prepare("SELECT * FROM blokkade WHERE Year(begindatum) = ? AND (Month(begindatum) = ? OR (Month(begindatum) = ? AND day(begindatum) >= 22));");
+                              $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer'], $_SESSION['maandnummer'] - 1));
+                         } else {
+                              $stmt5 = $pdo->prepare("SELECT * FROM blokkade WHERE (Year(begindatum) = ? AND Month(begindatum) = ?) OR (Year(begindatum) = ? AND Month(begindatum) = ? AND day(begindatum) >= 22);");
+                              $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer'], $_SESSION['jaarnummer'] -1, 12));
+                         }
                          $objArray = array();
+
                          while ($row5 = $stmt5->fetch()) {
-                              $sDayStart = date('j', strtotime($row5['begindatum']));
-                              //print($sDayStart);
-                              $sDayEnd = $row5['begindatum'];
-                              $sDayEnd = strtotime($sDayEnd);
-                              $sDayEnd = strtotime("+6 day", $sDayEnd);
 
+                              $begindatum = strtotime($row5['begindatum']);
+                              $einddatum = strtotime("+6 day", $begindatum);
 
-                              $sDayEnd = date('j', $sDayEnd);
-                              //$sDayEnd = date("+7 day" , $sDayStart);
+                              $begindag = date('j', $begindatum);
+                              $einddag = date('j', $einddatum);
 
+                              $maand1 = date('n', $einddatum);
+                              $maand2 = date('n', $begindatum);
 
-                              for ($i = $sDayStart; $i <= $sDayEnd; $i++) {
+                              if ($maand1 != $_SESSION["maandnummer"]) {
+                                   $einddag = $daysInMonth;
+                                   //$einddag = 6;
+                              }
 
-                                   $objArray[$i . "omschrijving"] = $row5['omschrijving'];
-                                   $uitval = $row5["uitval"];
-                                   if (isset($objArray[$i . "uitval"])) {
-                                        $objArray[$i . "uitval"] = $objArray[$i . "uitval"] - $uitval;
-                                   } else {
-                                        $objArray[$i . "uitval"] = $aantalMotoren - $uitval;
+                              if ($maand2 != $_SESSION["maandnummer"]) {
+                                   $begindag = 1;
+                              }
+
+                              if (!($maand2 != $_SESSION["maandnummer"] && $einddag > 6)) {
+                                   for ($i = $begindag; $i <= $einddag; $i++) {
+
+                                        $objArray[$i . "omschrijving"] = $row5['omschrijving'];
+                                        $uitval = $row5["uitval"];
+                                        if (isset($objArray[$i . "uitval"])) {
+                                             $objArray[$i . "uitval"] = $objArray[$i . "uitval"] - $uitval;
+                                        } else {
+                                             $objArray[$i . "uitval"] = $aantalMotoren - $uitval;
+                                        }
                                    }
-
-                                   // if ($uitval == $aantalMotoren) {
-                                   //      $objArray[$i . "uitval"] = "Geen motoren beschikbaar";
-                                   // } elseif ($uitval > 0) {
-                                   //      $objArray[$i . "uitval"] = $uitval . " motor(s) niet beschikbaar";
-                                   // }
-
                               }
                          }
 
@@ -203,7 +208,7 @@
                               if (($i + $blank) % 7 != 0) {
                                    print ("<td>");
                                    if (isset($objArray[$i . "omschrijving"])) {
-                                        print ($i . ": " . $objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"] . " motor(s) beschikbaar");
+                                        print ($i . ": " . $objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
                                    } else {
                                         print ($i);
                                    }
@@ -212,7 +217,7 @@
                               if (($i + $blank) % 7 == 0) {
                                    print ("<td><a href='http://" . $_SERVER['HTTP_HOST'] . "/GFY1-03/admin/beheerpaneel.php?beheer=Agenda&dag={$i}'>");
                                    if (isset($objArray[$i . "omschrijving"])) {
-                                        print ($i . ": " . $objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"] . " motor(s) beschikbaar");
+                                        print ($i . ": " . $objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
                                    } else {
                                         print ($i);
                                    }
