@@ -12,25 +12,16 @@
      $date = strtotime(date("Y-m-d"));
      $day = date('d', $date);
 
-     if (!isset($jaar)) {
-          $jaar = date('Y', $date);
-     }
-     if (!isset($maand)) {
-          $maand = date('m', $date);
-     }
-
      if (!isset($_SESSION['jaarnummer'])) {
           $_SESSION['jaarnummer'] = date('Y', $date);
      }
-
 
      if (!isset($_SESSION['maandnummer'])) {
           $_SESSION['maandnummer'] = date('m', $date);
      }
 
-
      if (isset($_POST['volgende'])) {
-          $_GET["dag"] = NULL;
+          unset($_GET["dag"]);
           ++$_SESSION['maandnummer'];
           if ($_SESSION['maandnummer'] > 12) {
                $_SESSION['maandnummer'] = 1;
@@ -67,13 +58,15 @@
      $stmt1->execute(array());
      $row1 = $stmt1->fetch();
      $aantalMotoren = $row1["waarde"];
+
      if ($_SESSION["maandnummer"] != 1) {
-          $stmt5 = $pdo->prepare("SELECT * FROM blokkade WHERE Year(begindatum) = ? AND (Month(begindatum) = ? OR (Month(begindatum) = ? AND day(begindatum) >= 22));");
+          $stmt5 = $pdo->prepare("SELECT * FROM reserveringen WHERE Year(begindatum) = ? AND (Month(begindatum) = ? OR (Month(begindatum) = ? AND day(begindatum) >= 22));");
           $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer'], $_SESSION['maandnummer'] - 1));
      } else {
-          $stmt5 = $pdo->prepare("SELECT * FROM blokkade WHERE (Year(begindatum) = ? AND Month(begindatum) = ?) OR (Year(begindatum) = ? AND Month(begindatum) = ? AND day(begindatum) >= 22);");
+          $stmt5 = $pdo->prepare("SELECT * FROM reserveringen WHERE (Year(begindatum) = ? AND Month(begindatum) = ?) OR (Year(begindatum) = ? AND Month(begindatum) = ? AND day(begindatum) >= 22);");
           $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer'], $_SESSION['jaarnummer'] -1, 12));
      }
+
      $objArray = array();
 
      while ($row5 = $stmt5->fetch()) {
@@ -89,7 +82,6 @@
 
           if ($maand1 != $_SESSION["maandnummer"]) {
                $einddag = $daysInMonth;
-               //$einddag = 6;
           }
 
           if ($maand2 != $_SESSION["maandnummer"]) {
@@ -98,11 +90,11 @@
 
           if (!($maand2 != $_SESSION["maandnummer"] && $einddag > 6)) {
                for ($i = $begindag; $i <= $einddag; $i++) {
-                    $uitval = $row5["uitval"];
-                    if (isset($objArray[$i . "uitval"])) {
-                         $objArray[$i . "uitval"] = $objArray[$i . "uitval"] - $uitval;
+                    $uitval = $row5["aantal"];
+                    if (isset($objArray[$i . "beschikbaar"])) {
+                         $objArray[$i . "beschikbaar"] = $objArray[$i . "beschikbaar"] - $uitval;
                     } else {
-                         $objArray[$i . "uitval"] = $aantalMotoren - $uitval;
+                         $objArray[$i . "beschikbaar"] = $aantalMotoren - $uitval;
                     }
                }
           }
@@ -120,7 +112,6 @@
                               <form method="POST" action="boekengegevens.php" class="form-horizontal">
                                    <div class="form-group label-static is-empty">
                                         <label for="i5i" class="control-label">Begindatum*</label>
-
                                         <input type="date" name="begindatum" readonly required
 
                                         <?php
@@ -185,11 +176,18 @@
                                         <label for="i5i" class="control-label">Aantal personen*</label>
                                         <select id="s1" class="form-control" name="aantalPersonen">
                                              <?php
-                                             if (!(isset($objArray[$_GET["dag"] . "uitval"]))) {
-                                                  $objArray[$_GET["dag"] . "uitval"] = 0;
+
+                                             if (!(isset($objArray[$_GET["dag"] . "beschikbaar"]))) {
+                                                  $beschikbaar = 4;
+                                             } else {
+                                                  $beschikbaar = $objArray[$_GET["dag"] . "beschikbaar"];
                                              }
-                                             for ($i = 1; $i <= ($aantalMotoren - $objArray[$_GET["dag"] . "uitval"]); $i++) {
-                                                  print ("<option value='{$i}'>{$i}</option>");
+                                             if ($beschikbaar == 0) {
+                                                  print ("<option value=''>0</option>");
+                                             } else {
+                                                  for ($i = 1; $i <= $beschikbaar; $i++) {
+                                                       print ("<option value='{$i}'>{$i}</option>");
+                                                  }
                                              }
                                              ?>
 
@@ -261,75 +259,63 @@
                                         <th colspan="7">
                                              <form method="POST">
                                                   <input type="submit" name="vorige" value="Vorige" class="btn btn-raised btn-primary">
-                                             </div>
-
-                                             <div class="col-md-6"><?php print("{$title} {$jaar}"); ?>
-                                             </div>
-
-                                             <input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary">
-                                        </div>
-
-                                   </th>
-
-                              </form>
-                         </tr>
-                         <tr>
+                                                  <div class="col-md-6">
+                                                       <?php print("{$title} {$jaar}"); ?>
+                                                  </div>
+                                                  <input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary">
+                                             </form>
+                                        </th>
 
 
-                              <?php
-                              foreach ($weekDays as $key => $weekDay) {
-                                   ?>
-                                   <td class="text-center">
-                                        <?php print ($weekDay); ?>
-                                   </td>
-                                   <?php
-                              }
-                              ?>
-                         </tr>
-                         <tr>
-                              <?php
-                              for ($i = 0; $i < $blank; $i++) {
-                                   print("<td></td>");
-                              }
-
-
-                              for ($i = 1; $i <= $daysInMonth; $i++) {
-
-                                   if (($i + $blank) % 7 != 0) {
-                                        print ("<td>");
-                                        if (isset($objArray[$i . "uitval"])) {
-                                             print ($i . ":<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
-                                        } else {
-                                             print ($i);
+                                   </tr>
+                                   <tr>
+                                        <?php
+                                        foreach ($weekDays as $key => $weekDay) {
+                                             print("<td class='text-center'>" . $weekDay . "</td>");
                                         }
-                                        print ("</td>");
-                                   }
-                                   if (($i + $blank) % 7 == 0) {
-                                        print ("<td><a href='http://" . $_SERVER['HTTP_HOST'] . "/GFY1-03/boeken.php?&dag={$i}'>");
-                                        if (isset($objArray[$i . "omschrijving"])) {
-                                             print ($i . ":<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
-                                        } else {
-                                             print ($i);
+                                        ?>
+                                   </tr>
+                                   <tr>
+                                        <?php
+                                        for ($i = 0; $i < $blank; $i++) {
+                                             print("<td></td>");
                                         }
-                                        print ("</a></td></tr><tr>");
-                                   }
 
-                              }
-                              for ($i = 0; ($i + $blank + $daysInMonth) % 7 != 0; $i++) {
-                                   print("<td></td>");
-                              }
-                              ?>
-                         </tr>
-                    </table>
+
+                                        for ($i = 1; $i <= $daysInMonth; $i++) {
+
+                                             if (($i + $blank) % 7 != 0) {
+                                                  print ("<td>");
+                                                  if (isset($objArray[$i . "beschikbaar"])) {
+                                                       print ($i . ":<br>" . $objArray[$i . "beschikbaar"] . " motor(en) beschikbaar");
+                                                  } else {
+                                                       print ($i);
+                                                  }
+                                                  print ("</td>");
+                                             }
+                                             if (($i + $blank) % 7 == 0) {
+                                                  print ("<td><a href='http://" . $_SERVER['HTTP_HOST'] . "/GFY1-03/boeken.php?&dag={$i}'>");
+                                                  if (isset($objArray[$i . "beschikbaar"])) {
+                                                       print ($i . ":<br>" . $objArray[$i . "beschikbaar"] . " motor(en) beschikbaar");
+                                                  } else {
+                                                       print ($i);
+                                                  }
+                                                  print ("</a></td></tr><tr>");
+                                             }
+
+                                        }
+                                        for ($i = 0; ($i + $blank + $daysInMonth) % 7 != 0; $i++) {
+                                             print("<td></td>");
+                                        }
+                                        ?>
+                                   </tr>
+                              </table>
+                         </div>
+                    </div>
                </div>
           </div>
+          <?php include 'footer.php'; ?>
      </div>
-</div>
-
-<?php include 'footer.php'; ?>
-</div>
-<script>
-$.material.init();
-</script>
+     <script> $.material.init(); </script>
 </body>
 </html>

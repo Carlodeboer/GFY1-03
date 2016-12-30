@@ -11,22 +11,13 @@
      $date = strtotime(date("Y-m-d"));
      $day = date('d', $date);
 
-     if (!isset($jaar)) {
-          $jaar = date('Y', $date);
-     }
-     if (!isset($maand)) {
-          $maand = date('m', $date);
-     }
-
      if (!isset($_SESSION['jaarnummer'])) {
           $_SESSION['jaarnummer'] = date('Y', $date);
      }
 
-
      if (!isset($_SESSION['maandnummer'])) {
           $_SESSION['maandnummer'] = date('m', $date);
      }
-
 
      if (isset($_POST['volgende'])) {
           $_GET["dag"] = NULL;
@@ -80,11 +71,11 @@
                print("Voer een omschrijving in.");
           } else {
 
-               $stmt2 = $pdo->prepare("SELECT uitval FROM blokkade WHERE begindatum = ?");
+               $stmt2 = $pdo->prepare("SELECT aantal FROM reseveringen WHERE begindatum = ?");
                $stmt2->execute(array($begindatum));
                $row2 = $stmt2->fetch();
                $res2 = $stmt2->rowCount();
-               if ($res2 > 0 && ($aantalMotoren - ($row2["uitval"] + $uitval) < 0)) {
+               if ($res2 > 0 && ($aantalMotoren - ($row2["aantal"] + $uitval) < 0)) {
                     print("In deze periode kunnen er geen reserveringen meer worden toegevoegd.");
                } else {
                     $pdo->beginTransaction();
@@ -143,15 +134,9 @@
                          </th>
                     </tr>
                     <tr>
-
-
                          <?php
                          foreach ($weekDays as $key => $weekDay) {
-                              ?>
-                              <td class="text-center">
-                                   <?php print ($weekDay); ?>
-                              </td>
-                              <?php
+                              print("<td class='text-center'>" . $weekDay . "</td>");
                          }
                          ?>
                     </tr>
@@ -167,6 +152,7 @@
                               $stmt5 = $pdo->prepare("SELECT * FROM blokkade WHERE (Year(begindatum) = ? AND Month(begindatum) = ?) OR (Year(begindatum) = ? AND Month(begindatum) = ? AND day(begindatum) >= 22);");
                               $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer'], $_SESSION['jaarnummer'] -1, 12));
                          }
+
                          $objArray = array();
 
                          while ($row5 = $stmt5->fetch()) {
@@ -191,9 +177,11 @@
 
                               if (!($maand2 != $_SESSION["maandnummer"] && $einddag > 6)) {
                                    for ($i = $begindag; $i <= $einddag; $i++) {
-
+                                        $stmt6 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
+                                        $stmt6->execute(array($row5["begindatum"]));
+                                        $row6 = $stmt6->fetch();
                                         $objArray[$i . "omschrijving"] = $row5['omschrijving'];
-                                        $uitval = $row5["uitval"];
+                                        $uitval = $row6["aantal"];
                                         if (isset($objArray[$i . "uitval"])) {
                                              $objArray[$i . "uitval"] = $objArray[$i . "uitval"] - $uitval;
                                         } else {
@@ -322,15 +310,8 @@
                </form>
           </div>
      </div>
-     <br><br>
-
-
-
-
      <?php
-
      $pdo = NULL;
      ?>
-</div>
 </body>
 </html>
