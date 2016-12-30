@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <title>Motorcross</title>
+     <title>Agenda</title>
 </head>
 <body>
 
@@ -69,36 +69,52 @@
 
      if (isset($_POST['invoeren'])) {
           $begindatum = $_POST['begindatum'];
-          $einddatum = $_POST['einddatum'];
           $uitval = $_POST['uitval'];
           $omschrijving = $_POST['omschrijving'];
 
           if ($begindatum == "") {
                print("Voer een begindatum in.");
-          } elseif ($einddatum == "") {
-               print("Voer een einddatum in.");
           } elseif ($uitval == "") {
                print("Selecteer het aantal niet beschikbare motoren.");
           } elseif ($omschrijving == "") {
                print("Voer een omschrijving in.");
           } else {
 
-               $stmt2 = $pdo->prepare("SELECT * FROM blokkade WHERE begindatum >= ? AND einddatum <= ?");
-               $stmt2->execute(array($begindatum,$einddatum));
-               $row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+               $stmt2 = $pdo->prepare("SELECT uitval FROM blokkade WHERE begindatum = ?");
+               $stmt2->execute(array($begindatum));
+               $row2 = $stmt2->fetch();
                $res2 = $stmt2->rowCount();
-               if ($res2 > 0) {
-                    print("Deze bestaat al");
+               if ($res2 > 0 && ($aantalMotoren - ($row2["uitval"] + $uitval) <= 0)) {
+                    print("In deze periode kunnen er geen reserveringen meer worden toegevoegd.");
                } else {
+                    $pdo->beginTransaction();
+                    print($begindatum . "<br>" . $uitval . "<br>");
+                    $stmt3 = $pdo->prepare("INSERT INTO reserveringen (begindatum, type, aantal) VALUES (?, 'reservering', ?)");
+                    $stmt3->execute(array($begindatum, $uitval));
 
-                    $stmt = $pdo->prepare("INSERT INTO blokkade (begindatum,einddatum,uitval,omschrijving) VALUES (?,?,?,?)");
-                    $stmt->execute(array($begindatum, $einddatum, $uitval, $omschrijving));
-                    $row2 = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $res2 = $stmt->rowCount();
-                    if ($res2 > 0) {
-                         //feedback aan gebruiker geven
-                         print("De boeking " . $omschrijving . " is toegevoegd.");
+                    $stmt4 = $pdo->prepare("SELECT max(idReservering) FROM reserveringen;");
+                    $stmt4->execute(array());
+                    $row4 = $stmt4->fetch();
+                    $idReservering = $row4["max(idReservering)"];
+                    print($idReservering);
+                    $pdo->commit();
+                    $stmt5 = $pdo->prepare("INSERT INTO blokkade (idReservering, begindatum, uitval, omschrijving) VALUES (?, ?, ?, ?)");
+                    $stmt5->execute(array($idReservering, $begindatum, $uitval, $omschrijving));
+                    $row5 = $stmt5->fetch(PDO::FETCH_ASSOC);
+                    $res5 = $stmt5->rowCount();
+
+                    if ($res5 > 0) {
+                         ?>
+                         <script>
+                         function popUpAgendaGewijzigd() {
+                              $("#agendaGewijzigd").snackbar("show");
+                         }
+                         </script>
+                         <span data-toggle=snackbar id="agendaGewijzigd" data-content="De reservering '<?php print($omschrijving);?>' is toegevoegd aan de agenda."></span>
+                         <script>window.onload = popUpAgendaGewijzigd;</script>
+                         <?php
                     }
+
                }
           }
      }
@@ -147,25 +163,37 @@
                               print("<td></td>");
                          }
 
-                         $stmt3 = $pdo->prepare("SELECT * FROM blokkade
-                         WHERE Year(begindatum) = ?
-                         AND Month(begindatum) = ?
-                         ORDER BY einddatum");
-                         $stmt3->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer']));
+                         $stmt5 = $pdo->prepare("SELECT * FROM blokkade WHERE Year(begindatum) = ? AND Month(begindatum) = ? ORDER BY begindatum");
+                         $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer']));
 
                          $objArray = array();
-                         while ($row3 = $stmt3->fetch()) {
-                              $sDayStart = date('j', strtotime($row3['begindatum']));
-                              $sDayEnd = date('j', strtotime($row3['einddatum']));
+                         while ($row5 = $stmt5->fetch()) {
+                              $sDayStart = date('j', strtotime($row5['begindatum']));
+                              //print($sDayStart);
+                              $sDayEnd = $row5['begindatum'];
+                              $sDayEnd = strtotime($sDayEnd);
+                              $sDayEnd = strtotime("+6 day", $sDayEnd);
+
+
+                              $sDayEnd = date('j', $sDayEnd);
+                              //$sDayEnd = date("+7 day" , $sDayStart);
+
 
                               for ($i = $sDayStart; $i <= $sDayEnd; $i++) {
-                                   $objArray[$i . "omschrijving"] = $row3['omschrijving'];
-                                   $uitval = $row3["uitval"];
-                                   if ($uitval == $aantalMotoren) {
-                                        $objArray[$i . "uitval"] = "Geen motoren beschikbaar";
-                                   } elseif ($uitval > 0) {
-                                        $objArray[$i . "uitval"] = $uitval . " motor(en) niet beschikbaar";
+
+                                   $objArray[$i . "omschrijving"] = $row5['omschrijving'];
+                                   $uitval = $row5["uitval"];
+                                   if (isset($objArray[$i . "uitval"])) {
+                                        $objArray[$i . "uitval"] = $objArray[$i . "uitval"] - $uitval;
+                                   } else {
+                                        $objArray[$i . "uitval"] = $aantalMotoren - $uitval;
                                    }
+
+                                   // if ($uitval == $aantalMotoren) {
+                                   //      $objArray[$i . "uitval"] = "Geen motoren beschikbaar";
+                                   // } elseif ($uitval > 0) {
+                                   //      $objArray[$i . "uitval"] = $uitval . " motor(s) niet beschikbaar";
+                                   // }
 
                               }
                          }
@@ -175,7 +203,7 @@
                               if (($i + $blank) % 7 != 0) {
                                    print ("<td>");
                                    if (isset($objArray[$i . "omschrijving"])) {
-                                        print ($i . ": " . $objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"]);
+                                        print ($i . ": " . $objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"] . " motor(s) beschikbaar");
                                    } else {
                                         print ($i);
                                    }
@@ -184,7 +212,7 @@
                               if (($i + $blank) % 7 == 0) {
                                    print ("<td><a href='http://" . $_SERVER['HTTP_HOST'] . "/GFY1-03/admin/beheerpaneel.php?beheer=Agenda&dag={$i}'>");
                                    if (isset($objArray[$i . "omschrijving"])) {
-                                        print ($i . ": " . $objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"]);
+                                        print ($i . ": " . $objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"] . " motor(s) beschikbaar");
                                    } else {
                                         print ($i);
                                    }
@@ -202,10 +230,10 @@
           <div class="col-md-4">
                <form method="POST">
                     <div class="form-group">
-                         <label for="inputdatum1" class="col-md-2 control-label">Begindatum</label>
+                         <label for="inputdatum1" class="col-md-2 control-label" >Begindatum</label>
 
                          <div class="col-md-10">
-                              <input type="date" name="begindatum"
+                              <input type="date" name="begindatum" readonly
 
                               <?php
                               if (isset($_GET["dag"])) {
@@ -230,7 +258,7 @@
                          <label for="inputdatum2" class="col-md-2 control-label">Einddatum</label>
 
                          <div class="col-md-10">
-                              <input type="date" name="einddatum"
+                              <input type="date" name="einddatum" readonly
                               <?php
                               if (isset($_GET["dag"])) {
                                    $dag3 = $_GET["dag"] + 6;
