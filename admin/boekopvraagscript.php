@@ -1,6 +1,6 @@
 <html>
 <head>
-     <title></title>
+     <title>Boekinggegevens</title>
 </head>
 <body>
      <div id="container">
