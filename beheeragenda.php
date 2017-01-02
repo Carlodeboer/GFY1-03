@@ -89,7 +89,7 @@
                     $pdo->commit();
                     $stmt5 = $pdo->prepare("INSERT INTO blokkade (idReservering, begindatum, uitval, omschrijving) VALUES (?, ?, ?, ?)");
                     $stmt5->execute(array($idReservering, $begindatum, $uitval, $omschrijving));
-                    //$row5 = $stmt5->fetch(PDO::FETCH_ASSOC);
+
                     $res5 = $stmt5->rowCount();
 
                     if ($res5 > 0) {
@@ -234,14 +234,20 @@
                                    $jaar2 = $_SESSION["jaarnummer"];
                                    $maand2 = $_SESSION["maandnummer"];
 
-                                   if ($dag2 < 10) {
+                                   if (strlen($dag2) == 1) {
                                         $dag2 = 0 . $dag2;
                                    }
-                                   if ($maand2 < 10) {
+                                   if (strlen($maand2) == 1) {
                                         $maand2 = 0 . $maand2;
                                    }
-                                   print("value=\"" . $jaar2 . "-" . $maand2 . "-" . $dag2 . "\"");
+                              } else {
+                                   $aankomendeZaterdag = strtotime('next saturday', $date);
+
+                                   $dag2 = date('d', $aankomendeZaterdag);
+                                   $maand2 = date('m', $aankomendeZaterdag);
+                                   $jaar2 = date('Y', $aankomendeZaterdag);
                               }
+                              print("value=\"" . $jaar2 . "-" . $maand2 . "-" . $dag2 . "\"");
                               ?>
                               class="form-control" id="inputdatum1">
                          </div>
@@ -253,8 +259,8 @@
                          <div class="col-md-10">
                               <input type="date" name="einddatum" readonly
                               <?php
-                              if (isset($_GET["dag"])) {
-                                   $dag3 = $_GET["dag"] + 6;
+
+                                   $dag3 = $dag2 + 6;
 
                                    if ($dag3 > $daysInMonth) {
                                         $dag3 = $dag3 - $daysInMonth;
@@ -278,7 +284,7 @@
                                    }
 
                                    print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
-                              }
+
                               ?>
                               class="form-control" id="inputdatum2">
                          </div>
