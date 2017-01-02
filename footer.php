@@ -10,7 +10,7 @@
         <h4> CONTACTGEGEVENS </h4>
         <ul id="contactgegevens">
           <li>Michael Mairhofer</li>
-          <li>Koninginnelaan 239/li>
+          <li>Koninginnelaan 239</li>
           <li>7315 DW   Apeldoorn</li>
           <li><a href="mailto:info@offroadcompassportugal.nl">info@offroadcompassportugal.nl</a></li>
           <li>06-21818622</li>
