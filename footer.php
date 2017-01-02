@@ -10,11 +10,10 @@
         <h4> CONTACTGEGEVENS </h4>
         <ul id="contactgegevens">
           <li>Michael Mairhofer</li>
-          <li>Wegstraat 12A</li>
-          <li>7391 AB   Apeldoorn</li>
+          <li>Koninginnelaan 239/li>
+          <li>7315 DW   Apeldoorn</li>
           <li><a href="mailto:info@offroadcompassportugal.nl">info@offroadcompassportugal.nl</a></li>
-          <li>M: 06-12345678</li>
-          <li>T: 055-123456</li>
+          <li>06-21818622</li>
         </ul>
     </div>
 
@@ -26,9 +25,8 @@
         </ul>
     </div>
     <div class="col-md-4" style="float:right">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.853044415557!2d6.079371215736348!3d52.49989967981054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c7ded4f4f95b31%3A0xb1a2f2cf9bba075!2sCampus+1%2C+8017+Zwolle!5e0!3m2!1snl!2snl!4v1481550637316"
-          width="350" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
-    </div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.549416940136!2d5.956437915725985!3d52.233403579760925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c7c7a21bf0f591%3A0x7ec280ce253a9027!2sKoninginnelaan+239%2C+7315+DW+Apeldoorn!5e0!3m2!1snl!2snl!4v1483369231647"
+        width="350" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>    </div>
   </div>
 </div>
 
