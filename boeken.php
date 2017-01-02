@@ -120,14 +120,21 @@
                                              $jaar2 = $_SESSION["jaarnummer"];
                                              $maand2 = $_SESSION["maandnummer"];
 
-                                             if ($dag2 < 10) {
+                                             if (strlen($dag2) == 1) {
                                                   $dag2 = 0 . $dag2;
                                              }
-                                             if ($maand2 < 10) {
+                                             if (strlen($maand2) == 1) {
                                                   $maand2 = 0 . $maand2;
                                              }
-                                             print("value=\"" . $jaar2 . "-" . $maand2 . "-" . $dag2 . "\"");
+                                        } else {
+                                             $aankomendeZaterdag = strtotime('next saturday', $date);
+
+                                             $dag2 = date('d', $aankomendeZaterdag);
+                                             $maand2 = date('m', $aankomendeZaterdag);
+                                             $jaar2 = date('Y', $aankomendeZaterdag);
                                         }
+                                        $begindatum = $jaar2 . "-" . $maand2 . "-" . $dag2;
+                                        print("value=\"" . $begindatum . "\"");
                                         ?>
                                         class="form-control" id="inputdatum1">
                                         <span class="help-block">Voer een begindatum in</span>
@@ -136,42 +143,36 @@
 
                                    <div class="form-group label-static is-empty">
                                         <label for="i5i" class="control-label">Einddatum*</label>
-
-
                                         <input type="date" name="einddatum" readonly required
                                         <?php
-                                        if (isset($_GET["dag"])) {
-                                             $dag3 = $_GET["dag"] + 6;
+                                        $dag3 = $dag2 + 6;
 
-                                             if ($dag3 > $daysInMonth) {
-                                                  $dag3 = $dag3 - $daysInMonth;
-                                                  $maand3 = $maand2 + 1;
-                                             } else {
-                                                  $maand3 = $maand2;
-                                             }
-
-                                             if ($maand3 > 12) {
-                                                  $jaar3 = $jaar + 1;
-                                                  $maand3 = 1;
-                                             } else {
-                                                  $jaar3 = $jaar2;
-                                             }
-
-                                             if (strlen($dag3) == 1) {
-                                                  $dag3 = 0 . $dag3;
-                                             }
-                                             if (strlen($maand3) == 1) {
-                                                  $maand3 = 0 . $maand3;
-                                             }
-
-                                             print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
+                                        if ($dag3 > $daysInMonth) {
+                                             $dag3 = $dag3 - $daysInMonth;
+                                             $maand3 = $maand2 + 1;
+                                        } else {
+                                             $maand3 = $maand2;
                                         }
+
+                                        if ($maand3 > 12) {
+                                             $jaar3 = $jaar + 1;
+                                             $maand3 = 1;
+                                        } else {
+                                             $jaar3 = $jaar2;
+                                        }
+
+                                        if (strlen($dag3) == 1) {
+                                             $dag3 = 0 . $dag3;
+                                        }
+                                        if (strlen($maand3) == 1) {
+                                             $maand3 = 0 . $maand3;
+                                        }
+
+                                        print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
                                         ?>
                                         class="form-control" id="i5i">
                                         <span class="help-block">Voer een einddatum in</span>
-
                                    </div>
-
                                    <div class="form-group label-static is-empty">
                                         <label for="i5i" class="control-label">Aantal personen*</label>
                                         <select id="s1" class="form-control" name="aantalPersonen">
