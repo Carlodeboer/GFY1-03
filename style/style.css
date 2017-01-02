@@ -255,6 +255,7 @@ ul a{
 }
 #reisgegevens{
   float:left;
+  max-width:700px;
 }
 #reispersonen{
   float:right;
