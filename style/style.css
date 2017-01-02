@@ -267,7 +267,9 @@ hr {
     background-color: grey;
     border: none;
 }
-
+#contentwrapper > table:nth-child(3) > tbody > tr:nth-child(1) > td:nth-child(2){
+  width:50% !important;
+}
 .btn-default {
     /*border: 1px solid #333333;*/
     color: #333;

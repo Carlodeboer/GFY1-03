@@ -47,7 +47,7 @@
 
                               <h1>Reisinfo voor <?php print($naam);?> in week <?php print($week);?></h1>
                               <h2>Reisgegevens:</h2>
-                              <table class="table table-striped table-hover nieuwsberichtenbewerken">
+                              <table class="table table-striped table-hover personentabel">
                                    <tr>
                                         <td>Begindatum:</td>
                                         <td><?php print($begindatum); ?></td>
@@ -107,7 +107,7 @@
                                    </tr>
                               </table>
                               <h2>Persoonlijke gegevens:</h2>
-                              <table class="table table-striped table-hover nieuwsberichtenbewerken">
+                              <table class="table table-striped table-hover personentabel">
                                    <?php
                                    for ($i = 1; $i <= $aantalPersonen; $i++) {
                                         $stmt4 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email FROM klantgegevens WHERE idklant = ? AND persoon = ?");
@@ -126,7 +126,8 @@
                                         if ($aantalPersonen != 1) {
                                              ?>
                                              <tr>
-                                                  <td><h3>Persoon <?php print ($i) ?></h3></td>
+                                                  <td><br><h3>Persoon <?php print ($i) ?></h3></td>
+                                                  <td></td>
                                              </tr><?php
                                         }
                                         ?>
