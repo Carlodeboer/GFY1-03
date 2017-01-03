@@ -41,7 +41,7 @@
                               <td>Aantal personen:</td>
                               <td><?php print ($aantalPersonen) ?></td>
                          </tr><tr>
-                              <td>Vervoer van Luchthaven Portela (Lissabon):</td>
+                              <td>Vervoer van luchthaven Lissabon:</td>
                               <td><?php
                               if ($vervoerHeen) {
                                    print("Ja");
@@ -50,7 +50,7 @@
                               }
                               ?></td>
                          </tr><tr>
-                              <td>Vervoer naar Luchthaven Portela (Lissabon):</td>
+                              <td>Vervoer naar luchthaven Lissabon:</td>
                               <td><?php
                               if ($vervoerTerug) {
                                    print("Ja");
@@ -67,7 +67,7 @@
                          </tr>
                          <?php
                          if ($opmerkingen != NULL) {
-                              print ("<tr><td>Opmerkingen</td><td>" . $opmerkingen . "</td></tr>");
+                              print ("<tr><td>Opmerkingen:</td><td>" . $opmerkingen . "</td></tr>");
                          }
                          ?>
                          <tr>
