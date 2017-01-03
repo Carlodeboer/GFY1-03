@@ -61,9 +61,9 @@ function laadContent($bestandsnaam, $taal, $admin = false){
 function knopjes(){
     $taal = selecteerTaal();
     if ($taal == "NLD"){
-        $knopjes = ["Home", "Accommodaties", "Prijzen", "Contact", "Login", "Galerij"];
+        $knopjes = ["Home", "Accommodatie", "Prijzen", "Contact", "Login", "Galerij"];
     } elseif ($taal == "ENG"){
-        $knopjes = ["Home", "Accommodations", "Pricing", "Contact", "Login", "Gallery"];
+        $knopjes = ["Home", "Accommodation", "Pricing", "Contact", "Login", "Gallery"];
    } elseif ($taal == "DEU"){
         $knopjes = ["Home", "Unterkunft", "Preis", "Kontakt", "Login", "Galerie"];
     }
@@ -80,6 +80,30 @@ function contactformulierTaal(){
         $labels = ["Contact", "First name *", "Last name *", "Subject *", "Email address *", "Phone number", "Message *", "Send", "Thank you for contacting us."];
    } elseif ($taal == "DEU"){
         $labels = ["Kontakt", "Vorname *", "Nachname *", "Thema *", "E-Mail-Adresse *", "Telefonnummer", "Nachricht *", "Schiff", "Danke für Ihre Kontaktaufnahme."];
+    }
+    return $labels;
+}
+
+function galerijTaal(){
+    $taal = selecteerTaal();
+    if ($taal == "NLD"){
+        $labels = ["Galerij"];
+    } elseif ($taal == "ENG"){
+        $labels = ["Galery"];
+   } elseif ($taal == "DEU"){
+        $labels = ["Galerie"];
+    }
+    return $labels;
+}
+
+function loginTaal(){
+    $taal = selecteerTaal();
+    if ($taal == "NLD"){
+        $labels = ["Reisinformatie opvragen"];
+    } elseif ($taal == "ENG"){
+        $labels = ["Travel information request"];
+   } elseif ($taal == "DEU"){
+        $labels = ["Reiseinformationen aufrufen"];
     }
     return $labels;
 }

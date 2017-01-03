@@ -11,7 +11,10 @@
           <?php include 'header.php';?>
           <div id="content">
                <div id="contentwrapper">
-                    <h2>Reisinformatie opvragen</h2>
+                    <?php
+                    $labels = loginTaal();
+                    ?>
+                    <h2> <?php print $labels[0]; ?> </h2>
                     <form id="klantlogin" method="POST" action="loginreisinformatie.php">
                          <div class="form-group label-static is-empty">
                               <label for="i5i" class="control-label">Vakantienaam*</label>
