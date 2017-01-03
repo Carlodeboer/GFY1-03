@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Motorcross</title>
+        <title>Contact</title>
         <?php include 'head.php'; ?>
     </head>
     <body>
@@ -39,13 +39,6 @@
                                 </div>
 
                                 <div class="form-group label-static is-empty">
-                                    <label for="inputonderwerp" class="control-label"><?php print $labels[3]; ?></label>
-
-                                        <input type="text" name="subject" class="form-control" id="inputachternaam">
-
-                                </div>
-
-                                <div class="form-group label-static is-empty">
                                     <label for="inputemail" class="control-label"><?php print $labels[4]; ?></label>
                                         <input type="email" name="email" class="form-control" id="inputemail">
 
@@ -58,6 +51,12 @@
 
                                 </div>
 
+                                <div class="form-group label-static is-empty">
+                                    <label for="inputonderwerp" class="control-label"><?php print $labels[3]; ?></label>
+
+                                        <input type="text" name="subject" class="form-control" id="inputachternaam">
+
+                                </div>
 
                                 <div class="form-group label-static is-empty">
                                     <label for="textArea" class="control-label"><?php print $labels[6]; ?></label>

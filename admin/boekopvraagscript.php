@@ -82,7 +82,7 @@
                               <table>
                                    <!-- in deze tabel komen de reisgegevens te staan -->
                                    <tr>
-                                        <td>Gebruikersnaam:</td>
+                                        <td>Vakantienaam:</td>
                                         <td><?php print($gebruikersnaam); ?></td>
                                    </tr><tr>
                                         <td>KlantID:</td>

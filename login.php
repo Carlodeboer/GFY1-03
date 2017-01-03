@@ -3,7 +3,7 @@
 <html>
 
 <head>
-     <title>Motorcross</title>
+     <title>Login</title>
      <?php include 'head.php';?>
 </head>
 <body>

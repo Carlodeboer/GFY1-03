@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+     <title>Beheerpaneel</title>
      <?php include '../head.php';?>
 </head>
 <body>

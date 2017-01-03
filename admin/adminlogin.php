@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <title>Beheerder login</title>
         <?php include '../head.php'; ?>
     </head>
     <body>
@@ -9,7 +10,7 @@
         <div id="container">
             <div id="content">
                 <div id="contentwrapper">
-                  <h2>Beheerder Login</h2>
+                  <h2>Beheerder login</h2>
 
                     <?php
                     // Controleert of de gebruiker al is ingelogd als admin. Zo ja,

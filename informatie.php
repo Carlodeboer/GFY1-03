@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Motorcross</title>
+    <title>Accommodatie</title>
     <?php include 'head.php';?>
 </head>
     <body>
