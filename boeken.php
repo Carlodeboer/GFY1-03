@@ -195,7 +195,7 @@
                                         </select>
                                    </div>
                                    <div class="form-group label-static is-empty">
-                                        <label for="i5i" class="control-label">Vervoer van Luchthaven Lissabon*</label>
+                                        <label for="i5i" class="control-label">Vervoer van luchthaven Lissabon*</label>
                                         <div class="radio">
                                              <label>
                                                   <input type="radio" name="vervoerHeen" value="1" checked> Ja
@@ -208,7 +208,7 @@
                                         </div>
                                    </div>
                                    <div class="form-group label-static is-empty">
-                                        <label for="i5i" class="control-label">Vervoer naar Luchthaven Lissabon*</label>
+                                        <label for="i5i" class="control-label">Vervoer naar luchthaven Lissabon*</label>
                                         <div class="radio">
                                              <label>
                                                   <input type="radio" name="vervoerTerug" value="1" checked> Ja

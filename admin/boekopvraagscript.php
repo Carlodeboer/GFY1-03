@@ -97,7 +97,7 @@
                                         <td>Aantal personen:</td>
                                         <td><?php print ($aantalPersonen) ?></td>
                                    </tr><tr>
-                                        <td>Vervoer van Luchthaven Portela (Lissabon):</td>
+                                        <td>Vervoer van luchthaven Lissabon:</td>
                                         <td><?php
                                         if ($vervoerHeen) {
                                              print("Ja");
@@ -106,7 +106,7 @@
                                         } //als het vervoer 1 is, staat er 'ja' en als het 0 is, staat er 'nee'
                                         ?></td>
                                    </tr><tr>
-                                        <td>Vervoer naar Luchthaven Portela (Lissabon):</td>
+                                        <td>Vervoer naar luchthaven Lissabon:</td>
                                         <td><?php
                                         if ($vervoerTerug) {
                                              print("Ja");
