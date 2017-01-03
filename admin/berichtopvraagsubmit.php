@@ -17,7 +17,7 @@ include "../toegang.php";
 
                <tr>
                     <td colspan="2" style="text-align:center">
-                         <br><input type="submit" name="zoekBerichten" value="Submit" class="btn-main">
+                         <br><input type="submit" name="zoekBerichten" value="Submit" class="btn btn-raised btn-primary">
                     </td>
                </tr>
           </table>

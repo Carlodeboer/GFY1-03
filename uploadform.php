@@ -6,7 +6,7 @@
 <head><title>File Upload To Database</title></head>
 <body>
   <div id="contentwrapper">
-    <h2>Afbeelding Uploaden </h2>
+    <h2>Afbeelding uploaden </h2>
     <form enctype="multipart/form-data" method="post">
       <input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
       <div><input name="userfile" type="file" /></div>
