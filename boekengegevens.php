@@ -28,6 +28,12 @@
                          $_SESSION["klantGegevens"]["locatie"] = $_POST["nieuweLocatie"];
                     }
 
+                    if ($_POST["bijzonderheden"] != "") {
+                         toevoegenAanArray("bijzonderheden", "klantGegevens", "");
+                    } else {
+                         $_SESSION["klantGegevens"]["bijzonderheden"] = NULL;
+                    }
+
                     if ($_POST["opmerkingen"] != "") {
                          toevoegenAanArray("opmerkingen", "klantGegevens", "");
                     } else {

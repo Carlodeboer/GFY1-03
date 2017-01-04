@@ -53,7 +53,7 @@
                     }
 
                     $stmt4 = $pdo->prepare("SELECT gebruikersnaam, begindatum, einddatum, aantalPersonen,
-                    vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling
+                    vervoerHeen, vervoerTerug, locatie, bijzonderheden, opmerking, status, betaling
                     FROM boeking
                     JOIN gebruikers
                     ON idKlant=idGebruiker
@@ -71,6 +71,7 @@
                     $vervoerHeen = $row4["vervoerHeen"];
                     $vervoerTerug = $row4["vervoerTerug"];
                     $locatie = $row4["locatie"];
+                    $bijzonderheden = $row4["bijzonderheden"];
                     $opmerking = $row4["opmerking"];
                     $status = $row4["status"];
                     $betaling = $row4["betaling"]; //maakt variabelen van de gegevens uit de database
@@ -120,6 +121,11 @@
                                         print (ucfirst($locatie));
                                         ?></td>
                                    </tr>
+                                   <?php
+                                   if ($bijzonderheden != NULL) {
+                                        print ("<tr><td>Bijzonderheden:</td><td>" . $bijzonderheden . "</td></tr>");
+                                   }
+                                   ?>
                                    <?php
                                    if ($opmerking != NULL) {
                                         print ("<tr><td>Opmerkingen:</td><td>" . $opmerking . "</td></tr>");

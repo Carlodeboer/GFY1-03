@@ -236,6 +236,11 @@
                                         </div>
                                    </div>
                                    <div class="form-group label-static is-empty">
+                                        <label for="i5i" class="control-label">Bijzonderheden</label>
+                                        <textarea name="bijzonderheden" class="form-control"></textarea>
+                                        <span class="help-block">Hiermee kunt u aangeven welke allergieën of ziektes u heeft, zodat daar rekening mee kan worden gehouden.</span>
+                                   </div>
+                                   <div class="form-group label-static is-empty">
                                         <label for="i5i" class="control-label">Opmerkingen</label>
                                         <textarea name="opmerkingen" class="form-control"></textarea>
                                    </div>

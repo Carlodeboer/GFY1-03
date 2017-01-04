@@ -66,6 +66,11 @@
 
                          </tr>
                          <?php
+                         if ($bijzonderheden != NULL) {
+                              print ("<tr><td>Bijzonderheden:</td><td>" . $bijzonderheden . "</td></tr>");
+                         }
+                         ?>
+                         <?php
                          if ($opmerkingen != NULL) {
                               print ("<tr><td>Opmerkingen:</td><td>" . $opmerkingen . "</td></tr>");
                          }

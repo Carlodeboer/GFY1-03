@@ -33,8 +33,8 @@
                                    $row2 = $stmt2->fetch();
                                    $idReservering = $row2["max(idReservering)"];
 
-                                   $stmt3 = $pdo->prepare("INSERT INTO boeking (idReservering, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                                   $stmt3->execute(array($idReservering, $begindatum, $einddatum, $aantalPersonen, $vervoerHeen, $vervoerTerug, $locatie, $opmerkingen));
+                                   $stmt3 = $pdo->prepare("INSERT INTO boeking (idReservering, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, bijzonderheden, opmerking) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                                   $stmt3->execute(array($idReservering, $begindatum, $einddatum, $aantalPersonen, $vervoerHeen, $vervoerTerug, $locatie, $bijzonderheden, $opmerkingen));
 
                                    $stmt4 = $pdo->prepare("SELECT max(idKlant) FROM boeking");
                                    $stmt4->execute(array());

@@ -28,7 +28,7 @@
                               $row2 = $stmt1->fetch();
                               $idklant = $row2["idGebruiker"];
 
-                              $stmt3 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling FROM boeking WHERE idklant = ?");
+                              $stmt3 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, bijzonderheden, opmerking, status, betaling FROM boeking WHERE idklant = ?");
                               $stmt3->execute(array($idklant));
                               $row3 = $stmt3->fetch();
 
@@ -38,6 +38,7 @@
                               $vervoerHeen = $row3["vervoerHeen"];
                               $vervoerTerug = $row3["vervoerTerug"];
                               $locatie = $row3["locatie"];
+                              $bijzonderheden = $row3["bijzonderheden"];
                               $opmerking = $row3["opmerking"];
                               $status = $row3["status"];
                               $betaling = $row3["betaling"];
@@ -81,6 +82,11 @@
                                         print (ucfirst($locatie));
                                         ?></td>
                                    </tr>
+                                   <?php
+                                   if ($bijzonderheden != NULL) {
+                                        print ("<tr><td>Bijzonderheden:</td><td>" . $bijzonderheden . "</td></tr>");
+                                   }
+                                   ?>
                                    <?php
                                    if ($opmerking != NULL) {
                                         print ("<tr><td>Opmerkingen:</td><td>" . $opmerking . "</td></tr>");
