@@ -178,18 +178,35 @@
                                         <select id="s1" class="form-control" name="aantalPersonen">
                                              <?php
 
-                                             if (!(isset($objArray[$_GET["dag"] . "beschikbaar"]))) {
-                                                  $beschikbaar = 4;
-                                             } else {
-                                                  $beschikbaar = $objArray[$_GET["dag"] . "beschikbaar"];
-                                             }
-                                             if ($beschikbaar == 0) {
-                                                  print ("<option value=''>0</option>");
-                                             } else {
-                                                  for ($i = 1; $i <= $beschikbaar; $i++) {
-                                                       print ("<option value='{$i}'>{$i}</option>");
+                                                  $stmt7 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
+                                                  $stmt7->execute(array($begindatum));
+
+                                                  while ($row7 = $stmt7->fetch()) {
+                                                       $aantal = $row7["aantal"];
+                                                       $aantalNietBeschikbaar = $aantalNietBeschikbaar + $aantal;
                                                   }
-                                             }
+                                                  $aantalBeschikbaar = $aantalMotoren - $aantalNietBeschikbaar;
+
+                                                  for ($i = 1; $i <= $aantalBeschikbaar; $i++) {
+
+                                                            print ("<option value='" . $i . "'>" . $i . "</option>");
+
+                                                  }
+                                             ?>
+                                             <?php
+
+                                             // if (!(isset($objArray[$_GET["dag"] . "beschikbaar"]))) {
+                                             //      $beschikbaar = 4;
+                                             // } else {
+                                             //      $beschikbaar = $objArray[$_GET["dag"] . "beschikbaar"];
+                                             // }
+                                             // if ($beschikbaar == 0) {
+                                             //      print ("<option value=''>0</option>");
+                                             // } else {
+                                             //      for ($i = 1; $i <= $beschikbaar; $i++) {
+                                             //           print ("<option value='{$i}'>{$i}</option>");
+                                             //      }
+                                             // }
                                              ?>
 
                                         </select>
