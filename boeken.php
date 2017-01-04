@@ -193,22 +193,6 @@
 
                                                   }
                                              ?>
-                                             <?php
-
-                                             // if (!(isset($objArray[$_GET["dag"] . "beschikbaar"]))) {
-                                             //      $beschikbaar = 4;
-                                             // } else {
-                                             //      $beschikbaar = $objArray[$_GET["dag"] . "beschikbaar"];
-                                             // }
-                                             // if ($beschikbaar == 0) {
-                                             //      print ("<option value=''>0</option>");
-                                             // } else {
-                                             //      for ($i = 1; $i <= $beschikbaar; $i++) {
-                                             //           print ("<option value='{$i}'>{$i}</option>");
-                                             //      }
-                                             // }
-                                             ?>
-
                                         </select>
                                    </div>
                                    <div class="form-group label-static is-empty">
