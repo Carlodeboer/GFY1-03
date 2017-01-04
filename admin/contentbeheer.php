@@ -5,7 +5,7 @@
 <div id="contentwrapper">
   <h2>Content </h2>
     <table>
-        <form method="get" action="beheerpaneel.php?beheer=content">
+        <form method="get" action="beheerpaneel.php?beheer=Content">
             <tr>
                 <td>Pagina:</td>
                 <td><select name="pagina">

@@ -20,6 +20,10 @@
                          unset($_SESSION['paginaEdit']);
                          unset($_SESSION['taalEdit']);
                     }
+                    elseif(isset($_POST['nieuwaccount'])){
+                        $succes = nieuwAccount($_POST['naam'], $_POST['wachtwoord'], $_POST['wachtwoord2']);
+                        //print "<p>{$succes[1]}</p>";
+                    }
                     include 'adminindex.php';
                     // Controleert of de gebruiker heeft aangegeven wat hij wil beheren
                     // zo ja, dan wordt de bijbehorende pagina geladen
@@ -49,6 +53,9 @@
                                   break;
                               case "Nieuwsbewerken":
                                   include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
+                                  break;
+                              case "Nieuw account":
+                                  include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwaccount.php';
                                   break;
                          }
                     }

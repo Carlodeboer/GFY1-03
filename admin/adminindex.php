@@ -8,4 +8,5 @@
     <input type="submit" name="beheer" value="Boekingen" class="btn btn-raised btn-primary">
     <input type="submit" name="beheer" value="Afbeelding" class="btn btn-raised btn-primary">
     <input type="submit" name="beheer" value="Berichtopvraag" class="btn btn-raised btn-primary">
+    <input type="submit" name="beheer" value="Nieuw account" class="btn btn-raised btn-primary">
 </form>

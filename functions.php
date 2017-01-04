@@ -272,4 +272,45 @@ function toevoegenAanArray($naam, $array, $persoon) {
         return ($_SESSION[$array][$naam] = $var);
    }
 }
+
+function nieuwAccount($naam, $wachtwoord, $wachtwoord2){
+    $succes = [false, ""];
+    if ($naam == "" && ($wachtwoord == "" || $wachtwoord2 = "")){
+        $succes[1] = "Vul de velden in.";
+    } elseif($naam == ""){
+        $succes[1] = "Vul een gebruikersnaam in.";
+    } elseif($wachtwoord == ""){
+        $succes[1] = "Vul een wachtwoord in.";
+    } elseif($wachtwoord2 == ""){
+        $succes[1] = "Herhaal het wachtwoord.";
+    } elseif($wachtwoord != $wachtwoord2){
+        $succes[1] = "De ingevoerde wachtwoorden komen niet overeen.";
+    } else {
+        $pdo = newPDO();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt1 = $pdo->prepare("SELECT gebruikersnaam FROM gebruikers WHERE gebruikersnaam = ?");
+        $stmt1->execute(array($naam));
+        if ($stmt1->rowCount() > 0){
+            $succes[1] = "Gebruikersnaam bestaat al.";
+        } else {
+            $wachtwoordhash = password_hash($wachtwoord, PASSWORD_DEFAULT);
+            $privilege = 2;
+            try {
+                $stmt2 = $pdo->prepare("SELECT max(idGebruiker) FROM gebruikers");
+                $stmt2->execute(array());
+                $row = $stmt2->fetch();
+                $id = $row["max(idGebruiker)"] + 1;
+                $stmt3 = $pdo->prepare("INSERT INTO gebruikers(idGebruiker, gebruikersnaam, wachtwoord, privilegeniveau) VALUES (?,?,?,?)");
+                $stmt3->execute(array($id, $naam, $wachtwoordhash, $privilege));
+            } catch (PDOException $e){
+                $succes[1] = $e;
+            }
+            if (!isset($e)){
+                $succes = [true, "Nieuw account aangemaakt!"];
+            }
+        }
+    }
+    $pdo = null;
+    return $succes;
+}
 ?>
