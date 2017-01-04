@@ -99,9 +99,9 @@
 
                                   $Name = "Offroad Compass Portugal"; //senders name
                                   $email = "info@offroadcompassportugal.nl"; //senders e-mail adress
-                                  $recipient = "$email"; //recipient
+                                  $recipient = $email; //recipient
 
-                                  $mail_body = "
+                                  $mail_body = " hallo
                                   $voornaam
                                   $achternaam <br>
                                   $geboortedatum "; //mail body
