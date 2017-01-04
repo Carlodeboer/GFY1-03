@@ -36,6 +36,22 @@
                          <?php
                     }
 
+                    if (isset($_GET["niet-bevestigen"])) {
+                         $stmt2 = $pdo->prepare("UPDATE boeking
+                         SET status='Niet bevestigd'
+                         WHERE idKlant=?"); //wanneer op de knop 'niet-bevestigen' wordt geklikt, staat in de database dat de boeking niet is bevestigd
+                         $stmt2->execute(array($klantID));
+                         ?>
+                         <script>
+                         function popUpBevestigd() {
+                              $("#bevestigd").snackbar("show");
+                         }
+                         </script>
+                         <span data-toggle=snackbar id="bevestigd" data-content="De bevestiging van deze boeking is ongedaan gemaakt."></span>
+                         <script>window.onload = popUpBevestigd;</script>
+                         <?php
+                    }
+
                     if (isset($_GET["betaald"])) {
                          $stmt3 = $pdo->prepare("UPDATE boeking
                          SET betaling='Betaald'
@@ -48,6 +64,22 @@
                          }
                          </script>
                          <span data-toggle=snackbar id="betaald" data-content="De boeking is betaald."></span>
+                         <script>window.onload = popUpBetaald;</script>
+                         <?php
+                    }
+
+                    if (isset($_GET["niet-betaald"])) {
+                         $stmt3 = $pdo->prepare("UPDATE boeking
+                         SET betaling='Niet betaald'
+                         WHERE idKlant=?"); //wanneer op de knop 'niet-betalen' wordt geklikt, staat in de database dat de boeking niet is betaald
+                         $stmt3->execute(array($klantID));
+                         ?>
+                         <script>
+                         function popUpBetaald() {
+                              $("#betaald").snackbar("show");
+                         }
+                         </script>
+                         <span data-toggle=snackbar id="betaald" data-content="De betaling van de boeking is ongedaan gemaakt."></span>
                          <script>window.onload = popUpBetaald;</script>
                          <?php
                     }
@@ -157,13 +189,20 @@
                                    <?php
                                    if ($status=="Niet bevestigd") {
                                         print("<input type='submit' name='bevestigen' value='Bevestigen' class='btn btn-raised btn-primary'>");
+                                        //als de boeking nog niet bevestigd is, is er een knop waarmee de boeking wel wordt bevestigd
+                                   } else {
+                                        print("<input type='submit' name='niet-bevestigen' value='Bevestiging ongedaan maken' class='btn btn-raised btn-primary'>");
+                                        //als de boeking al bevestigd is, is er een knop waarmee de bevestiging ongedaan gemaakt kan worden
+                                   }
 
-                                   } //als de boeking nog niet bevestigd is, is er een knop waarmee de boeking wel wordt bevestigd
 
                                    if($betaling=="Niet betaald") {
                                         print("<input type='submit' name='betaald' value='Betaald' class='btn btn-raised btn-primary'>");
-                                   } //als de boeking nog niet betaald is, is er een knop waarmee
-                                   //de boeking wel als betaald kan worden weergegeven
+                                   //als de boeking nog niet betaald is, is er een knop waarmee de boeking wel als betaald kan worden weergegeven
+                              } else {
+                                   print("<input type='submit' name='niet-betaald' value='Betaling ongedaan maken' class='btn btn-raised btn-primary'>");
+                                   //als de boeking al betaald is, is er een knop waarmee de betaling ongedaan gemaakt kan worden
+                              }
                                    ?>
                               </form>
                          </div>
