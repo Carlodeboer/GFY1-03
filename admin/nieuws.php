@@ -2,7 +2,7 @@
 <html>
 <head>
 </head>
-<!-- snackbar functie -->
+<!-- popup weergeven -->
 <script>
 function popup() {
   $("#123").snackbar("show");
@@ -14,12 +14,14 @@ function popup() {
   <br><br>
   <div id="contentwrapper">
     <div class="container">
+    <!-- Gebruik van row om meerdere items naast elkaar te zetten, col-md-* geeft de breedte van een item weer. -->
       <div class="row">
         <form style="float:right;" method="post" action="beheerpaneel.php?beheer=Nieuwsbewerken">
           <input type="submit" name="nieuwsbewerken" value="Artikelen bewerken" class="btn btn-raised btn-primary">
         </form>
 
         <div class="col-md-8">
+        <!-- Inputvelden voor nieuw nieuwsbericht -->
           <h3>Nieuw nieuwsbericht toevoegen</h3><br>
           <form method="post" action="beheerpaneel.php?beheer=Nieuws">
             <div class="form-group">
@@ -34,6 +36,7 @@ function popup() {
               <label for="select111" class="col-md-2 control-label">Taal</label>
 
               <div class="col-md-10">
+              <!-- Taalselectie -->
                 <select name="lang" id="select111" class="form-control">
                   <option value="NLD">Nederlands</option>
                   <option value="ENG">Engels</option>
@@ -68,12 +71,13 @@ function popup() {
           date_default_timezone_set('Europe/Amsterdam');
           $date = date('d F Y H:i', time());
 
-
+// De volgende code wordt uitgevoerd wanneer er op submit gedrukt wordt.
           if (isset($_POST['plaatsnieuws'])) {
             $titel = $_POST['titel'];
             $lang = $_POST['lang'];
             $bodytext = $_POST['bodytext'];
             ?>
+            <!-- popup met feedback aan beheerder weergeven -->
             <span data-toggle=snackbar id="123" data-content="Het artikel <?php print($titel); ?> is toegevoegd."></span>
             <?php
             if ($titel == "") {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <!-- popups initialiseren voor feedback aan beheerder -->
         <script>
             function popupverwijder() {
                 $("#verwijder").snackbar("show");
@@ -17,6 +18,7 @@
         <br><br>
         <h3>Nieuwsberichten bewerken</h3><br>
         <?php
+        // Wanneer er een nieuwbericht aangeklikt wordt, verschijnt deze aan de rechterkant van de pagina. Onderstaande regels halen de gewenste informatie uit de database
         $pdo = newPDO();
         $stmt = $pdo->prepare("SELECT id,lang,title,description,bodytext,posted
                             FROM nieuwsbericht");
@@ -24,8 +26,7 @@
         ?>
         <br><br><br>
 
-
-        <!-- <div class="container"> -->
+    <!-- Gebruik van row om meerdere items naast elkaar te zetten, col-md-* geeft de breedte van een item weer. -->
         <div class="row">
             <div class="col-md-6">
 
@@ -58,7 +59,7 @@
 
             <div class="col-md-6">
 
-
+<!-- Onderstaande code kijkt of een nieuwsbericht is aangeklikt, en haalt vervolgens informatie op. -->
                 <?php
                 if (isset($_GET['berichtId'])) {
                     $berichtId = $_GET['berichtId'];
@@ -71,7 +72,7 @@
                 }
 
                 $taal = 0;
-
+// Switch wordt gebruikt voor taalselectie
                 switch ($content['lang']) {
                     case "NLD":
                         $taal = "Nederlands";
@@ -87,7 +88,7 @@
 
                 <form method="post">
 
-
+<!-- De volgende input velden worden automatisch ingevuld wanneer een artikel wordt aangeklikt -->
                     <div class="form-group">
                         <label for="inputtitel" class="col-md-6 control-label">Titel</label>
 
@@ -158,6 +159,7 @@
     <span data-toggle=snackbar id="update" data-content="Het bericht is bijgewerkt."></span>
 
 <?php
+// onderstaande code wordt uitgevoerd wanneer er op Updaten geklikt wordt.
 if (isset($_POST['updaten'])) {
     $titel = $_POST['titel'];
     $lang = $_POST['lang'];
@@ -165,14 +167,14 @@ if (isset($_POST['updaten'])) {
     $posted = $_POST['datum'];
     $bodytext = $_POST['bodytext'];
     $berichtId = $_GET['berichtId'];
-
+// controleren of titel en bericht zijn ingevuld
     if ($titel == "") {
         print("Voer een titel in.");
     } elseif ($bodytext == "") {
         print("Voer een bericht in.");
     } else {
 
-
+// SQL query update het artikel in de database wanneer alle velden ingevuld zijn.
         $pdo = newPDO();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $pdo->prepare("UPDATE nieuwsbericht SET lang=?, title=?, description=?, bodytext=?, posted=? WHERE id=?");
@@ -180,20 +182,20 @@ if (isset($_POST['updaten'])) {
             $stmt->execute(array($lang, $titel, $omschrijving, $bodytext, $posted, $berichtId));
         } catch (PDOException $e) {
             echo "Er is iets fout gegaan";
-            throw $e;
         }
 
         $res = $stmt->rowCount();
         if ($res > 0) {
             //feedback aan gebruiker geven
             print("Het bericht " . $titel . " is bijgewerkt.");
+            // popup geeft een korte melding aan de beheerder.
             print("<script>window.onload = popupupdate;</script>");
         }
     }
 }
 
 
-
+// Onderstaande zorgt ervoor dat artikelen verwijderd kunnen worden.
 if (isset($_POST['delete'])) {
     if (!isset($_GET['berichtId'])) {
         print("Er is geen bericht geselecteerd.");
@@ -204,7 +206,6 @@ if (isset($_POST['delete'])) {
             $stmt->execute(array($berichtId));
         } catch (PDOException $e) {
             echo "Er is iets fout gegaan";
-            throw $e;
         }
 
         $res = $stmt->rowCount();
