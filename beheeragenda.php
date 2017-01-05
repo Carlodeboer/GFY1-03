@@ -4,61 +4,10 @@
      <title>Agenda</title>
 </head>
 <body>
-
      <?php
-     $pdo = newPDO();
-     date_default_timezone_set("Europe/Amsterdam");
-     $date = strtotime(date("Y-m-d"));
-     $day = date('d', $date);
+     include ("agendaVariabelen.php");
 
-     if (!isset($_SESSION['jaarnummer'])) {
-          $_SESSION['jaarnummer'] = date('Y', $date);
-     }
-
-     if (!isset($_SESSION['maandnummer'])) {
-          $_SESSION['maandnummer'] = date('m', $date);
-     }
-
-     if (isset($_POST['volgende'])) {
-          $_GET["dag"] = NULL;
-          ++$_SESSION['maandnummer'];
-          if ($_SESSION['maandnummer'] > 12) {
-               $_SESSION['maandnummer'] = 1;
-               $_SESSION['jaarnummer']++;
-          }
-     }
-
-     if (isset($_POST['vorige'])) {
-          unset($_GET["dag"]);
-          --$_SESSION['maandnummer'];
-          if ($_SESSION['maandnummer'] < 1) {
-               $_SESSION['jaarnummer']--;
-               $_SESSION['maandnummer'] = 12;
-          }
-     }
-
-     $maand = $_SESSION['maandnummer'];
-     $jaar = $_SESSION['jaarnummer'];
-
-     $firstDay = mktime(0, 0, 0, $maand, 1, $jaar);
-     $title = strftime('%B', $firstDay);
-     $dayOfWeek = date('D', $firstDay);
-     $daysInMonth = cal_days_in_month(0, $maand, $jaar);
-     /* get the name of the week days */
-     $timestamp = strtotime('next Sunday');
-     $weekDays = array();
-     for ($i = 0; $i < 7; $i++) {
-          $weekDays[] = strftime('%a', $timestamp);
-          $timestamp = strtotime('+1 day', $timestamp);
-     }
-     $blank = date('w', strtotime("{$jaar}-{$maand}-01"));
-
-     $stmt1 = $pdo->prepare("SELECT waarde FROM instellingen WHERE instelling = 'aantalMotoren';");
-     $stmt1->execute(array());
-     $row1 = $stmt1->fetch();
-     $aantalMotoren = $row1["waarde"];
-
-     if (isset($_POST['invoeren'])) {
+     if (isset($_POST['verzendenBlokkade'])) {
           if (!isset($_POST["uitval"])) {
                ?>
                <script>
@@ -119,201 +68,233 @@
 
                }
           }
+     } elseif(isset($_POST["verwijderenBlokkade"])) {
+          if (!isset($_POST["beschikbaar"])) {
+               ?>
+               <script>
+               function popUpPeriodeVol() {
+                    $("#periodeVol").snackbar("show");
+               }
+               </script>
+               <span data-toggle=snackbar id="periodeVol" data-content="Alle motoren zijn al beschikbaar in deze periode."></span>
+               <script>window.onload = popUpPeriodeVol;</script>
+               <?php
+          } else {
+               $begindatum = $_POST['begindatum'];
+               $beschikbaar = $_POST['beschikbaar'];
+               try{
+                    $stmt8 = $pdo->prepare("SELECT max(idReservering) FROM reserveringen WHERE begindatum = ?");
+                    $stmt8->execute(array($begindatum));
+                    $row8 = $stmt8->fetch();
+                    $idReservering = $row8["max(idReservering)"];
+
+                    $stmt7 = $pdo->prepare("UPDATE blokkade SET uitval = uitval - ? WHERE idReservering = ?");
+                    $stmt7->execute(array($beschikbaar, $idReservering));
+
+                    $stmt9 = $pdo->prepare("UPDATE reserveringen SET aantal = aantal - ? WHERE idReservering = ?");
+                    $stmt9->execute(array($beschikbaar, $idReservering));
+               } catch (Exception $e){
+                    print("mislukt");
+               }
+               $res7 = $stmt7->rowCount();
+               if ($res7 == 1) {
+                    ?>
+                    <script>
+                    function popUpAgendaGewijzigd() {
+                         $("#agendaGewijzigd").snackbar("show");
+                    }
+                    </script>
+                    <span data-toggle=snackbar id="agendaGewijzigd" data-content="De reservering is verwijderd uit de agenda."></span>
+                    <script>window.onload = popUpAgendaGewijzigd;</script>
+                    <?php
+               }
+
+          }
      }
+     include ("agenda.php");
      ?>
+     <div class="col-md-4">
+               <?php
+               if(isset($_POST["verwijderen"])) {
+                    $_SESSION["invoerenOfVerwijderen"] = "verwijderen";
+               } else {
+                    $_SESSION["invoerenOfVerwijderen"] = "invoeren";
+               }
 
-     <br><br>
-     <div class="row">
-          <div class="col-md-8">
-               <table id="calendar">
-                    <tr>
-                         <th colspan="7">
-                              <div class="row">
-                                   <form method="POST">
-                                        <div class="col-md-2">
-
-                                             <input type="submit" name="vorige" value="Vorige" class="btn btn-raised btn-primary">
-                                        </div>
-
-                                        <div class="col-md-8">
-                                             <?php print("{$title} {$jaar}"); ?>
-                                        </div>
-
-                                        <div class="col-md-2">
-                                             <input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary">
-                                        </div>
-                                   </form>
-                              </div>
-                         </th>
-                    </tr>
-                    <tr>
-                         <?php
-                         foreach ($weekDays as $key => $weekDay) {
-                              print("<td class='text-center'>" . $weekDay . "</td>");
-                         }
-                         ?>
-                    </tr>
-                    <tr>
-                         <?php
-                         for ($i = 0; $i < $blank; $i++) {
-                              print("<td></td>");
-                         }
-                         if ($_SESSION["maandnummer"] != 1) {
-                              $stmt5 = $pdo->prepare("SELECT * FROM reserveringen WHERE Year(begindatum) = ? AND (Month(begindatum) = ? OR (Month(begindatum) = ? AND day(begindatum) >= 22));");
-                              $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer'], $_SESSION['maandnummer'] - 1));
-                         } else {
-                              $stmt5 = $pdo->prepare("SELECT * FROM reserveringen WHERE (Year(begindatum) = ? AND Month(begindatum) = ?) OR (Year(begindatum) = ? AND Month(begindatum) = ? AND day(begindatum) >= 22);");
-                              $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer'], $_SESSION['jaarnummer'] -1, 12));
-                         }
-
-                         $objArray = array();
-
-                         while ($row5 = $stmt5->fetch()) {
-                              // while($row5 = $stmt5->fetch()) {
-                              //      $uitval = $uitval + $row5["aantal"];
-                              // }
-                              $uitval = $row5["aantal"];
-                              $begindatum = strtotime($row5['begindatum']);
-                              $einddatum = strtotime("+6 day", $begindatum);
-
-                              $begindag = date('j', $begindatum);
-                              $einddag = date('j', $einddatum);
-
-                              $maand1 = date('n', $einddatum);
-                              $maand2 = date('n', $begindatum);
-
-                              if ($maand1 != $_SESSION["maandnummer"]) {
-                                   $einddag = $daysInMonth;
-                              }
-
-                              if ($maand2 != $_SESSION["maandnummer"]) {
-                                   $begindag = 1;
-                              }
-                              $stmt6 = $pdo->prepare("SELECT omschrijving FROM blokkade WHERE begindatum = ?");
-                              $stmt6->execute(array($row5["begindatum"]));
-                              $row6 = $stmt6->fetch();
-
-
-                              if (!($maand2 != $_SESSION["maandnummer"] && $einddag > 6)) {
-                                   for ($i = $begindag; $i <= $einddag; $i++) {
-
-                                        $objArray[$i . "omschrijving"] = $row6['omschrijving'];
-                                        if (isset($objArray[$i . "uitval"])) {
-                                             $objArray[$i . "uitval"] = $objArray[$i . "uitval"] - $uitval;
-                                        } else {
-                                             $objArray[$i . "uitval"] = $aantalMotoren - $uitval;
-                                        }
-                                        if (!isset($objArray[$i . "omschrijving"])) {
-                                             $objArray[$i . "omschrijving"] = "Boeking";
-                                        }
-                                   }
-                              }
-                         }
-
-                         for ($i = 1; $i <= $daysInMonth; $i++) {
-
-                              if (($i + $blank) % 7 != 0) {
-                                   print ("<td>");
-                                   if (isset($objArray[$i . "omschrijving"])) {
-                                        print ($i . ": " . $objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
-                                   } else {
-                                        print ($i);
-                                   }
-                                   print ("</td>");
-                              }
-                              if (($i + $blank) % 7 == 0) {
-                                   print ("<td><a href='http://" . $_SERVER['HTTP_HOST'] . "/GFY1-03/admin/beheerpaneel.php?beheer=Agenda&dag={$i}'>");
-                                   if (isset($objArray[$i . "omschrijving"])) {
-                                        print ($i . ": " . $objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
-                                   } else {
-                                        print ($i);
-                                   }
-                                   print ("</a></td></tr><tr>");
-                              }
-
-                         }
-                         for ($i = 0; ($i + $blank + $daysInMonth) % 7 != 0; $i++) {
-                              print("<td></td>");
-                         }
-                         ?>
-                    </tr>
-               </table>
-          </div>
-          <div class="col-md-4">
-               <form method="POST">
-                    <div class="form-group">
-                         <label for="inputdatum1" class="col-md-2 control-label" >Begindatum</label>
-
-                         <div class="col-md-10">
-                              <input type="date" name="begindatum" readonly
-                              <?php
-                              if (isset($_GET["dag"])) {
-                                   $dag2 = $_GET["dag"];
-                                   $jaar2 = $_SESSION["jaarnummer"];
-                                   $maand2 = $_SESSION["maandnummer"];
-
-                                   if (strlen($dag2) == 1) {
-                                        $dag2 = 0 . $dag2;
-                                   }
-                                   if (strlen($maand2) == 1) {
-                                        $maand2 = 0 . $maand2;
-                                   }
-                              } else {
-                                   $aankomendeZaterdag = strtotime('next saturday', $date);
-
-                                   $dag2 = date('d', $aankomendeZaterdag);
-                                   $maand2 = date('m', $aankomendeZaterdag);
-                                   $jaar2 = date('Y', $aankomendeZaterdag);
-                              }
-                              $begindatum = $jaar2 . "-" . $maand2 . "-" . $dag2;
-                              print("value=\"" . $begindatum . "\"");
-                              ?>
-                              class="form-control" id="inputdatum1">
-                         </div>
-                    </div>
-
-                    <div class="form-group">
-                         <label for="inputdatum2" class="col-md-2 control-label">Einddatum</label>
-
-                         <div class="col-md-10">
-                              <input type="date" name="einddatum" readonly
-                              <?php
-                              $dag3 = $dag2 + 6;
-
-                              if ($dag3 > $daysInMonth) {
-                                   $dag3 = $dag3 - $daysInMonth;
-                                   $maand3 = $maand2 + 1;
-                              } else {
-                                   $maand3 = $maand2;
-                              }
-
-                              if ($maand3 > 12) {
-                                   $jaar3 = $jaar + 1;
-                                   $maand3 = 1;
-                              } else {
-                                   $jaar3 = $jaar2;
-                              }
-
-                              if (strlen($dag3) == 1) {
-                                   $dag3 = 0 . $dag3;
-                              }
-                              if (strlen($maand3) == 1) {
-                                   $maand3 = 0 . $maand3;
-                              }
-
-                              print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
-
-                              ?>
-                              class="form-control" id="inputdatum2">
-                         </div>
-                    </div>
-
-                    <div class="form-group">
-                         <label for="select111" class="col-md-2 control-label">Uitval</label>
-
-                         <div class="col-md-10">
-                              <select name="uitval" id="select111" class="form-control">
+               if($_SESSION["invoerenOfVerwijderen"] == "verwijderen") {
+                    ?>
+                    <form method="POST">
+                         <input class="btn btn-raised btn-primary" type="submit" name="invoeren" value="Invoeren">
+                    </form>
+                    <form method="POST">
+                         <div class="form-group">
+                              <label for="inputdatum1" class="col-md-2 control-label" >Begindatum</label>
+                              <div class="col-md-10">
+                                   <input type="date" name="begindatum" readonly
                                    <?php
+                                   if (isset($_GET["dag"])) {
+                                        $dag2 = $_GET["dag"];
+                                        $jaar2 = $_SESSION["jaarnummer"];
+                                        $maand2 = $_SESSION["maandnummer"];
+
+                                        if (strlen($dag2) == 1) {
+                                             $dag2 = 0 . $dag2;
+                                        }
+                                        if (strlen($maand2) == 1) {
+                                             $maand2 = 0 . $maand2;
+                                        }
+                                   } else {
+                                        $aankomendeZaterdag = strtotime('next saturday', $date);
+
+                                        $dag2 = date('d', $aankomendeZaterdag);
+                                        $maand2 = date('m', $aankomendeZaterdag);
+                                        $jaar2 = date('Y', $aankomendeZaterdag);
+                                   }
+                                   $begindatum = $jaar2 . "-" . $maand2 . "-" . $dag2;
+                                   print("value=\"" . $begindatum . "\"");
+                                   ?>
+                                   class="form-control" id="inputdatum1">
+                              </div>
+                         </div>
+                         <div class="form-group">
+                              <label for="inputdatum2" class="col-md-2 control-label">Einddatum</label>
+                              <div class="col-md-10">
+                                   <input type="date" name="einddatum" readonly
+                                   <?php
+                                   $dag3 = $dag2 + 6;
+
+                                   if ($dag3 > $daysInMonth) {
+                                        $dag3 = $dag3 - $daysInMonth;
+                                        $maand3 = $maand2 + 1;
+                                   } else {
+                                        $maand3 = $maand2;
+                                   }
+
+                                   if ($maand3 > 12) {
+                                        $jaar3 = $jaar + 1;
+                                        $maand3 = 1;
+                                   } else {
+                                        $jaar3 = $jaar2;
+                                   }
+
+                                   if (strlen($dag3) == 1) {
+                                        $dag3 = 0 . $dag3;
+                                   }
+                                   if (strlen($maand3) == 1) {
+                                        $maand3 = 0 . $maand3;
+                                   }
+
+                                   print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
+
+                                   ?>
+                                   class="form-control" id="inputdatum2">
+                              </div>
+                         </div>
+                         <?php
+                         $stmt7 = $pdo->prepare("SELECT uitval FROM blokkade WHERE begindatum = ?");
+                         $stmt7->execute(array($begindatum));
+                         $aantalNietBeschikbaar = 0;
+                         while ($row7 = $stmt7->fetch()) {
+                              $aantal = $row7["uitval"];
+                              $aantalNietBeschikbaar = $aantalNietBeschikbaar + $aantal;
+                         }
+                         ?>
+                         <div class="form-group">
+                              <label for="select111" class="col-md-2 control-label">Beschikbaar</label>
+                              <div class="col-md-10">
+                                   <?php
+                                   if($aantalNietBeschikbaar <= 0) {
+                                        print("<input type='text' class='form-control' disabled='' value='Alle motoren zijn beschikbaar'");
+                                   } else {
+                                        ?>
+                                        <select name="beschikbaar" id="select111" class="form-control">
+                                             <?php
+                                             for ($i = 1; $i <= $aantalNietBeschikbaar; $i++) {
+                                                  print ("<option value='{$i}'>{$i} motor(en) wel beschikbaar</option>");
+                                             }
+                                             ?>
+                                        </select>
+                                        <?php
+                                   }
+                                   ?>
+                              </div>
+                         </div>
+                         <input class="btn btn-raised btn-warning" type="submit" name="verwijderenBlokkade" value="Verzenden">
+                    </form>
+                    <?php
+               } else {
+                    ?>
+                    <form method="POST">
+                         <input class="btn btn-raised btn-warning" type="submit" name="verwijderen" value="Verwijderen">
+                    </form>
+                    <form method="POST">
+                         <div class="form-group">
+                              <label for="inputdatum1" class="col-md-2 control-label" >Begindatum</label>
+                              <div class="col-md-10">
+                                   <input type="date" name="begindatum" readonly
+                                   <?php
+                                   if (isset($_GET["dag"])) {
+                                        $dag2 = $_GET["dag"];
+                                        $jaar2 = $_SESSION["jaarnummer"];
+                                        $maand2 = $_SESSION["maandnummer"];
+
+                                        if (strlen($dag2) == 1) {
+                                             $dag2 = 0 . $dag2;
+                                        }
+                                        if (strlen($maand2) == 1) {
+                                             $maand2 = 0 . $maand2;
+                                        }
+                                   } else {
+                                        $aankomendeZaterdag = strtotime('next saturday', $date);
+
+                                        $dag2 = date('d', $aankomendeZaterdag);
+                                        $maand2 = date('m', $aankomendeZaterdag);
+                                        $jaar2 = date('Y', $aankomendeZaterdag);
+                                   }
+                                   $begindatum = $jaar2 . "-" . $maand2 . "-" . $dag2;
+                                   print("value=\"" . $begindatum . "\"");
+                                   ?>
+                                   class="form-control" id="inputdatum1">
+                              </div>
+                         </div>
+                         <div class="form-group">
+                              <label for="inputdatum2" class="col-md-2 control-label">Einddatum</label>
+                              <div class="col-md-10">
+                                   <input type="date" name="einddatum" readonly
+                                   <?php
+                                   $dag3 = $dag2 + 6;
+
+                                   if ($dag3 > $daysInMonth) {
+                                        $dag3 = $dag3 - $daysInMonth;
+                                        $maand3 = $maand2 + 1;
+                                   } else {
+                                        $maand3 = $maand2;
+                                   }
+
+                                   if ($maand3 > 12) {
+                                        $jaar3 = $jaar + 1;
+                                        $maand3 = 1;
+                                   } else {
+                                        $jaar3 = $jaar2;
+                                   }
+
+                                   if (strlen($dag3) == 1) {
+                                        $dag3 = 0 . $dag3;
+                                   }
+                                   if (strlen($maand3) == 1) {
+                                        $maand3 = 0 . $maand3;
+                                   }
+
+                                   print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
+                                   ?>
+                                   class="form-control" id="inputdatum2">
+                              </div>
+                         </div>
+                         <div class="form-group">
+                              <label for="select111" class="col-md-2 control-label">Uitval</label>
+                              <div class="col-md-10">
+                                   <select name="uitval" id="select111" class="form-control">
+                                        <?php
 
                                         $stmt7 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
                                         $stmt7->execute(array($begindatum));
@@ -331,20 +312,24 @@
                                                   print ("<option value='" . $aantalMotoren . "'>Gesloten</option>");
                                              }
                                         }
-                                   ?>
-                              </select>
+                                        ?>
+                                   </select>
+                              </div>
                          </div>
-                    </div>
-                    <div class="form-group">
-                         <label for="inputomschrijving" class="col-md-2 control-label">Omschrijving</label>
+                         <div class="form-group">
+                              <label for="inputomschrijving" class="col-md-2 control-label">Omschrijving</label>
 
-                         <div class="col-md-10">
-                              <input type="text" name="omschrijving" class="form-control" id="inputomschrijving">
+                              <div class="col-md-10">
+                                   <input type="text" name="omschrijving" class="form-control" id="inputomschrijving">
+                              </div>
                          </div>
-                    </div>
-                    <br><br>
-                    <input class="btn btn-raised btn-primary" type="submit" name="invoeren" value="Invoeren">
-               </form>
+                         <!-- <div class="form-group"> -->
+                         <input class="btn btn-raised btn-primary" type="submit" name="verzendenBlokkade" value="Verzenden">
+                         <!-- </div> -->
+                    </form>
+                    <?php
+               }
+               ?>
           </div>
      </div>
      <?php
@@ -352,4 +337,5 @@
 
      ?>
 </body>
+<script> $.material.init(); </script>
 </html>
