@@ -16,7 +16,8 @@
 
 
 
-                    // EDIT THE 2 LINES BELOW AS REQUIRED
+                    // hier word de ontvanger vastegesteld en het onderwerp (bijv info@offroadcompassportgual.nl)
+
 
                     $email_to = "thijs.marschalk@gmail.com";
 
@@ -28,7 +29,6 @@
 
                     function died($error) {
 
-                         // your error code can go here
 
                          echo "<br> We are very sorry, but there were error(s) found with the form you submitted. ";
 
@@ -44,7 +44,7 @@
 
 
 
-                    // validation expected data exists
+                    // checkt of er werkelijk wat ingevuld is, zoniet dan -> died
 
                     if(!isset($_POST['first_name']) ||
 
@@ -63,6 +63,7 @@
                     }
 
 
+                    //zet de gegevens uit post in $.... weg.
 
                     $first_name = $_POST['first_name']; // required
 
@@ -79,6 +80,7 @@
 
                     $error_message = "";
 
+                    //checkt of de ingevulde email, naam, achternaam en onderwerp voldoen aan de eisen gesteld in $email_exp (komen de variabelen overeen?)
                     $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
 
                     if(!preg_match($email_exp,$email_from)) {
@@ -107,6 +109,7 @@
 
                     }
 
+                    //checkt of er minimaal 2 tekens in de comments zijn geplaatst
                     if(strlen($comments) < 2) {
 
                          $error_message .= 'The Comments you entered do not appear to be valid.<br />';
@@ -119,7 +122,7 @@
 
                     }
 
-                    $email_message = "Form details below.\n\n";
+                    $email_message = "Formuliergegevens hieronder.\n\n";
 
 
 
@@ -147,7 +150,7 @@
 
 
 
-                    // create email headers
+                    // email headers maken
 
                     $headers = 'From: '.$email_from."\r\n".
 
@@ -155,16 +158,14 @@
 
                     'X-Mailer: PHP/' . phpversion();
 
+                    //versturen van de mail
                     @mail($email_to, $email_subject, $email_message, $headers);
 
                     $pdo=newPDO();
-                    //idbericht, voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum
+                    //idbericht, voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum  TOEVOEGEN AAN CONTACTFORMULIER DATABASE TABEL
                     $stmt = $pdo->prepare("INSERT INTO contactformulier (voornaam, achternaam, email, telefoonnummer, onderwerp, bericht, datum) VALUES (?, ?, ?, ?, ?, ?, ?)");
                     $stmt->execute(array($first_name, $last_name, $email_from, $telephone, $subject, $comments, date("Y/m/d" . "  " . "H:i:sa")));
-                    /*
-                    $stmt = $pdo->prepare("INSERT INTO users (username,email,password) VALUES (?,?,?)");
-                    $stmt->execute(array($username, $email, $passwordhash));
-                    */
+
                     $pdo = NULL;
 
 

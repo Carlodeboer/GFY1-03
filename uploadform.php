@@ -1,9 +1,8 @@
 
 
-<!DOCTYPE html PUBLIC >
 
 <html>
-<head><title>File Upload To Database</title></head>
+<head><title>Bestand uploaden naar Database</title></head>
 <body>
   <div id="contentwrapper">
     <h2>Afbeelding uploaden </h2>
@@ -15,7 +14,7 @@
 
 
     <?php
-    /*** check if a file was submitted ***/
+//checken of er werkelijk een file is 'gesubmit'
     if(!isset($_FILES['userfile']))
     {
       echo '<p>Kies een bestand</p>';
@@ -24,12 +23,11 @@
     {
       try    {
         upload();
-        /*** give praise and thanks to the php gods ***/
         echo '<p>Toegevoegd</p>';
       }
       catch(Exception $e)
       {
-        echo '<h4>'.$e->getMessage().'</h4>';
+        echo '<h4>'."mislukt".'</h4>';
       }
     }
     ?>
@@ -46,12 +44,12 @@
 *
 */
 function upload(){
-  /*** check if a file was uploaded ***/
+//checkt of er een werkelijk een file is geuploadd
   if(is_uploaded_file($_FILES['userfile']['tmp_name']) && getimagesize($_FILES['userfile']['tmp_name']) != false)
   {
-    /***  get the image info. ***/
+//haal de foto data op:
     $size = getimagesize($_FILES['userfile']['tmp_name']);
-    /*** assign our variables ***/
+//variabelen toewijzen
     $type = $size['mime'];
     $imgfp = fopen($_FILES['userfile']['tmp_name'], 'rb');
     $size = $size[3];
@@ -59,8 +57,7 @@ function upload(){
     $maxsize = 99999999;
 
 
-    /***  check the file is less than the maximum file size ***/
-    if($_FILES['userfile']['size'] < $maxsize )
+//    if($_FILES['userfile']['size'] < $maxsize )
     {
       /*** connect to db ***/
       $pdo = newPDO();

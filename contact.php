@@ -13,10 +13,13 @@
                     <div class="row">
 
                     <?php
+                    // haalt ingestelde taal op
                             $labels = contactformulierTaal();
+
                             ?>
                     <h2><?php print $labels[0]; ?></h2>
 
+<?php // contactformulier met submit naar contactscript via post ?>
                         <div class="col-md-6">
 
 
