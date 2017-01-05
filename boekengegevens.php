@@ -22,11 +22,6 @@
                     toevoegenAanArray("vervoerHeen", "klantGegevens", "");
                     toevoegenAanArray("vervoerTerug", "klantGegevens", "");
                     toevoegenAanArray("vakantienaam", "klantGegevens", "");
-                    toevoegenAanArray("locatie", "klantGegevens", "");
-
-                    if ($_POST["nieuweLocatie"] != "") {
-                         $_SESSION["klantGegevens"]["locatie"] = $_POST["nieuweLocatie"];
-                    }
 
                     if ($_POST["bijzonderheden"] != "") {
                          toevoegenAanArray("bijzonderheden", "klantGegevens", "");

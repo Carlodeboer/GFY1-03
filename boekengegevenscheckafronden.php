@@ -33,8 +33,8 @@
                                    $row2 = $stmt2->fetch();
                                    $idReservering = $row2["max(idReservering)"];
 
-                                   $stmt3 = $pdo->prepare("INSERT INTO boeking (idReservering, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, bijzonderheden, opmerking) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                                   $stmt3->execute(array($idReservering, $begindatum, $einddatum, $aantalPersonen, $vervoerHeen, $vervoerTerug, $locatie, $bijzonderheden, $opmerkingen));
+                                   $stmt3 = $pdo->prepare("INSERT INTO boeking (idReservering, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, bijzonderheden, opmerking) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                                   $stmt3->execute(array($idReservering, $begindatum, $einddatum, $aantalPersonen, $vervoerHeen, $vervoerTerug, $bijzonderheden, $opmerkingen));
 
                                    $stmt4 = $pdo->prepare("SELECT max(idKlant) FROM boeking");
                                    $stmt4->execute(array());
@@ -74,7 +74,7 @@
                                   $email = $row10["email"];
 
 
-                                  $stmt11 = $pdo->prepare("SELECT idKlant, idReservering, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, opmerking, status, betaling FROM boeking WHERE idklant = ? AND persoon = ?");
+                                  $stmt11 = $pdo->prepare("SELECT idKlant, idReservering, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, opmerking, status, betaling FROM boeking WHERE idklant = ? AND persoon = ?");
                                   $stmt11->execute(array($idklant, $i));
 
                                   $row11= $stmt11->fetch();
@@ -85,7 +85,6 @@
                                   $personenaantal = $row11["aantalPersonen"];
                                   $heenvervoer = $row11["vervoerHeen"];
                                   $terugvervoer = $row11["vervoerTerug"];
-                                  $plaats = $row11["locatie"];
                                   $merkingop = $row11["opmerking"];
                                   $state = $row11["status"];
                                   $payment = $row11["betaling"];

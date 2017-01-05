@@ -28,7 +28,7 @@
                               $row2 = $stmt1->fetch();
                               $idklant = $row2["idGebruiker"];
 
-                              $stmt3 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, locatie, bijzonderheden, opmerking, status, betaling FROM boeking WHERE idklant = ?");
+                              $stmt3 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, bijzonderheden, opmerking, status, betaling FROM boeking WHERE idklant = ?");
                               $stmt3->execute(array($idklant));
                               $row3 = $stmt3->fetch();
 
@@ -37,7 +37,6 @@
                               $aantalPersonen = $row3["aantalPersonen"];
                               $vervoerHeen = $row3["vervoerHeen"];
                               $vervoerTerug = $row3["vervoerTerug"];
-                              $locatie = $row3["locatie"];
                               $bijzonderheden = $row3["bijzonderheden"];
                               $opmerking = $row3["opmerking"];
                               $status = $row3["status"];
@@ -75,11 +74,6 @@
                                         } else {
                                              print("Nee");
                                         }
-                                        ?></td>
-                                   </tr><tr>
-                                        <td>Locatie van overnachting:</td>
-                                        <td><?php
-                                        print (ucfirst($locatie));
                                         ?></td>
                                    </tr>
                                    <?php

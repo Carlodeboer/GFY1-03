@@ -221,21 +221,6 @@
                                         </div>
                                    </div>
                                    <div class="form-group label-static is-empty">
-                                        <label for="i5i" class="control-label">Locatie van overnachting*</label>
-                                        <div class="radio">
-                                             <label>
-                                                  <input type="radio" name="locatie" value="standaard" checked=""> Standaard locatie
-                                             </label>
-                                        </div>
-                                        <div class="radio">
-                                             <label>
-                                                  <input type="radio" name="locatie" value=""> Anders, namelijk:
-                                             </label><label>
-                                                  <input type="text" name="nieuweLocatie" class="form-control">
-                                             </label>
-                                        </div>
-                                   </div>
-                                   <div class="form-group label-static is-empty">
                                         <label for="i5i" class="control-label">Bijzonderheden</label>
                                         <textarea name="bijzonderheden" class="form-control"></textarea>
                                         <span class="help-block">Hiermee kunt u aangeven welke allergieën of ziektes u heeft, zodat daar rekening mee kan worden gehouden.</span>

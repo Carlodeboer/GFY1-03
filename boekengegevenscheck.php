@@ -58,12 +58,6 @@
                                    print("Nee");
                               }
                               ?></td>
-                         </tr><tr>
-                              <td>Locatie van overnachting:</td>
-                              <td><?php
-                              print (ucfirst($locatie));
-                              ?></td>
-
                          </tr>
                          <?php
                          if ($bijzonderheden != NULL) {

@@ -85,7 +85,7 @@
                     }
 
                     $stmt4 = $pdo->prepare("SELECT gebruikersnaam, begindatum, einddatum, aantalPersonen,
-                    vervoerHeen, vervoerTerug, locatie, bijzonderheden, opmerking, status, betaling
+                    vervoerHeen, vervoerTerug, bijzonderheden, opmerking, status, betaling
                     FROM boeking
                     JOIN gebruikers
                     ON idKlant=idGebruiker
@@ -102,7 +102,6 @@
                     $aantalPersonen = $row4["aantalPersonen"];
                     $vervoerHeen = $row4["vervoerHeen"];
                     $vervoerTerug = $row4["vervoerTerug"];
-                    $locatie = $row4["locatie"];
                     $bijzonderheden = $row4["bijzonderheden"];
                     $opmerking = $row4["opmerking"];
                     $status = $row4["status"];
@@ -146,11 +145,6 @@
                                         } else {
                                              print("Nee");
                                         } //als het vervoer 1 is, staat er 'ja' en als het 0 is, staat er 'nee'
-                                        ?></td>
-                                   </tr><tr>
-                                        <td>Locatie van overnachting:</td>
-                                        <td><?php
-                                        print (ucfirst($locatie));
                                         ?></td>
                                    </tr>
                                    <?php
