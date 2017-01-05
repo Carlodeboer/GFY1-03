@@ -189,7 +189,7 @@
                                              for ($i = 1; $i <= $aantalBeschikbaar; $i++) {
                                                   print ("<option value='" . $i . "'>" . $i . "</option>");
                                              }
-                                             if($aantalbeschikbaar == 0) {
+                                             if($aantalBeschikbaar == 0) {
                                                   print("<option value='0'>0</option>");
                                              }
                                              ?>

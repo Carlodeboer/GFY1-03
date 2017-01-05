@@ -25,8 +25,12 @@
                          toevoegenAanArray("geboortedatum", "klantGegevens", $i);
                          toevoegenAanArray("telefoonnummer", "klantGegevens", $i);
                          toevoegenAanArray("email", "klantGegevens", $i);
-                         if ("bijzonderheden" != NULL) {
+
+
+                         if (isset($_POST["bijzonderheden" . $i])) {
                               toevoegenAanArray("bijzonderheden", "klantGegevens", $i);
+                         } else {
+                              $_SESSION["klantGegevens"]["bijzonderheden" . $i] = NULL;
                          }
                     }
                     extract($_SESSION["klantGegevens"]);
@@ -111,13 +115,9 @@
                                         <td>E-mailadres:</td>
                                         <td><?php print(${"email" . $i}); ?></td>
                                    </tr>
-                                   <tr>
-                                        <?php if("bijzonderheden" != NULL) {
-                                             ?><td>Bijzonderheden:</td>
-                                             <td><?php print(${"bijzonderheden" . $i}); ?></td><?php
-                                        }?>
-                                   </tr>
-                                   <?php
+                                   <?php if (${"bijzonderheden" . $i} != NULL) {
+                                        print ("<tr><td>Bijzonderheden:</td><td>" . ${"bijzonderheden" . $i} . "</td></tr>");
+                                   }
                               }
                               ?>
                               <tr>
