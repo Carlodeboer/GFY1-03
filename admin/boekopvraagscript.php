@@ -85,7 +85,7 @@
                     }
 
                     $stmt4 = $pdo->prepare("SELECT gebruikersnaam, begindatum, einddatum, aantalPersonen,
-                    vervoerHeen, vervoerTerug, bijzonderheden, opmerking, status, betaling
+                    vervoerHeen, vervoerTerug, opmerking, status, betaling
                     FROM boeking
                     JOIN gebruikers
                     ON idKlant=idGebruiker
@@ -102,7 +102,6 @@
                     $aantalPersonen = $row4["aantalPersonen"];
                     $vervoerHeen = $row4["vervoerHeen"];
                     $vervoerTerug = $row4["vervoerTerug"];
-                    $bijzonderheden = $row4["bijzonderheden"];
                     $opmerking = $row4["opmerking"];
                     $status = $row4["status"];
                     $betaling = $row4["betaling"]; //maakt variabelen van de gegevens uit de database
@@ -147,11 +146,6 @@
                                         } //als het vervoer 1 is, staat er 'ja' en als het 0 is, staat er 'nee'
                                         ?></td>
                                    </tr>
-                                   <?php
-                                   if ($bijzonderheden != NULL) {
-                                        print ("<tr><td>Bijzonderheden:</td><td>" . $bijzonderheden . "</td></tr>");
-                                   }
-                                   ?>
                                    <?php
                                    if ($opmerking != NULL) {
                                         print ("<tr><td>Opmerkingen:</td><td>" . $opmerking . "</td></tr>");
@@ -208,7 +202,7 @@
                                    <?php
                                    for ($i = 1; $i <= $aantalPersonen; $i++) {
                                         $stmt5 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres,
-                                        postcode, woonplaats, land, telefoonnummer, email
+                                        postcode, woonplaats, land, telefoonnummer, email, bijzonderheden
                                         FROM klantgegevens
                                         WHERE idklant = ?
                                         AND persoon = ?"); //haalt de persoonlijke gegevens op uit de database
@@ -223,7 +217,8 @@
                                         $woonplaats = $row5["woonplaats"];
                                         $land = $row5["land"];
                                         $telefoonnummer = $row5["telefoonnummer"];
-                                        $email = $row5["email"]; //maakt variabelen van de gegevens uit de database
+                                        $email = $row5["email"];
+                                        $bijzonderheden = $row5["bijzonderheden"];//maakt variabelen van de gegevens uit de database
                                         if ($aantalPersonen != 1) {
                                              ?>
                                              <tr>
@@ -260,6 +255,12 @@
                                              <td><?php print(strtolower($email)); ?></td>
                                         </tr>
                                         <?php
+                                        if ($bijzonderheden != NULL) {
+                                             ?><tr>
+                                                  <td>Bijzonderheden:</td>
+                                                  <td><?php print($bijzonderheden); ?></td>
+                                             </tr><?php
+                                        }
                                    }
                                    ?>
                               </table>

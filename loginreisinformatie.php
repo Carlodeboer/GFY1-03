@@ -28,7 +28,9 @@
                               $row2 = $stmt1->fetch();
                               $idklant = $row2["idGebruiker"];
 
-                              $stmt3 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, bijzonderheden, opmerking, status, betaling FROM boeking WHERE idklant = ?");
+                              $stmt3 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, opmerking, status, betaling
+                                   FROM boeking
+                                   WHERE idklant = ?");
                               $stmt3->execute(array($idklant));
                               $row3 = $stmt3->fetch();
 
@@ -37,7 +39,6 @@
                               $aantalPersonen = $row3["aantalPersonen"];
                               $vervoerHeen = $row3["vervoerHeen"];
                               $vervoerTerug = $row3["vervoerTerug"];
-                              $bijzonderheden = $row3["bijzonderheden"];
                               $opmerking = $row3["opmerking"];
                               $status = $row3["status"];
                               $betaling = $row3["betaling"];
@@ -77,11 +78,6 @@
                                         ?></td>
                                    </tr>
                                    <?php
-                                   if ($bijzonderheden != NULL) {
-                                        print ("<tr><td>Bijzonderheden:</td><td>" . $bijzonderheden . "</td></tr>");
-                                   }
-                                   ?>
-                                   <?php
                                    if ($opmerking != NULL) {
                                         print ("<tr><td>Opmerkingen:</td><td>" . $opmerking . "</td></tr>");
                                    }
@@ -110,7 +106,10 @@
                               <table class="table table-striped table-hover personentabel">
                                    <?php
                                    for ($i = 1; $i <= $aantalPersonen; $i++) {
-                                        $stmt4 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email FROM klantgegevens WHERE idklant = ? AND persoon = ?");
+                                        $stmt4 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email, bijzonderheden
+                                             FROM klantgegevens
+                                             WHERE idklant = ?
+                                             AND persoon = ?");
                                         $stmt4->execute(array($idklant, $i));
 
                                         $row4= $stmt4->fetch();
@@ -123,6 +122,7 @@
                                         $land = $row4["land"];
                                         $telefoonnummer = $row4["telefoonnummer"];
                                         $email = $row4["email"];
+                                        $bijzonderheden = $row4["bijzonderheden"];
                                         if ($aantalPersonen != 1) {
                                              ?>
                                              <tr>
@@ -160,6 +160,12 @@
                                              <td><?php print(strtolower($email)); ?></td>
                                         </tr>
                                         <?php
+                                        if ($bijzonderheden != NULL) {
+                                             ?><tr>
+                                                  <td>Bijzonderheden:</td>
+                                                  <td><?php print($bijzonderheden); ?></td>
+                                             </tr><?php
+                                        }
                                    }
                                    ?>
                               </table>
