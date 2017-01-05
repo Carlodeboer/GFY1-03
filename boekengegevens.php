@@ -91,6 +91,28 @@
                                    <span class="help-block">Voer uw e-mailadres in</span>
                               </div>
                               <div class="form-group label-static is-empty">
+                                   <label for="i5i" class="control-label">Kledingmaat*</label>
+                                   <select id="s1" class="form-control" name="kledingmaat<?php print ($i); ?>">
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                        <option value="XXL">XXL</option>
+                                        <option value="Anders">Anders</option>
+                                   </select>
+                                   <span class="help-block">Kies hier uw kledingmaat</span>
+                              </div>
+                              <div class="form-group label-static is-empty">
+                                   <label for="i5i" class="control-label">Schoenmaat*</label>
+                                   <select id="s1" class="form-control" name="schoenmaat<?php print ($i); ?>">
+                                        <option value="42">42</option>
+                                        <option value="43">43</option>
+                                        <option value="44">44</option>
+                                        <option value="45">45</option>
+                                        <option value="Anders">Anders</option>
+                                   </select>
+                                   <span class="help-block">Kies hier uw schoenmaat</span>
+                              </div>
+                              <div class="form-group label-static is-empty">
                                    <label for="i5i" class="control-label">Bijzonderheden</label>
                                    <input type="text" name="bijzonderheden<?php print ($i); ?>" class="form-control" id="i5i">
                                    <span class="help-block">Hiermee kunt u aangeven welke allergieën of ziektes u heeft, zodat daar rekening mee kan worden gehouden.</span>

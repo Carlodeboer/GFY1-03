@@ -106,7 +106,7 @@
                               <table class="table table-striped table-hover personentabel">
                                    <?php
                                    for ($i = 1; $i <= $aantalPersonen; $i++) {
-                                        $stmt4 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email, bijzonderheden
+                                        $stmt4 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email, kledingmaat, schoenmaat, bijzonderheden
                                              FROM klantgegevens
                                              WHERE idklant = ?
                                              AND persoon = ?");
@@ -122,6 +122,8 @@
                                         $land = $row4["land"];
                                         $telefoonnummer = $row4["telefoonnummer"];
                                         $email = $row4["email"];
+                                        $kledingmaat = $row4["kledingmaat"];
+                                        $schoenmaat = $row4["schoenmaat"];
                                         $bijzonderheden = $row4["bijzonderheden"];
                                         if ($aantalPersonen != 1) {
                                              ?>
@@ -158,6 +160,14 @@
                                         </tr><tr>
                                              <td>Emailadres:</td>
                                              <td><?php print(strtolower($email)); ?></td>
+                                        </tr>
+                                        <tr>
+                                             <td>Kledingmaat:</td>
+                                             <td><?php print($kledingmaat); ?></td>
+                                        </tr>
+                                        <tr>
+                                             <td>Schoenmaat:</td>
+                                             <td><?php print($schoenmaat); ?></td>
                                         </tr>
                                         <?php
                                         if ($bijzonderheden != NULL) {

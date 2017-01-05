@@ -25,6 +25,8 @@
                          toevoegenAanArray("geboortedatum", "klantGegevens", $i);
                          toevoegenAanArray("telefoonnummer", "klantGegevens", $i);
                          toevoegenAanArray("email", "klantGegevens", $i);
+                         toevoegenAanArray("kledingmaat", "klantGegevens", $i);
+                         toevoegenAanArray("schoenmaat", "klantGegevens", $i);
 
 
                          if (isset($_POST["bijzonderheden" . $i])) {
@@ -114,6 +116,14 @@
                                    </tr><tr>
                                         <td>E-mailadres:</td>
                                         <td><?php print(${"email" . $i}); ?></td>
+                                   </tr>
+                                   <tr>
+                                        <td>Kledingmaat:</td>
+                                        <td><?php print(${"kledingmaat" . $i}); ?></td>
+                                   </tr>
+                                   <tr>
+                                        <td>Schoenmaat:</td>
+                                        <td><?php print(${"schoenmaat" . $i}); ?></td>
                                    </tr>
                                    <?php if (${"bijzonderheden" . $i} != NULL) {
                                         print ("<tr><td>Bijzonderheden:</td><td>" . ${"bijzonderheden" . $i} . "</td></tr>");

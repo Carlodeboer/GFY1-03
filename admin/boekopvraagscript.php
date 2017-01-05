@@ -202,7 +202,7 @@
                                    <?php
                                    for ($i = 1; $i <= $aantalPersonen; $i++) {
                                         $stmt5 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres,
-                                        postcode, woonplaats, land, telefoonnummer, email, bijzonderheden
+                                        postcode, woonplaats, land, telefoonnummer, email, kledingmaat, schoenmaat, bijzonderheden
                                         FROM klantgegevens
                                         WHERE idklant = ?
                                         AND persoon = ?"); //haalt de persoonlijke gegevens op uit de database
@@ -218,6 +218,8 @@
                                         $land = $row5["land"];
                                         $telefoonnummer = $row5["telefoonnummer"];
                                         $email = $row5["email"];
+                                        $kledingmaat = $row5["kledingmaat"];
+                                        $schoenmaat = $row5["schoenmaat"];
                                         $bijzonderheden = $row5["bijzonderheden"];//maakt variabelen van de gegevens uit de database
                                         if ($aantalPersonen != 1) {
                                              ?>
@@ -253,6 +255,26 @@
                                         </tr><tr>
                                              <td>Emailadres:</td>
                                              <td><?php print(strtolower($email)); ?></td>
+                                        </tr>
+                                        <tr>
+                                             <td>Kledingmaat:</td>
+                                             <td><?php
+                                             if ($kledingmaat=="Anders") {
+                                                  print("<b>" . $kledingmaat . "<b>");
+                                             } else {
+                                                  print($kledingmaat);
+                                             } //status is dikgedrukt als hij niet bevestigd is
+                                             ?></td>
+                                        </tr>
+                                        <tr>
+                                             <td>Schoenmaat:</td>
+                                             <td><?php
+                                             if ($schoenmaat=="Anders") {
+                                                  print("<b>" . $schoenmaat . "<b>");
+                                             } else {
+                                                  print($schoenmaat);
+                                             } //status is dikgedrukt als hij niet bevestigd is
+                                             ?></td>
                                         </tr>
                                         <?php
                                         if ($bijzonderheden != NULL) {

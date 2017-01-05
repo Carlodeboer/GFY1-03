@@ -42,9 +42,9 @@
 
                                    for ($i = 1; $i <= $_SESSION["klantGegevens"]["aantalPersonen"]; $i++) {
                                         $adres = (${"straat" . $i} . " " . ${"huisnummer" . $i});
-                                        $stmt5 = $pdo->prepare("INSERT INTO klantgegevens (idklant, persoon, voornaam, achternaam, adres, postcode, woonplaats, land, gebdatum, telefoonnummer, email, bijzonderheden) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                        $stmt5 = $pdo->prepare("INSERT INTO klantgegevens (idklant, persoon, voornaam, achternaam, adres, postcode, woonplaats, land, gebdatum, telefoonnummer, email, kledingmaat, schoenmaat, bijzonderheden) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                                         $stmt5->execute(array($idKlant, $i, ${"voornaam" . $i}, ${"achternaam" . $i}, $adres, ${"postcode" . $i}, ${"woonplaats" . $i}, ${"land" . $i}, ${"geboortedatum" . $i}, ${"telefoonnummer" . $i},
-                                        ${"email" . $i}, ${"bijzonderheden" . $i}));
+                                        ${"email" . $i}, ${"kledingmaat" . $i}, ${"schoenmaat" . $i}, ${"bijzonderheden" . $i}));
                                    }
 
                                    $stmt6 = $pdo->prepare("INSERT INTO gebruikers (idGebruiker, gebruikersnaam, wachtwoord, privilegeniveau) VALUES (?, ?, ?, 1)");
