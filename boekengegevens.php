@@ -23,11 +23,6 @@
                     toevoegenAanArray("vervoerTerug", "klantGegevens", "");
                     toevoegenAanArray("vakantienaam", "klantGegevens", "");
 
-                    if ($_POST["bijzonderheden"] != "") {
-                         toevoegenAanArray("bijzonderheden", "klantGegevens", "");
-                    } else {
-                         $_SESSION["klantGegevens"]["bijzonderheden"] = NULL;
-                    }
 
                     if ($_POST["opmerkingen"] != "") {
                          toevoegenAanArray("opmerkingen", "klantGegevens", "");
@@ -94,6 +89,11 @@
                                    <label for="i5i" class="control-label">E-mailadres*</label>
                                    <input type="text" name="email<?php print ($i); ?>" class="form-control" id="i5i" required>
                                    <span class="help-block">Voer uw e-mailadres in</span>
+                              </div>
+                              <div class="form-group label-static is-empty">
+                                   <label for="i5i" class="control-label">Bijzonderheden</label>
+                                   <input type="text" name="bijzonderheden<?php print ($i); ?>" class="form-control" id="i5i">
+                                   <span class="help-block">Hiermee kunt u aangeven welke allergieën of ziektes u heeft, zodat daar rekening mee kan worden gehouden.</span>
                               </div>
                               <?php } ?>
                               <div class="form-group label-static is-empty">

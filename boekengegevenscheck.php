@@ -25,6 +25,9 @@
                          toevoegenAanArray("geboortedatum", "klantGegevens", $i);
                          toevoegenAanArray("telefoonnummer", "klantGegevens", $i);
                          toevoegenAanArray("email", "klantGegevens", $i);
+                         if ("bijzonderheden" != NULL) {
+                              toevoegenAanArray("bijzonderheden", "klantGegevens", $i);
+                         }
                     }
                     extract($_SESSION["klantGegevens"]);
                     ?>
@@ -60,11 +63,6 @@
                               ?></td>
                          </tr>
                          <?php
-                         if ($bijzonderheden != NULL) {
-                              print ("<tr><td>Bijzonderheden:</td><td>" . $bijzonderheden . "</td></tr>");
-                         }
-                         ?>
-                         <?php
                          if ($opmerkingen != NULL) {
                               print ("<tr><td>Opmerkingen:</td><td>" . $opmerkingen . "</td></tr>");
                          }
@@ -72,63 +70,69 @@
                          <tr>
                               <td>Vakantienaam:</td>
                               <td><?php print($vakantienaam); ?></td>
-                         <tr>
-                              <td><h2>Persoonlijke gegevens:</h2></td>
-                         </tr>
-                         <?php
-                         for ($i = 1; $i <= $aantalPersonen; $i++) {
-                              if ($aantalPersonen != 1) {
+                              <tr>
+                                   <td><h2>Persoonlijke gegevens:</h2></td>
+                              </tr>
+                              <?php
+                              for ($i = 1; $i <= $aantalPersonen; $i++) {
+                                   if ($aantalPersonen != 1) {
+                                        ?>
+                                        <tr>
+                                             <td><h3>Persoon <?php print ($i) ?></h3></td>
+                                        </tr>
+                                        <?php
+                                   }
                                    ?>
                                    <tr>
-                                        <td><h3>Persoon <?php print ($i) ?></h3></td>
+                                        <td>Voornaam:</td>
+                                        <td><?php print(${"voornaam" . $i}); ?></td>
+                                   </tr><tr>
+                                        <td>Achternaam:</td>
+                                        <td><?php print(${"achternaam" . $i}); ?></td>
+                                   </tr><tr>
+                                        <td>Adres:</td>
+                                        <td><?php print(${"straat" . $i} . " " . ${"huisnummer" . $i}); ?></td>
+                                   </tr><tr>
+                                        <td>Postcode:</td>
+                                        <td><?php print(${"postcode" . $i}); ?></td>
+                                   </tr><tr>
+                                        <td>Woonplaats:</td>
+                                        <td><?php print(${"woonplaats" . $i}); ?></td>
+                                   </tr><tr>
+                                        <td>Land:</td>
+                                        <td><?php print(${"land" . $i}); ?></td>
+                                   </tr><tr>
+                                        <td>Geboortedatum:</td>
+                                        <td><?php print(${"geboortedatum" . $i}); ?></td>
+                                   </tr><tr>
+                                        <td>Telefoonnummer</td>
+                                        <td><?php print(${"telefoonnummer" . $i}); ?></td>
+                                   </tr><tr>
+                                        <td>E-mailadres:</td>
+                                        <td><?php print(${"email" . $i}); ?></td>
+                                   </tr>
+                                   <tr>
+                                        <?php if("bijzonderheden" != NULL) {
+                                             ?><td>Bijzonderheden:</td>
+                                             <td><?php print(${"bijzonderheden" . $i}); ?></td><?php
+                                        }?>
                                    </tr>
                                    <?php
                               }
                               ?>
                               <tr>
-                                   <td>Voornaam:</td>
-                                   <td><?php print(${"voornaam" . $i}); ?></td>
-                              </tr><tr>
-                                   <td>Achternaam:</td>
-                                   <td><?php print(${"achternaam" . $i}); ?></td>
-                              </tr><tr>
-                                   <td>Adres:</td>
-                                   <td><?php print(${"straat" . $i} . " " . ${"huisnummer" . $i}); ?></td>
-                              </tr><tr>
-                                   <td>Postcode:</td>
-                                   <td><?php print(${"postcode" . $i}); ?></td>
-                              </tr><tr>
-                                   <td>Woonplaats:</td>
-                                   <td><?php print(${"woonplaats" . $i}); ?></td>
-                              </tr><tr>
-                                   <td>Land:</td>
-                                   <td><?php print(${"land" . $i}); ?></td>
-                              </tr><tr>
-                                   <td>Geboortedatum:</td>
-                                   <td><?php print(${"geboortedatum" . $i}); ?></td>
-                              </tr><tr>
-                                   <td>Telefoonnummer</td>
-                                   <td><?php print(${"telefoonnummer" . $i}); ?></td>
-                              </tr><tr>
-                                   <td>E-mailadres:</td>
-                                   <td><?php print(${"email" . $i}); ?></td>
+                                   <td>
+                                        <form method="POST" action="boekengegevenscheckafronden.php">
+                                             <div class="form-group label-static is-empty">
+                                                  <input type="submit" name="afronden" value="Afronden" class="btn btn-raised btn-primary">
+                                             </div>
+                                        </form>
+                                   </td>
                               </tr>
-                              <?php
-                         }
-                         ?>
-                         <tr>
-                              <td>
-                                   <form method="POST" action="boekengegevenscheckafronden.php">
-                                        <div class="form-group label-static is-empty">
-                                             <input type="submit" name="afronden" value="Afronden" class="btn btn-raised btn-primary">
-                                        </div>
-                                   </form>
-                              </td>
-                         </tr>
-                    </table>
+                         </table>
+                    </div>
                </div>
+               <?php include 'footer.php'; ?>
           </div>
-          <?php include 'footer.php'; ?>
-     </div>
-</body>
-</html>
+     </body>
+     </html>

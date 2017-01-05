@@ -178,21 +178,20 @@
                                         <select id="s1" class="form-control" name="aantalPersonen">
                                              <?php
 
-                                                  $stmt7 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
-                                                  $stmt7->execute(array($begindatum));
-
-                                                  while ($row7 = $stmt7->fetch()) {
-                                                       $aantal = $row7["aantal"];
-                                                       $aantalNietBeschikbaar = $aantalNietBeschikbaar + $aantal;
+                                             if (!(isset($objArray[$_GET["dag"] . "beschikbaar"]))) {
+                                                  $beschikbaar = 4;
+                                             } else {
+                                                  $beschikbaar = $objArray[$_GET["dag"] . "beschikbaar"];
+                                             }
+                                             if ($beschikbaar == 0) {
+                                                  print ("<option value=''>0</option>");
+                                             } else {
+                                                  for ($i = 1; $i <= $beschikbaar; $i++) {
+                                                       print ("<option value='{$i}'>{$i}</option>");
                                                   }
-                                                  $aantalBeschikbaar = $aantalMotoren - $aantalNietBeschikbaar;
-
-                                                  for ($i = 1; $i <= $aantalBeschikbaar; $i++) {
-
-                                                            print ("<option value='" . $i . "'>" . $i . "</option>");
-
-                                                  }
+                                             }
                                              ?>
+
                                         </select>
                                    </div>
                                    <div class="form-group label-static is-empty">
@@ -221,11 +220,7 @@
                                              </label>
                                         </div>
                                    </div>
-                                   <div class="form-group label-static is-empty">
-                                        <label for="i5i" class="control-label">Bijzonderheden</label>
-                                        <textarea name="bijzonderheden" class="form-control"></textarea>
-                                        <span class="help-block">Hiermee kunt u aangeven welke allergieën of ziektes u heeft, zodat daar rekening mee kan worden gehouden.</span>
-                                   </div>
+                                   
                                    <div class="form-group label-static is-empty">
                                         <label for="i5i" class="control-label">Opmerkingen</label>
                                         <textarea name="opmerkingen" class="form-control"></textarea>
