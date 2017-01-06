@@ -57,7 +57,7 @@ function upload(){
     $maxsize = 99999999;
 
 
-//    if($_FILES['userfile']['size'] < $maxsize )
+  if($_FILES['userfile']['size'] < $maxsize )
     {
       /*** connect to db ***/
       $pdo = newPDO();
