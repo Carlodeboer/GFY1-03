@@ -61,21 +61,6 @@
                                         $betaling=$boeking['betaling'];
                                         $actief=$boeking['actief']; //maakt variabele van de gegevens
 
-
-                                        if (isset($_POST["annuleren"])) {
-                                             $stmt2 = $pdo->prepare("UPDATE boeking SET actief=0 WHERE idKlant=?");
-                                             $stmt2->execute(array($klantID));
-                                             ?>
-                                             <script>
-                                             function popUpBevestigd() {
-                                                  $("#bevestigd").snackbar("show");
-                                             }
-                                             </script>
-                                             <span data-toggle=snackbar id="bevestigd" data-content="De boeking is geannuleerd."></span>
-                                             <script>window.onload = popUpBevestigd;</script>
-                                             <?php
-                                        }
-
                                         if ($status=="Niet bevestigd") {
                                              $status="<b>" . $status . "<b>";
                                         } else {
