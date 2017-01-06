@@ -11,6 +11,20 @@
                <?php
 
                $pdo = newPDO();
+               if (isset($_POST["annuleren"])) {
+                    $idKlant = $_POST["idklant"];
+                    $stmt2 = $pdo->prepare("UPDATE boeking SET actief=0 WHERE idKlant=?");
+                    $stmt2->execute(array($idKlant));
+                    ?>
+                    <script>
+                    function popUpBevestigd() {
+                         $("#bevestigd").snackbar("show");
+                    }
+                    </script>
+                    <span data-toggle=snackbar id="bevestigd" data-content="De boeking is geannuleerd."></span>
+                    <script>window.onload = popUpBevestigd;</script>
+                    <?php
+               }
                $stmt = $pdo->prepare("SELECT idKlant, gebruikersnaam, begindatum, einddatum, status, betaling, actief
                     FROM boeking
                     JOIN gebruikers
@@ -35,26 +49,8 @@
 
                                    <?php
 
-                                   $pdo = newPDO();
-                                   $stmt8 = $pdo->prepare("SELECT idKlant FROM boeking");
-                                   $stmt8->execute(array($boekingID));
-                                   $row8=$stmt8->fetch();
-                                   $klantID= $row8["idKlant"];
-                                   //maakt variabelen van de gegevens uit de database
 
-                                   if (isset($_POST["annuleren"])) {
-                                        $stmt2 = $pdo->prepare("UPDATE boeking SET actief=0 WHERE idKlant=?");
-                                        $stmt2->execute(array($klantID));
-                                        ?>
-                                        <script>
-                                        function popUpBevestigd() {
-                                             $("#bevestigd").snackbar("show");
-                                        }
-                                        </script>
-                                        <span data-toggle=snackbar id="bevestigd" data-content="De boeking is geannuleerd."></span>
-                                        <script>window.onload = popUpBevestigd;</script>
-                                        <?php
-                                   }
+
 
                                    while ($boeking = $stmt->fetch()) {
                                         $klantID=$boeking['idKlant'];
@@ -101,8 +97,15 @@
                                         <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $betaling . "</td>");
 
                                         if($actief=="1") {
-                                             print("<td><form method='POST'><input type='submit' name='annuleren' value='Annuleren'
-                                             class='btn btn-raised btn-warning' onclick='return confirm('Weet je het zeker?')'> </form> </td>");
+
+                                             ?>
+                                             <td>
+                                             <form method='POST'>
+                                                  <input type="hidden" name="idklant" value="<?php print($klantID)?>">
+                                                  <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick='return confirm('Weet je het zeker?')'>
+                                             </form>
+                                             <?php
+                                             print("</td>");
                                         }
                                         print ("</tr>");
                                    }
