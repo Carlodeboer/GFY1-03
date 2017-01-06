@@ -12,7 +12,7 @@
                <div id="contentwrapper">
                     <h2>Boeken</h2>
                     <?php
-                    include("agendaVariabelen.php");
+                    include("admin/agenda/agendaVariabelen.php");
                     ?>
                     <div class="col-md-4">
                          <form method="POST" action="boekengegevens.php" class="form-horizontal">
@@ -143,7 +143,7 @@
                          </form>
                     </div>
                     <?php
-                    include("agenda.php");
+                    include("admin/agenda/agenda.php");
                     ?>
                </div>
           </div>

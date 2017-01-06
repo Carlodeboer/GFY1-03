@@ -59,40 +59,16 @@
                                    print("<b>" . $weekjaar . "</b>.");
 
                                    for($i = 1; $i <= $aantalPersonen; $i++) {
-                                        //$email_to = ${"email" . $i};
+                                        $email_to = ${"email" . $i};
                                         $email_to = "sophie@famroos.nu";
                                         $email_from = "info@offroadcompassportugal.nl";
                                         $email_subject = "Bericht verstuurd via contactformulier";
-                                        $email_message = "Beste " . ${"naam" . $i} . "\n\n";
+                                        $email_message = "Beste " . ${"voornaam" . $i} . " " . ${"achternaam" . $i} . "\n\n";
 
-                                        $email_message .= "Bedankt voor het boeken van reis met Offroad Compass Portugal. Hieronder vind u uw ingevulde gegevens:\n\n";
+                                        $email_message .= "Bedankt voor het boeken van reis met Offroad Compass Portugal. U kunt uw reisinformatie inzien met de volgende gegevens:\n\n";
 
                                         $email_message .= "Vakantienaam:" . $vakantienaam . "\n";
                                         $email_message .= "Vakantieweek:" . $weekjaar . "\n";
-                                        $email_message .= "Begindatum:" . $begindatum . "\n";
-                                        $email_message .= "Einddatum:" . $einddatum . "\n";
-                                        $email_message .= "Vervoer van luchthaven Lissabon:" . $vervoerHeen . "\n";
-                                        $email_message .= "Vervoer naar luchthaven Lissabon:" . $vervoerTerug . "\n";
-                                        $email_message .= "Aantal personen:" . $aantalPersonen . "\n";
-                                        if ($opmerkingen != NULL) {
-                                             $email_message .= "Opmerkingen:" . $opmerkingen . "\n";
-                                        }
-
-                                        $email_message .= "Naam:" . ${"voornaam" . $i} . " " . ${"voornaam" . $i} . "\n";
-                                        $email_message .= "Adres:" . ${"straat" . $i} . " " . ${"huisnummer" . $i} . "\n";
-                                        $email_message .= "Postcode:" . ${"postcode" . $i} . "\n";
-                                        $email_message .= "Woonplaats:" . ${"woonplaats" . $i} . "\n";
-                                        $email_message .= "Land:" . ${"land" . $i} . "\n";
-                                        $email_message .= "Telefoonnummer:" . ${"telefoonnummer" . $i} . "\n";
-                                        $email_message .= "Email:" . ${"email" . $i} . "\n";
-                                        $email_message .= "Kledingmaat:" . ${"kledingmaat" . $i} . "\n";
-                                        $email_message .= "Schoenmaat:" . ${"schoenmaat" . $i} . "\n";
-                                        if (${"Bijzonderheden" . $i} != NULL) {
-                                             $email_message .= "Bijzonderheden:" . ${"Bijzonderheden" . $i} . "\n";
-                                        }
-
-                                        $email_message .= "\n\nVoor eventuele vragen kunt u contact opnemen via het contactformulier\n\n";
-                                        $email_message .= "Met vriendelijke groet,\nMichael Mairhofer\nOffroad Compass Portugal";
 
                                         $headers = 'From: '.$email_from."\r\n".
 
@@ -103,6 +79,34 @@
                                         //versturen van de mail
                                         @mail($email_to, $email_subject, $email_message, $headers);
                                    }
+                                   //
+                                   //      // $email_message .= "Begindatum:" . $begindatum . "\n";
+                                   //      // $email_message .= "Einddatum:" . $einddatum . "\n";
+                                   //      // $email_message .= "Vervoer van luchthaven Lissabon:" . $vervoerHeen . "\n";
+                                   //      // $email_message .= "Vervoer naar luchthaven Lissabon:" . $vervoerTerug . "\n";
+                                   //      // $email_message .= "Aantal personen:" . $aantalPersonen . "\n";
+                                   //      // if ($opmerkingen != NULL) {
+                                   //      //      $email_message .= "Opmerkingen:" . $opmerkingen . "\n";
+                                   //      // }
+                                   //      //
+                                   //      // $email_message .= "Naam:" . ${"voornaam" . $i} . " " . ${"voornaam" . $i} . "\n";
+                                   //      // $email_message .= "Adres:" . ${"straat" . $i} . " " . ${"huisnummer" . $i} . "\n";
+                                   //      // $email_message .= "Postcode:" . ${"postcode" . $i} . "\n";
+                                   //      // $email_message .= "Woonplaats:" . ${"woonplaats" . $i} . "\n";
+                                   //      // $email_message .= "Land:" . ${"land" . $i} . "\n";
+                                   //      // $email_message .= "Telefoonnummer:" . ${"telefoonnummer" . $i} . "\n";
+                                   //      // $email_message .= "Email:" . ${"email" . $i} . "\n";
+                                   //      // $email_message .= "Kledingmaat:" . ${"kledingmaat" . $i} . "\n";
+                                   //      // $email_message .= "Schoenmaat:" . ${"schoenmaat" . $i} . "\n";
+                                   //      // if (${"Bijzonderheden" . $i} != NULL) {
+                                   //      //      $email_message .= "Bijzonderheden:" . ${"Bijzonderheden" . $i} . "\n";
+                                   //      // }
+                                   //      //
+                                   //      // $email_message .= "\n\nVoor eventuele vragen kunt u contact opnemen via het contactformulier\n\n";
+                                   //      // $email_message .= "Met vriendelijke groet,\nMichael Mairhofer\nOffroad Compass Portugal";
+                                   //
+                                   //
+                                   // }
 
                               } catch (Exception $e) {
                                    print("Uw boeking is niet succesvol verwerkt. Neem contact op met de beheerder.");

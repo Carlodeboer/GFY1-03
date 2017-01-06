@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-     <title>Agenda</title>
-</head>
-<body>
      <?php
      $pdo = newPDO();
      if (isset($_POST['verzendenBlokkade'])) {
@@ -108,14 +102,16 @@
 
           }
      }
-     include ("agendaVariabelen.php");
-     include ("agenda.php");
+     include ("agenda/agendaVariabelen.php");
+     include ("agenda/agenda.php");
      ?>
      <div class="col-md-4">
           <?php
-          if(isset($_POST["verwijderen"])) {
+          if (isset($_POST["verwijderen"])) {
                $_SESSION["invoerenOfVerwijderen"] = "verwijderen";
-          } else {
+          } elseif (isset($_POST["invoeren"])) {
+               $_SESSION["invoerenOfVerwijderen"] = "invoeren";
+          } elseif (!isset($_POST["invoeren"]) || !isset($_POST["verwijderen"])) {
                $_SESSION["invoerenOfVerwijderen"] = "invoeren";
           }
 
@@ -125,9 +121,9 @@
                     <input class="btn btn-raised btn-primary" type="submit" name="invoeren" value="Invoeren">
                </form>
                <form method="POST">
-                    <div class="form-group">
-                         <label for="inputdatum1" class="col-md-2 control-label" >Begindatum</label>
-                         <div class="col-md-10">
+                    <div class="form-group control-label label-static is-empty">
+                         <label class="control-label label-static is-empty" >Begindatum</label>
+
                               <input type="date" name="begindatum" readonly
                               <?php
                               if (isset($_GET["dag"])) {
@@ -151,13 +147,12 @@
                               $begindatum = $jaar2 . "-" . $maand2 . "-" . $dag2;
                               print("value=\"" . $begindatum . "\"");
                               ?>
-                              class="form-control" id="inputdatum1">
-                         </div>
+                              class="form-control">
+
                     </div>
-                    <div class="form-group">
-                         <label for="inputdatum2" class="col-md-2 control-label">Einddatum</label>
-                         <div class="col-md-10">
-                              <input type="date" name="einddatum" readonly
+                    <div class="form-group control-label label-static is-empty">
+                         <label for="i5i" class="control-label">Einddatum</label>
+                         <input type="date" name="einddatum" readonly
                               <?php
                               $dag3 = $dag2 + 6;
 
@@ -186,7 +181,7 @@
 
                               ?>
                               class="form-control" id="inputdatum2">
-                         </div>
+
                     </div>
                     <?php
                     $stmt7 = $pdo->prepare("SELECT uitval FROM blokkade WHERE begindatum = ?");
@@ -196,13 +191,14 @@
                          $aantal = $row7["uitval"];
                          $aantalNietBeschikbaar = $aantalNietBeschikbaar + $aantal;
                     }
+                    // for="select111"
                     ?>
-                    <div class="form-group">
-                         <label for="select111" class="col-md-2 control-label">Beschikbaar</label>
-                         <div class="col-md-10">
+                    <div class="form-group control-label label-static is-empty">
+                         <label for="select111" class="control-label label-static is-empty">Beschikbaar</label>
+
                               <?php
                               if($aantalNietBeschikbaar <= 0) {
-                                   print("<input type='text' class='form-control' disabled='' value='Alle motoren zijn beschikbaar'");
+                                   print("<input type='text' class='form-control' readonly='' value='Alle motoren zijn beschikbaar'");
                               } else {
                                    ?>
                                    <select name="beschikbaar" id="select111" class="form-control">
@@ -215,7 +211,7 @@
                                    <?php
                               }
                               ?>
-                         </div>
+
                     </div>
                     <input class="btn btn-raised btn-warning" type="submit" name="verwijderenBlokkade" value="Verzenden">
                </form>
@@ -226,9 +222,9 @@
                     <input class="btn btn-raised btn-warning" type="submit" name="verwijderen" value="Verwijderen">
                </form>
                <form method="POST">
-                    <div class="form-group">
-                         <label for="inputdatum1" class="col-md-2 control-label" >Begindatum</label>
-                         <div class="col-md-10">
+                    <div class="form-group control-label label-static is-empty">
+                         <label for="inputdatum1" class="control-label label-static is-empty" >Begindatum</label>
+
                               <input type="date" name="begindatum" readonly
                               <?php
                               if (isset($_GET["dag"])) {
@@ -252,12 +248,11 @@
                               $begindatum = $jaar2 . "-" . $maand2 . "-" . $dag2;
                               print("value=\"" . $begindatum . "\"");
                               ?>
-                              class="form-control" id="inputdatum1">
-                         </div>
+                              class="form-control">
+
                     </div>
-                    <div class="form-group">
-                         <label for="inputdatum2" class="col-md-2 control-label">Einddatum</label>
-                         <div class="col-md-10">
+                    <div class="form-group control-label label-static is-empty">
+                         <label for="i5i" class="control-label">Einddatum</label>
                               <input type="date" name="einddatum" readonly
                               <?php
                               $dag3 = $dag2 + 6;
@@ -286,42 +281,56 @@
                               print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
                               ?>
                               class="form-control" id="inputdatum2">
-                         </div>
+
                     </div>
-                    <div class="form-group">
-                         <label for="select111" class="col-md-2 control-label">Uitval</label>
-                         <div class="col-md-10">
-                              <select name="uitval" id="select111" class="form-control">
+                    <div class="form-group control-label label-static is-empty">
+                         <label for="i5i" class="control-label">Uitval</label>
+
+
                                    <?php
 
                                    $stmt7 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
                                    $stmt7->execute(array($begindatum));
-
+                                   $aantalNietBeschikbaar = 0;
                                    while ($row7 = $stmt7->fetch()) {
                                         $aantal = $row7["aantal"];
                                         $aantalNietBeschikbaar = $aantalNietBeschikbaar + $aantal;
                                    }
                                    $aantalBeschikbaar = $aantalMotoren - $aantalNietBeschikbaar;
 
-                                   for ($i = 1; $i <= $aantalBeschikbaar; $i++) {
-                                        if ($i != $aantalMotoren) {
-                                             print ("<option value='{$i}'>{$i} motor(en) niet beschikbaar</option>");
-                                        } else {
-                                             print ("<option value='" . $aantalMotoren . "'>Gesloten</option>");
-                                        }
+
+                                   if($aantalBeschikbaar <= 0) {
+                                        print("<input type='text' class='form-control' readonly='' value='Geen motoren beschikbaar'");
+                                   } else {
+                                        ?>
+                                        <select id="s1" class="form-control" name="uitval">
+                                             <?php
+                                             for ($i = 1; $i <= $aantalBeschikbaar; $i++) {
+                                                  if ($i != $aantalMotoren) {
+                                                       print ("<option value='{$i}'>{$i} motor(en) niet beschikbaar</option>");
+                                                  } else {
+                                                       print ("<option value='" . $aantalMotoren . "'>Gesloten</option>");
+                                                  }
+                                             }
+                                             ?>
+                                        </select>
+                                        <?php
                                    }
+
+
+
                                    ?>
                               </select>
-                         </div>
-                    </div>
-                    <div class="form-group">
-                         <label for="inputomschrijving" class="col-md-2 control-label">Omschrijving</label>
 
-                         <div class="col-md-10">
-                              <input type="text" name="omschrijving" class="form-control" id="inputomschrijving">
-                         </div>
                     </div>
-                    <!-- <div class="form-group"> -->
+                    <div class="form-group control-label label-static is-empty">
+                         <label for="i5i" class="control-label">Omschrijving</label>
+
+
+                              <input type="text" name="omschrijving" class="form-control" id="inputomschrijving">
+
+                    </div>
+                    <!-- <div class="form-group control-label label-static is-empty"> -->
                     <input class="btn btn-raised btn-primary" type="submit" name="verzendenBlokkade" value="Verzenden">
                     <!-- </div> -->
                </form>
@@ -334,6 +343,5 @@
 $pdo = NULL;
 
 ?>
-</body>
+
 <script> $.material.init(); </script>
-</html>
