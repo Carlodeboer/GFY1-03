@@ -6,19 +6,19 @@
 <body>
      <div id="container">
           <div id="contentwrapper">
-               <br><h2>Laat boekingen zien: </h2> <br>
+               <h2>Boekingen</h2>
                <?php
                $pdo = newPDO();
                if (isset($_POST["annuleren"])) {
                     $pdo->beginTransaction();
                     $idKlant = $_POST["idklant"];
                     $idReservering = $_POST["idReservering"];
-                    $stmt2 = $pdo->prepare("UPDATE boeking SET actief=0 WHERE idKlant=?");
+                    $stmt1 = $pdo->prepare("UPDATE boeking SET actief=0 WHERE idKlant=?");
+                    $stmt1->execute(array($idKlant));
+                    $stmt2 = $pdo->prepare("UPDATE gebruikers SET actief=0 WHERE idKlant=?");
                     $stmt2->execute(array($idKlant));
-                    $stmt5 = $pdo->prepare("UPDATE gebruikers SET actief=0 WHERE idKlant=?");
-                    $stmt5->execute(array($idKlant));
-                    $stmt6 = $pdo->prepare("UPDATE reserveringen SET actief=0 WHERE idReservering=?");
-                    $stmt6->execute(array($idReservering));
+                    $stmt3 = $pdo->prepare("UPDATE reserveringen SET actief=0 WHERE idReservering=?");
+                    $stmt3->execute(array($idReservering));
                     $pdo->commit();
                     ?>
                     <script>
@@ -30,13 +30,13 @@
                     <script>window.onload = popUpBevestigd;</script>
                     <?php
                }
-               $stmt = $pdo->prepare("SELECT idKlant, idReservering, gebruikersnaam, begindatum, einddatum, status, betaling, actief
+               $stmt4 = $pdo->prepare("SELECT idKlant, idReservering, gebruikersnaam, begindatum, einddatum, status, betaling, actief
                     FROM boeking
                     JOIN gebruikers
                     ON idKlant=idGebruiker
                     WHERE actief=1;
                     ORDER BY begindatum"); //haalt gegevens uit de tabel
-                    $stmt->execute();
+                    $stmt4->execute();
                     ?>
 
                     <div class="row">
@@ -52,7 +52,7 @@
                                    </tr>
 
                                    <?php
-                                   while ($boeking = $stmt->fetch()) {
+                                   while ($boeking = $stmt4->fetch()) {
                                         $klantID=$boeking['idKlant'];
                                         $idReservering=$boeking['idReservering'];
                                         $gebruikersnaam=$boeking['gebruikersnaam'];
@@ -64,14 +64,10 @@
 
                                         if ($status=="Niet bevestigd") {
                                              $status="<b>" . $status . "<b>";
-                                        } else {
-                                             $status=$status;
-                                        } //status is dikgedrukt als hij niet bevestigd is
+                                        }  //status is dikgedrukt als hij niet bevestigd is
 
                                         if ($betaling=="Niet betaald") {
                                              $betaling="<b>" . $betaling . "<b>";
-                                        } else {
-                                             $betaling=$betaling;
                                         } //betaling is dikgedrukt als hij niet bevestigd is
 
                                         echo ("<tr>
@@ -82,8 +78,7 @@
                                         <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $status . "</td>
                                         <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $betaling . "</td>");
 
-                                        if($actief=="1") {
-
+                                        if($actief == 1) {
                                              ?>
                                              <td>
                                                   <form method='POST'>
