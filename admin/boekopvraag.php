@@ -46,12 +46,7 @@
                                         <th>Annuleren</th>
                                    </tr>
 
-
                                    <?php
-
-
-
-
                                    while ($boeking = $stmt->fetch()) {
                                         $klantID=$boeking['idKlant'];
                                         $gebruikersnaam=$boeking['gebruikersnaam'];
@@ -85,12 +80,12 @@
 
                                              ?>
                                              <td>
-                                             <form method='POST'>
-                                                  <input type="hidden" name="idklant" value="<?php print($klantID)?>">
-                                                  <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick='return confirm('Weet je het zeker?')'>
-                                             </form>
+                                                  <form method='POST'>
+                                                       <input type="hidden" name="idklant" value="<?php print($klantID)?>">
+                                                       <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick='return confirm('Weet je het zeker?')'>
+                                                  </form>
+                                             </td>
                                              <?php
-                                             print("</td>");
                                         }
                                         print ("</tr>");
                                    }
