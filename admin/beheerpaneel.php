@@ -16,9 +16,8 @@
                     // Controleert of een pagina geupdate moet worden
                     if(isset($_POST['verzenden'])){
                          $succes = editContent($_SESSION['paginaEdit'],$_SESSION['taalEdit'],$_POST['titel'],$_POST['inhoud'],$_SESSION['admin_session']);
-                         print "<p>De pagina is bewerkt!</p>";
                          ?>
-                                                  <script>
+                         <script>
                          function popUpBevestigd() {
                               $("#bevestigd").snackbar("show");
                          }
@@ -30,8 +29,8 @@
                          unset($_SESSION['taalEdit']);
                     }
                     elseif(isset($_POST['nieuwaccount'])){
-                        $succes = nieuwAccount($_POST['naam'], $_POST['wachtwoord'], $_POST['wachtwoord2']);
-                        //print "<p>{$succes[1]}</p>";
+                         $succes = nieuwAccount($_POST['naam'], $_POST['wachtwoord'], $_POST['wachtwoord2']);
+                         //print "<p>{$succes[1]}</p>";
                     }
                     include 'adminindex.php';
                     // Controleert of de gebruiker heeft aangegeven wat hij wil beheren
@@ -40,33 +39,33 @@
                          $_SESSION['beheer'] = $_GET['beheer'];
                          switch ($_GET['beheer']){
                               case "Content":
-                                  include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
-                                  break;
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
+                              break;
                               case "Nieuws":
-                                  include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
-                                  break;
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
+                              break;
                               case "Agenda":
-                                  include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
-                                  break;
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
+                              break;
                               case "Boekingen":
-                                  include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraag.php';
-                                  break;
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraag.php';
+                              break;
                               case "Boekingenopvragen":
-                                  include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraagscript.php';
-                                  break;
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraagscript.php';
+                              break;
                               case "Afbeelding":
-                                  include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/uploadform.php';
-                                  break;
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/uploadform.php';
+                              break;
                               case "Berichtopvraag":
-                                  include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
-                                  break;
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
+                              break;
                               case "Nieuwsbewerken":
-                                  include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
-                                  break;
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
+                              break;
                               case "Nieuw account":
-                                  include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwaccount.php';
-                                  break;
-                                  
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwaccount.php';
+                              break;
+
                          }
                     }
                     // Controleert of de gebruiker in 'contentbeheer' een pagina heeft geselecteerd
