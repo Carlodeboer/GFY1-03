@@ -12,6 +12,9 @@
           <div id="content">
                <div id="contentwrapper">
                     <?php
+                    $labels = boekenTaal2();
+                    $j = 0;
+
                     if (isset($_SESSION["klantGegevens"])) {
                          session_unset($_SESSION["klantGegevens"]);
                     }
@@ -32,7 +35,7 @@
                     extract($_SESSION["klantGegevens"]);
                     ?>
 
-                    <h2>Gegevens</h2>
+                    <h2><?php print($labels[$j]); $j++; ?></h2>
                     <form method="POST" action="boekengegevenscheck.php">
                          <?php
                          for ($i = 1; $i <= $aantalPersonen; $i++) {
@@ -41,85 +44,83 @@
                               }
                               ?>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Voornaam*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="text" name="voornaam<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer uw voornaam in</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?><?php ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Achternaam*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="text" name="achternaam<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer uw achternaam in</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Straatnaam*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="text" name="straat<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer uw straatnaam in</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Huisnummer*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="text" name="huisnummer<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer uw huisnummer in</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Postcode*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="text" name="postcode<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer uw postcode in</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Woonplaats*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="text" name="woonplaats<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer uw woonplaats in</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Land*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="text" name="land<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer het land in</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Geboortedatum*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="date" name="geboortedatum<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer uw geboortedatum in</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Telefoonnummer*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="text" name="telefoonnummer<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer uw telefoonnummer in</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">E-mailadres*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="text" name="email<?php print ($i); ?>" class="form-control" id="i5i" required>
-                                   <span class="help-block">Voer uw e-mailadres in</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Kledingmaat*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <select id="s1" class="form-control" name="kledingmaat<?php print ($i); ?>">
                                         <option value="M">M</option>
                                         <option value="L">L</option>
                                         <option value="XL">XL</option>
                                         <option value="XXL">XXL</option>
-                                        <option value="Anders">Anders</option>
+                                        <option value="Anders"><?php print($labels[$j]); $j++; ?></option>
                                    </select>
-                                   <span class="help-block">Kies hier uw kledingmaat</span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Schoenmaat*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <select id="s1" class="form-control" name="schoenmaat<?php print ($i); ?>">
                                         <option value="42">42</option>
                                         <option value="43">43</option>
                                         <option value="44">44</option>
                                         <option value="45">45</option>
-                                        <option value="Anders">Anders</option>
+                                        <option value="Anders"><?php print($labels[$j]); $j++; ?></option>
                                    </select>
-                                   <span class="help-block">Kies hier uw schoenmaat</span>
-                              </div>
+                                   </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Bijzonderheden</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?></label>
                                    <input type="text" name="bijzonderheden<?php print ($i); ?>" class="form-control" id="i5i">
-                                   <span class="help-block">Hiermee kunt u aangeven welke allergieën of ziektes u heeft, zodat daar rekening mee kan worden gehouden.</span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <?php } ?>
                               <div class="form-group label-static is-empty">
-                                   <input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary">
+                                   <input type="submit" name="volgende" value="<?php print($labels[$j]); $j++; ?>" class="btn btn-raised btn-primary">
                               </div>
                          </form>
                     </div>

@@ -14,6 +14,9 @@
           <div id="content">
                <div id="contentwrapper">
                     <?php
+                    $j = 0;
+                    $labels = boekenTaal3();
+
                     for ($i = 1; $i <= $_SESSION["klantGegevens"]["aantalPersonen"]; $i++) {
                          toevoegenAanArray("voornaam", "klantGegevens", $i);
                          toevoegenAanArray("achternaam", "klantGegevens", $i);
@@ -39,94 +42,102 @@
                     ?>
                     <table>
                          <tr>
-                              <td><h2>Reisgegevens van <?php print($vakantienaam); ?>:</h2></td>
+                              <td><h2><?php print($labels[$j]); $j++; print($vakantienaam); ?>:</h2></td>
                          </tr><tr>
-                              <td>Begindatum:</td>
+                              <td><?php print($labels[$j]); $j++; ?></td>
                               <td><?php print($begindatum)?></td>
                          </tr><tr>
-                              <td>Einddatum:</td>
+                              <td><?php print($labels[$j]); $j++; ?></td>
                               <td><?php print($einddatum)?></td>
                          </tr><tr>
-                              <td>Aantal personen:</td>
+                              <td><?php print($labels[$j]); $j++; ?></td>
                               <td><?php print ($aantalPersonen) ?></td>
                          </tr><tr>
-                              <td>Vervoer van luchthaven Lissabon:</td>
+                              <td><?php print($labels[$j]); $j++; ?></td>
                               <td><?php
                               if ($vervoerHeen) {
-                                   print("Ja");
+                                   print($labels[$j]); $j++; $j++;
                               } else {
-                                   print("Nee");
+                                   $j++; print($labels[$j]); $j++;
                               }
                               ?></td>
                          </tr><tr>
-                              <td>Vervoer naar luchthaven Lissabon:</td>
+                              <td><?php print($labels[$j]); $j++; ?></td>
                               <td><?php
                               if ($vervoerTerug) {
-                                   print("Ja");
+                                   print($labels[$j]); $j++; $j++;
                               } else {
-                                   print("Nee");
+                                   $j++; print($labels[$j]); $j++;
                               }
                               ?></td>
                          </tr>
                          <?php
                          if ($opmerkingen != NULL) {
-                              print ("<tr><td>Opmerkingen:</td><td>" . $opmerkingen . "</td></tr>");
+                              print ("<tr><td>". $labels[$i]. ":</td><td>" . $opmerkingen . "</td></tr>");
+                              $j++;
+                         } else {
+                              $j++;
                          }
                          ?>
                          <tr>
-                              <td>Vakantienaam:</td>
+                              <td><?php print($labels[$j]); $j++; ?></td>
                               <td><?php print($vakantienaam); ?></td>
                               <tr>
-                                   <td><h2>Persoonlijke gegevens:</h2></td>
+                                   <td><h2><?php print($labels[$j]); $j++; ?>:</h2></td>
                               </tr>
                               <?php
                               for ($i = 1; $i <= $aantalPersonen; $i++) {
                                    if ($aantalPersonen != 1) {
                                         ?>
                                         <tr>
-                                             <td><h3>Persoon <?php print ($i) ?></h3></td>
+                                             <td><h3><?php print($labels[$j]); $j++; print ($i) ?></h3></td>
                                         </tr>
                                         <?php
+                                   } else {
+                                        $j++;
                                    }
                                    ?>
                                    <tr>
-                                        <td>Voornaam:</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"voornaam" . $i}); ?></td>
                                    </tr><tr>
-                                        <td>Achternaam:</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"achternaam" . $i}); ?></td>
                                    </tr><tr>
-                                        <td>Adres:</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"straat" . $i} . " " . ${"huisnummer" . $i}); ?></td>
                                    </tr><tr>
-                                        <td>Postcode:</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"postcode" . $i}); ?></td>
                                    </tr><tr>
-                                        <td>Woonplaats:</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"woonplaats" . $i}); ?></td>
                                    </tr><tr>
-                                        <td>Land:</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"land" . $i}); ?></td>
                                    </tr><tr>
-                                        <td>Geboortedatum:</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"geboortedatum" . $i}); ?></td>
                                    </tr><tr>
-                                        <td>Telefoonnummer</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"telefoonnummer" . $i}); ?></td>
                                    </tr><tr>
-                                        <td>E-mailadres:</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"email" . $i}); ?></td>
                                    </tr>
                                    <tr>
-                                        <td>Kledingmaat:</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"kledingmaat" . $i}); ?></td>
                                    </tr>
                                    <tr>
-                                        <td>Schoenmaat:</td>
+                                        <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"schoenmaat" . $i}); ?></td>
                                    </tr>
                                    <?php if (${"bijzonderheden" . $i} != NULL) {
-                                        print ("<tr><td>Bijzonderheden:</td><td>" . ${"bijzonderheden" . $i} . "</td></tr>");
+                                        print ("<tr><td>". $labels[$j] . "</td><td>" . ${"bijzonderheden" . $i} . "</td></tr>");
+                                        $j++;
+                                   } else {
+                                        $j++;
                                    }
                               }
                               ?>
@@ -134,7 +145,7 @@
                                    <td>
                                         <form method="POST" action="boekengegevenscheckafronden.php">
                                              <div class="form-group label-static is-empty">
-                                                  <input type="submit" name="afronden" value="Afronden" class="btn btn-raised btn-primary">
+                                                  <input type="submit" name="afronden" value="<?php print($labels[$j]); $j++; ?>" class="btn btn-raised btn-primary">
                                              </div>
                                         </form>
                                    </td>

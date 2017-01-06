@@ -7,17 +7,19 @@
 </head>
 <body>
      <div id="container">
-          <?php include 'header.php'; ?>
+          <?php include 'header.php';
+          $labels = boekenTaal();
+          ?>
           <div id="content">
                <div id="contentwrapper">
-                    <h2>Boeken</h2>
+                    <h2><?php print $labels[0]; ?></h2>
                     <?php
                     include("admin/agenda/agendaVariabelen.php");
                     ?>
                     <div class="col-md-4">
                          <form method="POST" action="boekengegevens.php" class="form-horizontal">
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Begindatum*</label>
+                                   <label for="i5i" class="control-label"><?php print $labels[1]; ?>*</label>
                                    <input type="date" name="begindatum" readonly required
 
                                    <?php
@@ -43,12 +45,12 @@
                                    print("value=\"" . $begindatum . "\"");
                                    ?>
                                    class="form-control" id="inputdatum1">
-                                   <span class="help-block">Voer een begindatum in</span>
+                                   <span class="help-block"><?php print $labels[8]; ?></span>
                               </div>
 
 
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Einddatum*</label>
+                                   <label for="i5i" class="control-label"><?php print $labels[2]; ?>*</label>
                                    <input type="date" name="einddatum" readonly required
                                    <?php
                                    $dag3 = $dag2 + 6;
@@ -77,15 +79,15 @@
                                    print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
                                    ?>
                                    class="form-control" id="i5i">
-                                   <span class="help-block">Voer een einddatum in</span>
+                                   <span class="help-block"><?php print $labels[8]; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Aantal personen*</label>
+                                   <label for="i5i" class="control-label"><?php print $labels[3]; ?>*</label>
                                    <?php
 
                                    $stmt7 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
                                    $stmt7->execute(array($begindatum));
-$aantalNietBeschikbaar = 0;
+                                   $aantalNietBeschikbaar = 0;
                                    while ($row7 = $stmt7->fetch()) {
                                         $aantal = $row7["aantal"];
                                         $aantalNietBeschikbaar = $aantalNietBeschikbaar + $aantal;
@@ -100,9 +102,6 @@ $aantalNietBeschikbaar = 0;
                                              for ($i = 1; $i <= $aantalBeschikbaar; $i++) {
                                                   print ("<option value='" . $i . "'>" . $i . "</option>");
                                              }
-                                             if($aantalBeschikbaar == 0) {
-                                                  print("<option value='0'>0</option>");
-                                             }
                                              ?>
                                         </select>
                                         <?php
@@ -111,7 +110,7 @@ $aantalNietBeschikbaar = 0;
 
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Vervoer van luchthaven Lissabon*</label>
+                                   <label for="i5i" class="control-label"><?php print $labels[4]; ?>*</label>
                                    <div class="radio">
                                         <label>
                                              <input type="radio" name="vervoerHeen" value="1" checked> Ja
@@ -124,7 +123,7 @@ $aantalNietBeschikbaar = 0;
                                    </div>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Vervoer naar luchthaven Lissabon*</label>
+                                   <label for="i5i" class="control-label"><?php print $labels[5]; ?>*</label>
                                    <div class="radio">
                                         <label>
                                              <input type="radio" name="vervoerTerug" value="1" checked> Ja
@@ -138,16 +137,18 @@ $aantalNietBeschikbaar = 0;
                               </div>
 
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Opmerkingen</label>
+                                   <label for="i5i" class="control-label"><?php print $labels[6]; ?></label>
                                    <textarea name="opmerkingen" class="form-control"></textarea>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label">Vakantienaam*</label>
+                                   <label for="i5i" class="control-label"><?php print $labels[7]; ?>*</label>
                                    <input type="text" name="vakantienaam" class="form-control" id="i5i" required>
-                                   <span class="help-block">Deze naam gebruikt u later om uw reisgegevens in te zien. Deze gegevens zou u ook eventueel kunnen delen met reisgenoten.</span>
+                                   <span class="help-block"><?php print $labels[10]; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary">
+                                   <input type="submit" name="volgende" <?php if($aantalBeschikbaar <= 0) {
+                                        print("disabled=''");
+                                   }?> value="<?php print $labels[11]; ?>" class="btn btn-raised btn-primary">
                               </div>
                          </form>
                     </div>

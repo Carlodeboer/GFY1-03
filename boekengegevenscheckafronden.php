@@ -9,8 +9,9 @@
           <?php include 'header.php'; ?>
           <div id="content">
                <div id="contentwrapper">
-                    <p>
-                         <?php
+                    <?php
+                    $labels = boekenTaal4();
+                    $j = 0;
                          if (isset($_POST["afronden"])) {
                               extract($_SESSION["klantGegevens"]);
 
@@ -53,9 +54,9 @@
                                    $pdo->commit();
                                    $pdo = NULL;
 
-                                   ?>Uw boeking is succesvol verwerkt.<br>U kunt <a href="login.php">hier</a>
-                                   uw reisinformatie inzien met uw zelf ingevoerde vakantienaam <?php
-                                   print("<b>" . $vakantienaam . "</b>");?> en weeknummer: <?php
+                              ?><?php print($labels[$j]); $j++; ?><a href="login.php"><?php print($labels[$j]); $j++; ?></a>
+                                   <?php print($labels[$j]); $j++;
+                                   print("<b>" . $vakantienaam . "</b>");?><?php print($labels[$j]); $j++; ?><?php
                                    print("<b>" . $weekjaar . "</b>.");
 
                                    for($i = 1; $i <= $aantalPersonen; $i++) {
