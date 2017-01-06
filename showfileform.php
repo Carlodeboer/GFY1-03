@@ -1,3 +1,8 @@
+<?php
+define("toegang", true);
+
+ ?>
+
 <form name="imageopvraagform" method="get" action="DBshowfoto.php">
   <tr>
    <td valign="top">

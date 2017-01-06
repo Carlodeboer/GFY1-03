@@ -1,5 +1,7 @@
 <?php
+define("toegang", true);
 
+include 'functions.php';
 /*** some basic sanity checks ***/
 if(filter_has_var(INPUT_GET, "imageid") !== false && filter_input(INPUT_GET, 'imageid', FILTER_VALIDATE_INT) !== false)
     {
@@ -15,14 +17,14 @@ if(filter_has_var(INPUT_GET, "imageid") !== false && filter_input(INPUT_GET, 'im
         /*** The sql statement ***/
 //<<<<<<< Updated upstream:showfile.php
 //=======
-        $sql = "SELECT image, image_type FROM fotos WHERE image_id=$image_id";
+        $sql = "SELECT image, image_type FROM fotos WHERE image_id=?";
 // >>>>>>> Stashed changes:DBshowfoto.php
 
         /*** prepare the sql ***/
         $stmt = $pdo->prepare($sql);
 
         /*** exceute the query ***/
-        $stmt->execute();
+        $stmt->execute(array($image_id));
 
         /*** set the fetch mode to associative array ***/
         $stmt->setFetchMode(PDO::FETCH_ASSOC);

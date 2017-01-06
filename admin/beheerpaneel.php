@@ -57,6 +57,7 @@
                               case "Nieuw account":
                                   include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwaccount.php';
                                   break;
+                                  
                          }
                     }
                     // Controleert of de gebruiker in 'contentbeheer' een pagina heeft geselecteerd
