@@ -18,7 +18,7 @@
           <tr>
                <?php
                foreach ($weekDays as $key => $weekDay) {
-                    print("<td class='text-center'>" . $weekDay . "</td>");
+                    print("<td class='text-center'><b>" . $weekDay . "<b></td>");
                }
                ?>
           </tr>

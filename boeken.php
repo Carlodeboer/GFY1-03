@@ -81,25 +81,34 @@
                               </div>
                               <div class="form-group label-static is-empty">
                                    <label for="i5i" class="control-label">Aantal personen*</label>
-                                   <select id="s1" class="form-control" name="aantalPersonen">
-                                        <?php
-                                        $stmt7 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
-                                        $stmt7->execute(array($begindatum));
+                                   <?php
 
-                                        while ($row7 = $stmt7->fetch()) {
-                                             $aantal = $row7["aantal"];
-                                             $aantalNietBeschikbaar = $aantalNietBeschikbaar + $aantal;
-                                        }
-                                        $aantalBeschikbaar = $aantalMotoren - $aantalNietBeschikbaar;
-
-                                        for ($i = 1; $i <= $aantalBeschikbaar; $i++) {
-                                             print ("<option value='" . $i . "'>" . $i . "</option>");
-                                        }
-                                        if($aantalBeschikbaar == 0) {
-                                             print("<option value='0'>0</option>");
-                                        }
+                                   $stmt7 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
+                                   $stmt7->execute(array($begindatum));
+$aantalNietBeschikbaar = 0;
+                                   while ($row7 = $stmt7->fetch()) {
+                                        $aantal = $row7["aantal"];
+                                        $aantalNietBeschikbaar = $aantalNietBeschikbaar + $aantal;
+                                   }
+                                   $aantalBeschikbaar = $aantalMotoren - $aantalNietBeschikbaar;
+                                   if($aantalBeschikbaar <= 0) {
+                                        print("<input type='text' class='form-control' disabled='' value='Geen motoren beschikbaar'>");
+                                   } else {
                                         ?>
-                                   </select>
+                                        <select id="s1" class="form-control" name="aantalPersonen">
+                                             <?php
+                                             for ($i = 1; $i <= $aantalBeschikbaar; $i++) {
+                                                  print ("<option value='" . $i . "'>" . $i . "</option>");
+                                             }
+                                             if($aantalBeschikbaar == 0) {
+                                                  print("<option value='0'>0</option>");
+                                             }
+                                             ?>
+                                        </select>
+                                        <?php
+                                   }
+                                   ?>
+
                               </div>
                               <div class="form-group label-static is-empty">
                                    <label for="i5i" class="control-label">Vervoer van luchthaven Lissabon*</label>
@@ -147,8 +156,9 @@
                     ?>
                </div>
           </div>
-          <?php include 'footer.php'; ?>
+
      </div>
+     <?php include 'footer.php'; ?>
      <script> $.material.init(); </script>
 </body>
 </html>

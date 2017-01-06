@@ -180,7 +180,7 @@
                               print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
 
                               ?>
-                              class="form-control" id="inputdatum2">
+                              class="form-control">
 
                     </div>
                     <?php
@@ -198,7 +198,7 @@
 
                               <?php
                               if($aantalNietBeschikbaar <= 0) {
-                                   print("<input type='text' class='form-control' readonly='' value='Alle motoren zijn beschikbaar'");
+                                   print("<input type='text' class='form-control' disabled='' value='Alle motoren zijn beschikbaar'>");
                               } else {
                                    ?>
                                    <select name="beschikbaar" id="select111" class="form-control">
@@ -280,13 +280,11 @@
 
                               print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
                               ?>
-                              class="form-control" id="inputdatum2">
+                              class="form-control">
 
                     </div>
                     <div class="form-group control-label label-static is-empty">
                          <label for="i5i" class="control-label">Uitval</label>
-
-
                                    <?php
 
                                    $stmt7 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
@@ -298,9 +296,8 @@
                                    }
                                    $aantalBeschikbaar = $aantalMotoren - $aantalNietBeschikbaar;
 
-
                                    if($aantalBeschikbaar <= 0) {
-                                        print("<input type='text' class='form-control' readonly='' value='Geen motoren beschikbaar'");
+                                        print("<input type='text' class='form-control' disabled='' value='Geen motoren beschikbaar'>");
                                    } else {
                                         ?>
                                         <select id="s1" class="form-control" name="uitval">
@@ -316,19 +313,12 @@
                                         </select>
                                         <?php
                                    }
-
-
-
                                    ?>
                               </select>
-
                     </div>
                     <div class="form-group control-label label-static is-empty">
                          <label for="i5i" class="control-label">Omschrijving</label>
-
-
-                              <input type="text" name="omschrijving" class="form-control" id="inputomschrijving">
-
+                              <input type="text" name="omschrijving" class="form-control">
                     </div>
                     <!-- <div class="form-group control-label label-static is-empty"> -->
                     <input class="btn btn-raised btn-primary" type="submit" name="verzendenBlokkade" value="Verzenden">
@@ -338,7 +328,6 @@
           }
           ?>
      </div>
-</div>
 <?php
 $pdo = NULL;
 
