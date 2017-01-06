@@ -129,7 +129,7 @@
                                              $email_message .= "Opmerkingen:" . $opmerkingen . "\n";
                                         }
 
-                                        $email_message .= "Naam:" . ${"voornaam" . $i} . " " . ${"voornaam" . $i}"\n";
+                                        $email_message .= "Naam:" . ${"voornaam" . $i} . " " . ${"voornaam" . $i} . "\n";
                                         $email_message .= "Adres:" . ${"straat" . $i} . " " . ${"huisnummer" . $i} . "\n";
                                         $email_message .= "Postcode:" . ${"postcode" . $i} . "\n";
                                         $email_message .= "Woonplaats:" . ${"woonplaats" . $i} . "\n";
