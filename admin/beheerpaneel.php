@@ -1,4 +1,12 @@
-<?php define("toegang", true); ?>
+<?php
+/**********************************************************************
+  Author : Ian Vredenburg
+  Date   : 06/01/17
+  File   : beheerpaneel.php
+  Copryricht (C) 2017 MIT license
+*******************************************************************/
+define("toegang", true);
+?>
 <!DOCTYPE html>
 <html>
 <head>
