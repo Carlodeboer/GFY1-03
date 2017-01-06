@@ -5,28 +5,27 @@
 </head>
 <body>
      <?php
-     include ("agendaVariabelen.php");
-
+     $pdo = newPDO();
      if (isset($_POST['verzendenBlokkade'])) {
           if (!isset($_POST["uitval"])) {
                ?>
                <script>
-               function popUpPeriodeVol() {
+               function popUp() {
                     $("#periodeVol").snackbar("show");
                }
                </script>
                <span data-toggle=snackbar id="periodeVol" data-content="Geen motoren meer beschikbaar in deze periode."></span>
-               <script>window.onload = popUpPeriodeVol;</script>
+               <script>window.onload = popUp;</script>
                <?php
           } elseif ($_POST["omschrijving"] == "") {
                ?>
                <script>
-               function popUpOmschrijvingLeeg() {
+               function popUp() {
                     $("#omschrijvingLeeg").snackbar("show");
                }
                </script>
                <span data-toggle=snackbar id="omschrijvingLeeg" data-content="Voer een omschrijving in."></span>
-               <script>window.onload = popUpOmschrijvingLeeg;</script>
+               <script>window.onload = popUp;</script>
                <?php
           } else {
                $begindatum = $_POST['begindatum'];
@@ -57,12 +56,12 @@
                     if ($res5 > 0) {
                          ?>
                          <script>
-                         function popUpAgendaGewijzigd() {
+                         function popUp() {
                               $("#agendaGewijzigd").snackbar("show");
                          }
                          </script>
                          <span data-toggle=snackbar id="agendaGewijzigd" data-content="De reservering '<?php print($omschrijving);?>' is toegevoegd aan de agenda."></span>
-                         <script>window.onload = popUpAgendaGewijzigd;</script>
+                         <script>window.onload = popUp;</script>
                          <?php
                     }
 
@@ -72,12 +71,12 @@
           if (!isset($_POST["beschikbaar"])) {
                ?>
                <script>
-               function popUpPeriodeVol() {
+               function popUp() {
                     $("#periodeVol").snackbar("show");
                }
                </script>
                <span data-toggle=snackbar id="periodeVol" data-content="Alle motoren zijn al beschikbaar in deze periode."></span>
-               <script>window.onload = popUpPeriodeVol;</script>
+               <script>window.onload = popUp;</script>
                <?php
           } else {
                $begindatum = $_POST['begindatum'];
@@ -100,17 +99,18 @@
                if ($res7 == 1) {
                     ?>
                     <script>
-                    function popUpAgendaGewijzigd() {
+                    function popUp() {
                          $("#agendaGewijzigd").snackbar("show");
                     }
                     </script>
                     <span data-toggle=snackbar id="agendaGewijzigd" data-content="De reservering is verwijderd uit de agenda."></span>
-                    <script>window.onload = popUpAgendaGewijzigd;</script>
+                    <script>window.onload = popUp;</script>
                     <?php
                }
 
           }
      }
+     include ("agendaVariabelen.php");
      include ("agenda.php");
      ?>
      <div class="col-md-4">

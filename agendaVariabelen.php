@@ -51,10 +51,10 @@ $row1 = $stmt1->fetch();
 $aantalMotoren = $row1["waarde"];
 
 if ($_SESSION["maandnummer"] != 1) {
-     $stmt5 = $pdo->prepare("SELECT * FROM reserveringen WHERE Year(begindatum) = ? AND (Month(begindatum) = ? OR (Month(begindatum) = ? AND day(begindatum) >= 22)) ORDER BY idReservering DESC;");
+     $stmt5 = $pdo->prepare("SELECT * FROM reserveringen WHERE Year(begindatum) = ? AND (Month(begindatum) = ? OR (Month(begindatum) = ? AND day(begindatum) >= 22)) AND actief = 1 ORDER BY idReservering DESC;");
      $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer'], $_SESSION['maandnummer'] - 1));
 } else {
-     $stmt5 = $pdo->prepare("SELECT * FROM reserveringen WHERE (Year(begindatum) = ? AND Month(begindatum) = ?) OR (Year(begindatum) = ? AND Month(begindatum) = ? AND day(begindatum) >= 22) ORDER BY idReservering DESC;");
+     $stmt5 = $pdo->prepare("SELECT * FROM reserveringen WHERE (Year(begindatum) = ? AND Month(begindatum) = ?) OR (Year(begindatum) = ? AND Month(begindatum) = ? AND day(begindatum) >= 22) AND actief = 1 ORDER BY idReservering DESC;");
      $stmt5->execute(array($_SESSION['jaarnummer'], $_SESSION['maandnummer'], $_SESSION['jaarnummer'] -1, 12));
 }
 
@@ -89,7 +89,10 @@ while ($row5 = $stmt5->fetch()) {
                     $objArray[$i . "uitval"] = $aantalMotoren - $uitval;
                }
                if (!isset($objArray[$i . "omschrijving"])) {
-                    $objArray[$i . "omschrijving"] = $row6['omschrijving'];
+                    if($uitval > 0) {
+                         $objArray[$i . "omschrijving"] = $row6['omschrijving'];
+                    }
+
                }
                if (!isset($objArray[$i . "omschrijving"])) {
                     $objArray[$i . "omschrijving"] = "Boeking";

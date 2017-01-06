@@ -29,22 +29,18 @@
                }
 
                for ($i = 1; $i <= $daysInMonth; $i++) {
+                    if(isset($objArray[$i . "uitval"]) && $objArray[$i . "uitval"] == $aantalMotoren) {
+                         unset($objArray[$i . "uitval"]);
+                         unset($objArray[$i . "omschrijving"]);
+                    }
                     if (($i + $blank) % 7 != 0) {
-                         if(isset($objArray[$i . "uitval"]) && $objArray[$i . "uitval"] == $aantalMotoren) {
-                              unset($objArray[$i . "uitval"]);
-                              unset($objArray[$i . "omschrijving"]);
-                         }
-
-                         print ("<td>");
+                         print ("<td>" . $i);
                          if (isset($objArray[$i . "uitval"])) {
-                              print($i . ":");
+                              print(": ");
                               if (isset($_SESSION['admin_session'])) {
-                                   print ($objArray[$i . "omschrijving"] . "<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
-                              } else {
-                                   print ("<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
+                                   print ($objArray[$i . "omschrijving"]);
                               }
-                         } else {
-                              print ($i);
+                              print ("<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
                          }
                          print ("</td>");
                     }
@@ -54,10 +50,12 @@
                          } else {
                               print ("<td><a href='http://" . $_SERVER['HTTP_HOST'] . "/GFY1-03/boeken.php?&dag={$i}'>");
                          }
+                         print($i);
                          if (isset($objArray[$i . "uitval"])) {
-                              print ($i . ":<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
-                         } else {
-                              print ($i);
+                              if (isset($_SESSION['admin_session'])) {
+                                   print (": " . $objArray[$i . "omschrijving"]);
+                              }
+                              print ("<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
                          }
                          print ("</a></td></tr><tr>");
                     }

@@ -23,7 +23,7 @@
                     } elseif (isset($_POST['naam'])) {
                         $check = checkLogin($_POST['naam'], $_POST['wachtwoord']);
                         $_SESSION['start'] = time();
-                        $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
+                        //$_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
                         // Als dat het geval is, dan wordt gecontroleerd of het account
                         // ook de juiste rechten heeft om aan te melden als admin.
                         // Zo ja, dan logt de gebruiker in en wordt doorverwezen
