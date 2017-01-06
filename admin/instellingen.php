@@ -12,7 +12,7 @@
      ?>
      <form method="POST" action="beheerpaneel.php?beheer=Instellingen">
           <div class="form-group">
-               <label class="control-label label-static is-empty">Vul hier het aantal motoren in.</label>
+               <label class="control-label label-static is-empty">Aantal motoren</label>
                <input type="number" name="aantalMotoren" value="<?php print($aantalMotoren);?>" required="" class="form-control">
           </div>
           <input class="btn btn-raised btn-primary" type="submit" value="Wijzigen" name="wijzigen">

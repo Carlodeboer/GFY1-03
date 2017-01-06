@@ -53,7 +53,7 @@ define("toegang", true);
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
                               break;
                               case "Agenda":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/beheeragenda.php';
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/beheeragenda.php';
                               break;
                               case "Boekingen":
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraag.php';
@@ -72,6 +72,9 @@ define("toegang", true);
                               break;
                               case "Nieuw account":
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwaccount.php';
+                              break;
+                              case "Instellingen":
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/instellingen.php';
                               break;
 
                          }
