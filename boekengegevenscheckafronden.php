@@ -108,10 +108,10 @@
                                    //     $header = "From: ". "offroadcompassportugal" . " <" . "info@offroadcompassportugal.nl" . ">\r\n"; //optional headerfields
                                    //
                                    //     mail($recipient, $subject, $mail_body, $header); //mail command :)
-                                   <?php
+                                   
                                    for($i = 1; $i <= $aantalPersonen; $i++) {
                                         //$email_to = ${"email" . $i};
-$email_to = "sophie@famroos.nu";
+                                        $email_to = "sophie@famroos.nu";
                                         $email_from = "info@offroadcompassportugal.nl";
                                         $email_subject = "Bericht verstuurd via contactformulier";
                                         $email_message = "Beste " . ${"naam" . $i} . "\n\n";
