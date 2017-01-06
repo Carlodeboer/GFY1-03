@@ -18,6 +18,7 @@ include "../toegang.php";
         </div>
         <input type="submit" name="verzenden" value="Bewerken" class="btn btn-raised btn-primary">
     </form>
-  <br>
-  <?php print "<p><a href=\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/beheerpaneel.php?beheer=Content\">Terug</a></p><br>"; ?>
+    <form method="POST" action=<?php print("\"http://".$_SERVER['HTTP_HOST']."/GFY1-03/admin/beheerpaneel.php?beheer=Content\"");?>>
+         <input type="submit" name="terug" value="Terug" class="btn btn-raised btn-primary">
+    </form>
 </div>
