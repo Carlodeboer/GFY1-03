@@ -84,8 +84,12 @@
                                                   <form method='POST'>
                                                        <input type="hidden" name="idklant" value="<?php print($klantID)?>">
 
+
                                                        <input type="hidden" name="idReservering" value="<?php print($idReservering)?>">
                                                        <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick="return confirm('Weet je het zeker?')">
+
+                                                       <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick='return confirm('Weet je het zeker?')'>
+
 
                                                        <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick='return confirm('Weet je het zeker?')'>
 
