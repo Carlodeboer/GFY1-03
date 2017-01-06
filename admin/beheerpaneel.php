@@ -16,7 +16,16 @@
                     // Controleert of een pagina geupdate moet worden
                     if(isset($_POST['verzenden'])){
                          $succes = editContent($_SESSION['paginaEdit'],$_SESSION['taalEdit'],$_POST['titel'],$_POST['inhoud'],$_SESSION['admin_session']);
-                         print "<p>Bewerkt!</p>";
+                         print "<p>De pagina is bewerkt!</p>";
+                         ?>
+                                                  <script>
+                         function popUpBevestigd() {
+                              $("#bevestigd").snackbar("show");
+                         }
+                         </script>
+                         <span data-toggle=snackbar id="bevestigd" data-content="De pagina <?php print($_SESSION['paginaEdit']); ?> is bewerkt."></span>
+                         <script>window.onload = popUpBevestigd;</script>
+                         <?php
                          unset($_SESSION['paginaEdit']);
                          unset($_SESSION['taalEdit']);
                     }

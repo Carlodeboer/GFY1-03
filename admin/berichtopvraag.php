@@ -8,7 +8,7 @@
      if (isset($_SESSION["email"])&&$_SESSION["email"]!="") {
          $email = $_SESSION['email'];
          if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-             print($emailErr = "Invalid email format, <a href=\"test.php\">retry</a>");
+             print($emailErr = "Geen valide emailadres ingevoerd, <a href=\"beheerpaneel.php?beheer=Berichtopvraag\">probeer opnieuw.</a>");
          }
          $stmt = $pdo->prepare("SELECT * FROM contactformulier WHERE email=?");
          $stmt->execute(array($email));

@@ -36,7 +36,7 @@
 
                          echo $error."<br /><br />";
 
-                         echo "Please go back and fix these errors.<br /><br />";
+                         echo "<a href=\"contact.php\">Please go back and fix these errors.</a><br /><br />";
 
                          die();
 
