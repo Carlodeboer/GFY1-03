@@ -58,56 +58,102 @@
                                    print("<b>" . $vakantienaam . "</b>");?> en weeknummer: <?php
                                    print("<b>" . $weekjaar . "</b>.");
 
-                              //      $stmt10 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email FROM klantgegevens WHERE idklant = ? AND persoon = ?");
-                              //     $stmt10->execute(array($idklant, $i));
-                                  //
-                              //     $row10= $stmt10->fetch();
-                              //     $voornaam = $row10["voornaam"];
-                              //     $achternaam = $row10["achternaam"];
-                              //     $geboortedatum = $row10["gebdatum"];
-                              //     $adres = $row10["adres"];
-                              //     $postcode = $row10["postcode"];
-                              //     $woonplaats = $row10["woonplaats"];
-                              //     $land = $row10["land"];
-                              //     $telefoonnummer = $row10["telefoonnummer"];
-                              //     $email = $row10["email"];
-                                  //
-                                  //
-                              //     $stmt11 = $pdo->prepare("SELECT idKlant, idReservering, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, opmerking, status, betaling FROM boeking WHERE idklant = ? AND persoon = ?");
-                              //     $stmt11->execute(array($idklant, $i));
-                                  //
-                              //     $row11= $stmt11->fetch();
-                              //     $klantid = $row11["idKlant"];
-                              //     $reserveringid = $row11["idReservering"];
-                              //     $begindatum1 = $row11["begindatum"];
-                              //     $einddatum1 = $row11["einddatum"];
-                              //     $personenaantal = $row11["aantalPersonen"];
-                              //     $heenvervoer = $row11["vervoerHeen"];
-                              //     $terugvervoer = $row11["vervoerTerug"];
-                              //     $merkingop = $row11["opmerking"];
-                              //     $state = $row11["status"];
-                              //     $payment = $row11["betaling"];
-                                  //
-                                  //
-                              //     $stmt12 = $pdo->prepare("SELECT gebruikersnaam, wachtwoord FROM gebruikers WHERE idGebruiker = ?");
-                              //     $stmt12->execute(array($idGebruiker));
-                              //     $row12 = $stmt12->fetch();
-                              //     $gebruikersnaam1 = $row12["gebruikersnaam"];
-                              //     $wachtwoord1 = $row12["wachtwoord"];
-                                  //
-                              //     $Name = "Offroad Compass Portugal"; //senders name
-                              //     $email = "info@offroadcompassportugal.nl"; //senders e-mail adress
-                              //     $recipient = $email; //recipient
-                                  //
-                              //     $mail_body = " hallo
-                              //     $voornaam
-                              //     $achternaam <br>
-                              //     $geboortedatum "; //mail body
-                                  //
-                              //     $subject = "Booking"; //subject
-                              //     $header = "From: ". "offroadcompassportugal" . " <" . "info@offroadcompassportugal.nl" . ">\r\n"; //optional headerfields
-                                  //
-                              //     mail($recipient, $subject, $mail_body, $header); //mail command :)
+                                   //      $stmt10 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email FROM klantgegevens WHERE idklant = ? AND persoon = ?");
+                                   //     $stmt10->execute(array($idklant, $i));
+                                   //
+                                   //     $row10= $stmt10->fetch();
+                                   //     $voornaam = $row10["voornaam"];
+                                   //     $achternaam = $row10["achternaam"];
+                                   //     $geboortedatum = $row10["gebdatum"];
+                                   //     $adres = $row10["adres"];
+                                   //     $postcode = $row10["postcode"];
+                                   //     $woonplaats = $row10["woonplaats"];
+                                   //     $land = $row10["land"];
+                                   //     $telefoonnummer = $row10["telefoonnummer"];
+                                   //     $email = $row10["email"];
+                                   //
+                                   //
+                                   //     $stmt11 = $pdo->prepare("SELECT idKlant, idReservering, begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, opmerking, status, betaling FROM boeking WHERE idklant = ? AND persoon = ?");
+                                   //     $stmt11->execute(array($idklant, $i));
+                                   //
+                                   //     $row11= $stmt11->fetch();
+                                   //     $klantid = $row11["idKlant"];
+                                   //     $reserveringid = $row11["idReservering"];
+                                   //     $begindatum1 = $row11["begindatum"];
+                                   //     $einddatum1 = $row11["einddatum"];
+                                   //     $personenaantal = $row11["aantalPersonen"];
+                                   //     $heenvervoer = $row11["vervoerHeen"];
+                                   //     $terugvervoer = $row11["vervoerTerug"];
+                                   //     $merkingop = $row11["opmerking"];
+                                   //     $state = $row11["status"];
+                                   //     $payment = $row11["betaling"];
+                                   //
+                                   //
+                                   //     $stmt12 = $pdo->prepare("SELECT gebruikersnaam, wachtwoord FROM gebruikers WHERE idGebruiker = ?");
+                                   //     $stmt12->execute(array($idGebruiker));
+                                   //     $row12 = $stmt12->fetch();
+                                   //     $gebruikersnaam1 = $row12["gebruikersnaam"];
+                                   //     $wachtwoord1 = $row12["wachtwoord"];
+                                   //
+                                   //     $Name = "Offroad Compass Portugal"; //senders name
+                                   //     $email = "info@offroadcompassportugal.nl"; //senders e-mail adress
+                                   //     $recipient = $email; //recipient
+                                   //
+                                   //     $mail_body = " hallo
+                                   //     $voornaam
+                                   //     $achternaam <br>
+                                   //     $geboortedatum "; //mail body
+                                   //
+                                   //     $subject = "Booking"; //subject
+                                   //     $header = "From: ". "offroadcompassportugal" . " <" . "info@offroadcompassportugal.nl" . ">\r\n"; //optional headerfields
+                                   //
+                                   //     mail($recipient, $subject, $mail_body, $header); //mail command :)
+                                   <?php
+                                   for($i = 1; $i <= $aantalPersonen; $i++) {
+                                        //$email_to = ${"email" . $i};
+$email_to = "sophie@famroos.nu";
+                                        $email_from = "info@offroadcompassportugal.nl";
+                                        $email_subject = "Bericht verstuurd via contactformulier";
+                                        $email_message = "Beste " . ${"naam" . $i} . "\n\n";
+
+                                        $email_message .= "Bedankt voor het boeken van reis met Offroad Compass Portugal. Hieronder vind u uw ingevulde gegevens:\n\n";
+
+                                        $email_message .= "Vakantienaam:" . $vakantienaam . "\n";
+                                        $email_message .= "Vakantieweek:" . $weekjaar . "\n";
+                                        $email_message .= "Begindatum:" . $begindatum . "\n";
+                                        $email_message .= "Einddatum:" . $einddatum . "\n";
+                                        $email_message .= "Vervoer van luchthaven Lissabon:" . $vervoerHeen . "\n";
+                                        $email_message .= "Vervoer naar luchthaven Lissabon:" . $vervoerTerug . "\n";
+                                        $email_message .= "Aantal personen:" . $aantalPersonen . "\n";
+                                        if ($opmerkingen != NULL) {
+                                             $email_message .= "Opmerkingen:" . $opmerkingen . "\n";
+                                        }
+
+                                        $email_message .= "Naam:" . ${"voornaam" . $i} . " " . ${"voornaam" . $i}"\n";
+                                        $email_message .= "Adres:" . ${"straat" . $i} . " " . ${"huisnummer" . $i} . "\n";
+                                        $email_message .= "Postcode:" . ${"postcode" . $i} . "\n";
+                                        $email_message .= "Woonplaats:" . ${"woonplaats" . $i} . "\n";
+                                        $email_message .= "Land:" . ${"land" . $i} . "\n";
+                                        $email_message .= "Telefoonnummer:" . ${"telefoonnummer" . $i} . "\n";
+                                        $email_message .= "Email:" . ${"email" . $i} . "\n";
+                                        $email_message .= "Kledingmaat:" . ${"kledingmaat" . $i} . "\n";
+                                        $email_message .= "Schoenmaat:" . ${"schoenmaat" . $i} . "\n";
+                                        if (${"Bijzonderheden" . $i} != NULL) {
+                                             $email_message .= "Bijzonderheden:" . ${"Bijzonderheden" . $i} . "\n";
+                                        }
+
+                                        $email_message .= "\n\nVoor eventuele vragen kunt u contact opnemen via het contactformulier\n\n";
+                                        $email_message .= "Met vriendelijke groet,\nMichael Mairhofer\nOffroad Compass Portugal";
+
+                                        $headers = 'From: '.$email_from."\r\n".
+
+                                        'Reply-To: '.$email_from."\r\n" .
+
+                                        'X-Mailer: PHP/' . phpversion();
+
+                                        //versturen van de mail
+                                        @mail($email_to, $email_subject, $email_message, $headers);
+                                   }
 
                               } catch (Exception $e) {
                                    print("Uw boeking is niet succesvol verwerkt. Neem contact op met de beheerder.");
