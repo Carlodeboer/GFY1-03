@@ -35,7 +35,7 @@
                     ?>
 
                     <div class="row">
-                         <div class="col-md-6">
+                         <div class="col-md-12">
                               <table class="table table-striped table-hover nieuwsberichtenbewerken">
                                    <tr>
                                         <th>Vakantienaam</th>
@@ -82,7 +82,7 @@
                                              <td>
                                                   <form method='POST'>
                                                        <input type="hidden" name="idklant" value="<?php print($klantID)?>">
-                                                       <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick='return confirm('Weet je het zeker?')'>
+                                                       <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick="return confirm('Weet je het zeker?')">
                                                   </form>
                                              </td>
                                              <?php
