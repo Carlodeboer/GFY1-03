@@ -5,16 +5,21 @@
 </head>
 <body>
      <div id="container">
-
           <div id="contentwrapper">
                <br><h2>Laat boekingen zien: </h2> <br>
                <?php
-
                $pdo = newPDO();
                if (isset($_POST["annuleren"])) {
+                    $pdo->beginTransaction();
                     $idKlant = $_POST["idklant"];
+                    $idReservering = $_POST["idReservering"];
                     $stmt2 = $pdo->prepare("UPDATE boeking SET actief=0 WHERE idKlant=?");
                     $stmt2->execute(array($idKlant));
+                    $stmt5 = $pdo->prepare("UPDATE gebruikers SET actief=0 WHERE idKlant=?");
+                    $stmt5->execute(array($idKlant));
+                    $stmt6 = $pdo->prepare("UPDATE reserveringen SET actief=0 WHERE idReservering=?");
+                    $stmt6->execute(array($idReservering));
+                    $pdo->commit();
                     ?>
                     <script>
                     function popUpBevestigd() {
@@ -25,7 +30,7 @@
                     <script>window.onload = popUpBevestigd;</script>
                     <?php
                }
-               $stmt = $pdo->prepare("SELECT idKlant, gebruikersnaam, begindatum, einddatum, status, betaling, actief
+               $stmt = $pdo->prepare("SELECT idKlant, idReservering, gebruikersnaam, begindatum, einddatum, status, betaling, actief
                     FROM boeking
                     JOIN gebruikers
                     ON idKlant=idGebruiker
@@ -49,6 +54,7 @@
                                    <?php
                                    while ($boeking = $stmt->fetch()) {
                                         $klantID=$boeking['idKlant'];
+                                        $idReservering=$boeking['idReservering'];
                                         $gebruikersnaam=$boeking['gebruikersnaam'];
                                         $begindatum=$boeking['begindatum'];
                                         $einddatum=$boeking['einddatum'];
@@ -82,6 +88,7 @@
                                              <td>
                                                   <form method='POST'>
                                                        <input type="hidden" name="idklant" value="<?php print($klantID)?>">
+                                                       <input type="hidden" name="idReservering" value="<?php print($idReservering)?>">
                                                        <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick="return confirm('Weet je het zeker?')">
                                                   </form>
                                              </td>
