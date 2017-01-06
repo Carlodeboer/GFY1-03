@@ -30,82 +30,71 @@
                     <script>window.onload = popUpBevestigd;</script>
                     <?php
                }
-               $stmt4 = $pdo->prepare("SELECT idKlant, idReservering, gebruikersnaam, begindatum, einddatum, status, betaling, actief
-                    FROM boeking
-                    JOIN gebruikers
-                    ON idKlant=idGebruiker
-                    WHERE actief=1;
-                    ORDER BY begindatum"); //haalt gegevens uit de tabel
-                    $stmt4->execute();
-                    ?>
+               $pdo->beginTransaction();
+               $stmt4 = $pdo->prepare("SELECT idKlant, idReservering, gebruikersnaam, begindatum, einddatum, status, betaling, a.actief FROM boeking AS a JOIN gebruikers AS b ON a.idKlant = b.idGebruiker WHERE a.actief=1 ORDER BY begindatum"); //haalt gegevens uit de tabel
+               $stmt4->execute(array());
+               $pdo->commit();
+               ?>
 
-                    <div class="row">
-                         <div class="col-md-12">
-                              <table class="table table-striped table-hover nieuwsberichtenbewerken">
-                                   <tr>
-                                        <th>Vakantienaam</th>
-                                        <th>Begindatum</th>
-                                        <th>Einddatum</th>
-                                        <th>Status</th>
-                                        <th>Betaling</th>
-                                        <th>Annuleren</th>
-                                   </tr>
+               <div class="row">
+                    <div class="col-md-12">
+                         <table class="table table-striped table-hover nieuwsberichtenbewerken">
+                              <tr>
+                                   <th>Vakantienaam</th>
+                                   <th>Begindatum</th>
+                                   <th>Einddatum</th>
+                                   <th>Status</th>
+                                   <th>Betaling</th>
+                                   <th>Annuleren</th>
+                              </tr>
 
-                                   <?php
-                                   while ($boeking = $stmt4->fetch()) {
-                                        $klantID=$boeking['idKlant'];
-                                        $idReservering=$boeking['idReservering'];
-                                        $gebruikersnaam=$boeking['gebruikersnaam'];
-                                        $begindatum=$boeking['begindatum'];
-                                        $einddatum=$boeking['einddatum'];
-                                        $status=$boeking['status'];
-                                        $betaling=$boeking['betaling'];
-                                        $actief=$boeking['actief']; //maakt variabele van de gegevens
+                              <?php
+                              while ($boeking = $stmt4->fetch()) {
+                                   $klantID=$boeking['idKlant'];
+                                   $idReservering=$boeking['idReservering'];
+                                   $gebruikersnaam=$boeking['gebruikersnaam'];
+                                   $begindatum=$boeking['begindatum'];
+                                   $einddatum=$boeking['einddatum'];
+                                   $status=$boeking['status'];
+                                   $betaling=$boeking['betaling'];
+                                   $actief=$boeking['actief']; //maakt variabele van de gegevens
 
-                                        if ($status=="Niet bevestigd") {
-                                             $status="<b>" . $status . "<b>";
-                                        }  //status is dikgedrukt als hij niet bevestigd is
+                                   if ($status=="Niet bevestigd") {
+                                        $status="<b>" . $status . "<b>";
+                                   }  //status is dikgedrukt als hij niet bevestigd is
 
-                                        if ($betaling=="Niet betaald") {
-                                             $betaling="<b>" . $betaling . "<b>";
-                                        } //betaling is dikgedrukt als hij niet bevestigd is
+                                   if ($betaling=="Niet betaald") {
+                                        $betaling="<b>" . $betaling . "<b>";
+                                   } //betaling is dikgedrukt als hij niet bevestigd is
 
-                                        echo ("<tr>
+                                   echo ("<tr>
 
-                                        <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $gebruikersnaam . "</td>
-                                        <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $begindatum . "</td>
-                                        <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $einddatum . "</td>
-                                        <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $status . "</td>
-                                        <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $betaling . "</td>");
+                                   <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $gebruikersnaam . "</td>
+                                   <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $begindatum . "</td>
+                                   <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $einddatum . "</td>
+                                   <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $status . "</td>
+                                   <td onclick=\"location='beheerpaneel.php?beheer=Boekingenopvragen&boekingID={$boeking['idKlant']}'\">" . $betaling . "</td>");
 
-                                        if($actief == 1) {
-                                             ?>
-                                             <td>
-                                                  <form method='POST'>
-                                                       <input type="hidden" name="idklant" value="<?php print($klantID)?>">
-
-
-                                                       <input type="hidden" name="idReservering" value="<?php print($idReservering)?>">
-                                                       <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick="return confirm('Weet je het zeker?')">
-
-                                                       <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick='return confirm('Weet je het zeker?')'>
-
-
-                                                       <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick='return confirm('Weet je het zeker?')'>
-
-                                                  </form>
-                                             </td>
-                                             <?php
-                                        }
-                                        print ("</tr>");
+                                   if($actief == 1) {
+                                        ?>
+                                        <td>
+                                             <form method='POST'>
+                                                  <input type="hidden" name="idklant" value="<?php print($klantID)?>">
+                                                  <input type="hidden" name="idReservering" value="<?php print($idReservering)?>">
+                                                  <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick="return confirm('Weet je het zeker?')">
+                                             </form>
+                                        </td>
+                                        <?php
                                    }
-                                   ?>
+                                   print ("</tr>");
+                              }
+                              ?>
 
-                              </table>
-                         </div>
+                         </table>
                     </div>
                </div>
           </div>
      </div>
+</div>
 </body>
 </html>
