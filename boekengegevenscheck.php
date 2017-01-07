@@ -97,6 +97,7 @@
                               </tr>
                               <?php
                               for ($i = 1; $i <= $aantalPersonen; $i++) {
+                                   $j = 13;
                                    if ($aantalPersonen != 1) {
                                         ?>
                                         <tr>

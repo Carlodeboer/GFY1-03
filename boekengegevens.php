@@ -24,11 +24,13 @@
                     <?php
                     $labels = boekenTaal2();
                     $j = 0;
-
+                    // Als er toevallig al een SESSION gestart is, worden de gegevens uit die array verwijderd.
                     if (isset($_SESSION["klantGegevens"])) {
                          session_unset($_SESSION["klantGegevens"]);
                     }
 
+                    // Voegt een nieuwe element toe aan de array. $array is de naam van de array waar het aan toegevoegd moet worden. $naam is de index van het element.
+                    // Als $persoon is ingevuld, wordt $naam en $persoon samengevoegd. $naam is ook de naam van het POST-veld.
                     toevoegenAanArray("begindatum", "klantGegevens", "");
                     toevoegenAanArray("einddatum", "klantGegevens", "");
                     toevoegenAanArray("aantalPersonen", "klantGegevens", "");
@@ -36,22 +38,29 @@
                     toevoegenAanArray("vervoerTerug", "klantGegevens", "");
                     toevoegenAanArray("vakantienaam", "klantGegevens", "");
 
-
+                    // Voegt alleen 'opmerkingen' als 'opmerkingen' is ingevuld.
                     if ($_POST["opmerkingen"] != "") {
                          toevoegenAanArray("opmerkingen", "klantGegevens", "");
                     } else {
                          $_SESSION["klantGegevens"]["opmerkingen"] = NULL;
                     }
+                    // Haalt alle elementen uit array en maakt variablen met als naam de index en als waarde het element.
                     extract($_SESSION["klantGegevens"]);
                     ?>
 
                     <h2><?php print($labels[$j]); $j++; ?></h2>
+
                     <form method="POST" action="boekengegevenscheck.php">
                          <?php
+                         // Print voor elk persoon een lijst voor het invullen van gegevens.
                          for ($i = 1; $i <= $aantalPersonen; $i++) {
+                              $j = 1;
+                              // Alleen als er meerdere personen meegaan, komt er een kopje, bijvoorbeeld "Persoon 1".
                               if ($aantalPersonen != 1) {
-                                   print("<h3>Persoon " . $i . ":</h3>");
+
+                                   print("<h3>" . $labels[$j] . $i . ":</h3>");
                               }
+                              $j++;
                               ?>
                               <div class="form-group label-static is-empty">
                                    <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>

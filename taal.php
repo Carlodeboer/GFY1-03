@@ -119,11 +119,11 @@ function boekenTaal() {
 function boekenTaal2() {
      $taal = selecteerTaal();
      if ($taal == "NLD"){
-          $labels = ["Gegevens", "Voornaam", "Voer hier uw voornaam in", "Achternaam", "Voer hier uw achternaam in", "Straatnaam", "Voer hier uw straatnaam in", "Huisnummer", "Voer hier uw huisnummer in", "Postcode", "Voer hier uw postcode in", "Woonplaats","Voer hier uw woonplaats in",  "Land","Voer hier uw land in",
+          $labels = ["Gegevens", "Persoon ", "Voornaam", "Voer hier uw voornaam in", "Achternaam", "Voer hier uw achternaam in", "Straatnaam", "Voer hier uw straatnaam in", "Huisnummer", "Voer hier uw huisnummer in", "Postcode", "Voer hier uw postcode in", "Woonplaats","Voer hier uw woonplaats in",  "Land","Voer hier uw land in",
           "Geboortedatum", "Voer hier uw geboortedatum in", "Telefoonnummer", "Voer hier uw telefoonnummer in", "E-mailadres", "Voer hier uw e-mailadres in", "Kledingmaat", "Anders", "Schoenmaat", "Anders", "Ziekten en allergieën", "Hier kunt u aangeven of u allergieën of ziektes heeft, zodat daar rekening mee kan worden gehouden.",
           "Volgende"];
      } elseif ($taal == "ENG"){
-          $labels = ["Personal information", "First name", "Enter your first name", "Surname", "Enter your surname", "Street", "Enter the name of your street", "House number", "Enter your house number", "ZIP code", "Enter your ZIP code", "City", "Enter your city", "Country","Enter your country",
+          $labels = ["Personal information", "Person", "First name", "Enter your first name", "Surname", "Enter your surname", "Street", "Enter the name of your street", "House number", "Enter your house number", "ZIP code", "Enter your ZIP code", "City", "Enter your city", "Country","Enter your country",
           "Date of birth", "Enter your date of birth", "Telephone number", "Enter your telephone number", "E-mail address", "Enter you e-mail address", "Size", "Else", "Shoe size", "Else", "Diseases and allergies", "Enter whether you have any allergies or diseases, so that can be taken into account.",
           "Next"];
      } elseif ($taal == "DEU"){

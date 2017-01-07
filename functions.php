@@ -135,6 +135,8 @@ function checkPrivileges($naam){
     return $userRow['privilegeniveau'];
 }
 
+// Voegt een nieuwe element toe aan de array. $array is de naam van de array waar het aan toegevoegd moet worden. $naam is de index van het element.
+// Als $persoon is ingevuld, wordt $naam en $persoon samengevoegd. $naam is ook de naam van het POST-veld.
 function toevoegenAanArray($naam, $array, $persoon) {
      if ($persoon != "") {
 	${$naam . $persoon} = $_POST[$naam . $persoon];

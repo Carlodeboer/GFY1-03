@@ -24,6 +24,7 @@
                <div id="contentwrapper">
                     <h2><?php print $labels[0]; ?></h2>
                     <?php
+                    // Variabelen van de agenda alvast laden, deze zijn namelijk nodig voor het selecteren van begin- en einddatum.
                     include("admin/agenda/agendaVariabelen.php");
                     $labels = boekenTaal();
                     $j = 1;
@@ -81,7 +82,7 @@
                               <div class="form-group label-static is-empty">
                                    <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <?php
-
+                                   // Haalt aantal niet-beschikbare motoren op.
                                    $stmt7 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
                                    $stmt7->execute(array($begindatum));
                                    $aantalNietBeschikbaar = 0;
@@ -89,7 +90,10 @@
                                         $aantal = $row7["aantal"];
                                         $aantalNietBeschikbaar = $aantalNietBeschikbaar + $aantal;
                                    }
+                                   // Selecteert aantal wel beschikbare motoren.
                                    $aantalBeschikbaar = $aantalMotoren - $aantalNietBeschikbaar;
+                                   // Als er geen motoren beschikbaar zijn, wordt het volgende veld op 'disabled' gezet, zo kan het niet aangepast worden.
+                                   // De verzendknop gaat ook naar 'disabled', zodat men niet naar de volgende pagina kan.
                                    if($aantalBeschikbaar <= 0) {
                                         print("<input type='text' class='form-control' disabled='' value='" . $labels[$j] . "'>");
                                         $j++;
@@ -97,6 +101,7 @@
                                         ?>
                                         <select id="s1" class="form-control" name="aantalPersonen">
                                              <?php
+                                             // Print voor het aantal mogelijke personen een 'option'.
                                              for ($i = 1; $i <= $aantalBeschikbaar; $i++) {
                                                   print ("<option value='" . $i . "'>" . $i . "</option>");
                                              }
@@ -152,6 +157,7 @@
                          </form>
                     </div>
                     <?php
+                    // Agenda laten zien.
                     include("admin/agenda/agenda.php");
                     ?>
                </div>
