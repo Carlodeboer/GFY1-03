@@ -246,6 +246,13 @@ hr {
     background-color: grey;
     border: none;
 }
+#accommodatie {
+     float:left;
+     max-width:660px;
+}
+#kaart {
+     float:right;
+}
 #contentwrapper > table:nth-child(3) > tbody > tr:nth-child(1) > td:nth-child(2){
   width:50% !important;
 }
