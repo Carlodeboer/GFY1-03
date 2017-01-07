@@ -24,6 +24,16 @@
                         $check = checkLogin($_POST['naam'], $_POST['wachtwoord']);
                         $_SESSION['start'] = time();
                         //$_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
+<?php
+/*******************************************************************************
+ * Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
+ * Ralphine de Roo, Sophie Roos and Ian Vredenburg
+ *
+ * This Source Code Form is subject to the terms of the MIT license.
+ * If a copy of the MIT license was not distributed with this file. You can
+ * obtain one at https://opensource.org/licenses/MIT
+ *******************************************************************************/
+?>
                         // Als dat het geval is, dan wordt gecontroleerd of het account
                         // ook de juiste rechten heeft om aan te melden als admin.
                         // Zo ja, dan logt de gebruiker in en wordt doorverwezen

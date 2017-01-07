@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2016 Carlo de Boer, Floris de Grip, Thijs Marshalk, Ralphine de Roo, Sophie Roos, Ian Vredenburg
+Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marshalk, Ralphine de Roo, Sophie Roos, Ian Vredenburg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

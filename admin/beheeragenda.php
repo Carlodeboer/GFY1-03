@@ -1,4 +1,24 @@
 <?php
+/*******************************************************************************
+ * Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
+ * Ralphine de Roo, Sophie Roos and Ian Vredenburg
+ *
+ * This Source Code Form is subject to the terms of the MIT license.
+ * If a copy of the MIT license was not distributed with this file. You can
+ * obtain one at https://opensource.org/licenses/MIT
+ *******************************************************************************/
+?>
+<?php
+/*******************************************************************************
+ * Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
+ * Ralphine de Roo, Sophie Roos and Ian Vredenburg
+ *
+ * This Source Code Form is subject to the terms of the MIT license.
+ * If a copy of the MIT license was not distributed with this file. You can
+ * obtain one at https://opensource.org/licenses/MIT
+ *******************************************************************************/
+?>
+<?php
 $pdo = newPDO();
 // Als de beheerder een blokkade wil invoeren, gebeurt dit:
 if (isset($_POST['verzendenBlokkade'])) {
