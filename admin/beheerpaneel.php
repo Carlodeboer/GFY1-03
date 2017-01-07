@@ -7,6 +7,8 @@
  * If a copy of the MIT license was not distributed with this file. You can
  * obtain one at https://opensource.org/licenses/MIT
  *******************************************************************************/
+?>
+<?php
 define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit doet
 ?>
 <!DOCTYPE html>
