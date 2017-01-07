@@ -25,12 +25,11 @@
                                    <input type="date" name="begindatum" readonly required
 
                                    <?php
+                                   $jaar2 = $_SESSION["jaarnummer"];
+                                   $maand2 = $_SESSION["maandnummer"];
                                    // Als er een dag is geselecteerd in de kalender, wordt hij ingevuld in het formulier. Daarom ook een 'readonly'-veld, het kan niet worden aangepast.
                                    if (isset($_GET["dag"])) {
                                         $dag2 = $_GET["dag"];
-                                        $jaar2 = $_SESSION["jaarnummer"];
-                                        $maand2 = $_SESSION["maandnummer"];
-
                                         // Als de lengte van de dag of maand gelijk is aan 1 karakter, wordt er een 0 voor geplakt. Dit heeft te maken met de notitie van de datum.
                                         if (strlen($dag2) == 1) {
                                              $dag2 = 0 . $dag2;
@@ -40,14 +39,15 @@
                                         }
                                         $begindatum = date("Y-m-d", mktime(0,0,0, $maand2, $dag2, $jaar2));
                                    }
-                                   // Als er geen dag geselecteerd is, wordt aankomende zaterdag in het veld gezet
+                                   // Als er geen dag geselecteerd is, wordt aankomende zaterdag in het veld gezet.
                                    else {
                                         $aankomendeZaterdag = strtotime('next saturday', $date);
                                         $begindatum = date('Y-m-d', $aankomendeZaterdag);
+                                        $dag2 = date('d', $aankomendeZaterdag);
                                    }
 
                                    print("value=\"" . $begindatum . "\"");
-                                   // Variable 'begindatum'  wordt teruggezet naar oude notatie, voor het selecteren van einddatum
+                                   // Variable 'begindatum' wordt teruggezet naar oude notatie, voor het selecteren van einddatum.
                                    $begindatum = mktime(0,0,0, $maand2, $dag2, $jaar2);
                                    ?>
                                    class="form-control" id="inputdatum1">
@@ -62,6 +62,8 @@
                                    $einddatum = date('Y-m-d', $einddatum);
 
                                    print("value=\"" . $einddatum . "\"");
+                                   // Variable 'begindatum'  wordt teruggezet naar oude notatie, voor het ophalen uit database.
+                                   $begindatum = date("Y-m-d", mktime(0,0,0, $maand2, $dag2, $jaar2));
                                    ?>
                                    class="form-control" id="i5i">
                                    <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
