@@ -1,9 +1,9 @@
 <?php
 /**********************************************************************
-  Author : Ian Vredenburg
+  Authors : Carlo de Boer, Floris de Grip, Thijs Marschalk, Ralphine de Roo,
+            Sophie Roos, Ian Vredenburg
   Date   : 06/01/17
-  File   : beheerpaneel.php
-  Copryricht (C) 2017 MIT license
+  Copyright (C) 2017 MIT license
 *******************************************************************/
 define("toegang", true);
 ?>
