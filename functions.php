@@ -51,8 +51,6 @@ function laadContent($bestandsnaam, $taal, $admin = false){
     return $content;
 }
 
-
-
 // Laadt alle nieuwsbericht die bij de geselecteerde taal horen.
 function laadNieuws($id){
     $labels = nieuwsTaal();
@@ -64,36 +62,7 @@ function laadNieuws($id){
     $nieuws = $stmt->fetch();
     $pdo = null;
 
-    // return $content;
-                print("<div class='nieuwsitem'><div class='nieuwstijd'>{$labels[1]} {$nieuws['posted']}</div><h3 class='nieuwstitel'>{$nieuws['title']}</h3><p class='nieuwsbody'>{$nieuws['bodytext']}</p> </div>");
-
-                        // print("{$nieuws['title']}     {$nieuws['posted']} <br><br> {$nieuws['bodytext']} <br><br><br>");
-
-}
-
-// werkt nog niet, is alleen een begin
-function toevoegen($pdo, $naam, $weeknr) {
-    $stmt = $pdo->prepare("INSERT INTO klantenbestand VALUES (?,?)");
-    $stmt->execute(array($naam, $weeknr));
-}
-
-// Wordt niet meer gebruikt?
-function toevoegenContent($titel, $pagina, $taal, $inhoud, $eigenaar) {
-    $pdo = newPDO();
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $succes = true;
-
-    $stmt = $pdo->prepare("INSERT INTO content (title, bodytext, owner, lang, pagina)
-                            VALUES (?,?,?,?,?)");
-    // moet nog uitbebreid worden
-    try {
-        $stmt->execute(array($titel, $inhoud, $eigenaar, $taal, $pagina));
-    }
-    catch (PDOException $e){
-    }
-
-    $pdo = null;
-    return $succes;
+    print("<div class='nieuwsitem'><div class='nieuwstijd'>{$labels[1]} {$nieuws['posted']}</div><h3 class='nieuwstitel'>{$nieuws['title']}</h3><p class='nieuwsbody'>{$nieuws['bodytext']}</p> </div>");
 }
 
 function editContent($pagina, $taal, $titel, $inhoud, $eigenaar){
@@ -113,36 +82,6 @@ function editContent($pagina, $taal, $titel, $inhoud, $eigenaar){
     }
     $pdo=NULL;
     return $succes;
-}
-
-function opvragen($pdo, $kolom, $tabel, $where, $arg) {
-    $aantalArg = str_repeat("?,", (count($kolom)-1)) . "?";
-
-    if ($where = ""){
-        $stmt = $pdo->prepare("SELECT :kolom FROM :tabel");
-    }
-    else {
-        $stmt = $pdo->prepare("SELECT :kolom FROM :tabel WHERE :whereKolom = :arg");
-    }
-    $sth->bindParam(':kolom', $aantalArg, PDO::PARAM_STR, 12);
-    $sth->bindParam(':tabel', $tabel, PDO::PARAM_STR, 12);
-    $stmt->execute();
-    while ($row = $stmt->fetch()) {
-        $voornaam = $row["voornaam"];
-        print ("<p>" . $voornaam . "</p><br>");
-    }
-}
-
-// werkt nog niet, is alleen een begin
-function wijzigen($pdo, $veld, $waarde, $nieuweWaarde) {
-    $stmt = $pdo->prepare("UPDATE klantenbestand WHERE ? = ? SET ? = ?");
-    $stmt->execute(array($veld, $waarde, $veld, $nieuweWaarde));
-}
-
-// werkt nog niet, is alleen een begin
-function verwijderen($pdo, $naam, $weeknr) {
-    $stmt = $pdo->prepare("DELETE FROM klantenbestand VALUES naam = ? AND weeknr = ?");
-    $stmt->execute(array($naam, $weeknr));
 }
 
 // Vraagt de bijbehorende gegevens op van de gebruikersnaam die de gebruiker heeft
