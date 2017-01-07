@@ -92,16 +92,13 @@ function nieuwsTaal(){
 function boekenTaal() {
      $taal = selecteerTaal();
      if ($taal == "NLD"){
-          $labels = ["Boeken", "Begindatum", "Einddatum", "Aantal personen", "Vervoer van luchthaven Lissabon", "Vervoer naar luchthaven Lissabon", "Opmerkingen", "Vakantienaam",
-          "Klik in de kalender uw gewenste begindatum aan.", "Klik in de kalender uw gewenste einddatum aan.", "Deze naam gebruikt u later om uw reisgegevens in te zien. Deze gegevens zou u ook eventueel kunnen delen met reisgenoten.",
+          $labels = ["Boeken", "Begindatum", "Klik in de kalender uw gewenste begindatum aan.", "Einddatum", "Klik in de kalender uw gewenste einddatum aan.", "Aantal personen", "Geen motoren beschikbaar", "Vervoer van luchthaven Lissabon", "Ja", "Nee", "Vervoer naar luchthaven Lissabon", "Ja", "Nee", "Opmerkingen", "Vakantienaam", "Deze naam gebruikt u later om uw reisgegevens in te zien. Deze gegevens zou u ook eventueel kunnen delen met reisgenoten.",
           "Volgende"];
      } elseif ($taal == "ENG"){
-          $labels = ["Boeken", "Begindatum", "Einddatum", "Aantal personen", "Vervoer van luchthaven Lissabon", "Vervoer naar luchthaven Lissabon", "Opmerkingen", "Vakantienaam",
-          "Klik in de kalender uw gewenste begindatum aan.", "Klik in de kalender uw gewenste einddatum aan.", "Deze naam gebruikt u later om uw reisgegevens in te zien. Deze gegevens zou u ook eventueel kunnen delen met reisgenoten.",
+          $labels = ["Book", "Starting date", "Select in the calendar your preffered starting date.", "Enddate", "Select in the calendar your preffered end date.", "Number of person", "No motercybles available", "Transport of airport Lissabon", "Yes", "No","Transport to airport Lissabon", "Yes", "No","Comments", "???", "This name can be used to login to check your travel information. You can perhaps share this name with you travel partners.",
           "Volgende"];
      } elseif ($taal == "DEU"){
-          $labels = ["Boeken", "Begindatum", "Einddatum", "Aantal personen", "Vervoer van luchthaven Lissabon", "Vervoer naar luchthaven Lissabon", "Opmerkingen", "Vakantienaam",
-          "Klik in de kalender uw gewenste begindatum aan.", "Klik in de kalender uw gewenste einddatum aan.", "Deze naam gebruikt u later om uw reisgegevens in te zien. Deze gegevens zou u ook eventueel kunnen delen met reisgenoten.",
+          $labels = ["Boeken", "Begindatum", "Klik in de kalender uw gewenste begindatum aan.", "Einddatum", "Klik in de kalender uw gewenste einddatum aan.", "Aantal personen", "Vervoer van luchthaven Lissabon", "Vervoer naar luchthaven Lissabon", "Opmerkingen", "Vakantienaam", "Deze naam gebruikt u later om uw reisgegevens in te zien. Deze gegevens zou u ook eventueel kunnen delen met reisgenoten.",
           "Volgende"];
      }
      return $labels;
@@ -113,12 +110,12 @@ function boekenTaal2() {
      $taal = selecteerTaal();
      if ($taal == "NLD"){
           $labels = ["Gegevens", "Voornaam", "Voer hier uw voornaam in", "Achternaam", "Voer hier uw achternaam in", "Straatnaam", "Voer hier uw straatnaam in", "Huisnummer", "Voer hier uw huisnummer in", "Postcode", "Voer hier uw postcode in", "Woonplaats","Voer hier uw woonplaats in",  "Land","Voer hier uw land in",
-          "Geboortedatum", "Voer hier uw geboortedatum in", "Telefoonnummer", "Voer hier uw telefoonnummer in", "E-mailadres", "Voer hier uw e-mailadres in", "Kledingmaat", "Anders", "Schoenmaat", "Anders", "Bijzonderheden", "Hiermee kunt u aangeven welke allergieën of ziektes u heeft, zodat daar rekening mee kan worden gehouden.",
+          "Geboortedatum", "Voer hier uw geboortedatum in", "Telefoonnummer", "Voer hier uw telefoonnummer in", "E-mailadres", "Voer hier uw e-mailadres in", "Kledingmaat", "Anders", "Schoenmaat", "Anders", "Ziekten en allergieën", "Hier kunt u aangeven of u allergieën of ziektes heeft, zodat daar rekening mee kan worden gehouden.",
           "Volgende"];
      } elseif ($taal == "ENG"){
-          $labels = ["Gegevens", "Voornaam", "Voer hier uw voornaam in", "Achternaam", "Voer hier uw achternaam in", "Straatnaam", "Voer hier uw straatnaam in", "Huisnummer", "Voer hier uw huisnummer in", "Postcode", "Voer hier uw postcode in", "Woonplaats","Voer hier uw woonplaats in",  "Land","Voer hier uw land in",
-          "Geboortedatum", "Voer hier uw geboortedatum in", "Telefoonnummer", "Voer hier uw telefoonnummer in", "E-mailadres", "Voer hier uw e-mailadres in", "Kledingmaat", "Anders", "Schoenmaat", "Anders", "Bijzonderheden", "Hiermee kunt u aangeven welke allergieën of ziektes u heeft, zodat daar rekening mee kan worden gehouden.",
-          "Volgende"];
+          $labels = ["Personal information", "First name", "Enter your first name", "Surname", "Enter your surname", "Street", "Enter the name of your street", "House number", "Enter your house number", "ZIP code", "Enter your ZIP code", "City", "Enter your city", "Country","Enter your country",
+          "Date of birth", "Enter your date of birth", "Telephone number", "Enter your telephone number", "E-mail address", "Enter you e-mail address", "Size", "Else", "Shoe size", "Else", "Diseases and allergies", "Enter whether you have any allergies or diseases, so that can be taken into account.",
+          "Next"];
      } elseif ($taal == "DEU"){
           $labels = ["Gegevens", "Voornaam", "Voer hier uw voornaam in", "Achternaam", "Voer hier uw achternaam in", "Straatnaam", "Voer hier uw straatnaam in", "Huisnummer", "Voer hier uw huisnummer in", "Postcode", "Voer hier uw postcode in", "Woonplaats","Voer hier uw woonplaats in",  "Land","Voer hier uw land in",
           "Geboortedatum", "Voer hier uw geboortedatum in", "Telefoonnummer", "Voer hier uw telefoonnummer in", "E-mailadres", "Voer hier uw e-mailadres in", "Kledingmaat", "Anders", "Schoenmaat", "Anders", "Bijzonderheden", "Hiermee kunt u aangeven welke allergieën of ziektes u heeft, zodat daar rekening mee kan worden gehouden.",
@@ -136,9 +133,9 @@ function boekenTaal3() {
           "Persoonlijke gegevens", "Persoon ", "Voornaam", "Achternaam", "Adres", "Postcode", "Woonplaats", "Land", "Geboortedatum", "Telefoonnummer", "E-mailadres", "Kledingmaat", "Schoenmaat", "Bijzonderheden",
           "Afronden"];
      } elseif ($taal == "ENG"){
-          $labels = ["Reisgegevens van ", "Begindatum", "Einddatum", "Aantal personen", "Vervoer van luchthaven Lissabon", "Vervoer naar luchthaven Lissabon", "Opmerkingen", "Vakantienaam",
-          "Persoonlijke gegevens", "Persoon ", "Voornaam", "Achternaam", "Adres", "Postcode", "Woonplaats", "Land", "Geboortedatum", "Telefoonnummer", "E-mailadres", "Kledingmaat", "Schoenmaat", "Bijzonderheden",
-          "Afronden"];
+          $labels = ["Travel information of ", "Starting date", "End date", "Number of person", "Transport of airport Lissabon", "Transport to airport Lissabon", "Comments", "Name for your trip",
+          "Personal information", "Person ", "First name", "Firstname", "Surname", "Address", "ZIP code", "City", "Country", "Date of birth", "Telephone number", "E-mail address", "Size", "Shoe size", "Diseases and allergies",
+          "Complete"];
      } elseif ($taal == "DEU"){
           $labels = ["Reisgegevens van ", "Begindatum", "Einddatum", "Aantal personen", "Vervoer van luchthaven Lissabon", "Vervoer naar luchthaven Lissabon", "Opmerkingen", "Vakantienaam",
           "Persoonlijke gegevens", "Persoon ", "Voornaam", "Achternaam", "Adres", "Postcode", "Woonplaats", "Land", "Geboortedatum", "Telefoonnummer", "E-mailadres", "Kledingmaat", "Schoenmaat", "Bijzonderheden",
@@ -155,9 +152,9 @@ function boekenTaal4() {
      if ($taal == "NLD"){
           $labels = ["Uw boeking is succesvol verwerkt.<br>U kunt ", "hier ", "uw reisinformatie inzien met uw ingevoerde vakantienaam: ", " en weeknummer: "];
      } elseif ($taal == "ENG"){
-          $labels = ["Travel information request"];
+          $labels = ["Your reservation has been processed successfully.<br>You can check you travel information ", "here ", "with the name you gave to your trip: ", " and the number of the week: "];
      } elseif ($taal == "DEU"){
-          $labels = ["Reiseinformationen aufrufen"];
+          $labels = ["Uw boeking is succesvol verwerkt.<br>U kunt ", "hier ", "uw reisinformatie inzien met uw ingevoerde vakantienaam: ", " en weeknummer: "];
      }
      return $labels;
 }
@@ -168,11 +165,14 @@ function agendaTaal() {
      $taal = selecteerTaal();
      if ($taal == "NLD"){
           $labels = ["Vorige", "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December", "Volgende",
-     "Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"];
+          "Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za", " motor(en) beschikbaar"];
      } elseif ($taal == "ENG"){
-          $labels = ["Travel information request"];
+          $labels = ["Previous", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Next",
+          "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", " motorcycle(s) available"];
      } elseif ($taal == "DEU"){
-          $labels = ["Reiseinformationen aufrufen"];
+          $labels = ["Vorige", "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December", "Volgende",
+          "Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za",
+          " motorcycle(s) available"];
      }
      return $labels;
 }

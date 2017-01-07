@@ -15,74 +15,59 @@
                     <h2><?php print $labels[0]; ?></h2>
                     <?php
                     include("admin/agenda/agendaVariabelen.php");
+                    $labels = boekenTaal();
+                    $j = 1;
                     ?>
                     <div class="col-md-4">
                          <form method="POST" action="boekengegevens.php" class="form-horizontal">
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label"><?php print $labels[1]; ?>*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="date" name="begindatum" readonly required
 
                                    <?php
+                                   // Als er een dag is geselecteerd in de kalender, wordt hij ingevuld in het formulier. Daarom ook een 'readonly'-veld, het kan niet worden aangepast.
                                    if (isset($_GET["dag"])) {
                                         $dag2 = $_GET["dag"];
                                         $jaar2 = $_SESSION["jaarnummer"];
                                         $maand2 = $_SESSION["maandnummer"];
 
+                                        // Als de lengte van de dag of maand gelijk is aan 1 karakter, wordt er een 0 voor geplakt. Dit heeft te maken met de notitie van de datum.
                                         if (strlen($dag2) == 1) {
                                              $dag2 = 0 . $dag2;
                                         }
                                         if (strlen($maand2) == 1) {
                                              $maand2 = 0 . $maand2;
                                         }
-                                   } else {
-                                        $aankomendeZaterdag = strtotime('next saturday', $date);
-
-                                        $dag2 = date('d', $aankomendeZaterdag);
-                                        $maand2 = date('m', $aankomendeZaterdag);
-                                        $jaar2 = date('Y', $aankomendeZaterdag);
+                                        $begindatum = date("Y-m-d", mktime(0,0,0, $maand2, $dag2, $jaar2));
                                    }
-                                   $begindatum = $jaar2 . "-" . $maand2 . "-" . $dag2;
+                                   // Als er geen dag geselecteerd is, wordt aankomende zaterdag in het veld gezet
+                                   else {
+                                        $aankomendeZaterdag = strtotime('next saturday', $date);
+                                        $begindatum = date('Y-m-d', $aankomendeZaterdag);
+                                   }
+
                                    print("value=\"" . $begindatum . "\"");
+                                   // Variable 'begindatum'  wordt teruggezet naar oude notatie, voor het selecteren van einddatum
+                                   $begindatum = mktime(0,0,0, $maand2, $dag2, $jaar2);
                                    ?>
                                    class="form-control" id="inputdatum1">
-                                   <span class="help-block"><?php print $labels[8]; ?></span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
-
-
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label"><?php print $labels[2]; ?>*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="date" name="einddatum" readonly required
                                    <?php
-                                   $dag3 = $dag2 + 6;
+                                   // Variabele 'einddatum' is zes dagen groter dan de begindatum.
+                                   $einddatum = strtotime('+ 6 days', $begindatum);
+                                   $einddatum = date('Y-m-d', $einddatum);
 
-                                   if ($dag3 > $daysInMonth) {
-                                        $dag3 = $dag3 - $daysInMonth;
-                                        $maand3 = $maand2 + 1;
-                                   } else {
-                                        $maand3 = $maand2;
-                                   }
-
-                                   if ($maand3 > 12) {
-                                        $jaar3 = $jaar + 1;
-                                        $maand3 = 1;
-                                   } else {
-                                        $jaar3 = $jaar2;
-                                   }
-
-                                   if (strlen($dag3) == 1) {
-                                        $dag3 = 0 . $dag3;
-                                   }
-                                   if (strlen($maand3) == 1) {
-                                        $maand3 = 0 . $maand3;
-                                   }
-
-                                   print("value=\"" . $jaar3 . "-" . $maand3 . "-" . $dag3 . "\"");
+                                   print("value=\"" . $einddatum . "\"");
                                    ?>
                                    class="form-control" id="i5i">
-                                   <span class="help-block"><?php print $labels[8]; ?></span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label"><?php print $labels[3]; ?>*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <?php
 
                                    $stmt7 = $pdo->prepare("SELECT aantal FROM reserveringen WHERE begindatum = ?");
@@ -94,7 +79,8 @@
                                    }
                                    $aantalBeschikbaar = $aantalMotoren - $aantalNietBeschikbaar;
                                    if($aantalBeschikbaar <= 0) {
-                                        print("<input type='text' class='form-control' disabled='' value='Geen motoren beschikbaar'>");
+                                        print("<input type='text' class='form-control' disabled='' value='" . $labels[$j] . "'>");
+                                        $j++;
                                    } else {
                                         ?>
                                         <select id="s1" class="form-control" name="aantalPersonen">
@@ -105,50 +91,51 @@
                                              ?>
                                         </select>
                                         <?php
+                                        $j++;
                                    }
                                    ?>
 
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label"><?php print $labels[4]; ?>*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <div class="radio">
                                         <label>
-                                             <input type="radio" name="vervoerHeen" value="1" checked> Ja
+                                             <input type="radio" name="vervoerHeen" value="1" checked> <?php print($labels[$j]); $j++; ?>
                                         </label>
                                    </div>
                                    <div class="radio">
                                         <label>
-                                             <input type="radio" name="vervoerHeen" value="0"> Nee
+                                             <input type="radio" name="vervoerHeen" value="0"> <?php print($labels[$j]); $j++; ?>
                                         </label>
                                    </div>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label"><?php print $labels[5]; ?>*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <div class="radio">
                                         <label>
-                                             <input type="radio" name="vervoerTerug" value="1" checked> Ja
+                                             <input type="radio" name="vervoerTerug" value="1" checked> <?php print($labels[$j]); $j++; ?>
                                         </label>
                                    </div>
                                    <div class="radio">
                                         <label>
-                                             <input type="radio" name="vervoerTerug" value="0"> Nee
+                                             <input type="radio" name="vervoerTerug" value="0"> <?php print($labels[$j]); $j++; ?>
                                         </label>
                                    </div>
                               </div>
 
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label"><?php print $labels[6]; ?></label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?></label>
                                    <textarea name="opmerkingen" class="form-control"></textarea>
                               </div>
                               <div class="form-group label-static is-empty">
-                                   <label for="i5i" class="control-label"><?php print $labels[7]; ?>*</label>
+                                   <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                                    <input type="text" name="vakantienaam" class="form-control" id="i5i" required>
-                                   <span class="help-block"><?php print $labels[10]; ?></span>
+                                   <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
                               <div class="form-group label-static is-empty">
                                    <input type="submit" name="volgende" <?php if($aantalBeschikbaar <= 0) {
                                         print("disabled=''");
-                                   }?> value="<?php print $labels[11]; ?>" class="btn btn-raised btn-primary">
+                                   }?> value="<?php print($labels[$j]); $j++; ?>" class="btn btn-raised btn-primary">
                               </div>
                          </form>
                     </div>
