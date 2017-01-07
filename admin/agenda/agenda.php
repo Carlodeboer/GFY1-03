@@ -4,12 +4,14 @@
                <th colspan="7">
                     <form method="POST">
                          <div class="col-md-2">
-                              <input type="submit" name="vorige" value="<?php print($labels[$j]); ?>" class="btn btn-raised btn-primary">
+                              <?php $labels = agendaTaal(); ?>
+                              <input type="submit" name="vorige" value="<?php print($labels[0]); ?>" class="btn btn-raised btn-primary">
                          </div>
                          <div class="col-md-6">
                               <?php
-                                   $maand = ltrim($maand, "0");
-                                   print($labels[$maand] . " " . $jaar); ?>
+
+                              $maand = ltrim($maand, "0");
+                              print($labels[$maand] . " " . $jaar);?>
                          </div>
                          <div class="col-md-2">
                               <input type="submit" name="volgende" value="<?php print($labels[13]); ?>" class="btn btn-raised btn-primary">
@@ -19,10 +21,10 @@
           </tr>
           <tr>
                <?php
-               $j = 14;
+               $k = 14;
                foreach ($weekDays as $key => $weekDay) {
-                    print("<td class='text-center text-primary'><strong>" . $labels[$j] . "</strong></td>");
-                    $j++;
+                    print("<td class='text-center text-primary'><strong>" . $labels[$k] . "</strong></td>");
+                    $k++;
                }
                ?>
           </tr>
@@ -44,7 +46,7 @@
                               if (isset($_SESSION['admin_session'])) {
                                    print ($objArray[$i . "omschrijving"]);
                               }
-                              print ("<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
+                              print ("<br>" . $objArray[$i . "uitval"] . $labels[$k]);
                          }
                          print ("</td>");
                     }
@@ -59,7 +61,7 @@
                               if (isset($_SESSION['admin_session'])) {
                                    print (": " . $objArray[$i . "omschrijving"]);
                               }
-                              print ("<br>" . $objArray[$i . "uitval"] . " motor(en) beschikbaar");
+                              print ("<br>" . $objArray[$i . "uitval"] . " $labels[$k]");
                          }
                          print ("</a></td></tr><tr>");
                     }

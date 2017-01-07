@@ -1,6 +1,5 @@
 <?php
-$labels = agendaTaal();
-$j = 0;
+
 $pdo = newPDO();
 date_default_timezone_set("Europe/Amsterdam");
 $date = strtotime(date("Y-m-d"));
