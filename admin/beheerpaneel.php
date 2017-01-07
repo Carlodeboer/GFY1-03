@@ -7,14 +7,6 @@
  * If a copy of the MIT license was not distributed with this file. You can
  * obtain one at https://opensource.org/licenses/MIT
  *******************************************************************************/
-?>
-<?php
-/**********************************************************************
-  Authors : Carlo de Boer, Floris de Grip, Thijs Marschalk, Ralphine de Roo,
-            Sophie Roos, Ian Vredenburg
-  Date   : 06/01/17
-  Copyright (C) 2017 MIT license
-*******************************************************************/
 define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit doet
 ?>
 <!DOCTYPE html>
