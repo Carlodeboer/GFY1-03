@@ -9,6 +9,7 @@
  *******************************************************************************/
 ?>
 <?php
+// Vernietigt alle sessies en stuurt de gebruiker terug naar de thuispagina/
 session_start();
 session_unset();
 session_destroy();

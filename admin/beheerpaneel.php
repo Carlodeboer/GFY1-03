@@ -90,7 +90,7 @@ define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit 
                          $_SESSION['paginaEdit'] = $_GET['pagina'];
                          $_SESSION['taalEdit'] = $_GET['taal'];
                          $content = laadContent($_SESSION['paginaEdit'], $_SESSION['taalEdit'], true);
-                         include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/moetnogeennaamverzinnen.php';
+                         include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentformulier.php';
                     }
                     // Controleert of de gebruiker in 'berichtopvraagsubmit' een email-adres heeft
                     // geselecteerd die hij wil bewerken. Zo ja, dan worden de bijbehorende
