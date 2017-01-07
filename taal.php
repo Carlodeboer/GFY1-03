@@ -45,6 +45,8 @@ function contactformulierTaal(){
      return $labels;
 }
 
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor de galerij.
 function galerijTaal(){
      $taal = selecteerTaal();
      if ($taal == "NLD"){
@@ -57,6 +59,8 @@ function galerijTaal(){
      return $labels;
 }
 
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor het loginformulier voor klanten.
 function loginTaal(){
      $taal = selecteerTaal();
      if ($taal == "NLD"){
@@ -69,6 +73,8 @@ function loginTaal(){
      return $labels;
 }
 
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor de nieuwsberichten.
 function nieuwsTaal(){
      $taal = selecteerTaal();
      if ($taal == "NLD"){
@@ -81,6 +87,8 @@ function nieuwsTaal(){
      return $labels;
 }
 
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor het eerste formulier om een reis te boeken.
 function boekenTaal() {
      $taal = selecteerTaal();
      if ($taal == "NLD"){
@@ -98,6 +106,9 @@ function boekenTaal() {
      }
      return $labels;
 }
+
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor het tweede formulier om een reis te boeken.
 function boekenTaal2() {
      $taal = selecteerTaal();
      if ($taal == "NLD"){
@@ -115,6 +126,9 @@ function boekenTaal2() {
      }
      return $labels;
 }
+
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor het derde formulier om een reis te boeken.
 function boekenTaal3() {
      $taal = selecteerTaal();
      if ($taal == "NLD"){
@@ -132,6 +146,10 @@ function boekenTaal3() {
      }
      return $labels;
 }
+
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor de bevestigingspagina die verschijnt
+// na het boeken van een reis.
 function boekenTaal4() {
      $taal = selecteerTaal();
      if ($taal == "NLD"){
@@ -143,6 +161,9 @@ function boekenTaal4() {
      }
      return $labels;
 }
+
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor de agenda.
 function agendaTaal() {
      $taal = selecteerTaal();
      if ($taal == "NLD"){

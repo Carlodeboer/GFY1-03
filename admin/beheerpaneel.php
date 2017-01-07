@@ -5,7 +5,7 @@
   Date   : 06/01/17
   Copyright (C) 2017 MIT license
 *******************************************************************/
-define("toegang", true);
+define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit doet
 ?>
 <!DOCTYPE html>
 <html>
