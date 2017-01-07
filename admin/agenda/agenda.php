@@ -4,21 +4,25 @@
                <th colspan="7">
                     <form method="POST">
                          <div class="col-md-2">
-                              <input type="submit" name="vorige" value="Vorige" class="btn btn-raised btn-primary">
+                              <input type="submit" name="vorige" value="<?php print($labels[$j]); ?>" class="btn btn-raised btn-primary">
                          </div>
                          <div class="col-md-6">
-                              <?php print("{$title} {$jaar}"); ?>
+                              <?php
+                                   $maand = ltrim($maand, "0");
+                                   print($labels[$maand] . " " . $jaar); ?>
                          </div>
                          <div class="col-md-2">
-                              <input type="submit" name="volgende" value="Volgende" class="btn btn-raised btn-primary">
+                              <input type="submit" name="volgende" value="<?php print($labels[13]); ?>" class="btn btn-raised btn-primary">
                          </div>
                     </form>
                </th>
           </tr>
           <tr>
                <?php
+               $j = 14;
                foreach ($weekDays as $key => $weekDay) {
-                    print("<td class='text-center'><b>" . $weekDay . "<b></td>");
+                    print("<td class='text-center text-primary'><strong>" . $labels[$j] . "</strong></td>");
+                    $j++;
                }
                ?>
           </tr>

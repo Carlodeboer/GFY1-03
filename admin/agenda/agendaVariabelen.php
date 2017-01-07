@@ -1,4 +1,6 @@
 <?php
+$labels = agendaTaal();
+$j = 0;
 $pdo = newPDO();
 date_default_timezone_set("Europe/Amsterdam");
 $date = strtotime(date("Y-m-d"));
@@ -33,7 +35,6 @@ $maand = $_SESSION['maandnummer'];
 $jaar = $_SESSION['jaarnummer'];
 
 $firstDay = mktime(0, 0, 0, $maand, 1, $jaar);
-$title = strftime('%B', $firstDay);
 $dayOfWeek = date('D', $firstDay);
 $daysInMonth = cal_days_in_month(0, $maand, $jaar);
 
@@ -77,7 +78,7 @@ while ($row5 = $stmt5->fetch()) {
      if ($maand2 != $_SESSION["maandnummer"]) {
           $begindag = 1;
      }
-     $stmt6 = $pdo->prepare("SELECT omschrijving FROM blokkade WHERE begindatum = ? ORDER BY idReservering DESC");
+     $stmt6 = $pdo->prepare("SELECT omschrijving FROM blokkade WHERE begindatum = ? AND uitval > 0 ORDER BY idReservering DESC");
      $stmt6->execute(array($row5["begindatum"]));
      $row6 = $stmt6->fetch();
 
@@ -89,10 +90,7 @@ while ($row5 = $stmt5->fetch()) {
                     $objArray[$i . "uitval"] = $aantalMotoren - $uitval;
                }
                if (!isset($objArray[$i . "omschrijving"])) {
-                    if($uitval > 0) {
-                         $objArray[$i . "omschrijving"] = $row6['omschrijving'];
-                    }
-
+                    $objArray[$i . "omschrijving"] = $row6['omschrijving'];
                }
                if (!isset($objArray[$i . "omschrijving"])) {
                     $objArray[$i . "omschrijving"] = "Boeking";

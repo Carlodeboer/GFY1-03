@@ -56,8 +56,8 @@
 
                               ?><?php print($labels[$j]); $j++; ?><a href="login.php"><?php print($labels[$j]); $j++; ?></a>
                                    <?php print($labels[$j]); $j++;
-                                   print("<b>" . $vakantienaam . "</b>");?><?php print($labels[$j]); $j++; ?><?php
-                                   print("<b>" . $weekjaar . "</b>.");
+                                   print("<p class='text-primary'>" . $vakantienaam . "</p>");?><?php print($labels[$j]); $j++; ?><?php
+                                   print("<p class='text-primary'>" . $weekjaar . "</p>.");
 
                                    for($i = 1; $i <= $aantalPersonen; $i++) {
                                         $email_to = ${"email" . $i};

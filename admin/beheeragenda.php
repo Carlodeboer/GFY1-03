@@ -213,7 +213,9 @@
                               ?>
 
                     </div>
-                    <input class="btn btn-raised btn-warning" type="submit" name="verwijderenBlokkade" value="Verzenden">
+                    <input class="btn btn-raised btn-warning" type="submit" name="verwijderenBlokkade" value="Verzenden"  <?php if($aantalNietBeschikbaar <= 0) {
+                         print("disabled=''");
+                    }?> >
                </form>
                <?php
           } else {
@@ -318,10 +320,14 @@
                     </div>
                     <div class="form-group control-label label-static is-empty">
                          <label for="i5i" class="control-label">Omschrijving</label>
-                              <input type="text" name="omschrijving" class="form-control">
+                              <input type="text" name="omschrijving" class="form-control" <?php if($aantalBeschikbaar <= 0) {
+                                   print("disabled=''");
+                              }?> >
                     </div>
                     <!-- <div class="form-group control-label label-static is-empty"> -->
-                    <input class="btn btn-raised btn-primary" type="submit" name="verzendenBlokkade" value="Verzenden">
+                    <input class="btn btn-raised btn-primary" type="submit" name="verzendenBlokkade" value="Verzenden" <?php if($aantalBeschikbaar <= 0) {
+                         print("disabled=''");
+                    }?> >
                     <!-- </div> -->
                </form>
                <?php

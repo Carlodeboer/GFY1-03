@@ -143,4 +143,16 @@ function boekenTaal4() {
      }
      return $labels;
 }
+function agendaTaal() {
+     $taal = selecteerTaal();
+     if ($taal == "NLD"){
+          $labels = ["Vorige", "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December", "Volgende",
+     "Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"];
+     } elseif ($taal == "ENG"){
+          $labels = ["Travel information request"];
+     } elseif ($taal == "DEU"){
+          $labels = ["Reiseinformationen aufrufen"];
+     }
+     return $labels;
+}
 ?>
