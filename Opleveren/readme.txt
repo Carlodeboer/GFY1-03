@@ -1,2 +1,16 @@
-MichaelM
-ocp2017
+Deze readme geeft informatie over de bestanden voor ons groepsproject
+
+Groep:		GFY01-3
+Projectnaam: 	Offroad Compas Portugal
+Groepsleden:	Sophie Roos
+		Ralphine de Roo
+		Floris de Grip
+		Thijs Marschalk		
+		Ian Vredenburg
+		Carlo de Boer
+
+Alle op te leveren bestanden staan gesorteerd in deze map.		
+
+Inloggen op het CMS kan met behulp van de volgende logingegevens:
+Username:	MichaelM
+Password:	ocp2017
