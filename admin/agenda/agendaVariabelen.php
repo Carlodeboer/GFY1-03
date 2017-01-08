@@ -14,15 +14,15 @@ $pdo = newPDO();
 date_default_timezone_set("Europe/Amsterdam");
 $date = strtotime(date("Y-m-d"));
 $day = date('d', $date);
-
+//Jaarnummer definiëren
 if (!isset($_SESSION['jaarnummer'])) {
      $_SESSION['jaarnummer'] = date('Y', $date);
 }
-
+//Maandnummer definiëren
 if (!isset($_SESSION['maandnummer'])) {
      $_SESSION['maandnummer'] = date('m', $date);
 }
-
+//Volgende maand weergeven
 if (isset($_POST['volgende'])) {
      unset($_GET["dag"]);
      ++$_SESSION['maandnummer'];
@@ -31,7 +31,7 @@ if (isset($_POST['volgende'])) {
           $_SESSION['jaarnummer']++;
      }
 }
-
+//Vorige maand weergeven
 if (isset($_POST['vorige'])) {
      unset($_GET["dag"]);
      --$_SESSION['maandnummer'];
@@ -43,6 +43,7 @@ if (isset($_POST['vorige'])) {
 $maand = $_SESSION['maandnummer'];
 $jaar = $_SESSION['jaarnummer'];
 
+//Kijken welke dag bij welke datum hoort, varibele voor aantal dagen in een maand definiëren
 $firstDay = mktime(0, 0, 0, $maand, 1, $jaar);
 $dayOfWeek = date('D', $firstDay);
 $daysInMonth = cal_days_in_month(0, $maand, $jaar);

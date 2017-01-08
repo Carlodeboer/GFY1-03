@@ -14,6 +14,7 @@
                <th colspan="7">
                     <form method="POST">
                          <div class="col-md-2">
+                         <!-- agenda in verschillende talen weergeven -->
                               <?php $labels = agendaTaal(); ?>
                               <input type="submit" name="vorige" value="<?php print($labels[0]); ?>" class="btn btn-raised btn-primary">
                          </div>
@@ -60,6 +61,7 @@
                          }
                          print ("</td>");
                     }
+                    //Als de beheerder is ingelogd, wordt de agenda in het beheerpaneel geopend wanneer er op een zaterdag geklikt wordt.
                     if (($i + $blank) % 7 == 0) {
                          if (isset($_SESSION['admin_session'])) {
                               print ("<td><a href='http://" . $_SERVER['HTTP_HOST'] . "/GFY1-03/admin/beheerpaneel.php?beheer=Agenda&dag={$i}'>");
