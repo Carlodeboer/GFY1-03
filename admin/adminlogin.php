@@ -20,8 +20,7 @@
         <div id="container">
             <div id="content">
                 <div id="contentwrapper">
-                  <h2>Beheerder login</h2>
-
+                    <h2>Beheerder login</h2>
                     <?php
                     // Controleert of de gebruiker al is ingelogd als admin. Zo ja,
                     // dan wordt de gebruiker meteen doorverwezen naar het beheerpaneel.
@@ -33,7 +32,7 @@
                     } elseif (isset($_POST['naam'])) {
                         $check = checkLogin($_POST['naam'], $_POST['wachtwoord']);
                         $_SESSION['start'] = time();
-                        //$_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
+                        $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
                         // Als dat het geval is, dan wordt gecontroleerd of het account
                         // ook de juiste rechten heeft om aan te melden als admin.
                         // Zo ja, dan logt de gebruiker in en wordt doorverwezen

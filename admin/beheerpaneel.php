@@ -51,36 +51,35 @@ define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit 
                          $_SESSION['beheer'] = $_GET['beheer'];
                          switch ($_GET['beheer']){
                               case "Content":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
-                              break;
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
+                                break;
                               case "Nieuws":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
-                              break;
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
+                                break;
                               case "Agenda":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/beheeragenda.php';
-                              break;
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/beheeragenda.php';
+                                break;
                               case "Boekingen":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraag.php';
-                              break;
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraag.php';
+                                break;
                               case "Boekingenopvragen":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraagscript.php';
-                              break;
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraagscript.php';
+                                break;
                               case "Afbeelding":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/uploadform.php';
-                              break;
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/uploadform.php';
+                                break;
                               case "Berichtopvraag":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
-                              break;
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
+                                break;
                               case "Nieuwsbewerken":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
-                              break;
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
+                                break;
                               case "Nieuw account":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwaccount.php';
-                              break;
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwaccount.php';
+                                break;
                               case "Instellingen":
-                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/instellingen.php';
-                              break;
-
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/instellingen.php';
+                                break;
                          }
                     }
                     // Controleert of de gebruiker in 'contentbeheer' een pagina heeft geselecteerd
@@ -96,7 +95,6 @@ define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit 
                     // geselecteerd die hij wil bewerken. Zo ja, dan worden de bijbehorende
                     // berichten geladen.
                     elseif (isset($_SESSION['beheer']) && isset($_POST['zoekBerichten'])) {
-
                          $_SESSION['email'] = $_POST['email'];
                          include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraag.php';
                     }
