@@ -40,34 +40,34 @@
                                 <div class="form-group label-static is-empty">
                                     <label for="inputvoornaam" class="control-label"><?php print $labels[1]; ?></label>
                                     <!-- <div class="col-md-10"> -->
-                                        <input type="text" name="first_name" class="form-control" id="inputvoornaam">
+                                        <input type="text" name="first_name" class="form-control" id="inputvoornaam" required>
                                     <!-- </div> -->
                                 </div>
 
                                 <div class="form-group label-static is-empty">
                                     <label for="inputachternaam" class="control-label"><?php print $labels[2]; ?></label>
 
-                                        <input type="text" name="last_name" class="form-control" id="inputachternaam">
+                                        <input type="text" name="last_name" class="form-control" id="inputachternaam" required>
 
                                 </div>
 
                                 <div class="form-group label-static is-empty">
                                     <label for="inputemail" class="control-label"><?php print $labels[4]; ?></label>
-                                        <input type="email" name="email" class="form-control" id="inputemail">
+                                        <input type="email" name="email" class="form-control" id="inputemail" required>
 
                                 </div>
 
                                 <div class="form-group label-static is-empty">
                                     <label for="inputtelefoon" class="control-label"><?php print $labels[5]; ?></label>
 
-                                        <input type="text" name="telephone" class="form-control" id="inputtelefoon">
+                                        <input type="text" name="telephone" class="form-control" id="inputtelefoon" required>
 
                                 </div>
 
                                 <div class="form-group label-static is-empty">
                                     <label for="inputonderwerp" class="control-label"><?php print $labels[3]; ?></label>
 
-                                        <input type="text" name="subject" class="form-control" id="inputachternaam">
+                                        <input type="text" name="subject" class="form-control" id="inputachternaam" required>
 
                                 </div>
 
@@ -75,7 +75,7 @@
                                     <label for="textArea" class="control-label"><?php print $labels[6]; ?></label>
 
 
-                                        <textarea class="form-control" name="comments" rows="3" id="textArea"></textarea>
+                                        <textarea class="form-control" name="comments" rows="3" id="textArea" required></textarea>
                                         <!-- <span class="help-block">Max 2000 characters.</span> -->
 
                                 </div>
