@@ -36,6 +36,7 @@
         </form>
     </table>
 	<?php
+	// Melding weergeven wanneer gebruiker succesvol is aangemaakt
 		if (isset($succes)){
 			print "<p>{$succes[1]}</p>";
 		}
