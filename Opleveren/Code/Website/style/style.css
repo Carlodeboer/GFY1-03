@@ -1,0 +1,333 @@
+/*******************************************************************************
+ * Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
+ * Ralphine de Roo, Sophie Roos and Ian Vredenburg
+ *
+ * This Source Code Form is subject to the terms of the MIT license.
+ * If a copy of the MIT license was not distributed with this file. You can
+ * obtain one at https://opensource.org/licenses/MIT
+ *******************************************************************************/
+
+/* hier worden Google Fonts ingeladen */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+body{
+    height:100%;
+    margin: 0;
+    padding:0;
+    overflow-x:hidden;
+}
+p,li,ul,h1,h2,h3,h4,h5,h6,table,form{
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    margin:0;
+    padding:0;
+}
+/* footer & header start */
+footer{
+    height:275px;
+    width:100%;
+    padding:25px 25px;
+    box-sizing: border-box;
+    color:#fafafa;
+    background: #404040 url(../images/tiretrack.png) left repeat-y;
+}
+#footerwrapper .col-md-4{
+padding-left:0;
+padding-right:0;
+}
+footer h4{
+  color: #fafafa;
+  float: left;
+  font-size:20px;
+}
+#contactgegevens{
+  margin-top:10px;
+  list-style: none;
+  list-style-type: none;
+  float: left;
+  clear: left;
+}
+#contactgegevens li{
+  line-height: 23px;
+}
+
+#footerwrapper{
+    position: relative;
+    margin:0 auto;
+    width: 1100px;
+}
+#container{
+    width: 100%;
+    margin:0 auto;
+    background:#fff;
+}
+#headerwrapper{
+    position: relative;
+    width: 1100px;
+    margin:0 auto;
+}
+#logo{
+  position: absolute;
+  z-index: 9999;
+  margin:40px 0 0 20px;
+  background: url(../images/logo.png);
+  width: 195px;
+  height:161px;
+}
+#banner a{
+  cursor: pointer;
+}
+#banner{
+    width: 100%;
+    height: 250px;
+    position:relative;
+}
+#talenknoppen{
+    float: right;
+    position:absolute;
+    right:0;
+    padding:5px;
+    z-index: 9999;
+}
+#NLD{background:url(../images/Netherlands.png);}
+#ENG{background:url(../images/United-Kingdom.png);}
+#DEU{background:url(../images/Germany.png);}
+
+.taalbutton{
+    background-color: #fff; /* Green */
+    border: none;
+    color: transparent;
+    padding: 0 5px;
+    width:32px;
+    height:26px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.taalbutton:hover{
+    opacity: 0.7;
+}
+#navbg{
+  position: absolute;
+  width: 200%;
+  margin-left:-50%;
+  background:#404040;
+  height: 40px;
+  z-index: 1;
+}
+nav{
+    position: relative;
+    z-index: 200;
+    max-width: 1100px;
+}
+nav ul{
+    margin: 0 auto;
+    padding:0;
+    width:1120px;
+}
+nav li{
+    white-space:nowrap;
+    list-style: none;
+    padding:0 62px;
+    line-height: 40px;
+    color: #fff;
+    transition: background-color 0.4s;
+    transition: color 0.3s;
+    float:left;
+    display: inline;
+}
+nav li:hover{
+    color:#000;
+    background-color:#fff;
+    transition: background-color 0.4s;
+}
+ul a{
+    text-decoration: none;
+    padding: 0;
+    margin:0;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline;
+}
+/* footer & header einde */
+#content{
+    position: relative;
+    background-color:#fff;
+    min-height:420px;
+    width:100%;
+    overflow-x: hidden;
+    padding:25px 25px;
+    box-sizing: border-box;
+
+}
+#contentwrapper{
+    position: relative;
+    margin: 0 auto;
+    width: 1100px;
+}
+#contentwrapper #klantlogin{
+  max-width:500px;
+}
+#content p{
+  padding: 15px 0;
+    padding: 15px 0;
+}
+#content h2{
+    padding:0 0 20px 0;
+}
+#calendar td, #calendar th, #calendar table {
+    border:2px solid #404040;
+}
+#calendar th {
+    text-align: center;
+    height:75px;
+    background-color:#404040;
+    font-size:40px;
+    color:#009688;
+}
+#calendar td {
+  text-align:center;
+  /*padding-left:10px;*/
+    width:150px;
+    height:75px;
+    background-color:white;
+}
+#test {
+    color:red;
+}
+.status0 {
+  color:yellow;
+}
+.status1 {
+  color:red;
+}
+.status2 {
+  color:green;
+}
+.status3 {
+  color:orange;
+}
+#nieuws {
+  width:100%;
+  padding:20px 0;
+}
+#nieuwsbewerken td, #nieuwsbewerken th {
+    padding:10px;
+}
+#nieuwsbewerken tr:hover {
+    background-color:lightgrey;
+}
+.nieuwsitem{
+  margin: 0 0 20px 0;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #bebebe;
+  }
+.nieuwstijd{
+  float: right;
+  font-size: 12px;
+  color: #999;
+  text-transform: lowercase;
+}
+.nieuwstitel{
+  float: left;
+}
+.nieuwsbody{
+  clear: both;
+}
+#nieuwslinks {
+    float:left;
+    width:800px;
+}
+.nieuwsberichtenbewerken tr td{
+  cursor: pointer;
+}
+#reisgegevens{
+  float:left;
+  max-width:700px;
+}
+#reispersonen{
+  float:right;
+}
+hr {
+    height: 1px;
+    color: grey;
+    background-color: grey;
+    border: none;
+}
+#accommodatie {
+     float:left;
+     max-width:660px;
+}
+#kaart {
+     float:right;
+}
+#contentwrapper > table:nth-child(3) > tbody > tr:nth-child(1) > td:nth-child(2){
+  width:50% !important;
+}
+/* buttons start*/
+.btn-default {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1.3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 15px 50px;
+}
+.btn-main {
+    /*background-color: #333;*/
+    /*  -webkit-border-radius: 5;
+      -moz-border-radius: 5;*/
+    /*border-radius: 5px;*/
+    color: #ffffff;
+    font-size: 14px;
+    background: #545454;
+    padding: 4px 10px 4px 10px;
+    text-decoration: none;
+    border: solid #545454 2px;
+    margin: 5px;
+}
+.btn-main:hover {
+    background: #54749b;
+    transition: all 0.3s ease 0s;
+    border: solid #54749b 2px;
+}
+.stip {
+    text-align: center;
+}
+.g-recaptcha{
+  float:left;
+}
+.contactformulierverzendenknop{
+  float:right;
+}
+/* buttons einde */
+
+/*galerij*/
+.galerij
+{
+    object-fit: cover;
+    width:272px;
+    height:200px;
+    box-shadow:0px 0px 20px #919191;
+    -moz-transform: scale(0.9);
+    -moz-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -ms-transition-duration: 0.3s;
+}
+.galerij:hover
+{
+    box-shadow: 7px 7px 20px #919191;
+    -moz-transform: scale(0.95);
+    -moz-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -webkit-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -ms-transition-duration: 0.3s;
+}
