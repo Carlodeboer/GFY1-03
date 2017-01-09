@@ -30,6 +30,8 @@
                 ?>
                 <div id="nieuws">
                     <?php
+                        // Vraagt alle nieuwsberichten die bij ge houdige taal
+                        // horen op.
                         $lang = selecteerTaal();
                         $labels = nieuwsTaal();
                         $stmt = $pdo->prepare("SELECT id FROM nieuwsbericht WHERE lang=?");
@@ -38,11 +40,13 @@
                         $results = array();
                         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+                        // Hier worden alle resultaten van de query in een array gezet
                         $nieuwearray = array();
                         foreach($results as $item) {
                             $nieuwearray[] = $item['id'];
                         }
 
+                        // Chronologische positionering nieuwsberichten
                         $stmt = $pdo->prepare("SELECT id, COUNT(lang) AS getal FROM nieuwsbericht WHERE lang=? ORDER BY lang");
                         $stmt->execute(array($lang));
 
