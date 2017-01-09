@@ -26,6 +26,7 @@
                     $labels = loginTaal();
                     ?>
                     <h2><?php print($labels[$j]); $j++; ?></h2>
+                    <!--  Klant kan hier inloggen, bij verzenden gaat de website naar andere pagina. -->
                     <form id="klantlogin" method="POST" action="loginreisinformatie.php">
                          <div class="form-group label-static is-empty">
                               <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>

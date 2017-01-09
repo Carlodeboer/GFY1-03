@@ -26,7 +26,7 @@
                     <?php
                     $j = 0;
                     $labels = boekenTaal3();
-
+                    // Voor elk persoon worden alle gegevens aan de array toegevoegd.
                     for ($i = 1; $i <= $_SESSION["klantGegevens"]["aantalPersonen"]; $i++) {
                          toevoegenAanArray("voornaam", "klantGegevens", $i);
                          toevoegenAanArray("achternaam", "klantGegevens", $i);
@@ -41,7 +41,7 @@
                          toevoegenAanArray("kledingmaat", "klantGegevens", $i);
                          toevoegenAanArray("schoenmaat", "klantGegevens", $i);
 
-
+                         // Als bijzonderheden zijn toegevoegd worden deze meegegeven aan de SESSION, ander NULL.
                          if (isset($_POST["bijzonderheden" . $i])) {
                               toevoegenAanArray("bijzonderheden", "klantGegevens", $i);
                          } else {
@@ -82,6 +82,7 @@
                               ?></td>
                          </tr>
                          <?php
+                         // Opmerkingen alleen getoond wanneer ingevuld.
                          if ($opmerkingen != NULL) {
                               print ("<tr><td>". $labels[$i]. ":</td><td>" . $opmerkingen . "</td></tr>");
                               $j++;
@@ -97,6 +98,7 @@
                               </tr>
                               <?php
                               for ($i = 1; $i <= $aantalPersonen; $i++) {
+                                   // $j opnieuw terug naar 13 voor verhalen van de labels.
                                    $j = 13;
                                    if ($aantalPersonen != 1) {
                                         ?>
@@ -144,13 +146,16 @@
                                         <td><?php print($labels[$j]); $j++; ?>:</td>
                                         <td><?php print(${"schoenmaat" . $i}); ?></td>
                                    </tr>
-                                   <?php if (${"bijzonderheden" . $i} != NULL) {
+                                   <?php
+                                   // Bijzonderheden worden alleen getoond wanneer ingevuld.
+                                   if (${"bijzonderheden" . $i} != NULL) {
                                         print ("<tr><td>". $labels[$j] . "</td><td>" . ${"bijzonderheden" . $i} . "</td></tr>");
                                         $j++;
                                    } else {
                                         $j++;
                                    }
                               }
+                              // Als de knop 'afronden' is aangeklikt, is de reis geboekt.
                               ?>
                               <tr>
                                    <td>

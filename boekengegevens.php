@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
- * Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
- * Ralphine de Roo, Sophie Roos and Ian Vredenburg
- *
- * This Source Code Form is subject to the terms of the MIT license.
- * If a copy of the MIT license was not distributed with this file. You can
- * obtain one at https://opensource.org/licenses/MIT
- *******************************************************************************/
+* Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
+* Ralphine de Roo, Sophie Roos and Ian Vredenburg
+*
+* This Source Code Form is subject to the terms of the MIT license.
+* If a copy of the MIT license was not distributed with this file. You can
+* obtain one at https://opensource.org/licenses/MIT
+*******************************************************************************/
 ?>
 <?php define("toegang", true); ?>
 <!DOCTYPE html>
@@ -131,18 +131,20 @@
                                         <option value="45">45</option>
                                         <option value="Anders"><?php print($labels[$j]); $j++; ?></option>
                                    </select>
-                                   </div>
+                              </div>
                               <div class="form-group label-static is-empty">
                                    <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?></label>
                                    <input type="text" name="bijzonderheden<?php print ($i); ?>" class="form-control" id="i5i">
                                    <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               </div>
-                              <?php } ?>
-                              <div class="form-group label-static is-empty">
-                                   <input type="submit" name="volgende" value="<?php print($labels[$j]); $j++; ?>" class="btn btn-raised btn-primary">
-                              </div>
-                         </form>
-                    </div>
+                              <?php
+                         }
+                         // Verknopknop
+                         ?>
+                         <div class="form-group label-static is-empty">
+                              <input type="submit" name="volgende" value="<?php print($labels[$j]);?>" class="btn btn-raised btn-primary">
+                         </div>
+                    </form>
                </div>
           </div>
           <?php include "footer.php"; ?>
