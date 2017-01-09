@@ -21,7 +21,7 @@
             <div id="content">
               <div id="contentwrapper">
                 <?php
-                $pdo = newPDO();
+
                 // Vraagt de pagina-inhoud met de juiste taal op via de functie
                 // laadContent en print dit vervolgens op de pagina.
                 $content = laadContent("","");
@@ -30,6 +30,7 @@
                 ?>
                 <div id="nieuws">
                     <?php
+                    $pdo = newPDO();
                         // Vraagt alle nieuwsberichten die bij ge houdige taal
                         // horen op.
                         $lang = selecteerTaal();

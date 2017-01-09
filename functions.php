@@ -43,11 +43,6 @@ function laadContent($bestandsnaam, $taal, $admin = false){
     $stmt->execute(array($pagina, $taal));
     $content = $stmt->fetch();
     $pdo = null;
-    if (!$admin) {
-        $content['title'] = htmlspecialchars($content['title'], ENT_QUOTES);
-        $content['bodytext'] = htmlentities($content['bodytext'], ENT_QUOTES);
-        $content['bodytext'] = str_replace(array("\r\n", "\n\r", "\r", "\n"), "<br>", $content['bodytext']);
-    }
     return $content;
 }
 
