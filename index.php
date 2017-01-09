@@ -22,9 +22,11 @@
               <div id="contentwrapper">
                 <?php
                 $pdo = newPDO();
-                    $content = laadContent("","");
-                    print "<h2>".$content['title']."</h2>";
-                    print "<p>".$content['bodytext']."</p>";
+                // Vraagt de pagina-inhoud met de juiste taal op via de functie
+                // laadContent en print dit vervolgens op de pagina.
+                $content = laadContent("","");
+                print "<h2>".$content['title']."</h2>";
+                print "<p>".$content['bodytext']."</p>";
                 ?>
                 <div id="nieuws">
                     <?php

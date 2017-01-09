@@ -22,7 +22,8 @@
                <div id="contentwrapper">
                     <div id="accommodatie">
                          <?php
-                         //include "functions.php";
+                         // Vraagt de pagina-inhoud met de juiste taal op via de functie
+                         // laadContent en print dit vervolgens op de pagina.
                          $content = laadContent("","");
                          print "<h2>".$content['title']."</h2>";
                          print "<p>".$content['bodytext']."</p>";
