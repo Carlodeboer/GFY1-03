@@ -29,7 +29,7 @@
                     $stmt2->execute(array($idKlant));
                     $stmt3 = $pdo->prepare("UPDATE reserveringen SET actief=0 WHERE idReservering=?");
                     $stmt3->execute(array($idReservering));
-                    $pdo->commit();
+                    $pdo->commit(); //als er op 'annuleren' wordt geklikt, wordt bij de tabellen boeking, gebruikers en reserveringen 'actief' op nul gezet
                     ?>
                     <script>
                     function popUpBevestigd() {
@@ -37,7 +37,7 @@
                     }
                     </script>
                     <span data-toggle=snackbar id="bevestigd" data-content="De boeking is geannuleerd."></span>
-                    <script>window.onload = popUpBevestigd;</script>
+                    <script>window.onload = popUpBevestigd;</script> <!--dit is de popup die aangeeft dat de boeking is geannuleerd-->
                     <?php
                }
                $pdo->beginTransaction();
@@ -75,7 +75,7 @@
 
                                    if ($betaling=="Niet betaald") {
                                         $betaling="<b>" . $betaling . "<b>";
-                                   } //betaling is dikgedrukt als hij niet bevestigd is
+                                   } //betaling is dikgedrukt als de boeking niet betaald is
 
                                    echo ("<tr>
 
@@ -92,6 +92,7 @@
                                                   <input type="hidden" name="idklant" value="<?php print($klantID)?>">
                                                   <input type="hidden" name="idReservering" value="<?php print($idReservering)?>">
                                                   <input type='submit' name='annuleren' value='Annuleren' class='btn btn-raised btn-warning' onclick="return confirm('Weet je het zeker?')">
+                                                  <!--als je op de knop 'annuleren' klikt, wordt er nog gevraagd 'weet je het zeker?'-->
                                              </form>
                                         </td>
                                         <?php

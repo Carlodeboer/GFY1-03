@@ -42,7 +42,7 @@
                          }
                          </script>
                          <span data-toggle=snackbar id="bevestigd" data-content="De boeking is bevestigd."></span>
-                         <script>window.onload = popUpBevestigd;</script>
+                         <script>window.onload = popUpBevestigd;</script><!--dit is de popup die aangeeft dat de boeking is bevestigd-->
                          <?php
                     }
 
@@ -58,7 +58,7 @@
                          }
                          </script>
                          <span data-toggle=snackbar id="bevestigd" data-content="De bevestiging van deze boeking is ongedaan gemaakt."></span>
-                         <script>window.onload = popUpBevestigd;</script>
+                         <script>window.onload = popUpBevestigd;</script><!--dit is de popup die aangeeft dat de bevestiging ongedaan is gemaakt-->
                          <?php
                     }
 
@@ -74,7 +74,7 @@
                          }
                          </script>
                          <span data-toggle=snackbar id="betaald" data-content="De boeking is betaald."></span>
-                         <script>window.onload = popUpBetaald;</script>
+                         <script>window.onload = popUpBetaald;</script><!--dit is de popup die aangeeft dat de boeking is betaald-->
                          <?php
                     }
 
@@ -90,7 +90,7 @@
                          }
                          </script>
                          <span data-toggle=snackbar id="betaald" data-content="De betaling van de boeking is ongedaan gemaakt."></span>
-                         <script>window.onload = popUpBetaald;</script>
+                         <script>window.onload = popUpBetaald;</script><!--dit is de popup die aangeeft dat de betaling is geannuleerd-->
                          <?php
                     }
 
