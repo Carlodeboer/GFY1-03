@@ -2,10 +2,10 @@
 -- version 4.0.10.17
 -- https://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jan 08, 2017 at 07:07 PM
--- Server version: 10.0.27-MariaDB-cll-lve
--- PHP Version: 5.6.28
+-- Machine: localhost
+-- Genereertijd: 09 jan 2017 om 08:22
+-- Serverversie: 10.0.27-MariaDB-cll-lve
+-- PHP-versie: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `carlodb_database`
+-- Databank: `carlodb_database`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blokkade`
+-- Tabelstructuur voor tabel `blokkade`
 --
 
 CREATE TABLE IF NOT EXISTS `blokkade` (
@@ -35,25 +35,16 @@ CREATE TABLE IF NOT EXISTS `blokkade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `blokkade`
+-- Gegevens worden uitgevoerd voor tabel `blokkade`
 --
 
 INSERT INTO `blokkade` (`idReservering`, `begindatum`, `uitval`, `omschrijving`) VALUES
-(119, '2017-01-21', 3, 'Kaasje'),
-(120, '2017-01-21', -3, 'Kaaaasje'),
-(125, '2017-01-21', 1, 'Kaasje'),
-(129, '2017-01-07', 0, 'Klotenkaas'),
-(142, '2017-02-04', 3, 'Kaasje'),
-(145, '2017-01-14', 1, 'Kaasssss'),
-(146, '2017-04-02', 1, 'Kas'),
-(147, '2017-04-02', 1, 'Kas'),
-(148, '2017-04-02', 1, 'Kas'),
-(149, '2017-02-04', -3, 'Kasplantje');
+(151, '2017-05-06', 4, 'Zomervakantie');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `boeking`
+-- Tabelstructuur voor tabel `boeking`
 --
 
 CREATE TABLE IF NOT EXISTS `boeking` (
@@ -70,27 +61,27 @@ CREATE TABLE IF NOT EXISTS `boeking` (
   `actief` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idKlant`),
   UNIQUE KEY `idReservering` (`idReservering`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2000312 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2000314 ;
 
 --
--- Dumping data for table `boeking`
+-- Gegevens worden uitgevoerd voor tabel `boeking`
 --
 
 INSERT INTO `boeking` (`idKlant`, `idReservering`, `begindatum`, `einddatum`, `aantalPersonen`, `vervoerHeen`, `vervoerTerug`, `opmerking`, `status`, `betaling`, `actief`) VALUES
 (2000252, 16, '2017-01-07', '2017-01-13', 2, 0, 1, 'i need a private jet to travel from portugal to australia and i want a really nice bed too and we are very tired if we arrive in portugal, so we want to watch tv when we''re on our room and we want to listen to music with a max of 200 decibel (i know tht''s very loud, but i have to)', 'Bevestigd', 'Betaald', 1),
-(2000270, 68, '2017-01-14', '2017-01-20', 1, 1, 1, 'ik ben blij', 'Bevestigd', 'Betaald', 0),
-(2000289, 101, '2017-03-11', '2017-03-17', 2, 1, 1, 'wij zijn heel blij', 'Niet bevestigd', 'Niet betaald', 1),
 (2000297, 110, '2017-02-18', '2017-02-24', 1, 1, 0, NULL, 'Niet bevestigd', 'Niet betaald', 1),
 (2000298, 111, '2017-02-11', '2017-02-17', 1, 1, 1, NULL, 'Niet bevestigd', 'Niet betaald', 1),
 (2000305, 136, '2017-01-07', '2017-01-13', 1, 1, 1, NULL, 'Niet bevestigd', 'Niet betaald', 0),
 (2000306, 137, '2017-01-07', '2017-01-13', 1, 1, 1, NULL, 'Niet bevestigd', 'Niet betaald', 0),
 (2000308, 139, '2017-01-28', '2017-02-03', 1, 1, 1, NULL, 'Niet bevestigd', 'Niet betaald', 1),
-(2000310, 141, '2017-01-14', '2017-01-20', 1, 1, 1, NULL, 'Bevestigd', 'Betaald', 1);
+(2000310, 141, '2017-01-14', '2017-01-20', 1, 1, 1, NULL, 'Bevestigd', 'Betaald', 1),
+(2000312, 152, '2017-04-15', '2017-04-21', 1, 1, 0, NULL, 'Niet bevestigd', 'Niet betaald', 1),
+(2000313, 153, '2017-04-15', '2017-04-21', 1, 1, 1, NULL, 'Niet bevestigd', 'Niet betaald', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contactformulier`
+-- Tabelstructuur voor tabel `contactformulier`
 --
 
 CREATE TABLE IF NOT EXISTS `contactformulier` (
@@ -98,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `contactformulier` (
   `voornaam` varchar(45) NOT NULL,
   `achternaam` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `telefoonnummer` text,
+  `telefoonnummer` varchar(25) DEFAULT NULL,
   `onderwerp` varchar(45) NOT NULL,
   `bericht` varchar(2000) NOT NULL,
   `datum` datetime NOT NULL,
@@ -106,21 +97,17 @@ CREATE TABLE IF NOT EXISTS `contactformulier` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
 
 --
--- Dumping data for table `contactformulier`
+-- Gegevens worden uitgevoerd voor tabel `contactformulier`
 --
 
 INSERT INTO `contactformulier` (`idbericht`, `voornaam`, `achternaam`, `email`, `telefoonnummer`, `onderwerp`, `bericht`, `datum`) VALUES
 (42, 'Pieter', 'de Bruin', 'sophie@famroos.nu', '06581964824', 'Vraagje', '"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."\r\n\r\n', '2016-12-22 14:55:25'),
-(43, 'Voornaam', 'achternaam', 'test@hotmail.com', '06123145123', 'testonderwerp', 'dit is een test', '2017-01-04 07:17:54'),
-(47, 'floris', 'de grip', 'floris_degrip@hotmail.com', '1241252351', 'dsflkjasdflhsdaf', 'kdsahfl;sdhfl;asdhf', '2017-01-04 15:18:15'),
-(48, 'a', 'a', 'a@b.nl', 'aaa', 'aaa', 'aaa', '2017-01-06 12:42:25'),
-(49, 'hoi', 'hoi', 'hoi@gmail.com', '823465293874', 'hadf', 'hoi', '2017-01-06 13:13:46'),
-(50, 'asdfasdf', 'asdfadsf', 'asdfdsafsadf@dasf.nl', 'asdfsadf', 'asdfasdf', 'asfdsaf', '2017-01-08 14:10:39');
+(43, 'Voornaam', 'Achternaam', 'Thijs@hotmail.com', '06123145123', 'Onderwerp', '"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."\n\n', '2017-01-04 07:17:54');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `content`
+-- Tabelstructuur voor tabel `content`
 --
 
 CREATE TABLE IF NOT EXISTS `content` (
@@ -134,24 +121,24 @@ CREATE TABLE IF NOT EXISTS `content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `content`
+-- Gegevens worden uitgevoerd voor tabel `content`
 --
 
 INSERT INTO `content` (`pagina`, `lang`, `title`, `bodytext`, `last_update`, `updated_by`) VALUES
 ('index', 'DEU', 'Wilkommen!', 'Willkommen auf der Deutsche Seite von Offroad Compass Portugal', '2017-01-07 14:42:00.652601', 'henk'),
 ('index', 'ENG', 'Welcome', 'Welcome to the website of Offroad Compass Portugal.\r\n\r\n', '2017-01-07 14:40:42.429321', 'henk'),
-('index', 'NLD', 'Welkom', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam urna dui, scelerisque at felis sed, blandit pretium mi. Suspendisse augue risus, ullamcorper ac nibh id, viverra elementum erat. Phasellus mauris felis, sagittis id consequat vel, convallis eget arcu. Quisque pulvinar lacinia maximus. Aenean dui lacus, sagittis eget tincidunt eget, hendrerit eu mi. Maecenas urna nulla, fermentum at erat vitae, malesuada pretium massa. In euismod nisi quis orci suscipit, eget laoreet nulla fermentum.\r\n\r\n\r\nja hoi dit is een test', '2017-01-07 22:14:52.342940', 'henk'),
-('informatie', 'DEU', 'Sjaak', 'Wie ein Dealer\r\nGutentag', '2016-12-09 11:41:21.786856', 'henk'),
-('informatie', 'ENG', 'Information', 'inhoud informatie ENGELS', '2016-12-05 12:25:33.785512', 'henk'),
+('index', 'NLD', 'Welkom', 'Het Koninkrijk der Nederlanden is een soevereine staat samengesteld uit vier landen: Nederland, Aruba, Curaçao en Sint Maarten.[5] Deze landen zijn gelijkwaardige onderdelen van het grondgebied van het Koninkrijk. Hun staatkundige positie is echter verschillend. De Caraïbische landen zijn door het Statuut voor het Koninkrijk der Nederlanden, sinds 1954 het leidende document voor het Koninkrijk, autonoom, maar beslissen ook mee over door het Statuut benoemde Koninkrijksaangelegenheden, voor zover die aangelegenheden deze drie gebieden raken. Het Koninkrijk wordt bestuurd door de instellingen die in het Statuut worden genoemd en in de Grondwet voor het Koninkrijk der Nederlanden zijn geregeld. Voor het bestuur over Nederland gelden de bepalingen van de Grondwet. De Grondwet is ouder dan het Statuut en was tot 1954 het leidende document van het Koninkrijk. Nog steeds is het echter (volgens artikel 5 van het Statuut) het document dat de in het Statuut genoemde instellingen van het Koninkrijk constitueert en (grotendeels ook) regelt. Daarom treedt Nederland als enige van de vier landen, naar binnen en naar buiten op in de hoedanigheid van het Koninkrijk der Nederlanden. Deze unieke regeling maakt dat er wel wordt gesproken over een verband met federale trekken.[6][7] Aruba, Curaçao en Sint Maarten kennen elk een eigen Staatsregeling. Het zwaartepunt in de verhoudingen berust zowel feitelijk als juridisch bij Nederland.[8] Het Statuut voor het Koninkrijk der Nederlanden van 28 oktober 1954 bevat de hoogste staatsregeling van het Koninkrijk.[9]\nVan 1954 tot 1975 was ook Suriname een autonoom land binnen het Koninkrijk. De Nederlandse Antillen waren een autonoom land van 1954 tot hun opheffing in 2010.', '2017-01-09 07:19:50.025081', 'henk'),
+('informatie', 'DEU', 'Sjaak', 'Audio-Datei / Hörbeispiel Deutschland?/i (Vollform: Bundesrepublik Deutschland) ist ein föderal verfasster Staat in Mitteleuropa, der aus den 16 deutschen Ländern besteht. Die Bundesrepublik ist ein freiheitlich-demokratischer Rechtsstaat[8] und stellt die jüngste Ausprägung des deutschen Nationalstaates dar.[9] Mit rund 82,2 Millionen Einwohnern zählt Deutschland zu den dicht besiedelten Flächenstaaten und gilt international als das Land mit der dritthöchsten Zahl von Einwanderern nach den Vereinigten Staaten und Russland (Stand 2013).[2][10]\nAn Deutschland grenzen neun Staaten, im Norden die Gewässer der Nord- und Ostsee und im Süden das Bergland der Alpen. Es liegt in der gemäßigten Klimazone. Bundeshauptstadt sowie bevölkerungsreichste deutsche Stadt ist Berlin. Weitere bedeutende Metropolen sind Hamburg, München, Köln, Frankfurt, Stuttgart und Düsseldorf; größter Ballungsraum ist das Ruhrgebiet.\nAuf dem Territorium des heutigen Deutschlands wurden frühe Siedlungsformen von vor etwa 500.000 Jahren nachgewiesen, wie Funde vom Heidelbergmenschen, vom Neandertaler sowie von einigen der ältesten Kunstwerke der Menschheit aus der Altsteinzeit belegen. Seit der Antike ist die lateinische Bezeichnung Germania für das Siedlungsgebiet der Germanen bekannt, seit dem 4. Jahrhundert ist die Verwendung des Begriffes deutsch in althochdeutscher Form belegt. Das seit dem 10. Jahrhundert bestehende Heilige Römische Reich bestand aus vielen Herrschaftsgebieten und war mit dem 1815 nachfolgenden Deutschen Bund der Ursprung des föderalen deutschen Staates. Dieser entstand erstmals mit der Gründung des Deutschen Reichs im Jahr 1871, woraus eine rasche Wirtschaftsentwicklung vom Agrar- zum Industrieland folgte.', '2017-01-09 07:17:37.816811', 'henk'),
+('informatie', 'ENG', 'Information', 'It shares land borders with Scotland to the north and Wales to the west. The Irish Sea lies northwest of England and the Celtic Sea lies to the southwest. England is separated from continental Europe by the North Sea to the east and the English Channel to the south. The country covers much of the central and southern part of the island of Great Britain, which lies in the North Atlantic; and includes over 100 smaller islands such as the Isles of Scilly, and the Isle of Wight.\nThe area now called England was first inhabited by modern humans during the Upper Palaeolithic period, but takes its name from the Angles, one of the Germanic tribes who settled during the 5th and 6th centuries. England became a unified state in the 10th century, and since the Age of Discovery, which began during the 15th century, has had a significant cultural and legal impact on the wider world.[7] The English language, the Anglican Church, and English law – the basis for the common law legal systems of many other countries around the world – developed in England, and the country''s parliamentary system of government has been widely adopted by other nations.[8] The Industrial Revolution began in 18th-century England, transforming its society into the world''s first industrialised nation.[9]\nEngland''s terrain mostly comprises low hills and plains, especially in central and southern England. However, there are uplands in the north (for example, the mountainous Lake District, and the Pennines) and in the south west (for example, Dartmoor and the Cotswolds). The capital is London, which is the largest metropolitan area in both the United Kingdom and the European Union.[nb 1] England''s population of over 53 million comprises 84% of the population of the United Kingdom, largely concentrated around London, the South East, and conurbations in the Midlands, the North West, the North East, and Yorkshire, which each developed as major industrial regions during the 19th century.[10]', '2017-01-09 07:19:01.539993', 'henk'),
 ('informatie', 'NLD', 'Accomodatie', 'U verblijft in Huis Sesimbra. Dit huis heeft Ã©Ã©n slaapkamer met een tweepersoons bed en de andere slaapkamer heeft twee Ã©Ã©n persoons bedden. Het huis is voorzien van een douche en bad. Buiten is er een groot terras, waar soms wordt gebarbecued. Het strand is op vier kilometer afstand van het huis en de omgeving is bosrijk.\r\nElke ochtend voor vertrek krijgt u een ontbijt en voor onderweg wordt een lunch geregeld (lunchpakket of restaurant). â€™s Avonds wordt er een warme maaltijd gegeten. Het vertrek is â€™s ochtends zo vroeg mogelijk in verband met de warmte. Alle tochten worden in goed overleg gemaakt. Wanneer de dagtocht heel ver is, kan het zijn dat de groep op een camping, bed & breakfast of iets dergelijks overnacht. \r\n\r\nWij voorzien u van motor, kleding en laarzen. Het enige wat u zelf mee moet nemen is een helm. Als u meer eigen spullen mee wil nemen, mag dat ook. Iedere dag wordt er op verschillende plekken gereden. De brandstof voor de motors zit bij de prijs in begrepen. \r\n\r\nTijdens het rijden mag geen alcohol worden gedronken.\r\nEnige ervaring in het motorrijden is vereist.', '2017-01-06 11:49:36.175205', 'henk'),
-('prijzen', 'DEU', 'Preisen', 'kontent', '2016-12-22 20:22:20.047258', 'henk'),
-('prijzen', 'ENG', 'Pricing', 'Pricing at our occomodations differ', '2016-12-22 20:22:59.525295', 'henk'),
+('prijzen', 'DEU', 'Preisen', 'Audio-Datei / Hörbeispiel Deutschland?/i (Vollform: Bundesrepublik Deutschland) ist ein föderal verfasster Staat in Mitteleuropa, der aus den 16 deutschen Ländern besteht. Die Bundesrepublik ist ein freiheitlich-demokratischer Rechtsstaat[8] und stellt die jüngste Ausprägung des deutschen Nationalstaates dar.[9] Mit rund 82,2 Millionen Einwohnern zählt Deutschland zu den dicht besiedelten Flächenstaaten und gilt international als das Land mit der dritthöchsten Zahl von Einwanderern nach den Vereinigten Staaten und Russland (Stand 2013).[2][10]\nAn Deutschland grenzen neun Staaten, im Norden die Gewässer der Nord- und Ostsee und im Süden das Bergland der Alpen. Es liegt in der gemäßigten Klimazone. Bundeshauptstadt sowie bevölkerungsreichste deutsche Stadt ist Berlin. Weitere bedeutende Metropolen sind Hamburg, München, Köln, Frankfurt, Stuttgart und Düsseldorf; größter Ballungsraum ist das Ruhrgebiet.\nAuf dem Territorium des heutigen Deutschlands wurden frühe Siedlungsformen von vor etwa 500.000 Jahren nachgewiesen, wie Funde vom Heidelbergmenschen, vom Neandertaler sowie von einigen der ältesten Kunstwerke der Menschheit aus der Altsteinzeit belegen. Seit der Antike ist die lateinische Bezeichnung Germania für das Siedlungsgebiet der Germanen bekannt, seit dem 4. Jahrhundert ist die Verwendung des Begriffes deutsch in althochdeutscher Form belegt. Das seit dem 10. Jahrhundert bestehende Heilige Römische Reich bestand aus vielen Herrschaftsgebieten und war mit dem 1815 nachfolgenden Deutschen Bund der Ursprung des föderalen deutschen Staates. Dieser entstand erstmals mit der Gründung des Deutschen Reichs im Jahr 1871, woraus eine rasche Wirtschaftsentwicklung vom Agrar- zum Industrieland folgte.', '2017-01-09 07:17:45.086049', 'henk'),
+('prijzen', 'ENG', 'Pricing', 'It shares land borders with Scotland to the north and Wales to the west. The Irish Sea lies northwest of England and the Celtic Sea lies to the southwest. England is separated from continental Europe by the North Sea to the east and the English Channel to the south. The country covers much of the central and southern part of the island of Great Britain, which lies in the North Atlantic; and includes over 100 smaller islands such as the Isles of Scilly, and the Isle of Wight.\nThe area now called England was first inhabited by modern humans during the Upper Palaeolithic period, but takes its name from the Angles, one of the Germanic tribes who settled during the 5th and 6th centuries. England became a unified state in the 10th century, and since the Age of Discovery, which began during the 15th century, has had a significant cultural and legal impact on the wider world.[7] The English language, the Anglican Church, and English law – the basis for the common law legal systems of many other countries around the world – developed in England, and the country''s parliamentary system of government has been widely adopted by other nations.[8] The Industrial Revolution began in 18th-century England, transforming its society into the world''s first industrialised nation.[9]\nEngland''s terrain mostly comprises low hills and plains, especially in central and southern England. However, there are uplands in the north (for example, the mountainous Lake District, and the Pennines) and in the south west (for example, Dartmoor and the Cotswolds). The capital is London, which is the largest metropolitan area in both the United Kingdom and the European Union.[nb 1] England''s population of over 53 million comprises 84% of the population of the United Kingdom, largely concentrated around London, the South East, and conurbations in the Midlands, the North West, the North East, and Yorkshire, which each developed as major industrial regions during the 19th century.[10]', '2017-01-09 07:19:12.368073', 'henk'),
 ('prijzen', 'NLD', 'Prijzen', 'De reis kost €800 per persoon per zeven dagen.\nDeze prijs is inclusief:\nophalen van en brengen naar het vliegveld\nbrandstof voor de motors\nDrank aan huis is onbeperkt.', '2017-01-07 20:49:40.396091', 'MichaelM');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fotos`
+-- Tabelstructuur voor tabel `fotos`
 --
 
 CREATE TABLE IF NOT EXISTS `fotos` (
@@ -165,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `fotos` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
--- Dumping data for table `fotos`
+-- Gegevens worden uitgevoerd voor tabel `fotos`
 --
 
 INSERT INTO `fotos` (`image_id`, `image_type`, `image`, `image_size`, `image_ctgy`, `image_name`) VALUES
@@ -188,41 +175,41 @@ INSERT INTO `fotos` (`image_id`, `image_type`, `image`, `image_size`, `image_ctg
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gebruikers`
+-- Tabelstructuur voor tabel `gebruikers`
 --
 
 CREATE TABLE IF NOT EXISTS `gebruikers` (
   `idGebruiker` int(6) NOT NULL,
   `gebruikersnaam` varchar(45) NOT NULL,
   `wachtwoord` varchar(60) NOT NULL,
-  `privilegeniveau` int(11) NOT NULL,
+  `privilegeniveau` tinyint(1) NOT NULL,
   `actief` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idGebruiker`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `gebruikers`
+-- Gegevens worden uitgevoerd voor tabel `gebruikers`
 --
 
 INSERT INTO `gebruikers` (`idGebruiker`, `gebruikersnaam`, `wachtwoord`, `privilegeniveau`, `actief`) VALUES
 (1, 'henk', '$2y$10$ihcnOJlF3ikBxZvJypr9zevjdS4R0OfLLQ5szUiSpEOHxsY7AQYBu', 3, 1),
 (2000252, 'something_stupid', '5216', 1, 1),
-(2000270, 'take_this_city', '0217', 1, 1),
-(2000289, 'what_did_you_ask_for', '1017', 1, 1),
 (2000297, 'highland_county', '0717', 1, 1),
 (2000298, 'rest_in_the_light', '0617', 1, 1),
 (2000299, 'MichaelM', '$2y$10$pnfLAXeNiAqPwEaTRXNoke/rkfca.lYtRTqdh7oxSEv97SM50b3uy', 2, 1),
 (2000300, 'Testuser', '$2y$10$mxlReubZDi/BYlQ7W00XsO2ZY79jwcB9gY6uD0ZOJ9IoIY/mzdIDe', 2, 1),
 (2000301, 'hoofd', '$2y$10$oiQjfdNXuEn7miuwwI1tnOZl9OH7skY4hjnDfnZmSB.PRjJSLv4MO', 2, 1),
-(2000305, 'Kaasje', '0117', 1, 1),
-(2000306, 'Skaaaak', '0117', 1, 1),
-(2000308, 'Klaas', '0417', 1, 1),
-(2000310, 'kjkj', '0217', 1, 1);
+(2000305, 'Paddenstoelenvakantie', '0117', 1, 1),
+(2000306, 'Vakantiemetfam', '0117', 1, 1),
+(2000308, 'Onzinnigevakantie', '0417', 1, 1),
+(2000310, 'kjkj', '0217', 1, 1),
+(2000312, 'Testnaam', '1517', 1, 1),
+(2000313, 'test2', '1517', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instellingen`
+-- Tabelstructuur voor tabel `instellingen`
 --
 
 CREATE TABLE IF NOT EXISTS `instellingen` (
@@ -232,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `instellingen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `instellingen`
+-- Gegevens worden uitgevoerd voor tabel `instellingen`
 --
 
 INSERT INTO `instellingen` (`instelling`, `waarde`) VALUES
@@ -241,7 +228,7 @@ INSERT INTO `instellingen` (`instelling`, `waarde`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `klantgegevens`
+-- Tabelstructuur voor tabel `klantgegevens`
 --
 
 CREATE TABLE IF NOT EXISTS `klantgegevens` (
@@ -263,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `klantgegevens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `klantgegevens`
+-- Gegevens worden uitgevoerd voor tabel `klantgegevens`
 --
 
 INSERT INTO `klantgegevens` (`idklant`, `persoon`, `voornaam`, `achternaam`, `adres`, `postcode`, `woonplaats`, `land`, `gebdatum`, `telefoonnummer`, `email`, `bijzonderheden`, `schoenmaat`, `kledingmaat`) VALUES
@@ -277,12 +264,14 @@ INSERT INTO `klantgegevens` (`idklant`, `persoon`, `voornaam`, `achternaam`, `ad
 (2000305, 1, 'Sophie', 'Roos', 'Ereprijs 42', '3773CN', 'Barneveld', 'Nederland', '1998-12-03', '0637182904', 'sophie@famroos.nu', 'Kaasjejeeje', '42', 'M'),
 (2000306, 1, 'Sophie', 'Roos', 'Ereprijs 42', '3773CN', 'Barneveld', 'Nederland', '1998-12-03', '0637182904', 'sophie@famroos.nu', '', '42', 'M'),
 (2000308, 1, 'kk', 'K', 'k 4', 'k', 'k', 'k', '1999-02-03', '567890', 'skjd@kjfsd.nl', 'askdfk', '42', 'M'),
-(2000310, 1, 'Sophie', 'Roos', 'Ereprijs 42', '3773CN', 'Barneveld', 'Nederland', '1999-02-03', '0637182904', 'sophie@famroos.nu', '', '42', 'M');
+(2000310, 1, 'Sophie', 'Roos', 'Ereprijs 42', '3773CN', 'Barneveld', 'Nederland', '1999-02-03', '0637182904', 'sophie@famroos.nu', '', '42', 'M'),
+(2000312, 1, 'Carlo', 'achternaam', 'straatnaam 123', '7474CJ', 'Deventer', 'Nederland', '0000-00-00', '06123129381', 'email@adres.nl', '', '42', 'M'),
+(2000313, 1, 'henk', 'henk', 'straat 123', '3892AB', 'Deventer', 'Nederland', '0000-00-00', '9301293', 'test@naam.nl', '', '42', 'M');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nieuwsbericht`
+-- Tabelstructuur voor tabel `nieuwsbericht`
 --
 
 CREATE TABLE IF NOT EXISTS `nieuwsbericht` (
@@ -299,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `nieuwsbericht` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
 
 --
--- Dumping data for table `nieuwsbericht`
+-- Gegevens worden uitgevoerd voor tabel `nieuwsbericht`
 --
 
 INSERT INTO `nieuwsbericht` (`id`, `lang`, `title`, `description`, `bodytext`, `owner`, `last_update`, `updated_by`, `posted`) VALUES
@@ -314,14 +303,12 @@ INSERT INTO `nieuwsbericht` (`id`, `lang`, `title`, `description`, `bodytext`, `
 (51, 'ENG', 'Artikel', '', 'Engels artikel', '', '2016-12-23 07:34:25.140937', '', '14 December 2016 13:31'),
 (55, 'NLD', 'Snackbar', '', 'Nederlands artikel met snackbar<br><span data-toggle=snackbar data-content="Nieuwsuitlichting">Click me</span>', '', '2016-12-23 07:35:08.728127', '', '20 December 2016 21:04'),
 (57, 'NLD', 'Review', '', 'Dit is een review van de reis. Was heel leuk.', '', '2016-12-28 19:39:55.217098', '', '28 December 2016 20:39'),
-(58, 'DEU', 'test', '', 'test', '', '0000-00-00 00:00:00.000000', '', '03 January 2017 12:10'),
-(59, 'DEU', 'test2', '', 'test', '', '0000-00-00 00:00:00.000000', '', '03 January 2017 12:10'),
 (60, 'NLD', 'Nieuwe motor', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam urna dui, scelerisque at felis sed, blandit pretium mi. Suspendisse augue risus, ullamcorper ac nibh id, viverra elementum erat. Phasellus mauris felis, sagittis id consequat vel, convallis eget arcu. Quisque pulvinar lacinia maximus. Aenean dui lacus, sagittis eget tincidunt eget, hendrerit eu mi. Maecenas urna nulla, fermentum at erat vitae, malesuada pretium massa. In euismod nisi quis orci suscipit, eget laoreet nulla fermentum.\r\n<br>\r\n<br>\r\n<img src="https://upload.wikimedia.org/wikipedia/en/d/dc/KTM450EXC2005.JPG" width="50%" height="50%">', '', '2017-01-08 11:17:27.087826', '', '08 January 2017 11:13');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `privileges`
+-- Tabelstructuur voor tabel `privileges`
 --
 
 CREATE TABLE IF NOT EXISTS `privileges` (
@@ -331,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `privileges` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `privileges`
+-- Gegevens worden uitgevoerd voor tabel `privileges`
 --
 
 INSERT INTO `privileges` (`niveau`, `naam`, `omschrijving`) VALUES
@@ -342,7 +329,7 @@ INSERT INTO `privileges` (`niveau`, `naam`, `omschrijving`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reserveringen`
+-- Tabelstructuur voor tabel `reserveringen`
 --
 
 CREATE TABLE IF NOT EXISTS `reserveringen` (
@@ -352,32 +339,23 @@ CREATE TABLE IF NOT EXISTS `reserveringen` (
   `aantal` int(2) NOT NULL,
   `actief` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idReservering`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=151 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=154 ;
 
 --
--- Dumping data for table `reserveringen`
+-- Gegevens worden uitgevoerd voor tabel `reserveringen`
 --
 
 INSERT INTO `reserveringen` (`idReservering`, `begindatum`, `type`, `aantal`, `actief`) VALUES
 (16, '2017-01-07', 'boeking', 2, 1),
-(68, '2017-01-14', 'boeking', 1, 0),
-(101, '2017-03-11', 'boeking', 2, 1),
 (110, '2017-02-18', 'boeking', 1, 1),
 (111, '2017-02-11', 'boeking', 1, 1),
-(119, '2017-01-21', 'reservering', 3, 1),
-(120, '2017-01-21', 'reservering', -3, 1),
-(125, '2017-01-21', 'reservering', 1, 1),
-(129, '2017-01-07', 'reservering', 0, 1),
 (136, '2017-01-07', 'boeking', 1, 0),
 (137, '2017-01-07', 'boeking', 1, 0),
 (139, '2017-01-28', 'boeking', 1, 1),
 (141, '2017-01-14', 'boeking', 1, 1),
-(142, '2017-02-04', 'reservering', 3, 1),
-(145, '2017-01-14', 'reservering', 1, 1),
-(146, '2017-04-02', 'reservering', 1, 1),
-(147, '2017-04-02', 'reservering', 1, 1),
-(148, '2017-04-02', 'reservering', 1, 1),
-(149, '2017-02-04', 'reservering', -3, 1);
+(151, '2017-05-06', 'reservering', 0, 1),
+(152, '2017-04-15', 'boeking', 1, 1),
+(153, '2017-04-15', 'boeking', 1, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
