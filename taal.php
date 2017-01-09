@@ -70,20 +70,6 @@ function galerijTaal(){
 }
 
 // Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
-// de bijbehorende array met waardes voor het loginformulier voor klanten.
-function loginTaal(){
-     $taal = selecteerTaal();
-     if ($taal == "NLD"){
-          $labels = ["Reisinformatie opvragen"];
-     } elseif ($taal == "ENG"){
-          $labels = ["Travel information request"];
-     } elseif ($taal == "DEU"){
-          $labels = ["Reiseinformationen aufrufen"];
-     }
-     return $labels;
-}
-
-// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
 // de bijbehorende array met waardes voor de nieuwsberichten.
 function nieuwsTaal(){
      $taal = selecteerTaal();
@@ -186,4 +172,40 @@ function agendaTaal() {
      }
      return $labels;
 }
+
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor het loginformulier voor klanten.
+function loginTaal(){
+     $taal = selecteerTaal();
+     if ($taal == "NLD"){
+          $labels = ["Reisinformatie opvragen", "Vakantienaam", "Vul hier uw vakantienaam in.", "Weeknummer", "Vul hier uw weeknummer in.", "Verzenden"];
+     } elseif ($taal == "ENG"){
+          $labels = ["Travel information request", "Name given to your trip", "Enter the name given to your trip.", "Number of the week", "Enter the number of the week.", "Go"];
+     } elseif ($taal == "DEU"){
+          $labels = ["Reiseinformationen aufrufen", "Name des Urlaubs", "Geben Sie den Namen der Feiertage.", "Wochennummer", "Füllen Sie die Kalenderwoche hier.", "Senden"];
+     }
+     return $labels;
+}
+
+
+// Controleert eerst op welke taal de website is ingesteld en returnt vervolgens
+// de bijbehorende array met waardes voor de agenda.
+function reisinformatieTaal() {
+     $taal = selecteerTaal();
+     if ($taal == "NLD"){
+          $labels = ["Reisgegevens van ", " in week ", "Reisgegevens", "Begindatum", "Einddatum", "Aantal personen", "Vervoer van luchthaven Lissabon", "Ja", "Nee", "Vervoer naar luchthaven Lissabon", "Ja", "Nee", "Opmerkingen", "Status", "Betaling",
+          "Persoonlijke gegevens", "Persoon ", "Voornaam", "Achternaam", "Adres", "Postcode", "Woonplaats", "Land", "Geboortedatum", "Telefoonnummer", "E-mailadres", "Kledingmaat", "Schoenmaat", "Ziekten en allergieën",
+     "Onjuiste vakantienaam of vakantieweek. Ga terug naar de ", "loginpagina"];
+     } elseif ($taal == "ENG"){
+          $labels = ["Travel information of ", " in week ", "Travel information",  "Starting date", "End date", "Number of person", "Transport of airport Lissabon", "Yes", "No", "Transport to airport Lissabon", "Yes", "No", "Comments", "Status", "Payment",
+          "Personal information", "Person ", "First name", "Surname", "Address", "ZIP code", "City", "Country", "Date of birth", "Telephone number", "E-mail address", "Size", "Shoe size", "Diseases and allergies",
+          "Incorrect name or number of the week. Back to", "login page"];
+     } elseif ($taal == "DEU"){
+          $labels = ["Reise Details ", " in Woche ", "Reise", "Startdatum ", "Ende", "Anzahl der Personen", "Transport Flughafen Lissabon", "Ja", "Nein", "Anfahrt zum Flughafen von Lissabon", "Ja", "Nein", "Notes", "Status", "Zahlung",
+          "Persönliche Informationen", "Person", "Name", "Nachname", "Adresse", "Zip", "Location", "Land", "Geburt", "Telefon", "E-Mail", "Bekleidung Size", "Schuh", "Krankheiten und Allergien",
+     "Falscher Name oder Urlaub Urlaub Woche. Zurück zum ", "Login-Seite"];
+     }
+     return $labels;
+}
+
 ?>

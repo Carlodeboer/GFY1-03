@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
- * Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
- * Ralphine de Roo, Sophie Roos and Ian Vredenburg
- *
- * This Source Code Form is subject to the terms of the MIT license.
- * If a copy of the MIT license was not distributed with this file. You can
- * obtain one at https://opensource.org/licenses/MIT
- *******************************************************************************/
+* Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
+* Ralphine de Roo, Sophie Roos and Ian Vredenburg
+*
+* This Source Code Form is subject to the terms of the MIT license.
+* If a copy of the MIT license was not distributed with this file. You can
+* obtain one at https://opensource.org/licenses/MIT
+*******************************************************************************/
 ?>
 <?php define("toegang", true); ?>
 <!DOCTYPE html>
@@ -25,6 +25,8 @@
                <div id="contentwrapper">
                     <?php
                     if (isset($_POST["verzenden"])) {
+                         $labels = reisinformatieTaal();
+                         $j=0;
                          $weekJaar = $_POST["vakantieweek"];
                          $naam = $_POST["vakantienaam"];
 
@@ -41,165 +43,180 @@
                               $stmt3 = $pdo->prepare("SELECT begindatum, einddatum, aantalPersonen, vervoerHeen, vervoerTerug, opmerking, status, betaling
                                    FROM boeking
                                    WHERE idklant = ?");
-                              $stmt3->execute(array($idklant));
-                              $row3 = $stmt3->fetch();
+                                   $stmt3->execute(array($idklant));
+                                   $row3 = $stmt3->fetch();
 
-                              $begindatum = $row3["begindatum"];
-                              $einddatum = $row3["einddatum"];
-                              $aantalPersonen = $row3["aantalPersonen"];
-                              $vervoerHeen = $row3["vervoerHeen"];
-                              $vervoerTerug = $row3["vervoerTerug"];
-                              $opmerking = $row3["opmerking"];
-                              $status = $row3["status"];
-                              $betaling = $row3["betaling"];
+                                   $begindatum = $row3["begindatum"];
+                                   $einddatum = $row3["einddatum"];
+                                   $aantalPersonen = $row3["aantalPersonen"];
+                                   $vervoerHeen = $row3["vervoerHeen"];
+                                   $vervoerTerug = $row3["vervoerTerug"];
+                                   $opmerking = $row3["opmerking"];
+                                   $status = $row3["status"];
+                                   $betaling = $row3["betaling"];
 
-                              $week = substr($weekJaar, 0, 2);
-                              ?>
-
-                              <h1>Reisinfo voor <?php print($naam);?> in week <?php print($week);?></h1>
-                              <h2>Reisgegevens:</h2>
-                              <table class="table table-striped table-hover personentabel">
-                                   <tr>
-                                        <td>Begindatum:</td>
-                                        <td><?php print($begindatum); ?></td>
-                                   </tr><tr>
-                                        <td>Einddatum:</td>
-                                        <td><?php print($einddatum); ?></td>
-                                   </tr><tr>
-                                        <td>Aantal personen:</td>
-                                        <td><?php print ($aantalPersonen) ?></td>
-                                   </tr><tr>
-                                        <td>Vervoer van luchthaven Lissabon:</td>
-                                        <td><?php
-                                        if ($vervoerHeen) {
-                                             print("Ja");
-                                        } else {
-                                             print("Nee");
-                                        }
-                                        ?></td>
-                                   </tr><tr>
-                                        <td>Vervoer naar luchthaven Lissabon:</td>
-                                        <td><?php
-                                        if ($vervoerTerug) {
-                                             print("Ja");
-                                        } else {
-                                             print("Nee");
-                                        }
-                                        ?></td>
-                                   </tr>
-                                   <?php
-                                   if ($opmerking != NULL) {
-                                        print ("<tr><td>Opmerkingen:</td><td>" . $opmerking . "</td></tr>");
-                                   }
+                                   $week = substr($weekJaar, 0, 2);
                                    ?>
-                                   <tr>
-                                        <td>Status:</td>
-                                        <td><?php
-                                        if ($status=="Niet bevestigd") {
-                                              print("<b>" . $status . "<b>");
-                                        } else {
-                                             print($status);
-                                        }
-                                        ?></td>
-                                    </tr><tr>
-                                        <td>Betaald:</td>
-                                         <td><?php
-                                         if ($betaling=="Niet betaald") {
-                                               print("<b>" . $betaling . "<b>");
-                                         } else {
-                                              print($betaling);
-                                         }
-                                         ?></td>
-                                   </tr>
-                              </table>
-                              <h2>Persoonlijke gegevens:</h2>
-                              <table class="table table-striped table-hover personentabel">
-                                   <?php
-                                   for ($i = 1; $i <= $aantalPersonen; $i++) {
-                                        $stmt4 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email, kledingmaat, schoenmaat, bijzonderheden
-                                             FROM klantgegevens
-                                             WHERE idklant = ?
-                                             AND persoon = ?");
-                                        $stmt4->execute(array($idklant, $i));
 
-                                        $row4= $stmt4->fetch();
-                                        $voornaam = $row4["voornaam"];
-                                        $achternaam = $row4["achternaam"];
-                                        $geboortedatum = $row4["gebdatum"];
-                                        $adres = $row4["adres"];
-                                        $postcode = $row4["postcode"];
-                                        $woonplaats = $row4["woonplaats"];
-                                        $land = $row4["land"];
-                                        $telefoonnummer = $row4["telefoonnummer"];
-                                        $email = $row4["email"];
-                                        $kledingmaat = $row4["kledingmaat"];
-                                        $schoenmaat = $row4["schoenmaat"];
-                                        $bijzonderheden = $row4["bijzonderheden"];
-                                        if ($aantalPersonen != 1) {
-                                             ?>
-                                             <tr>
-                                                  <td><br><h3>Persoon <?php print ($i) ?></h3></td>
-                                                  <td></td>
-                                             </tr><?php
-                                        }
-                                        ?>
+                                   <h1><?php print($labels[$j]); $j++; ?><?php print($naam);?><?php print($labels[$j]); $j++; ?><?php print($week);?></h1>
+                                   <h2><?php print($labels[$j]); $j++; ?>:</h2>
+                                   <table class="table table-striped table-hover personentabel">
                                         <tr>
-                                             <td>Voornaam:</td>
-                                             <td><?php print($voornaam); ?></td>
+                                             <td><?php print($labels[$j]); $j++; ?>:</td>
+                                             <td><?php print($begindatum); ?></td>
                                         </tr><tr>
-                                             <td>Achternaam:</td>
-                                             <td><?php print($achternaam); ?></td>
+                                             <td><?php print($labels[$j]); $j++; ?>:</td>
+                                             <td><?php print($einddatum); ?></td>
                                         </tr><tr>
-                                             <td>Adres:</td>
-                                             <td><?php print(ucwords($adres)); ?></td>
+                                             <td><?php print($labels[$j]); $j++; ?>:</td>
+                                             <td><?php print ($aantalPersonen) ?></td>
                                         </tr><tr>
-                                             <td>Postcode:</td>
-                                             <td><?php print($postcode); ?></td>
+                                             <td><?php print($labels[$j]); $j++; ?>:</td>
+                                             <td><?php
+                                             if ($vervoerHeen) {
+                                                  print($labels[$j]);
+                                                  $j++;
+                                                  $j++;
+                                             } else {
+                                                  $j++;
+                                                  print($labels[$j]);
+                                                  $j++;
+                                             }
+                                             ?></td>
                                         </tr><tr>
-                                             <td>Woonplaats:</td>
-                                             <td><?php print(ucwords($woonplaats)); ?></td>
-                                        </tr><tr>
-                                             <td>Land:</td>
-                                             <td><?php print(ucwords($land)); ?></td>
-                                        </tr><tr>
-                                             <td>Geboortedatum:</td>
-                                             <td><?php print($geboortedatum); ?></td>
-                                        </tr><tr>
-                                             <td>Telefoonnummer:</td>
-                                             <td><?php print($telefoonnummer); ?></td>
-                                        </tr><tr>
-                                             <td>Emailadres:</td>
-                                             <td><?php print(strtolower($email)); ?></td>
-                                        </tr>
-                                        <tr>
-                                             <td>Kledingmaat:</td>
-                                             <td><?php print($kledingmaat); ?></td>
-                                        </tr>
-                                        <tr>
-                                             <td>Schoenmaat:</td>
-                                             <td><?php print($schoenmaat); ?></td>
+                                             <td><?php print($labels[$j]); $j++; ?>:</td>
+                                             <td><?php
+                                             if ($vervoerTerug) {
+                                                  print($labels[$j]);
+                                                  $j++;
+                                             } else {
+                                                  $j++;
+                                                  print($labels[$j]);
+                                             }
+                                             $j++;
+                                             ?></td>
                                         </tr>
                                         <?php
-                                        if ($bijzonderheden != NULL) {
-                                             ?><tr>
-                                                  <td>Bijzonderheden:</td>
-                                                  <td><?php print($bijzonderheden); ?></td>
-                                             </tr><?php
+                                        if ($opmerking != NULL) {
+                                             print ("<tr><td>" . $labels[$j] . ":</td><td>" . $opmerking . "</td></tr>");
                                         }
+                                        $j++;
+                                        ?>
+                                        <tr>
+                                             <td><?php print($labels[$j]); $j++; ?>:</td>
+                                             <td><?php
+                                             if ($status=="Niet bevestigd") {
+                                                  print("<b>" . $status . "<b>");
+                                             } else {
+                                                  print($status);
+                                             }
+                                             ?></td>
+                                        </tr><tr>
+                                             <td><?php print($labels[$j]); $j++; ?>:</td>
+                                             <td><?php
+                                             if ($betaling=="Niet betaald") {
+                                                  print("<b>" . $betaling . "<b>");
+                                             } else {
+                                                  print($betaling);
+                                             }
+                                             ?></td>
+                                        </tr>
+                                   </table>
+                                   <h2><?php print($labels[$j]); $j++; ?>:</h2>
+                                   <table class="table table-striped table-hover personentabel">
+                                        <?php
+                                        for ($i = 1; $i <= $aantalPersonen; $i++) {
+                                             $stmt4 = $pdo->prepare("SELECT voornaam, achternaam, gebdatum, adres, postcode, woonplaats, land, telefoonnummer, email, kledingmaat, schoenmaat, bijzonderheden
+                                                  FROM klantgegevens
+                                                  WHERE idklant = ?
+                                                  AND persoon = ?");
+                                                  $stmt4->execute(array($idklant, $i));
+
+                                                  $row4= $stmt4->fetch();
+                                                  $voornaam = $row4["voornaam"];
+                                                  $achternaam = $row4["achternaam"];
+                                                  $geboortedatum = $row4["gebdatum"];
+                                                  $adres = $row4["adres"];
+                                                  $postcode = $row4["postcode"];
+                                                  $woonplaats = $row4["woonplaats"];
+                                                  $land = $row4["land"];
+                                                  $telefoonnummer = $row4["telefoonnummer"];
+                                                  $email = $row4["email"];
+                                                  $kledingmaat = $row4["kledingmaat"];
+                                                  $schoenmaat = $row4["schoenmaat"];
+                                                  $bijzonderheden = $row4["bijzonderheden"];
+
+                                                  $j= 16;
+                                                  if ($aantalPersonen != 1) {
+
+                                                       ?>
+                                                       <tr>
+                                                            <td><br><h3><?php print($labels[$j]); ?> <?php print ($i) ?></h3></td>
+                                                            <td></td>
+                                                       </tr><?php
+                                                  }
+                                                  $j++;
+                                                  ?>
+                                                  <tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print($voornaam); ?></td>
+                                                  </tr><tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print($achternaam); ?></td>
+                                                  </tr><tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print(ucwords($adres)); ?></td>
+                                                  </tr><tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print($postcode); ?></td>
+                                                  </tr><tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print(ucwords($woonplaats)); ?></td>
+                                                  </tr><tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print(ucwords($land)); ?></td>
+                                                  </tr><tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print($geboortedatum); ?></td>
+                                                  </tr><tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print($telefoonnummer); ?></td>
+                                                  </tr><tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print(strtolower($email)); ?></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print($kledingmaat); ?></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                       <td><?php print($schoenmaat); ?></td>
+                                                  </tr>
+                                                  <?php
+                                                  if ($bijzonderheden != NULL) {
+                                                       ?><tr>
+                                                            <td><?php print($labels[$j]); $j++; ?>:</td>
+                                                            <td><?php print($bijzonderheden); ?></td>
+                                                       </tr><?php
+                                                  }
+                                             }
+                                             
+                                             ?>
+                                        </table>
+                                        <?php
+                                        $pdo = NULL;
                                    }
-                                   ?>
-                              </table>
-                              <?php
-                              $pdo = NULL;
-                         }
-                         else {
-                              ?><p>Onjuiste vakantienaam of vakantieweek. Ga terug naar de <a href=login.php>loginpagina</a>.</p><?php
-                         }
-                    }
-                    ?>
+                                   else {
+                                        $j = 29;
+                                        ?><p><?php print($labels[$j]); $j++; ?> <a href=login.php><?php print($labels[$j]); $j++; ?></a>.</p><?php
+
+                                   }
+                              }
+                              ?>
+                         </div>
+                    </div>
+                    <?php include "footer.php";?>
                </div>
-          </div>
-          <?php include "footer.php";?>
-     </div>
-</body>
-</html>
+          </body>
+          </html>

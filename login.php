@@ -22,22 +22,23 @@
           <div id="content">
                <div id="contentwrapper">
                     <?php
+                    $j = 0;
                     $labels = loginTaal();
                     ?>
-                    <h2> <?php print $labels[0]; ?> </h2>
+                    <h2><?php print($labels[$j]); $j++; ?></h2>
                     <form id="klantlogin" method="POST" action="loginreisinformatie.php">
                          <div class="form-group label-static is-empty">
-                              <label for="i5i" class="control-label">Vakantienaam*</label>
+                              <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                               <input type="text" name="vakantienaam" class="form-control" id="i5i" required>
-                              <span class="help-block">Voer een vakantienaam in</span>
+                              <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                          </div>
 
                          <div class="form-group label-static is-empty">
-                              <label for="i5i" class="control-label">Vakantieweek*</label>
+                              <label for="i5i" class="control-label"><?php print($labels[$j]); $j++; ?>*</label>
                               <input type="text" name="vakantieweek" class="form-control" id="i5i" required>
-                              <span class="help-block">Voer een vakantieweek in</span>
+                              <span class="help-block"><?php print($labels[$j]); $j++; ?></span>
                               <br><br>
-                              <input type="submit" name="verzenden" value="Verzenden" class="btn btn-raised btn-primary">
+                              <input type="submit" name="verzenden" value="<?php print($labels[$j]); $j++; ?>" class="btn btn-raised btn-primary">
                          </div>
                     </form>
                </div>
