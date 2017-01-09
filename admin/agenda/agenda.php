@@ -80,7 +80,7 @@
                               if (isset($_SESSION['admin_session'])) {
                                    print (": " . $objArray[$i . "omschrijving"]);
                               }
-                              print ("<br>" . $objArray[$i . "uitval"] . " $labels[$k]");
+                              print (":<br>" . $objArray[$i . "uitval"] . " $labels[$k]");
                          }
                          print ("</a></td></tr><tr>");
                     }
