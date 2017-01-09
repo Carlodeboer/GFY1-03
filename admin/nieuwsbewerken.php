@@ -30,8 +30,8 @@
         <?php
         // Wanneer er een nieuwbericht aangeklikt wordt, verschijnt deze aan de rechterkant van de pagina. Onderstaande regels halen de gewenste informatie uit de database
         $pdo = newPDO();
-        $stmt = $pdo->prepare("SELECT id,lang,title,description,bodytext,posted
-                            FROM nieuwsbericht");
+        $stmt = $pdo->prepare("SELECT id, lang, title, bodytext, posted
+                            FROM nieuwsbericht ORDER BY id DESC");
         $stmt->execute();
         ?>
         <br><br><br>
@@ -41,16 +41,14 @@
             <div class="col-md-6">
 
                 <table class="table table-striped table-hover nieuwsberichtenbewerken">
-                    <th>ID</th><th>Taal</th><th>Titel</th><th>Omschrijving</th><th>Datum</th>
+                    <th>Taal</th><th>Titel</th><th>Datum</th>
 
                     <?php
                     while ($content = $stmt->fetch()) {
                         echo "<tr onclick=\"location='beheerpaneel.php?beheer=Nieuwsbewerken&berichtId={$content['id']}'\">
 
-                    <td>" . $content['id'] . "</td>
                     <td>" . $content['lang'] . "</td>
                     <td>" . $content['title'] . "</td>
-                    <td>" . $content['description'] . "</td>
                     <td>" . $content['posted'] . "</td>
 
                     </tr>";
