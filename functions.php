@@ -43,6 +43,9 @@ function laadContent($bestandsnaam, $taal, $admin = false){
     $stmt->execute(array($pagina, $taal));
     $content = $stmt->fetch();
     $pdo = null;
+    if (!$admin) {
+        $content['bodytext'] = str_replace(array("\r\n", "\n\r", "\r", "\n"), "<br>", $content['bodytext']);
+    }
     return $content;
 }
 
