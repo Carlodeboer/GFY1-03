@@ -14,6 +14,18 @@
      if(isset($_POST["wijzigen"])) {
           $stmt1 = $pdo->prepare("UPDATE instellingen SET waarde = ? WHERE instelling = 'aantalMotoren';");
           $stmt1->execute(array($_POST["aantalMotoren"]));
+          $res1 = $stmt1->rowCount();
+          if ($res1 == 1) {
+               ?>
+               <script>
+               function popUp() {
+                    $("#instellingenGewijzigd").snackbar("show");
+               }
+               </script>
+               <span data-toggle=snackbar id="instellingenGewijzigd" data-content="Er zijn nu <?php print($_POST["aantalMotoren"]); ?> motoren beschikbaar."></span>
+               <script>window.onload = popUp;</script>
+               <?php
+          }
      }
      $stmt2 = $pdo->prepare("SELECT waarde FROM instellingen WHERE instelling = 'aantalMotoren';");
      $stmt2->execute(array());
