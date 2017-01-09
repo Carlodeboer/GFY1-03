@@ -12,6 +12,10 @@
 session_start();
 include 'functions.php';
 $knopjes = knopjes();
+// Hier wordt gecontroleerd of de session 'geldigeSession' bestaat. Zo ja, dan wordt
+// gekeken naar de geldigheid en wanneer hij is gestart. Als de gebruiker al een half
+// uur is ingelogd, dan wordt hij doorverwezen naar de logout-pagina.
+// Deze session wordt gestart in adminlogin.php als een gebruiker succesvol inlogd. 
 $tijd = time();
 if (isset($_SESSION['geldigeSession'])){
     if ($_SESSION['geldigeSession'] && isset($_SESSION['expire']) && $tijd > $_SESSION['expire']){
