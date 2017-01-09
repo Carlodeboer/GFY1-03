@@ -13,7 +13,7 @@ include "../toegang.php";
 ?>
 <br><br>
 <div id="contentwrapper">
-     <form name="contactform" method="post" action="beheerpaneel.php?beheer=Berichtopvraag">
+     <form name="contactform" method="post" action="beheerpaneel.php?beheer=Berichten+opvragen">
           <table width="450px">
 <p>Vul een e-mail adres in om de inhoud van de gestuurde e-mail te zien.</p>
 <br>

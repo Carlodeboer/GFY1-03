@@ -68,7 +68,7 @@ define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit 
                               case "Afbeelding":
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/uploadform.php';
                                 break;
-                              case "Berichtopvraag":
+                              case "Berichten opvragen":
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
                                 break;
                               case "Nieuwsbewerken":
