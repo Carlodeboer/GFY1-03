@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
- * Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
- * Ralphine de Roo, Sophie Roos and Ian Vredenburg
- *
- * This Source Code Form is subject to the terms of the MIT license.
- * If a copy of the MIT license was not distributed with this file. You can
- * obtain one at https://opensource.org/licenses/MIT
- *******************************************************************************/
+* Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
+* Ralphine de Roo, Sophie Roos and Ian Vredenburg
+*
+* This Source Code Form is subject to the terms of the MIT license.
+* If a copy of the MIT license was not distributed with this file. You can
+* obtain one at https://opensource.org/licenses/MIT
+*******************************************************************************/
 ?>
 <div class="col-md-8">
      <table id="calendar">
@@ -14,7 +14,7 @@
                <th colspan="7">
                     <form method="POST">
                          <div class="col-md-2">
-                         <!-- agenda in verschillende talen weergeven -->
+                              <!-- agenda in verschillende talen weergeven -->
                               <?php $labels = agendaTaal(); ?>
                               <input type="submit" name="vorige" value="<?php print($labels[0]); ?>" class="btn btn-raised btn-primary">
                          </div>

@@ -11,10 +11,10 @@
 <?php
 include "../toegang.php";
 ?>
-<br><br>
 <div id="contentwrapper">
+     <h2>Berichten contactformulier</h2>
+     <p>Vul een e-mail adres in om de inhoud van de gestuurde e-mail te zien.</p>
      <form name="contactform" method="post" action="beheerpaneel.php?beheer=Berichten+opvragen">
-          <p>Vul een e-mail adres in om de inhoud van de gestuurde e-mail te zien.</p>
           <div class="form-group label-static is-empty">
                <label for="i5i" class="control-label">E-mailadres *</label>
                <input  type="text" name="email" class="form-control">

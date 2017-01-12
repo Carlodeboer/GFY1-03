@@ -9,6 +9,7 @@
  *******************************************************************************/
 ?>
 <div id="contentwrapper">
+     <h2>Instellingen</h2>
      <?php
      $pdo = newPDO();
      if(isset($_POST["wijzigen"])) {
