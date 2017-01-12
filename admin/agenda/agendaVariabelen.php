@@ -49,11 +49,11 @@ $dayOfWeek = date('D', $firstDay);
 $daysInMonth = cal_days_in_month(0, $maand, $jaar);
 
 $timestamp = strtotime('next Sunday');
-$weekDays = array();
-for ($i = 0; $i < 7; $i++) {
-     $weekDays[] = strftime('%a', $timestamp);
-     $timestamp = strtotime('+1 day', $timestamp);
-}
+// $weekDays = array();
+// for ($i = 0; $i < 7; $i++) {
+//      $weekDays[] = strftime('%a', $timestamp);
+//      $timestamp = strtotime('+1 day', $timestamp);
+// }
 $blank = date('w', strtotime("{$jaar}-{$maand}-01"));
 // Totale aantal motoren uit database halen.
 $stmt1 = $pdo->prepare("SELECT waarde FROM instellingen WHERE instelling = 'aantalMotoren';");

@@ -25,8 +25,9 @@
         </script>
     </head>
     <body>
-        <br><br>
-        <h3>Nieuwsberichten bewerken</h3><br>
+         <div id='contentwrapper'>
+        <h2>Nieuwsberichten bewerken</h2>
+
         <?php
         // Wanneer er een nieuwbericht aangeklikt wordt, verschijnt deze aan de rechterkant van de pagina. Onderstaande regels halen de gewenste informatie uit de database
         $pdo = newPDO();
@@ -34,7 +35,6 @@
                             FROM nieuwsbericht ORDER BY id DESC");
         $stmt->execute();
         ?>
-        <br><br><br>
 
     <!-- Gebruik van row om meerdere items naast elkaar te zetten, col-md-* geeft de breedte van een item weer. -->
         <div class="row">
@@ -101,14 +101,14 @@
                         <label for="inputtitel" class="col-md-6 control-label">Titel</label>
 
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="inputtitel" name="titel" placeholder="Titel" value="<?php print($content['title']); ?>">
+                            <input type="text" class="form-control" id="inputtitel" name="titel"  value="<?php print($content['title']); ?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputomschrijving" class="col-md-6 control-label">Omschrijving</label>
 
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="inputomschrijving" name="omschrijving" placeholder="Omschrijving" value="<?php print($content['description']); ?>">
+                            <input type="text" class="form-control" id="inputomschrijving" name="omschrijving"  value="<?php print($content['description']); ?>">
                         </div>
                     </div>
 
@@ -116,7 +116,7 @@
                         <label for="inputdatum" class="col-md-6 control-label">Datum</label>
 
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="inputdatum" name="datum" placeholder="Datum" value="<?php print($content['posted']); ?>">
+                            <input type="text" class="form-control" id="inputdatum" name="datum" value="<?php print($content['posted']); ?>">
                         </div>
                     </div>
 
