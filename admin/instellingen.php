@@ -34,8 +34,8 @@
      $aantalMotoren = $row2["waarde"];
      ?>
      <form method="POST" action="beheerpaneel.php?beheer=Instellingen">
-          <div class="form-group">
-               <label class="control-label label-static is-empty">Aantal motoren</label>
+          <div class="form-group label-static is-empty">
+               <label for="i5i" class="control-label">Aantal motoren</label>
                <input type="number" name="aantalMotoren" value="<?php print($aantalMotoren);?>" required="" class="form-control">
           </div>
           <input class="btn btn-raised btn-primary" type="submit" value="Wijzigen" name="wijzigen">

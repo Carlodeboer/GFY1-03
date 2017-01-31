@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
- * Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
- * Ralphine de Roo, Sophie Roos and Ian Vredenburg
- *
- * This Source Code Form is subject to the terms of the MIT license.
- * If a copy of the MIT license was not distributed with this file. You can
- * obtain one at https://opensource.org/licenses/MIT
- *******************************************************************************/
+* Copyright (c) 2017 Carlo de Boer, Floris de Grip, Thijs Marschalk,
+* Ralphine de Roo, Sophie Roos and Ian Vredenburg
+*
+* This Source Code Form is subject to the terms of the MIT license.
+* If a copy of the MIT license was not distributed with this file. You can
+* obtain one at https://opensource.org/licenses/MIT
+*******************************************************************************/
 ?>
 <?php
 define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit doet
@@ -51,35 +51,45 @@ define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit 
                          $_SESSION['beheer'] = $_GET['beheer'];
                          switch ($_GET['beheer']){
                               case "Content":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
-                                break;
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/contentbeheer.php';
+                              break;
                               case "Nieuws":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
-                                break;
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuws.php';
+                              break;
                               case "Agenda":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/beheeragenda.php';
-                                break;
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/beheeragenda.php';
+                              break;
                               case "Boekingen":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraag.php';
-                                break;
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraag.php';
+                              break;
                               case "Boekingenopvragen":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraagscript.php';
-                                break;
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/boekopvraagscript.php';
+                              break;
                               case "Afbeelding":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/uploadform.php';
-                                break;
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/uploadform.php';
+                              break;
                               case "Berichten opvragen":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
-                                break;
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
+                              break;
                               case "Nieuwsbewerken":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
-                                break;
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
+                              break;
                               case "Nieuw account":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwaccount.php';
-                                break;
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwaccount.php';
+                              break;
                               case "Instellingen":
-                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/instellingen.php';
-                                break;
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/instellingen.php';
+                              break;
                          }
                     }
                     // Controleert of de gebruiker in 'contentbeheer' een pagina heeft geselecteerd
