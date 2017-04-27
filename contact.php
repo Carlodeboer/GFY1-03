@@ -89,6 +89,13 @@
                         <div class="col-md-2">
                         </div>
 
+                        <div id="googlemaps">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.549416940136!2d5.956437915725985!3d52.233403579760925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c7c7a21bf0f591%3A0x7ec280ce253a9027!2sKoninginnelaan+239%2C+7315+DW+Apeldoorn!5e0!3m2!1snl!2snl!4v1483369231647"
+                                        width="450" height="375" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FOffroad-Compass-Portugal-1436006809767078%2F%3Ffref%3Dts&tabs=timeline&width=450&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
+                                        width="450" height="500" style="border:none;overflow:hidden"
+                                        scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                            </div>
 
                      </div>
 
