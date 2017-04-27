@@ -71,6 +71,9 @@ define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit 
                               case "Berichten opvragen":
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
                                 break;
+                              case "Berichten":
+                                include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagscript.php';
+                                break;
                               case "Nieuwsbewerken":
                                 include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
                                 break;

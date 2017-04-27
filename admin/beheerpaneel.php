@@ -78,6 +78,10 @@ define("toegang", true); // In het bestand toegang.php wordt toegelicht wat dit 
                               print("<br>");
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagsubmit.php';
                               break;
+                              case "Berichten":
+                              print("<br>");
+                              include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/berichtopvraagscript.php';
+                              break;
                               case "Nieuwsbewerken":
                               print("<br>");
                               include $_SERVER['DOCUMENT_ROOT'].'/GFY1-03/admin/nieuwsbewerken.php';
